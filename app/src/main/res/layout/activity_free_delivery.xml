@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+    android:background="@color/colorWhite"
+    tools:context=".FreeDeliveryActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <include layout="@layout/item_free_delivery"
+        android:id="@+id/here"/>
+
+    <include layout="@layout/item_free_delivery"/>
+
+    <include layout="@layout/item_free_delivery"/>
+
+    <include layout="@layout/item_free_delivery"/>
+
+    <include layout="@layout/item_free_delivery"/>
+
+
+</LinearLayout>

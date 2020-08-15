@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="@dimen/_2sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_90sdp">
+
+        <LinearLayout
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:src="@drawable/ic_icon_van"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:scaleType="centerInside"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp">
+            </ImageView>
+
+            <TextView
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_gravity="center_horizontal"
+                android:text="خدمات توصيل الورود"
+                android:textSize="@dimen/_7ssp"
+                android:fontFamily="@font/cairo_bold"
+                android:textColor="@color/colorBlack"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

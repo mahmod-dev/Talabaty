@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_70sdp">
+
+            <include layout="@layout/side_toolbar"/>
+
+            <androidx.appcompat.widget.SearchView
+                android:elevation="@dimen/_7sdp"
+                android:layout_margin="@dimen/_15sdp"
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_search_bar"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:theme="@style/MySearch"
+                app:iconifiedByDefault="false"
+                app:queryHint="@string/search_here"
+                app:searchIcon="@drawable/ic_icon_search">
+            </androidx.appcompat.widget.SearchView>
+
+            <com.google.android.material.tabs.TabLayout
+                app:tabMode="scrollable"
+                android:id="@+id/tabs"
+                app:tabTextColor="@color/colorGrey2"
+                app:tabSelectedTextColor="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="@string/all"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="@string/restaurants"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="@string/stores"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="@string/clothes"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="@string/gifts"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="@string/electrical_devices"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+            </com.google.android.material.tabs.TabLayout>
+
+
+
+
+            <include layout="@layout/item_restaurant_above"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/cairo_bold"
+                android:text="أماكن قريبة منك"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_14ssp" />
+
+            <include layout="@layout/item_restaurant_under"/>
+            <include layout="@layout/item_restaurant_under"/>
+            <include layout="@layout/item_restaurant_under"/>
+            <include layout="@layout/item_restaurant_under"/>
+            <include layout="@layout/item_restaurant_under"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

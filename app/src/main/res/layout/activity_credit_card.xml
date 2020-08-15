@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/colorWhite"
+    android:layoutDirection="rtl"
+    tools:context=".PaymentMethodActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:paddingVertical="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="إضافة بطاقة دفع"
+                    android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/cairo_bold"
+                    android:textSize="@dimen/_16ssp">
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_further_arrow">
+                </ImageView>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_credit_card">
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="رقم البطاقة"
+                android:fontFamily="@font/cairo_reqular"
+                android:textSize="@dimen/_15ssp">
+            </TextView>
+
+            <EditText
+                android:textAlignment="viewEnd"
+                android:gravity="end"
+                android:textColor="@color/colorBlack"
+                android:backgroundTint="@color/colorGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </EditText>
+
+            <TextView
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="الاسم الكامل"
+                android:fontFamily="@font/cairo_reqular"
+                android:textSize="@dimen/_15ssp">
+            </TextView>
+
+            <EditText
+                android:textAlignment="viewEnd"
+                android:gravity="end"
+                android:textColor="@color/colorBlack"
+                android:backgroundTint="@color/colorGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </EditText>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="@dimen/_40sdp">
+
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="تاريخ الإنتهاء"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:textSize="@dimen/_15ssp">
+                    </TextView>
+
+                    <EditText
+                        android:textAlignment="viewStart"
+                        android:gravity="start"
+                        android:textColor="@color/colorBlack"
+                        android:backgroundTint="@color/colorGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="@dimen/_40sdp">
+
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="CVV"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:textSize="@dimen/_15ssp">
+                    </TextView>
+
+                    <EditText
+                        android:textAlignment="viewEnd"
+                        android:gravity="end"
+                        android:textColor="@color/colorBlack"
+                        android:backgroundTint="@color/colorGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </EditText>
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/credit_submit"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:fontFamily="@font/cairo_bold"
+                android:text="تم"
+                android:textAllCaps="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_main_btn"
+                android:textColor="@color/colorWhite">
+            </Button>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

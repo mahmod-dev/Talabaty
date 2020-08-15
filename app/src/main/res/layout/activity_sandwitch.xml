@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:layoutDirection="rtl"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_70sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:elevation="@dimen/_7sdp"
+                android:background="@color/colorWhite"
+                android:clipToPadding="false">
+
+
+
+                <LinearLayout
+                    android:foreground="?attr/selectableItemBackground"
+                    android:id="@+id/start_location"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="الموقع الحالي"
+                        android:textSize="@dimen/_10ssp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:textColor="@color/colorGrey2">
+                    </TextView>
+
+                    <TextView
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:drawableStart="@drawable/ic_tool_location"
+                        android:drawableEnd="@drawable/ic_tool_arrow"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="@dimen/_8ssp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مكة المكرمة"
+                        android:fontFamily="@font/cairo_bold"
+                        android:textColor="@color/colorBlack">
+                    </TextView>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:foreground="?attr/selectableItemBackground"
+                    android:id="@+id/toolbar_cart"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_tool_cart"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_alignParentEnd="true">
+                </ImageView>
+
+            </RelativeLayout>
+
+
+            <androidx.appcompat.widget.SearchView
+                android:elevation="@dimen/_7sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@drawable/shape_search_bar"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:theme="@style/MySearch"
+                app:iconifiedByDefault="false"
+                app:queryHint="البحث في جميع الخدمات"
+                app:searchIcon="@drawable/ic_icon_search">
+            </androidx.appcompat.widget.SearchView>
+
+            <include layout="@layout/item_restaurant_under"/>
+
+
+            <com.google.android.material.tabs.TabLayout
+                app:tabMode="scrollable"
+                android:id="@+id/tabs"
+                app:tabTextColor="@color/colorGrey2"
+                app:tabSelectedTextColor="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="وجبات"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="سندوتشات"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="معجنات"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="حلويات"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="مشروبات"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <include
+                android:id="@+id/second_view"
+                layout="@layout/item_sadwitch"/>
+            <include layout="@layout/item_sadwitch"/>
+            <include layout="@layout/item_sadwitch"/>
+            <include layout="@layout/item_sadwitch"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

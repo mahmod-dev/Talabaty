@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:background="@color/colorWhite"
+    tools:context=".PhotographyActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:paddingBottom="@dimen/_40sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <include layout="@layout/toolbar"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="الإسم بالكامل">
+                </EditText>
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="البريد الإلكتروني">
+                </EditText>
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="رقم الهاتف المحمول">
+                </EditText>
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="الأولوية"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:drawableEnd="@drawable/ic_triangle_arrow">
+                </EditText>
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="وقت الحضور">
+                </EditText>
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="رقم التواصل">
+                </EditText>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginStart="@dimen/_10sdp"
+                android:textSize="@dimen/_12ssp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/cairo_reqular"
+                android:text="تفاصيل الطب">
+            </TextView>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="@dimen/_5sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:elevation="@dimen/_2sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="أضف نص"
+                    android:gravity="start"
+                    android:backgroundTint="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="5">
+                </EditText>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="@dimen/_5sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:elevation="@dimen/_2sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:gravity="center"
+                        android:layout_weight="0.5"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:text="إنجاز الطلب">
+                    </TextView>
+
+                    <TextView
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:text="من">
+                    </TextView>
+
+                    <TextView
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:text="إلى">
+                    </TextView>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_margin="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:drawableStart="@drawable/ic_icom_add"
+                            android:gravity="center"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_gravity="center_horizontal"
+                            android:text="إضافة صور"
+                            android:textSize="@dimen/_8ssp"
+                            android:fontFamily="@font/cairo_bold"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_marginHorizontal="@dimen/_5sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                        </TextView>
+
+                        <ImageView
+                            android:src="@drawable/ic_icon_add_photo"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:scaleType="centerInside"
+                            android:layout_gravity="center"
+                            android:layout_width="@dimen/_90sdp"
+                            android:layout_height="@dimen/_70sdp">
+                        </ImageView>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_margin="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:drawableStart="@drawable/ic_icom_add"
+                            android:gravity="center"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_gravity="center_horizontal"
+                            android:text="إضافة ملفات"
+                            android:textSize="@dimen/_8ssp"
+                            android:fontFamily="@font/cairo_bold"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_marginHorizontal="@dimen/_5sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                        </TextView>
+
+                        <ImageView
+                            android:src="@drawable/ic_icon_add_file"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:scaleType="centerInside"
+                            android:layout_gravity="center"
+                            android:layout_width="@dimen/_90sdp"
+                            android:layout_height="@dimen/_70sdp">
+                        </ImageView>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <Button
+                android:layout_marginTop="@dimen/_40sdp"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/btn_electronic"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/hape_btn_gradiant"
+                android:textAllCaps="false"
+                android:text="تأكيد الطلب"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_13ssp"
+                android:fontFamily="@font/cairo_bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_50sdp">
+            </Button>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

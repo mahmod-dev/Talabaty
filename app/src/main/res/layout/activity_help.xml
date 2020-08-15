@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".auth.SignUpActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/toolbar"/>
+
+
+
+            <TextView
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_gravity="center_horizontal|start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo_bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_15ssp"
+                android:text="Help">
+            </TextView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp">
+
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_gravity="center_horizontal|start"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/cairo_bold"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_13ssp"
+                        android:text="I have a suggestion">
+                    </TextView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo_bold"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_13ssp"
+                            android:text="I have a proposal to develop an expansion \n and delivery service">
+                        </TextView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo_bold"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_14ssp"
+                            android:text="+">
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_gravity="center_horizontal|start"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/cairo_bold"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10ssp"
+                        android:text="We are happy to receive your suggestions to develop the service">
+                    </TextView>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorGrey"/>
+
+                    <LinearLayout
+                        android:paddingVertical="@dimen/_15sdp"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Our customer service team is ready for further assistance"
+                            android:textColor="@color/colorGrey2"
+                            android:fontFamily="@font/cairo_reqular">
+                        </TextView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_margin="@dimen/_5sdp"
+                            android:elevation="@dimen/_7sdp"
+                            app:cardBackgroundColor="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="@dimen/_5sdp">
+
+                            <TextView
+                                android:fontFamily="@font/cairo_reqular"
+                                android:layout_marginHorizontal="@dimen/_10sdp"
+                                android:padding="@dimen/_5sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Contact us"
+                                android:textColor="@color/colorPrimary"
+                                android:drawablePadding="@dimen/_5sdp"
+                                android:drawableStart="@drawable/ic_icon_email">
+                            </TextView>
+
+                        </androidx.cardview.widget.CardView>
+
+
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/colorGrey"/>
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="@dimen/_2sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="@dimen/_10sdp">
+
+
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_gravity="center_horizontal|start"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/cairo_bold"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_13ssp"
+                        android:text="I have a suggestion in the app">
+                    </TextView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo_bold"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_13ssp"
+                            android:text="We are happy to receive your suggestions \n to develop the service">
+                        </TextView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo_bold"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_14ssp"
+                            android:text="+">
+                        </TextView>
+
+                    </LinearLayout>
+
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/colorGrey"/>
+
+                    <LinearLayout
+                        android:paddingVertical="@dimen/_20sdp"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Our customer service team is ready for further assistance"
+                            android:textColor="@color/colorGrey2"
+                            android:fontFamily="@font/cairo_reqular">
+                        </TextView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_margin="@dimen/_5sdp"
+                            android:elevation="@dimen/_7sdp"
+                            app:cardBackgroundColor="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="@dimen/_5sdp">
+
+                            <TextView
+                                android:fontFamily="@font/cairo_reqular"
+                                android:layout_marginHorizontal="@dimen/_10sdp"
+                                android:padding="@dimen/_5sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Contact us"
+                                android:textColor="@color/colorPrimary"
+                                android:drawablePadding="@dimen/_5sdp"
+                                android:drawableStart="@drawable/ic_icon_email">
+                            </TextView>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="@android:color/transparent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_15sdp"
+        android:elevation="@dimen/_7sdp">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_weight="1"
+                app:cardElevation="0dp"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/_15sdp"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_90sdp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/img_kfc">
+                </ImageView>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:drawableEnd="@drawable/ic_icon_address"
+                    android:fontFamily="@font/cairo_bold"
+                    android:textSize="@dimen/_9ssp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="مطعم KFC للدجاج">
+                </TextView>
+
+
+                <TextView
+                    android:fontFamily="@font/cairo_bold"
+                    android:textSize="@dimen/_9ssp"
+                    android:textColor="@color/colorGrey2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="الشرقية, جدة مكة المكرمة">
+                </TextView>
+
+
+                <TextView
+                    android:fontFamily="@font/cairo_bold"
+                    android:textSize="@dimen/_9ssp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10 min ,يبعد عنك مسافة">
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

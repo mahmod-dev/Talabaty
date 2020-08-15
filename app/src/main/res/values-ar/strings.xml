@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Tatbeqakum</string>
+    <string name="tatbeqakum_ar">تطبيقكم</string>
+    <string name="tatbeqakum_en">tatbeqakum</string>
+    <string name="welcome">أهلاً بكم</string>
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">كلمة المرور</string>
+    <string name="remember_me">تذكرني</string>
+    <string name="forgot_password">نسيت كلمة المرور؟</string>
+    <string name="you_dont_have_account">ليس لديك حساب؟</string>
+    <string name="create_account">إنشاء حساب</string>
+    <string name="sign_up">تسجيل</string>
+    <string name="full_name">إسم المستخدم</string>
+    <string name="mobile_number">رقم الموبايل</string>
+    <string name="you_have_account">لدي حساب بالفعل؟</string>
+    <string name="reset">إستعادة</string>
+    <string name="password_recovery">إسترجاع كلمة المرور</string>
+    <string name="thanks">شكراً لك</string>
+    <string name="enter_code">أدخل الرمز</string>
+    <string name="activiation_message">لقد تم إرسال كود التفعيل إلى رقم الهاتف
+الرجاء التحقق من الرسائل</string>
+    <string name="code_confirm">تأكيد الرمز</string>
+    <string name="didnt_recieve">لم أستلم أي رمز؟</string>
+    <string name="send_again">إعادة المحاولة</string>
+    <string name="search_here">Search here</string>
+    <string name="all">All</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="stores">Stores</string>
+    <string name="clothes">Clothes</string>
+    <string name="gifts">Gifts</string>
+    <string name="electrical_devices">Electrical Devices</string>
+    <string name="digital_services">Digital Services</string>
+    <string name="order_car">Order a car</string>
+    <string name="order_service">Order a service</string>
+    <string name="free_delivery">Free Delivery</string>
+    <string name="latest_offers">Latest offers and discounts</string>
+    <string name="productive_families">Productive Families</string>
+    <string name="places_near_you">Places Near You</string>
+    <string name="delete_order">حذف الطلب</string>
+    <string name="retry">إعادة طلب</string>
+    <string name="my_orders">My Orders</string>
+    <string name="settings">الإعدادات</string>
+    <string name="about_app">عن تطبيقكم</string>
+    <string name="usage_policy">سياسة الاستخدام</string>
+    <string name="display">طريقة العرض</string>
+    <string name="suggestions">الشكاوي والإستفسارات</string>
+    <string name="questions">أسئلة وأجوبة</string>
+    <string name="language">لغة التطبيق</string>
+    <string name="share">شارك التطبيق</string>
+    <string name="contact_us">اتصل بنا</string>
+    <string name="order_details">تفاصيل الطلب</string>
+</resources>

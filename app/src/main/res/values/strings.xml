@@ -1,3 +1,56 @@
 <resources>
     <string name="app_name">Talabaty</string>
+
+    <string name="tatbeqakum_ar">تطبيقكم</string>
+    <string name="tatbeqakum_en">tatbeqakum</string>
+    <string name="welcome">Welcome</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="you_dont_have_account">You do not have an account?</string>
+    <string name="create_account">Create an account</string>
+    <string name="sign_up">Sign up</string>
+    <string name="full_name">Full Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="you_have_account">You have an account?</string>
+    <string name="reset">Reset</string>
+    <string name="password_recovery">Password Recovery</string>
+    <string name="thanks">Thank You!</string>
+    <string name="enter_code">Enter the code</string>
+    <string name="activiation_message">The activation code has been sent to the phone number Please check the messages</string>
+    <string name="code_confirm">Confirm The Code</string>
+    <string name="didnt_recieve">Didn\'t receive any code?</string>
+    <string name="send_again">Send it again</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_here">Search here</string>
+    <string name="all">All</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="stores">Stores</string>
+    <string name="clothes">Clothes</string>
+    <string name="gifts">Gifts</string>
+    <string name="electrical_devices">Electrical Devices</string>
+    <string name="digital_services">Digital Services</string>
+    <string name="order_car">Order a car</string>
+    <string name="order_service">Order a service</string>
+    <string name="free_delivery">Free Delivery</string>
+    <string name="latest_offers">Latest offers and discounts</string>
+    <string name="productive_families">Productive Families</string>
+    <string name="places_near_you">Places Near You</string>
+    <string name="delete_order">Delete</string>
+    <string name="retry">Retry</string>
+    <string name="my_orders">My Orders</string>
+    <string name="settings">Settings</string>
+    <string name="about_app">About app</string>
+    <string name="usage_policy">Usage Policy</string>
+    <string name="display">Display</string>
+    <string name="suggestions">Suggestions</string>
+    <string name="questions">Questions</string>
+    <string name="language">Language</string>
+    <string name="share">Share</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="order_details">Order Details</string>
 </resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layoutDirection="rtl"
+    android:layout_height="match_parent">
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:background="@color/colorGrey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="موقع التوصيل"
+                android:fontFamily="@font/cairo_reqular"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_10ssp">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="جدة - مكة المكرمة"
+                android:fontFamily="@font/cairo_reqular"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_8ssp">
+            </TextView>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_icon_notification">
+        </ImageView>
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_icon_search">
+        </ImageView>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_marginBottom="@dimen/_40sdp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/sign_in"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:fontFamily="@font/cairo_bold"
+        android:text="اختر موقعك"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:background="@drawable/ripple_square_btn"
+        android:textColor="@color/colorWhite">
+    </Button>
+
+</RelativeLayout>
+
+

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:background="@color/colorWhite"
+    tools:context=".ChatActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_gravity="end"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_further_arrow">
+        </ImageView>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                app:cardBackgroundColor="#93CB80"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_5sdp">
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_25sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_person_mask">
+                </ImageView>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="محمد أحمد"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_14ssp">
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_chat_call"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:background="@color/colorGrey"/>
+
+        <TextView
+            android:textColor="@color/colorBlack"
+            android:background="@drawable/shape_chat_receiver"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:maxWidth="@dimen/_180sdp"
+            android:text="يعطيك العافية كابتن,
+وين وصلت؟">
+        </TextView>
+
+        <TextView
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/shape_chat_sender"
+            android:layout_gravity="start"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:maxWidth="@dimen/_180sdp"
+            android:text="انا عند دوار جدة، تبي شي؟">
+        </TextView>
+
+        <TextView
+            android:textColor="@color/colorBlack"
+            android:background="@drawable/shape_chat_receiver"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:maxWidth="@dimen/_180sdp"
+            android:text="اه يا كبير">
+        </TextView>
+
+        <TextView
+            android:textColor="@color/colorBlack"
+            android:background="@drawable/shape_chat_receiver"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:maxWidth="@dimen/_180sdp"
+            android:text="قرب الميدان بالطريق في بقالة السلطان,
+أبي ربطتين جبن ووصل ">
+        </TextView>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:background="@color/colorGrey"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                app:cardCornerRadius="@dimen/_15sdp"
+                app:cardBackgroundColor="@color/colorPrimary">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_mic_itself">
+                </ImageView>
+
+            </androidx.cardview.widget.CardView>
+
+            <EditText
+                android:drawablePadding="@dimen/_10sdp"
+                android:drawableStart="@drawable/ic_go_chat"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_5sdp"
+                android:hint="Type Message ..."
+                android:textSize="@dimen/_10ssp"
+                android:background="@drawable/shape_border_tevtview"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1">
+            </EditText>
+
+            <ImageView
+
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_camera_chat">
+            </ImageView>
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

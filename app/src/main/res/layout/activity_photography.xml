@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:background="@color/colorWhite"
+    tools:context=".PhotographyActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:paddingBottom="@dimen/_40sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <include layout="@layout/toolbar"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="اسم الكريم">
+                </EditText>
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="المدينة">
+                </EditText>
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="القاعة">
+                </EditText>
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="رجال / نساء">
+                </EditText>
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="تاريخ الزواج"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:drawableEnd="@drawable/ic_triangle_arrow">
+                </EditText>
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="وقت الحضور">
+                </EditText>
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="رقم التواصل">
+                </EditText>
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="@dimen/_5sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:elevation="@dimen/_2sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:textSize="@dimen/_10ssp"
+
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="خدمات إضافية"
+                    android:gravity="start"
+                    android:backgroundTint="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="3">
+                </EditText>
+            </androidx.cardview.widget.CardView>
+
+
+            <Button
+                android:layout_marginTop="@dimen/_40sdp"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/btn_photo"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/hape_btn_gradiant"
+                android:textAllCaps="false"
+                android:text="تأكيد الطلب"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_13ssp"
+                android:fontFamily="@font/cairo_bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_50sdp">
+            </Button>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/_7sdp"
+    android:background="@color/colorWhite"
+    android:clipToPadding="false">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:elevation="@dimen/_7sdp"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="الموقع الحالي"
+            android:textSize="@dimen/_10ssp"
+            android:fontFamily="@font/cairo_reqular"
+            android:textColor="@color/colorGrey2">
+        </TextView>
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/_7ssp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="مكة المكرمة"
+            android:fontFamily="@font/cairo_reqular"
+            android:textColor="@color/colorBlack">
+        </TextView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context=".SettingsActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_50sdp">
+
+            <include layout="@layout/toolbar"/>
+
+
+            <TextView
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/cairo_reqular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="مكان الإستلام"
+                android:textSize="@dimen/_13ssp">
+            </TextView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:elevation="@dimen/_7sdp"
+                app:cardBackgroundColor="@color/colorGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_14sdp">
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:drawableStart="@drawable/ic_icon_place"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="حدد موقع الإستلام"
+                    android:textColor="@color/colorBlack"
+                    android:drawablePadding="@dimen/_20sdp">
+                </TextView>
+
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/cairo_reqular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="مكان التوصيل"
+                android:textSize="@dimen/_13ssp">
+            </TextView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:elevation="@dimen/_7sdp"
+                app:cardBackgroundColor="@color/colorGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_14sdp">
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:drawableStart="@drawable/ic_icon_place"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="حدد موقع التسليم"
+                    android:textColor="@color/colorBlack"
+                    android:drawablePadding="@dimen/_20sdp">
+                </TextView>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/cairo_reqular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="نوع السيارة"
+                android:textSize="@dimen/_13ssp">
+            </TextView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:elevation="@dimen/_7sdp"
+                app:cardBackgroundColor="@color/colorGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_14sdp">
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:drawableStart="@drawable/ic_delivery_car"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="نوع السيارة"
+                    android:textColor="@color/colorBlack"
+                    android:drawablePadding="@dimen/_20sdp">
+                </TextView>
+
+                <ImageView
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_triangle_arrow">
+                </ImageView>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/cairo_reqular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="إلى أين تريد الذهاب؟"
+                android:textSize="@dimen/_13ssp">
+            </TextView>
+
+            <EditText
+                android:hint="اكتب اين تريد الذهاب..."
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:padding="@dimen/_5sdp"
+                android:background="@drawable/shape_text_vie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_11ssp"
+                android:lines="1">
+            </EditText>
+
+            <TextView
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="أضف كوبون الخصم"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/cairo_reqular"
+                android:drawablePadding="@dimen/_10sdp"
+                android:drawableStart="@drawable/ic_icom_add">
+            </TextView>
+
+            <TextView
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_gravity="center_horizontal"
+                android:padding="@dimen/_10sdp"
+                android:background="@drawable/shape_text_vie"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="wrap_content">
+            </TextView>
+
+
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/hape_btn_gradiant"
+                android:textAllCaps="false"
+                android:text="أرسل الطلب"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_16ssp"
+                android:fontFamily="@font/cairo_bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_50sdp">
+            </Button>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite"
+    tools:context=".fragment.ResturentFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_70sdp">
+
+            <include layout="@layout/item_restaurant_above"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/cairo_bold"
+                android:text="مطاعم قريبة منك"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_14ssp" />
+
+            <include
+                android:id="@+id/first_view" layout="@layout/item_restaurant_under"/>
+            <include layout="@layout/item_restaurant_under"/>
+            <include layout="@layout/item_restaurant_under"/>
+            <include layout="@layout/item_restaurant_under"/>
+            <include layout="@layout/item_restaurant_under"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

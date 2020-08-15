@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="@android:color/transparent"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:padding="@dimen/_20sdp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_box_dialog"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:src="@drawable/img_person">
+        </ImageView>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/cairo_reqular"
+                android:text="قيّم محمد">
+            </TextView>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+
+            <com.willy.ratingbar.ScaleRatingBar
+                android:id="@+id/rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:srb_clearRatingEnabled="false"
+                app:srb_clickable="true"
+                app:srb_drawableEmpty="@drawable/ic_icon_filled_star"
+                app:srb_drawableFilled="@drawable/ic_icon_filled_star"
+                app:srb_numStars="5"
+                app:srb_scrollable="false"
+                app:srb_starHeight="30dp"
+                app:srb_starPadding="8dp"
+                app:srb_starWidth="30dp"
+                app:srb_stepSize="2" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/shape_box_dialog">
+
+        <EditText
+            android:gravity="start"
+            android:hint="اكتب ملاحظاتك"
+            android:padding="@dimen/_10sdp"
+            android:lines="4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent">
+        </EditText>
+
+        <Button
+            android:textColor="@color/colorWhite"
+            android:text="تم"
+            android:fontFamily="@font/cairo_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_dialog_btn">
+        </Button>
+
+    </LinearLayout>
+
+</LinearLayout>

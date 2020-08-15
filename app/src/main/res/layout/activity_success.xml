@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context=".SuccessActivity">
+
+
+    <include layout="@layout/toolbar"/>
+
+
+    <LinearLayout
+
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_icon_loading">
+        </ImageView>
+
+        <TextView
+            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_50sdp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cairo_bold"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_13ssp"
+            android:text="عزيزي تم إرسال طلبك للسائقين
+بإنتظار العروض">
+        </TextView>
+
+
+        <TextView
+            android:layout_marginTop="@dimen/_20sdp"
+
+            android:layout_marginHorizontal="@dimen/_50sdp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cairo_bold"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_10ssp"
+            android:text="يمكنك متابعة طلباتك من خلال قسم طلباتي في التطبيق
+شكراً لك ">
+        </TextView>
+
+
+        <Button
+            android:id="@+id/my_orders"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:fontFamily="@font/cairo_bold"
+            android:text="طلباتي"
+            android:textAllCaps="false"
+            android:paddingHorizontal="@dimen/_50sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:background="@drawable/ripple_main_btn"
+            android:textColor="@color/colorWhite">
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>

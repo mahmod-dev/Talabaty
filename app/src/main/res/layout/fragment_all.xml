@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.AllFragment"
+    android:background="@color/colorWhite">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pager"
+                android:paddingHorizontal="@dimen/_30sdp"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_110sdp">
+            </androidx.viewpager.widget.ViewPager>
+
+            <com.fuzz.indicator.CutoutViewIndicator
+                android:id="@+id/indicator_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:rcv_drawable="@drawable/ic_indicator_selected"
+                app:rcv_drawable_unselected="@drawable/ic_indicator_unselected"/>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/services"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:orientation="vertical">
+
+                    <ImageView
+
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/ic_icon_digital">
+                    </ImageView>
+
+                    <TextView
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/cairo_bold"
+                        android:textSize="@dimen/_9ssp"
+                        android:text="خدمات رقمية">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:id="@+id/order_car"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/ic_icon_gps">
+                    </ImageView>
+
+                    <TextView
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/cairo_bold"
+                        android:textSize="@dimen/_9ssp"
+                        android:text="اطلب سيارة">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:id="@+id/order_service"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/ic_icon_service">
+                    </ImageView>
+
+                    <TextView
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/cairo_bold"
+                        android:textSize="@dimen/_9ssp"
+                        android:text="اطلب خدمة">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:id="@+id/free_delivery"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/ic_icon_free_delivery">
+                    </ImageView>
+
+                    <TextView
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/cairo_bold"
+                        android:textSize="@dimen/_9ssp"
+                        android:text="توصيل مجاني">
+                    </TextView>
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="احدث العروض والخصومات"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_12ssp"
+                    android:fontFamily="@font/cairo_bold">
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/first_card"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="@dimen/_90sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_further_arrow" />
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
+            <include layout="@layout/item_newest_categories"></include>
+
+            <include layout="@layout/item_newest"></include>
+
+            <include layout="@layout/item_newest"></include>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="الأسر المنتجة"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_12ssp"
+                    android:fontFamily="@font/cairo_bold">
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="@dimen/_90sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_further_arrow" />
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <include layout="@layout/item_productive_family"/>
+
+                <include layout="@layout/item_productive_family"/>
+
+                <include layout="@layout/item_productive_family"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="أماكن قريبة منك"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_12ssp"
+                    android:fontFamily="@font/cairo_bold">
+                </TextView>
+
+
+
+            </LinearLayout>
+
+            <include layout="@layout/item_home_near"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
