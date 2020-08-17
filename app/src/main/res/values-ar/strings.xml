@@ -36,8 +36,8 @@
     <string name="order_car">Order a car</string>
     <string name="order_service">Order a service</string>
     <string name="free_delivery">Free Delivery</string>
-    <string name="latest_offers">Latest offers and discounts</string>
-    <string name="productive_families">Productive Families</string>
+    <string name="latest_offers">آخر العروض والخصومات</string>
+    <string name="productive_families">الأسر المنتجة</string>
     <string name="places_near_you">Places Near You</string>
     <string name="delete_order">حذف الطلب</string>
     <string name="retry">إعادة طلب</string>
@@ -52,4 +52,31 @@
     <string name="share">شارك التطبيق</string>
     <string name="contact_us">اتصل بنا</string>
     <string name="order_details">تفاصيل الطلب</string>
+    <string name="shopping_cart">سلة المشتريات</string>
+    <string name="payment_way">طرق الدفع</string>
+    <string name="purchases">المشتريات</string>
+    <string name="delivery_fee">رسوم التوصيل</string>
+    <string name="added_tax">الضريبة المضافة</string>
+    <string name="total_amount">المبلغ الإجمالي</string>
+    <string name="complete_order">أكمل الطلب</string>
+    <string name="type_message">أكتب رسالة …</string>
+    <string name="add_payment_card">إضافة بطاقة دفع</string>
+    <string name="card_number">رقم البطاقة</string>
+    <string name="expired_date">تاريخ الإنتهاء</string>
+    <string name="ok">تم</string>
+    <string name="place_of_delivery">Place of Delivery</string>
+    <string name="select_the_receive_location">Select the receive location</string>
+    <string name="search_in_offer_service">البحث في العروض والخدمات</string>
+    <string name="latest_offers_discounts">أحدث العروض والخصومات</string>
+    <string name="current_location">الموقع الحالي</string>
+
+    <string name="profile">حسابي</string>
+    <string name="main">الرئيسية</string>
+    <string name="orders">طلباتي</string>
+    <string name="chatting">دردشة</string>
+    <string name="meals">أكلات</string>
+    <string name="wears">ملابس</string>
+    <string name="furniture">أثاث منزلي</string>
+    <string name="product_describe">وصف المنتج</string>
+    <string name="reviews">التقييمات</string>
 </resources>

@@ -19,10 +19,24 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
+
         android:layout_centerInParent="true"
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:src="@drawable/logo_toolbar" />
+
+    <ImageView
+        android:id="@+id/imgArrowBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_alignParentEnd="true"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:src="@drawable/ic_icon_arrow_left"
+        app:tint="@color/colorPrimary" />
 </RelativeLayout>

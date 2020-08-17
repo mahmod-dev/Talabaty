@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
     android:background="@color/colorWhite"
     android:layoutDirection="rtl"
+    android:orientation="horizontal"
     tools:context=".PaymentMethodActivity">
 
     <ScrollView
@@ -14,79 +14,70 @@
         android:fillViewport="true">
 
         <LinearLayout
-            android:paddingHorizontal="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_10sdp">
 
-            <LinearLayout
-                android:paddingVertical="@dimen/_5sdp"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/_5sdp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="إضافة بطاقة دفع"
-                    android:textColor="@color/colorBlack"
+                    android:layout_centerVertical="true"
                     android:fontFamily="@font/cairo_bold"
-                    android:textSize="@dimen/_16ssp">
-                </TextView>
+                    android:text="@string/add_payment_card"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_16ssp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                </LinearLayout>
 
                 <ImageView
-                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_further_arrow">
-                </ImageView>
-            </LinearLayout>
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_further_arrow" />
+            </RelativeLayout>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/img_credit_card">
-            </ImageView>
+                android:src="@drawable/img_credit_card" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="رقم البطاقة"
                 android:fontFamily="@font/cairo_reqular"
-                android:textSize="@dimen/_15ssp">
-            </TextView>
+                android:text="@string/card_number"
+                android:textSize="@dimen/_15ssp" />
 
             <EditText
-                android:textAlignment="viewEnd"
-                android:gravity="end"
-                android:textColor="@color/colorBlack"
-                android:backgroundTint="@color/colorGrey"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </EditText>
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorGrey"
+                android:gravity="end"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/colorBlack" />
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="الاسم الكامل"
                 android:fontFamily="@font/cairo_reqular"
-                android:textSize="@dimen/_15ssp">
-            </TextView>
+                android:text="@string/full_name"
+                android:textSize="@dimen/_15ssp" />
 
             <EditText
-                android:textAlignment="viewEnd"
-                android:gravity="end"
-                android:textColor="@color/colorBlack"
-                android:backgroundTint="@color/colorGrey"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </EditText>
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorGrey"
+                android:gravity="end"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/colorBlack" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -97,67 +88,62 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_40sdp"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginEnd="@dimen/_40sdp">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="تاريخ الإنتهاء"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_reqular"
-                        android:textSize="@dimen/_15ssp">
-                    </TextView>
+                        android:text="@string/expired_date"
+                        android:textSize="@dimen/_15ssp" />
 
                     <EditText
-                        android:textAlignment="viewStart"
-                        android:gravity="start"
-                        android:textColor="@color/colorBlack"
-                        android:backgroundTint="@color/colorGrey"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    </EditText>
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorGrey"
+                        android:gravity="start"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorBlack" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_40sdp"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginStart="@dimen/_40sdp">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="CVV"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_reqular"
-                        android:textSize="@dimen/_15ssp">
-                    </TextView>
+                        android:text="CVV"
+                        android:textSize="@dimen/_15ssp" />
 
                     <EditText
-                        android:textAlignment="viewEnd"
-                        android:gravity="end"
-                        android:textColor="@color/colorBlack"
-                        android:backgroundTint="@color/colorGrey"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    </EditText>
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorGrey"
+                        android:gravity="end"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/colorBlack" />
                 </LinearLayout>
             </LinearLayout>
 
             <Button
                 android:id="@+id/credit_submit"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:fontFamily="@font/cairo_bold"
-                android:text="تم"
-                android:textAllCaps="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_40sdp"
                 android:background="@drawable/ripple_main_btn"
-                android:textColor="@color/colorWhite">
-            </Button>
+                android:fontFamily="@font/cairo_bold"
+                android:text="@string/ok"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite" />
 
         </LinearLayout>
     </ScrollView>

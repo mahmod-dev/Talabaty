@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
     android:background="@color/colorWhite"
+    android:layoutDirection="rtl"
     tools:context=".PhotographyActivity">
 
     <ScrollView
@@ -14,66 +14,60 @@
         android:fillViewport="true">
 
         <LinearLayout
-            android:paddingBottom="@dimen/_40sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_40sdp">
 
-
-            <include layout="@layout/toolbar"/>
+            <include layout="@layout/toolbar" />
 
             <LinearLayout
-                android:orientation="vertical"
-                android:padding="@dimen/_10sdp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
 
                 <EditText
-                    android:textSize="@dimen/_10ssp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="اسم الكريم">
-                </EditText>
+                    android:hint="اسم الكريم"
+                    android:textSize="@dimen/_10ssp" />
 
                 <EditText
-                    android:textSize="@dimen/_10ssp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="المدينة">
-                </EditText>
+                    android:hint="المدينة"
+                    android:textSize="@dimen/_10ssp" />
 
                 <EditText
-                    android:textSize="@dimen/_10ssp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="القاعة">
-                </EditText>
+                    android:hint="القاعة"
+                    android:textSize="@dimen/_10ssp" />
 
                 <EditText
-                    android:textSize="@dimen/_10ssp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="رجال / نساء">
-                </EditText>
+                    android:hint="رجال / نساء"
+                    android:textSize="@dimen/_10ssp" />
 
                 <EditText
-                    android:textSize="@dimen/_10ssp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
+                    android:drawableEnd="@drawable/ic_triangle_arrow"
                     android:fontFamily="@font/cairo_reqular"
                     android:hint="تاريخ الزواج"
                     android:paddingEnd="@dimen/_10sdp"
-                    android:drawableEnd="@drawable/ic_triangle_arrow">
-                </EditText>
+                    android:textSize="@dimen/_10ssp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -81,91 +75,84 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:paddingEnd="@dimen/_50sdp"
-                        android:textSize="@dimen/_10ssp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/colorGrey"
                         android:fontFamily="@font/cairo_reqular"
-                        android:hint="عدد المباشرين">
-                    </EditText>
+                        android:hint="عدد المباشرين"
+                        android:paddingEnd="@dimen/_50sdp"
+                        android:textSize="@dimen/_10ssp" />
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
-                    </LinearLayout>
+                        android:layout_weight="1" />
 
                     <EditText
-                        android:paddingEnd="@dimen/_50sdp"
-                        android:textSize="@dimen/_10ssp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/colorGrey"
                         android:fontFamily="@font/cairo_reqular"
-                        android:hint="عدد القهوجي">
-                    </EditText>
+                        android:hint="عدد القهوجي"
+                        android:paddingEnd="@dimen/_50sdp"
+                        android:textSize="@dimen/_10ssp" />
 
                 </LinearLayout>
 
                 <EditText
-                    android:textSize="@dimen/_10ssp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="عدد سقايا زمزم">
-                </EditText>
+                    android:hint="عدد سقايا زمزم"
+                    android:textSize="@dimen/_10ssp" />
 
                 <EditText
-                    android:textSize="@dimen/_10ssp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="رقم التواصل">
-                </EditText>
+                    android:hint="رقم التواصل"
+                    android:textSize="@dimen/_10ssp" />
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10sdp"
                 android:elevation="@dimen/_2sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                app:cardCornerRadius="@dimen/_5sdp">
 
                 <EditText
-                    android:textSize="@dimen/_10ssp"
-
-                    android:layout_margin="@dimen/_5sdp"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:hint="خدمات إضافية"
-                    android:gravity="start"
-                    android:backgroundTint="@android:color/transparent"
                     android:layout_width="match_parent"
+
                     android:layout_height="wrap_content"
-                    android:lines="3">
-                </EditText>
+                    android:layout_margin="@dimen/_5sdp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:gravity="start"
+                    android:hint="خدمات إضافية"
+                    android:lines="3"
+                    android:textSize="@dimen/_10ssp" />
             </androidx.cardview.widget.CardView>
 
 
             <Button
 
-                android:layout_marginTop="@dimen/_40sdp"
-                android:layout_alignParentBottom="true"
                 android:id="@+id/coffee_btn"
-                android:layout_marginBottom="@dimen/_30sdp"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/hape_btn_gradiant"
-                android:textAllCaps="false"
-                android:text="تأكيد الطلب"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/_13ssp"
-                android:fontFamily="@font/cairo_bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_50sdp">
-            </Button>
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:background="@drawable/hape_btn_gradiant"
+                android:fontFamily="@font/cairo_bold"
+                android:text="تأكيد الطلب"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_13ssp" />
 
         </LinearLayout>
     </ScrollView>

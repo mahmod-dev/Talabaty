@@ -3,103 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layoutDirection="rtl"
-    android:background="@color/colorWhite"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     android:orientation="vertical"
     tools:context=".HomeActivity">
 
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <include layout="@layout/side_toolbar"/>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="@dimen/_7sdp"
-        android:background="@color/colorWhite"
-        android:clipToPadding="false">
-
-
-        <androidx.appcompat.widget.Toolbar
-            android:elevation="@dimen/_7sdp"
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/transparent"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-        </androidx.appcompat.widget.Toolbar>
-
-        <LinearLayout
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="الموقع الحالي"
-                android:textSize="@dimen/_10ssp"
-                android:fontFamily="@font/cairo_reqular"
-                android:textColor="@color/colorGrey2">
-            </TextView>
-
-            <TextView
-                android:drawablePadding="@dimen/_5sdp"
-                android:drawableStart="@drawable/ic_tool_location"
-                android:drawableEnd="@drawable/ic_tool_arrow"
-                android:layout_gravity="center_horizontal"
-                android:textSize="@dimen/_8ssp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="مكة المكرمة"
-                android:fontFamily="@font/cairo_bold"
-                android:textColor="@color/colorBlack">
-            </TextView>
-
-        </LinearLayout>
-
-        <ImageView
-            android:padding="@dimen/_5sdp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_tool_cart"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_alignParentEnd="true">
-        </ImageView>
-
-    </RelativeLayout>
-
-    <androidx.appcompat.widget.SearchView
-        android:elevation="@dimen/_7sdp"
+        android:layout_height="@dimen/_38sdp"
         android:layout_margin="@dimen/_10sdp"
-        android:id="@+id/search"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_30sdp"
-        android:background="@drawable/shape_search_bar"
-        android:theme="@style/MySearch"
-        app:iconifiedByDefault="false"
-        app:queryHint="البحث في العروض والخدمات"
-        app:searchIcon="@drawable/ic_icon_search">
-    </androidx.appcompat.widget.SearchView>
+        app:contentPaddingLeft="@dimen/_10sdp"
+        app:contentPaddingRight="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_10sdp">
+
+        <EditText
+            android:id="@+id/searchHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:drawableEnd="@drawable/ic_icon_search"
+            android:fontFamily="@font/cairo_reqular"
+            android:hint="@string/search_in_offer_service"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textColorHint="@color/colorGrey" />
+
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10sdp"
-        android:textColor="@color/colorBlack"
-        android:textSize="@dimen/_13ssp"
         android:fontFamily="@font/cairo_bold"
-        android:text="أحدث العروض والخصومات">
-    </TextView>
+        android:text="@string/latest_offers_discounts"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_13ssp" />
 
-    <include layout="@layout/item_newest_categories"/>
-
-    <include layout="@layout/item_newest_categories"/>
-
-    <include layout="@layout/item_newest_categories"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_newest_offers" />
 
 
 </LinearLayout>

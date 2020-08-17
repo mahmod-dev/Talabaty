@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.HomeFragment">
+
+    <include layout="@layout/toolbar" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:fontFamily="@font/cairo_bold"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/productive_families"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_12ssp"
+        android:drawablePadding="@dimen/_6sdp"
+        app:drawableStartCompat="@drawable/ic_vertical_indecator" />
+
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_140sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+
+        />
+
+    <com.google.android.material.tabs.TabLayout
+        app:tabMode="scrollable"
+        android:id="@+id/tabs"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:tabTextColor="@color/colorGrey2"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </androidx.viewpager.widget.ViewPager>
+
+
+</LinearLayout>

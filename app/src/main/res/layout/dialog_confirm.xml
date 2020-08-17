@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_10sdp"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/_10sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:src="@drawable/logo_main" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cairo_reqular"
+            android:padding="@dimen/_10sdp"
+
+            android:text="وفرنا لك مينو خاص يسهل عليك الطلب ليش ما تجرب؟" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_dialog_btn"
+            android:text="أكيد رح أختار"
+            android:fontFamily="@font/cairo_reqular"
+
+            android:textColor="@color/colorWhite"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack"
+            android:text="لا، أكتب طلبي بنفسي"
+            android:fontFamily="@font/cairo_reqular"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

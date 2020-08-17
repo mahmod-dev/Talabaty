@@ -10,17 +10,16 @@
     tools:context=".fragment.HomeFragment">
 
     <androidx.appcompat.widget.SearchView
-        android:elevation="@dimen/_7sdp"
-        android:layout_margin="@dimen/_10sdp"
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_30sdp"
+        android:layout_margin="@dimen/_10sdp"
         android:background="@drawable/shape_search_bar"
+        android:elevation="@dimen/_7sdp"
         android:theme="@style/MySearch"
         app:iconifiedByDefault="false"
         app:queryHint="البحث في جميع الخدمات"
-        app:searchIcon="@drawable/ic_icon_search">
-    </androidx.appcompat.widget.SearchView>
+        app:searchIcon="@drawable/ic_icon_search" />
 
     <com.google.android.material.tabs.TabLayout
         app:tabMode="scrollable"
@@ -234,7 +233,7 @@
 &lt;!&ndash;            </LinearLayout>&ndash;&gt;
 
 
-&lt;!&ndash;            <include layout="@layout/item_newest_categories"></include>&ndash;&gt;
+&lt;!&ndash;            <include layout="@layout/item_newest_offers"></include>&ndash;&gt;
 
 &lt;!&ndash;            <include layout="@layout/item_newest"></include>&ndash;&gt;
 

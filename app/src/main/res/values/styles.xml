@@ -13,4 +13,15 @@
         <item name="colorControlActivated">@color/colorAccent</item>
         <item name="android:textColor">#AFAFAF</item>
     </style>
+
+    <style name="Widget.BottomNavigationView"
+        parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/cairo_reqular</item>
+    </style>
+
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorGrey2</item>
+        <item name="colorControlActivated">@color/rateBarActive</item>
+    </style>
 </resources>

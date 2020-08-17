@@ -1,96 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@android:color/transparent"
-    android:layoutDirection="rtl"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_margin="@dimen/_10sdp"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/_10sdp">
 
     <LinearLayout
-        android:padding="@dimen/_20sdp"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_box_dialog"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_gravity="center_horizontal"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_100sdp"
-            android:src="@drawable/img_person">
-        </ImageView>
-
-        <LinearLayout
-            android:layout_marginTop="@dimen/_10sdp"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/tvTitleDialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_dialog_gradiant"
+                android:fontFamily="@font/cairo_bold"
+                android:gravity="center"
+                android:padding="@dimen/_20sdp"
+
+                android:text="كيف كانت تجربتك؟"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_16ssp" />
+
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorBlack"
-                android:fontFamily="@font/cairo_reqular"
-                android:text="قيّم محمد">
-            </TextView>
+                android:layout_alignTop="@+id/tvTitleDialog"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
-
-
-            <com.willy.ratingbar.ScaleRatingBar
-                android:id="@+id/rate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="5dp"
-                android:clickable="true"
-                android:focusable="true"
-                app:srb_clearRatingEnabled="false"
-                app:srb_clickable="true"
-                app:srb_drawableEmpty="@drawable/ic_icon_filled_star"
-                app:srb_drawableFilled="@drawable/ic_icon_filled_star"
-                app:srb_numStars="5"
-                app:srb_scrollable="false"
-                app:srb_starHeight="30dp"
-                app:srb_starPadding="8dp"
-                app:srb_starWidth="30dp"
-                app:srb_stepSize="2" />
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/ic_close_dialog" />
+        </RelativeLayout>
 
 
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/shape_box_dialog">
-
-        <EditText
-            android:gravity="start"
-            android:hint="اكتب ملاحظاتك"
-            android:padding="@dimen/_10sdp"
-            android:lines="4"
+        <RelativeLayout
+            android:id="@+id/rlStore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent">
-        </EditText>
+            android:layout_margin="@dimen/_10sdp">
+
+            <ImageView
+                android:id="@+id/imgStore"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/logo_main" />
+
+            <LinearLayout
+                android:id="@+id/linStore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/imgStore"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTitleStore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:text="قيم المتجر"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:text="مطعم وفرن زاد الخير" />
+            </LinearLayout>
+
+            <RatingBar
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/linStore"
+                android:layout_alignParentEnd="true"
+                android:theme="@style/RatingBar"
+                android:rating="3"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlStore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp">
+
+            <ImageView
+                android:id="@+id/imgStore"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/logo_main" />
+
+            <LinearLayout
+                android:id="@+id/linStore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/imgStore"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTitleStore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:text="قيم المتجر"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:text="مطعم وفرن زاد الخير" />
+            </LinearLayout>
+
+            <RatingBar
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/linStore"
+                android:layout_alignParentEnd="true"
+                android:theme="@style/RatingBar"
+                android:rating="3"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"/>
+
+        </RelativeLayout>
+
 
         <Button
-            android:textColor="@color/colorWhite"
-            android:text="تم"
-            android:fontFamily="@font/cairo_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_dialog_btn">
-        </Button>
+            android:background="@drawable/shape_dialog_btn"
+            android:fontFamily="@font/cairo_reqular"
+            android:text="أكيد رح أختار"
+
+            android:textColor="@color/colorWhite" />
+
 
     </LinearLayout>
 
-</LinearLayout>
+
+</androidx.cardview.widget.CardView>

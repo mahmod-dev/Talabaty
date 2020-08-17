@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/_6sdp"
+        android:background="@drawable/shape_waiting_box"
+        android:fontFamily="@font/cairo_reqular"
+        android:paddingStart="@dimen/_15sdp"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:text="أحمر"
+        android:textColor="@color/colorWhite" />
+
+</LinearLayout>
