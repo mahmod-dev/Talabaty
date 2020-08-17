@@ -11,16 +11,10 @@
 
     <include layout="@layout/toolbar"/>
 
-    <include layout="@layout/item_free_delivery"
-        android:id="@+id/here"/>
-
-    <include layout="@layout/item_free_delivery"/>
-
-    <include layout="@layout/item_free_delivery"/>
-
-    <include layout="@layout/item_free_delivery"/>
-
-    <include layout="@layout/item_free_delivery"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_free_delivery"/>
 
 
 </LinearLayout>

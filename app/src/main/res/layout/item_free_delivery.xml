@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:elevation="@dimen/_2sdp"
         android:layout_margin="@dimen/_10sdp"
-        app:cardCornerRadius="@dimen/_25sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -60,7 +60,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ic_icon_distance"/>
+                        android:src="@drawable/ic_distance"/>
 
 
                     <TextView
@@ -68,7 +68,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/_10ssp"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorGrey2"
                         android:fontFamily="@font/cairo_reqular"
                         android:text="‏7.95 كم">
                     </TextView>
@@ -125,12 +125,12 @@
 
                     <TextView
 
-                        android:paddingVertical="@dimen/_2sdp"
-                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingHorizontal="@dimen/_20sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/_8ssp"
                         android:text="خصم %25"
+                        android:fontFamily="@font/cairo_reqular"
                         android:textColor="@color/colorWhite">
                     </TextView>
 

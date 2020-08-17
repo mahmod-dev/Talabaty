@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -95,52 +96,59 @@
 
         </RelativeLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@color/colorGrey"/>
+
         <RelativeLayout
-            android:id="@+id/rlStore"
+            android:id="@+id/rlSale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp">
 
             <ImageView
-                android:id="@+id/imgStore"
+                android:id="@+id/imgSale"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
                 android:layout_gravity="center"
                 android:src="@drawable/logo_main" />
 
             <LinearLayout
-                android:id="@+id/linStore"
+                android:id="@+id/linSale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_toEndOf="@+id/imgStore"
+                android:layout_toEndOf="@+id/imgSale"
 
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvTitleStore"
+                    android:id="@+id/tvTitleSale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="قيم المتجر"
+                    android:text="قيم المندوب"
                     android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="مطعم وفرن زاد الخير" />
+                    android:text="صلاح الدين ابو خطاب" />
             </LinearLayout>
 
             <RatingBar
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/linStore"
+                android:layout_alignBottom="@+id/linSale"
                 android:layout_alignParentEnd="true"
                 android:theme="@style/RatingBar"
-                android:rating="3"
+                android:rating="4"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_20sdp"/>
 
@@ -150,9 +158,11 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_dialog_btn"
+            android:background="@drawable/shape_light_green"
             android:fontFamily="@font/cairo_reqular"
-            android:text="أكيد رح أختار"
+            android:backgroundTint="@color/colorPrimary"
+           android:layout_margin="@dimen/_10sdp"
+            android:text="ارسال التقييم"
 
             android:textColor="@color/colorWhite" />
 

@@ -79,4 +79,6 @@
     <string name="furniture">أثاث منزلي</string>
     <string name="product_describe">وصف المنتج</string>
     <string name="reviews">التقييمات</string>
+    <string name="add_the_discount_coupon">Add the discount coupon</string>
+    <string name="send_the_order">Send the order</string>
 </resources>

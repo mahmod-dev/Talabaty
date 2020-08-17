@@ -18,94 +18,161 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/toolbar"/>
+            <include layout="@layout/toolbar" />
 
             <TextView
-                android:layout_margin="@dimen/_20sdp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/cairo_reqular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:fontFamily="@font/cairo_reqular"
                 android:text="@string/order_details"
-                android:textSize="@dimen/_13ssp">
-            </TextView>
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_13ssp" />
 
             <RelativeLayout
-                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_120sdp">
+                android:layout_height="@dimen/_120sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp">
 
                 <TextView
-                    android:padding="@dimen/_10sdp"
-                    android:background="@drawable/shape_text_vie"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:lines="8">
-                </TextView>
+                    android:background="@drawable/shape_text_vie"
+                    android:lines="8"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="اكتب طلباتك وملاحظات الطلب"
+                    android:padding="@dimen/_10sdp" />
 
                 <androidx.cardview.widget.CardView
-                    android:padding="@dimen/_10sdp"
-                    android:layout_margin="@dimen/_15sdp"
-                    android:layout_alignParentBottom="true"
                     android:layout_width="@dimen/_40sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
                     android:layout_height="@dimen/_30sdp"
-                    android:elevation="@dimen/_2sdp">
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:elevation="@dimen/_2sdp"
+                    android:padding="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_5sdp">
 
                     <ImageView
-                        android:scaleType="centerInside"
-                        android:layout_gravity="center"
                         android:layout_width="@dimen/_20sdp"
                         android:layout_height="@dimen/_20sdp"
-                        android:src="@drawable/ic_icon_camera">
-                    </ImageView>
+                        android:layout_gravity="center"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_icon_camera" />
                 </androidx.cardview.widget.CardView>
 
             </RelativeLayout>
 
-
-            <TextView
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add the discount coupon"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/cairo_reqular"
-                android:drawablePadding="@dimen/_10sdp"
-                android:drawableStart="@drawable/ic_icom_add">
-            </TextView>
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:text="@string/add_the_discount_coupon"
+                    android:textColor="@color/colorBlack"
+
+                    app:drawableStartCompat="@drawable/ic_icom_add"
+                    app:drawableTint="@color/colorBlack" />
+
+                <TextView
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/shape_text_vie"
+                    android:padding="@dimen/_10sdp" />
+            </RelativeLayout>
+
 
             <TextView
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_gravity="center_horizontal"
-                android:padding="@dimen/_10sdp"
-                android:background="@drawable/shape_text_vie"
-                android:layout_width="@dimen/_150sdp"
-                android:layout_height="wrap_content">
-            </TextView>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+
+                android:fontFamily="@font/cairo_reqular"
+                android:text="كم تتوقع يكلف الطلب؟"
+                android:textColor="@color/colorBlack" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_text_vie"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:padding="@dimen/_10sdp"
+                    android:text="10-100 SR"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_text_vie"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:padding="@dimen/_10sdp"
+                    android:text="100-200 SR"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_text_vie"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:padding="@dimen/_10sdp"
+                    android:text="200-300 SR"
+                    android:textColor="@color/colorBlack" />
+            </LinearLayout>
 
 
             <Button
                 android:id="@+id/btn_map"
-                android:layout_marginTop="@dimen/_70sdp"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/hape_btn_gradiant"
-                android:text="Confirm"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/_16ssp"
-                android:fontFamily="@font/cairo_bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_50sdp">
-            </Button>
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_70sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:background="@drawable/shape_light_green"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/cairo_bold"
+                android:text="@string/send_the_order"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_16ssp" />
 
 
         </LinearLayout>
     </ScrollView>
-
-
 
 
 </LinearLayout>

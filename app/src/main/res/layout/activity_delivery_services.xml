@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
     android:background="@color/colorWhite"
+    android:layoutDirection="rtl"
     android:orientation="vertical"
     tools:context=".SettingsActivity">
 
@@ -20,188 +20,342 @@
             android:orientation="vertical"
             android:paddingBottom="@dimen/_50sdp">
 
-            <include layout="@layout/toolbar"/>
+            <include layout="@layout/side_toolbar" />
 
-
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginHorizontal="@dimen/_20sdp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/cairo_reqular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="مكان الإستلام"
-                android:textSize="@dimen/_13ssp">
-            </TextView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_marginHorizontal="@dimen/_20sdp"
-                android:elevation="@dimen/_7sdp"
-                app:cardBackgroundColor="@color/colorGrey"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/_14sdp">
+                android:orientation="horizontal">
+
 
                 <TextView
-                    android:gravity="center_vertical"
-                    android:drawableStart="@drawable/ic_icon_place"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="حدد موقع الإستلام"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:text="مكان الإستلام"
                     android:textColor="@color/colorBlack"
-                    android:drawablePadding="@dimen/_20sdp">
-                </TextView>
+                    android:textSize="@dimen/_13ssp" />
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_weight="2"
+                    app:cardCornerRadius="@dimen/_10sdp">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="center_horizontal"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:hint="حدد موقع الاستلام"
+                        android:padding="@dimen/_10sdp"
+                        app:drawableStartCompat="@drawable/ic_icon_place" />
 
-            </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
+            </LinearLayout>
 
-            <TextView
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginHorizontal="@dimen/_20sdp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/cairo_reqular"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="مكان التوصيل"
-                android:textSize="@dimen/_13ssp">
-            </TextView>
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
 
-            <androidx.cardview.widget.CardView
-                android:layout_marginHorizontal="@dimen/_20sdp"
-                android:elevation="@dimen/_7sdp"
-                app:cardBackgroundColor="@color/colorGrey"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/_14sdp">
+                android:orientation="horizontal">
+
 
                 <TextView
-                    android:gravity="center_vertical"
-                    android:drawableStart="@drawable/ic_icon_place"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="حدد موقع التسليم"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:text="مكان التوصيل"
                     android:textColor="@color/colorBlack"
-                    android:drawablePadding="@dimen/_20sdp">
-                </TextView>
+                    android:textSize="@dimen/_13ssp" />
 
-            </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_weight="2"
+                    app:cardCornerRadius="@dimen/_10sdp">
 
-            <TextView
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginHorizontal="@dimen/_20sdp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/cairo_reqular"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="center_horizontal"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:hint="حدد موقع التسليم"
+                        android:padding="@dimen/_10sdp"
+                        app:drawableStartCompat="@drawable/ic_icon_place" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="نوع السيارة"
-                android:textSize="@dimen/_13ssp">
-            </TextView>
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
 
-            <androidx.cardview.widget.CardView
-                android:layout_marginHorizontal="@dimen/_20sdp"
-                android:elevation="@dimen/_7sdp"
-                app:cardBackgroundColor="@color/colorGrey"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/_14sdp">
+                android:orientation="horizontal">
+
 
                 <TextView
-                    android:gravity="center_vertical"
-                    android:drawableStart="@drawable/ic_delivery_car"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="نوع السيارة"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:text="وقت التوصيل"
                     android:textColor="@color/colorBlack"
-                    android:drawablePadding="@dimen/_20sdp">
-                </TextView>
+                    android:textSize="@dimen/_13ssp" />
 
-                <ImageView
-                    android:layout_marginEnd="@dimen/_20sdp"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_width="wrap_content"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_triangle_arrow">
-                </ImageView>
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_weight="2"
+                    app:cardCornerRadius="@dimen/_10sdp">
 
-            </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="center_horizontal"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:hint="مدة التوصيل"
+                        android:padding="@dimen/_10sdp"
+                        app:drawableStartCompat="@drawable/ic_icon_watch" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
 
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginHorizontal="@dimen/_20sdp"
-                android:textColor="@color/colorPrimary"
                 android:fontFamily="@font/cairo_reqular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="إلى أين تريد الذهاب؟"
-                android:textSize="@dimen/_13ssp">
-            </TextView>
+                android:text="تفاصيل الطلب"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_13ssp" />
 
-            <EditText
-                android:hint="اكتب اين تريد الذهاب..."
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginHorizontal="@dimen/_20sdp"
-                android:padding="@dimen/_5sdp"
-                android:background="@drawable/shape_text_vie"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/_11ssp"
-                android:lines="1">
-            </EditText>
+                android:layout_height="@dimen/_120sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginVertical="@dimen/_10sdp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_text_vie"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="اكتب طلباتك وملاحظات الطلب"
+                    android:lines="8"
+                    android:padding="@dimen/_10sdp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:elevation="@dimen/_2sdp"
+                    android:padding="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_5sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_icon_camera" />
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/cairo_reqular"
+                android:text="كم تتوقع يكلف الطلب؟"
+                android:textColor="@color/colorBlack" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_text_vie"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:padding="@dimen/_10sdp"
+                    android:text="10-100 SR"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_text_vie"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:padding="@dimen/_10sdp"
+                    android:text="100-200 SR"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_text_vie"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:padding="@dimen/_10sdp"
+                    android:text="200-300 SR"
+                    android:textColor="@color/colorBlack" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/cairo_reqular"
+                android:text="تقدير التكلفة تساعدنا نلقى لك المندوب المناسب لتنفيذ طلبك"
+                android:textColor="@color/colorGrey3"
+                android:textSize="@dimen/_10ssp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/colorGrey" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_30sdp"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:text="رسوم التوصيل"
+                    android:textColor="@color/colorGrey3"
+                    android:textSize="@dimen/_10ssp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:text="SR 19.08"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_10ssp" />
+
+            </LinearLayout>
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="أضف كوبون الخصم"
-                android:textColor="@color/colorPrimary"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/cairo_reqular"
-                android:drawablePadding="@dimen/_10sdp"
-                android:drawableStart="@drawable/ic_icom_add">
-            </TextView>
+                android:text="طرق الدفع"
+                android:textColor="@color/colorGrey3"
+                android:textSize="@dimen/_10ssp" />
 
-            <TextView
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_gravity="center_horizontal"
-                android:padding="@dimen/_10sdp"
-                android:background="@drawable/shape_text_vie"
-                android:layout_width="@dimen/_150sdp"
-                android:layout_height="wrap_content">
-            </TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:src="@drawable/img_pay2" />
+
+                <ImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+
+                    android:src="@drawable/img_pay" />
+
+                <ImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:src="@drawable/ic_waiting_cash" />
+
+                <ImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:src="@drawable/img_mada" />
+
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btn_confirm"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/hape_btn_gradiant"
-                android:textAllCaps="false"
-                android:text="أرسل الطلب"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/_16ssp"
-                android:fontFamily="@font/cairo_bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_50sdp">
-            </Button>
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:background="@drawable/shape_light_green"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/cairo_bold"
+                android:text="أرسل الطلب"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_16ssp" />
 
 
         </LinearLayout>
     </ScrollView>
-
-
 
 
 </LinearLayout>
