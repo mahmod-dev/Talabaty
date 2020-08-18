@@ -81,4 +81,5 @@
     <string name="reviews">التقييمات</string>
     <string name="add_the_discount_coupon">Add the discount coupon</string>
     <string name="send_the_order">Send the order</string>
+    <string name="discount">الخصم</string>
 </resources>

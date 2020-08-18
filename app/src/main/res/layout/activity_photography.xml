@@ -34,6 +34,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
+                    android:textColorHint="@color/colorBlack"
                     android:hint="اسم الكريم">
                 </EditText>
 
@@ -43,6 +44,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
+                    android:textColorHint="@color/colorBlack"
+
                     android:hint="المدينة">
                 </EditText>
 
@@ -52,6 +55,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
+                    android:textColorHint="@color/colorBlack"
+
                     android:hint="القاعة">
                 </EditText>
 
@@ -61,6 +66,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
+                    android:textColorHint="@color/colorBlack"
+
                     android:hint="رجال / نساء">
                 </EditText>
 
@@ -71,6 +78,8 @@
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
                     android:hint="تاريخ الزواج"
+                    android:textColorHint="@color/colorBlack"
+
                     android:paddingEnd="@dimen/_10sdp"
                     android:drawableEnd="@drawable/ic_triangle_arrow">
                 </EditText>
@@ -81,6 +90,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
+                    android:textColorHint="@color/colorBlack"
+
                     android:hint="وقت الحضور">
                 </EditText>
 
@@ -90,6 +101,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
+                    android:textColorHint="@color/colorBlack"
+
                     android:hint="رقم التواصل">
                 </EditText>
             </LinearLayout>

@@ -198,7 +198,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:fontFamily="@font/cairo_reqular"
                 android:text="كم تتوقع يكلف الطلب؟"
                 android:textColor="@color/colorBlack" />
@@ -314,7 +314,7 @@
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    android:src="@drawable/img_pay2" />
+                    android:src="@drawable/img_pay_stc" />
 
                 <ImageView
                     android:layout_width="@dimen/_30sdp"

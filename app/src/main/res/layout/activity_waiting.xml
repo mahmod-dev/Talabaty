@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layoutDirection="rtl"
-    android:background="@color/colorWhite"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
     tools:context=".WaitingActivity">
 
     <ScrollView
@@ -22,15 +22,14 @@
             <include layout="@layout/toolbar"></include>
 
             <TextView
-                android:layout_marginVertical="@dimen/_15sdp"
-                android:fontFamily="@font/cairo_bold"
-                android:textSize="@dimen/_10ssp"
-                android:text="مطعم وفرن زاد الخير"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/_15sdp"
+                android:fontFamily="@font/cairo_bold"
+                android:text="مطعم وفرن زاد الخير"
                 android:textColor="@color/colorBlack"
-                android:layout_gravity="center_horizontal">
-            </TextView>
+                android:textSize="@dimen/_10ssp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -39,48 +38,93 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:textSize="@dimen/_7ssp"
-                    android:text="المنزل"
-                    android:drawableStart="@drawable/ic_waiting_home"
-                    android:gravity="center"
-                    android:drawablePadding="@dimen/_5sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:gravity="center"
+                    android:text="المنزل"
                     android:textColor="@color/colorBlack"
-                    android:layout_gravity="center_horizontal">
-                </TextView>
+                    android:textSize="@dimen/_7ssp"
+                    app:drawableStartCompat="@drawable/ic_waiting_home" />
 
                 <TextView
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:textSize="@dimen/_7ssp"
-                    android:text="الدفع عند الاستلام"
-                    android:drawableStart="@drawable/ic_waiting_cash"
-                    android:gravity="center"
-                    android:drawablePadding="@dimen/_5sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:gravity="center"
+                    android:text="الدفع عند الاستلام"
                     android:textColor="@color/colorBlack"
-                    android:layout_gravity="center_horizontal">
-                </TextView>
+                    android:textSize="@dimen/_7ssp"
+                    app:drawableStartCompat="@drawable/ic_waiting_cash" />
             </LinearLayout>
 
+            <Button
+                android:id="@+id/btnRateOrder"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/_60sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/ripple_square_btn"
+                android:fontFamily="@font/cairo_reqular"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/_15sdp"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="قيم الطلب"
+                android:textColor="@color/colorWhite"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:id="@+id/rlOrderFinished"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@color/green_light"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvOrderSuccess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/cairo_bold"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:text="تم التوصيل"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10ssp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/tvOrderSuccess"
+                    android:src="@drawable/ic_true" />
+            </RelativeLayout>
+
+
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_2sdp"
-                android:background="@color/colorGrey">
-            </LinearLayout>
-            
+                android:background="@color/colorGrey" />
+
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal">
 
 
                 <LinearLayout
@@ -91,32 +135,29 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_waiting_send">
-                    </ImageView>
+                        android:src="@drawable/ic_waiting_send" />
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_gravity="center"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:drawablePadding="@dimen/_5sdp"
                         android:fontFamily="@font/cairo_reqular"
-                        android:textSize="@dimen/_7ssp"
+                        android:gravity="center"
                         android:text="أرسلنا طلبك"
-                        android:gravity="center"
-                        android:drawablePadding="@dimen/_5sdp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/_15sdp"
                         android:textColor="@color/colorBlack"
-                        android:layout_gravity="center">
-                    </TextView>
+                        android:textSize="@dimen/_7ssp" />
 
                 </LinearLayout>
 
 
                 <LinearLayout
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_gravity="center"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_2sdp"
-                    android:background="#E6F4F4">
-                </LinearLayout>
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="#E6F4F4" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -124,35 +165,32 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:scaleType="fitCenter"
-                        android:layout_gravity="center"
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:src="@drawable/ic_waiting_preparing">
-                    </ImageView>
+                        android:layout_gravity="center"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_waiting_preparing" />
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_gravity="center"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:drawablePadding="@dimen/_5sdp"
                         android:fontFamily="@font/cairo_reqular"
-                        android:textSize="@dimen/_7ssp"
+                        android:gravity="center"
                         android:text="تجهيز الطلب"
-                        android:gravity="center"
-                        android:drawablePadding="@dimen/_5sdp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/_15sdp"
                         android:textColor="@color/colorBlack"
-                        android:layout_gravity="center">
-                    </TextView>
+                        android:textSize="@dimen/_7ssp" />
                 </LinearLayout>
 
 
                 <LinearLayout
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_gravity="center"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_2sdp"
-                    android:background="#E6F4F4">
-                </LinearLayout>
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="#E6F4F4" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -160,34 +198,32 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:scaleType="fitCenter"
-                        android:layout_gravity="center"
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:src="@drawable/ic_waiting_delivery">
-                    </ImageView>
+                        android:layout_gravity="center"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_waiting_delivery" />
 
                     <TextView
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:fontFamily="@font/cairo_reqular"
-                        android:textSize="@dimen/_7ssp"
-                        android:text="توصيل الطلب"
-                        android:gravity="center"
-                        android:drawablePadding="@dimen/_5sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_15sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:gravity="center"
+                        android:text="توصيل الطلب"
                         android:textColor="@color/colorBlack"
-                        android:layout_gravity="center">
-                    </TextView>
+                        android:textSize="@dimen/_7ssp" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_marginVertical="@dimen/_15sdp"
-                android:layout_height="wrap_content"
                 app:cardCornerRadius="@dimen/_5sdp">
 
                 <LinearLayout
@@ -198,76 +234,71 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:background="@drawable/shape_waiting_box">
+                        android:background="@drawable/shape_waiting_box"
+                        android:orientation="vertical">
 
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/cairo_bold"
-                            android:textSize="@dimen/_10ssp"
                             android:text="ملخص الطلب"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:textColor="@color/colorWhite"
-                            android:layout_gravity="center_horizontal">
-                        </TextView>
+                            android:textSize="@dimen/_10ssp" />
 
                         <TextView
-                            android:layout_marginVertical="@dimen/_5sdp"
-                            android:fontFamily="@font/cairo_bold"
-                            android:textSize="@dimen/_10ssp"
-                            android:text="الطلب #٤٥٨٧٦٤٩٨"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginVertical="@dimen/_5sdp"
+                            android:fontFamily="@font/cairo_bold"
+                            android:text="الطلب #٤٥٨٧٦٤٩٨"
                             android:textColor="@color/colorWhite"
-                            android:layout_gravity="center_horizontal">
-                        </TextView>
+                            android:textSize="@dimen/_10ssp" />
 
 
                         <LinearLayout
-                            android:gravity="center_vertical"
-                            android:layout_marginVertical="@dimen/_10sdp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_10sdp"
+                            android:gravity="center_vertical"
                             android:orientation="horizontal"
                             android:paddingHorizontal="@dimen/_10sdp">
 
                             <TextView
-                                android:fontFamily="@font/cairo_bold"
-                                android:textSize="@dimen/_10ssp"
-                                android:text="1x"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="@font/cairo_bold"
+                                android:text="1x"
                                 android:textColor="@color/colorWhite"
-                                android:layout_gravity="center_horizontal">
-                            </TextView>
+                                android:textSize="@dimen/_10ssp" />
 
                             <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
                                 android:layout_marginStart="@dimen/_10sdp"
                                 android:fontFamily="@font/cairo_bold"
-                                android:textSize="@dimen/_10ssp"
                                 android:text="وجبة شاورما إيطالي"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:textColor="@color/colorWhite"
-                                android:layout_gravity="center_horizontal">
-                            </TextView>
+                                android:textSize="@dimen/_10ssp" />
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"/>
+                                android:layout_weight="1" />
 
                             <TextView
-                                android:fontFamily="@font/cairo_bold"
-                                android:textSize="@dimen/_10ssp"
-                                android:text="22 ر.س"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="@font/cairo_bold"
+                                android:text="22 ر.س"
                                 android:textColor="@color/colorWhite"
-                                android:layout_gravity="center_horizontal">
-                            </TextView>
+                                android:textSize="@dimen/_10ssp" />
 
                         </LinearLayout>
                     </LinearLayout>
@@ -275,147 +306,139 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:background="@color/colorWhite">
+                        android:background="@color/colorWhite"
+                        android:orientation="vertical">
 
                         <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:paddingHorizontal="@dimen/_10sdp">
 
                             <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
                                 android:fontFamily="@font/cairo_reqular"
-                                android:textSize="@dimen/_10ssp"
                                 android:text="الطلب"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
-                                android:layout_gravity="center_horizontal">
-                            </TextView>
+                                android:textSize="@dimen/_10ssp" />
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"/>
+                                android:layout_weight="1" />
 
                             <TextView
-                                android:fontFamily="@font/cairo_reqular"
-                                android:textSize="@dimen/_10ssp"
-                                android:text="22 ر.س"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="@font/cairo_reqular"
+                                android:text="22 ر.س"
                                 android:textColor="@color/colorBlack"
-                                android:layout_gravity="center_horizontal">
-                            </TextView>
+                                android:textSize="@dimen/_10ssp" />
 
                         </LinearLayout>
 
                         <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:paddingHorizontal="@dimen/_10sdp">
 
                             <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
                                 android:fontFamily="@font/cairo_reqular"
-                                android:textSize="@dimen/_10ssp"
                                 android:text="رسوم التوصيل"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
-                                android:layout_gravity="center_horizontal">
-                            </TextView>
+                                android:textSize="@dimen/_10ssp" />
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"/>
+                                android:layout_weight="1" />
 
                             <TextView
-                                android:fontFamily="@font/cairo_reqular"
-                                android:textSize="@dimen/_10ssp"
-                                android:text="22 ر.س"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="@font/cairo_reqular"
+                                android:text="22 ر.س"
                                 android:textColor="@color/colorBlack"
-                                android:layout_gravity="center_horizontal">
-                            </TextView>
+                                android:textSize="@dimen/_10ssp" />
 
                         </LinearLayout>
 
                         <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:paddingHorizontal="@dimen/_10sdp">
 
                             <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
                                 android:fontFamily="@font/cairo_reqular"
-                                android:textSize="@dimen/_10ssp"
                                 android:text="خصم"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
-                                android:layout_gravity="center_horizontal">
-                            </TextView>
+                                android:textSize="@dimen/_10ssp" />
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"/>
+                                android:layout_weight="1" />
 
                             <TextView
-                                android:fontFamily="@font/cairo_reqular"
-                                android:textSize="@dimen/_10ssp"
-                                android:text="22 ر.س-"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="@font/cairo_reqular"
+                                android:text="22 ر.س-"
                                 android:textColor="@color/colorBlack"
-                                android:layout_gravity="center_horizontal">
-                            </TextView>
+                                android:textSize="@dimen/_10ssp" />
 
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_marginBottom="@dimen/_15sdp"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_15sdp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
                             android:paddingHorizontal="@dimen/_10sdp">
 
                             <TextView
-                                android:fontFamily="@font/cairo_bold"
-                                android:textSize="@dimen/_10ssp"
-                                android:text="المجموع الإجمالي"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="@font/cairo_bold"
+                                android:text="المجموع الإجمالي"
                                 android:textColor="@color/colorBlack"
-                                android:layout_gravity="center_horizontal">
-                            </TextView>
+                                android:textSize="@dimen/_10ssp" />
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"/>
+                                android:layout_weight="1" />
 
                             <TextView
-                                android:fontFamily="@font/cairo_bold"
-                                android:textSize="@dimen/_10ssp"
-                                android:text="22 ر.س"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="@font/cairo_bold"
+                                android:text="22 ر.س"
                                 android:textColor="@color/colorPrimary"
-                                android:layout_gravity="center_horizontal">
-                            </TextView>
+                                android:textSize="@dimen/_10ssp" />
 
                         </LinearLayout>
 
@@ -426,97 +449,92 @@
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
-                android:orientation="vertical"
-                android:paddingVertical="@dimen/_10sdp"
-                android:gravity="center_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#E6F4F4">
+                android:background="@color/green_light"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_10sdp">
 
                 <TextView
-                    android:fontFamily="@font/cairo_bold"
-                    android:textSize="@dimen/_10ssp"
-                    android:text="تبغى رصيد مجاني؟"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/cairo_bold"
+                    android:text="تبغى رصيد مجاني؟"
                     android:textColor="@color/colorBlack"
-                    android:layout_gravity="center_horizontal">
-                </TextView>
+                    android:textSize="@dimen/_10ssp" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/cairo_bold"
-                    android:textSize="@dimen/_10ssp"
-                    android:paddingHorizontal="@dimen/_60sdp"
                     android:gravity="center"
+                    android:paddingHorizontal="@dimen/_60sdp"
                     android:text="حط هالكود للي تحبهم وبعد أول طلب راح
 تجيهم 20 ريال بمحفظتك خلال ٩ ساعات"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:textColor="@color/colorGrey2"
-                    android:layout_gravity="center_horizontal">
-                </TextView>
+                    android:textSize="@dimen/_10ssp" />
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/shape_text_vie"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:paddingHorizontal="@dimen/_15sdp"
-                    android:paddingVertical="@dimen/_5sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/shape_text_vie"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingVertical="@dimen/_5sdp"
                     android:text="#6598743"
                     android:textColor="@color/colorPrimary"
-                    android:drawablePadding="@dimen/_5sdp"
-                    android:drawableStart="@drawable/ic_waiting_share">
-                </TextView>
+                    app:drawableStartCompat="@drawable/ic_waiting_share" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:layout_marginBottom="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/mandoob"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/ripple_square_btn"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:paddingHorizontal="@dimen/_15sdp"
-                    android:paddingVertical="@dimen/_5sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_35sdp"
-                    android:text="تتبع المندوب"
-                    android:gravity="center"
-                    android:textColor="@color/colorWhite"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/ripple_square_btn"
                     android:drawablePadding="@dimen/_5sdp"
-                    android:drawableStart="@drawable/ic_waiting_tracking">
-                </TextView>
+                    android:fontFamily="@font/cairo_reqular"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:text="تتبع المندوب"
+                    android:textColor="@color/colorWhite"
+                    app:drawableStartCompat="@drawable/ic_waiting_tracking" />
 
                 <TextView
                     android:id="@+id/chat"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/shape_text_vie"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:paddingHorizontal="@dimen/_15sdp"
-                    android:gravity="center"
-                    android:paddingVertical="@dimen/_5sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_35sdp"
-                    android:text="تواصل مع المندوب"
-                    android:textColor="@color/colorPrimary"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/shape_text_vie"
+                    android:drawableStart="@drawable/ic_waiting_chat"
                     android:drawablePadding="@dimen/_5sdp"
-                    android:drawableStart="@drawable/ic_waiting_chat">
-                </TextView>
+                    android:fontFamily="@font/cairo_reqular"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:text="تواصل مع المندوب"
+                    android:textColor="@color/colorPrimary" />
 
             </LinearLayout>
 

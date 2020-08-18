@@ -88,7 +88,7 @@
                 android:drawableStart="@drawable/ic_vertical_indecator"
                 android:drawablePadding="@dimen/_3sdp"
                 android:fontFamily="@font/cairo_reqular"
-                android:text="تفاصيل الطب"
+                android:text="تفاصيل الطلب"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/_12ssp" />
 
@@ -144,7 +144,7 @@
                         android:fontFamily="@font/cairo_reqular"
                         android:gravity="center"
                         android:text="من"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_12ssp" />
 
                     <TextView
@@ -155,7 +155,7 @@
                         android:fontFamily="@font/cairo_reqular"
                         android:gravity="center"
                         android:text="إلى"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
@@ -163,13 +163,14 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_10sdp"
                     app:cardCornerRadius="@dimen/_10sdp">
@@ -186,13 +187,14 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_marginHorizontal="@dimen/_5sdp"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:drawableStart="@drawable/ic_icom_add"
                             android:drawablePadding="@dimen/_5sdp"
                             android:fontFamily="@font/cairo_bold"
                             android:gravity="center"
                             android:text="إضافة صور"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/_8ssp" />
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_8ssp"
+                            app:drawableStartCompat="@drawable/ic_icom_add"
+                            app:drawableTint="@color/colorBlack" />
 
                         <ImageView
                             android:layout_width="@dimen/_90sdp"
@@ -208,9 +210,10 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="@dimen/_10sdp"
+                    android:layout_height="wrap_content"
                     app:cardCornerRadius="@dimen/_10sdp">
 
                     <LinearLayout
@@ -225,13 +228,14 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_marginHorizontal="@dimen/_5sdp"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:drawableStart="@drawable/ic_icom_add"
                             android:drawablePadding="@dimen/_5sdp"
                             android:fontFamily="@font/cairo_bold"
                             android:gravity="center"
                             android:text="إضافة ملفات"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/_8ssp" />
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_8ssp"
+                            app:drawableStartCompat="@drawable/ic_icom_add"
+                            app:drawableTint="@color/colorBlack" />
 
                         <ImageView
                             android:layout_width="@dimen/_90sdp"
@@ -251,7 +255,6 @@
                 android:id="@+id/btn_electronic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginHorizontal="@dimen/_50sdp"
                 android:layout_marginTop="@dimen/_40sdp"

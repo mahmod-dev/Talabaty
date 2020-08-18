@@ -60,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorGrey"
                 android:gravity="end"
+                android:fontFamily="@font/cairo_reqular"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/colorBlack" />
 
@@ -76,6 +77,8 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorGrey"
                 android:gravity="end"
+                android:fontFamily="@font/cairo_reqular"
+
                 android:textAlignment="viewEnd"
                 android:textColor="@color/colorBlack" />
 
@@ -105,6 +108,8 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/colorGrey"
                         android:gravity="start"
+                        android:fontFamily="@font/cairo_reqular"
+
                         android:textAlignment="viewStart"
                         android:textColor="@color/colorBlack" />
                 </LinearLayout>
@@ -129,21 +134,27 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/colorGrey"
                         android:gravity="end"
+                        android:fontFamily="@font/cairo_reqular"
+
                         android:textAlignment="viewEnd"
                         android:textColor="@color/colorBlack" />
                 </LinearLayout>
             </LinearLayout>
 
             <Button
-                android:id="@+id/credit_submit"
+                android:id="@+id/btn_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:background="@drawable/ripple_main_btn"
-                android:fontFamily="@font/cairo_bold"
-                android:text="@string/ok"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:background="@drawable/shape_light_green"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/cairo_reqular"
+                android:text="تم"
                 android:textAllCaps="false"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_16ssp" />
+
 
         </LinearLayout>
     </ScrollView>

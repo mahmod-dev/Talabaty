@@ -68,6 +68,206 @@
                 app:rcv_internal_margin="@dimen/_10sdp"
                 app:rcv_drawable_unselected="@drawable/ic_ind_card"/>
 
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:drawablePadding="@dimen/_5sdp"
+                android:fontFamily="@font/cairo_bold"
+                android:text="إضافة طريقة دفع جديدة"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_15ssp"
+                app:drawableStartCompat="@drawable/ic_vertical_indecator" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp">
+
+                <ImageView
+                    android:id="@+id/imgPay"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:src="@drawable/img_pay"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:id="@+id/tvNamePay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="Apple Pay"
+                    android:layout_toEndOf="@id/imgPay"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/_15ssp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/imgPayAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add"
+                    android:layout_centerVertical="true"
+                    app:tint="@color/colorPrimary"
+                    android:layout_alignParentEnd="true"
+                    />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrey2"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp">
+
+                <ImageView
+                    android:id="@+id/imgStc"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:src="@drawable/img_pay_stc"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:id="@+id/tvNameStc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="Stc Pay"
+                    android:layout_toEndOf="@id/imgStc"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/_15ssp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/imgStcAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add"
+                    android:layout_centerVertical="true"
+                    app:tint="@color/colorPrimary"
+                    android:layout_alignParentEnd="true"
+                    />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrey2"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp">
+
+                <ImageView
+                    android:id="@+id/imgMada"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:src="@drawable/img_mada"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:id="@+id/tvNameMada"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="Mada"
+                    android:layout_toEndOf="@id/imgMada"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/_15ssp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/imgPayMada"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add"
+                    android:layout_centerVertical="true"
+                    app:tint="@color/colorPrimary"
+                    android:layout_alignParentEnd="true"
+                    />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrey2"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp">
+
+                <ImageView
+                    android:id="@+id/imgOther"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:src="@drawable/ic_waiting_cash"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:id="@+id/tvNameOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="طرق أخرى"
+                    android:layout_toEndOf="@id/imgOther"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/_15ssp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/imgAddOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add"
+                    android:layout_centerVertical="true"
+                    app:tint="@color/colorPrimary"
+                    android:layout_alignParentEnd="true"
+                    />
+
+            </RelativeLayout>
+
+
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:background="@drawable/shape_light_green"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/cairo_reqular"
+                android:text="التالي"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_16ssp" />
+
+
         </LinearLayout>
     </ScrollView>
 

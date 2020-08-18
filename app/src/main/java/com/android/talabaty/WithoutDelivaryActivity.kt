@@ -6,11 +6,11 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-class OrderDetails : AppCompatActivity() {
+class WithoutDelivaryActivity : AppCompatActivity() {
     var confirm: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_order_details)
+        setContentView(R.layout.activity_without_delivery)
         confirm = findViewById(R.id.btn_map)
         confirm.setOnClickListener(View.OnClickListener { startActivity(Intent(applicationContext, MapActivity::class.java)) })
     }

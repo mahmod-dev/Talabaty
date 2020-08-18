@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layoutDirection="rtl"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layoutDirection="rtl">
 
     <androidx.cardview.widget.CardView
-        android:layout_margin="@dimen/_10sdp"
-        app:cardCornerRadius="@dimen/_15sdp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_15sdp">
 
         <LinearLayout
-            android:padding="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -23,113 +24,170 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardElevation="0dp"
-                    app:cardCornerRadius="@dimen/_15sdp">
+                    android:layout_gravity="center_vertical"
+                    app:cardCornerRadius="@dimen/_15sdp"
+                    app:cardElevation="0dp">
 
                     <ImageView
-                        android:scaleType="centerCrop"
                         android:layout_width="@dimen/_80sdp"
                         android:layout_height="@dimen/_80sdp"
-                        android:src="@drawable/img_order">
-                    </ImageView>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_order" />
 
 
                 </androidx.cardview.widget.CardView>
 
                 <LinearLayout
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginVertical="@dimen/_20sdp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:textColor="@color/colorBlack"
-                        android:fontFamily="@font/cairo_bold"
-                        android:textSize="@dimen/_8ssp"
                         android:layout_height="wrap_content"
-                        android:text="هامبرجر"/>
+                        android:fontFamily="@font/cairo_reqular"
+                        android:text="هامبرجر"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_8ssp" />
 
                     <TextView
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:text="بدون بصل, تحميص خفيف"
                         android:textColor="@color/colorGrey"
-                        android:fontFamily="@font/cairo_bold"
-                        android:textSize="@dimen/_8ssp"
-                        android:layout_height="wrap_content"
-                        android:text="بدون بصل, تحميص خفيف"/>
+                        android:textSize="@dimen/_6ssp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:textColor="@color/colorPrimary"
-                        android:fontFamily="@font/cairo_bold"
-                        android:textSize="@dimen/_8ssp"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="مطعم البيك"/>
+                        android:layout_marginTop="@dimen/_10sdp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:textColor="@color/colorPrimary"
-                        android:fontFamily="@font/cairo_bold"
-                        android:textSize="@dimen/_8ssp"
-                        android:layout_height="wrap_content"
-                        android:text="الشوقية ، مكة"/>
+                        <TextView
+                            android:id="@+id/tvResNameOrder"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_toEndOf="@+id/imgSteps"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:text="مطعم البيك"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_8ssp" />
+
+                        <TextView
+                            android:id="@+id/tvPlaceOrder"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvResNameOrder"
+                            android:layout_toEndOf="@+id/imgSteps"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:text="الشوقية ، مكة"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_8ssp" />
+
+                        <ImageView
+                            android:id="@+id/imgSteps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/tvResNameOrder"
+                            android:layout_alignBottom="@+id/tvPlaceOrder"
+
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:src="@drawable/ic_vertical_steps" />
+                    </RelativeLayout>
+
+
                 </LinearLayout>
 
+
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                </LinearLayout>
-
-                <LinearLayout
-                    android:gravity="center"
                     android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginVertical="@dimen/_20sdp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:textColor="@color/colorPrimary"
-                        android:fontFamily="@font/cairo_bold"
-                        android:textSize="@dimen/_8ssp"
                         android:layout_height="wrap_content"
-                        android:text="رقم الطلب"/>
+                        android:layout_gravity="end"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:text="20/6/2/2020"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="@dimen/_8ssp" />
+
 
                     <TextView
+                        android:id="@+id/tvStatus"
                         android:layout_width="wrap_content"
-                        android:textColor="@color/colorPrimary"
-                        android:fontFamily="@font/cairo_bold"
-                        android:textSize="@dimen/_8ssp"
                         android:layout_height="wrap_content"
-                        android:text="5009#"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:background="@drawable/shape_light_green"
+                        android:drawablePadding="@dimen/_8sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:padding="@dimen/_3sdp"
+                        android:text="تم التوصيل"
                         android:textColor="@color/colorPrimary"
-                        android:fontFamily="@font/cairo_bold"
                         android:textSize="@dimen/_8ssp"
-                        android:layout_height="wrap_content"
-                        android:text="20/6/2/2020"/>
+                        app:drawableStartCompat="@drawable/ic_true" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginBottom="@dimen/_5sdp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:textColor="@color/colorPrimary"
-                            android:fontFamily="@font/cairo_bold"
-                            android:textSize="@dimen/_8ssp"
                             android:layout_height="wrap_content"
-                            android:text="عدد الوجبات  X2"/>
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:text="رقم الطلب"
+
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_8ssp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:text="5009#"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_8ssp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:text="عدد الوجبات"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_8ssp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:text="x2"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_8ssp" />
 
 
                     </LinearLayout>
@@ -142,8 +200,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorGrey">
-            </View>
+                android:background="@color/colorGrey" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -152,86 +209,91 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_marginTop="@dimen/_10sdp"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="horizontal">
 
-                <androidx.cardview.widget.CardView
-                    android:elevation="@dimen/_7sdp"
-                    android:layout_margin="@dimen/_5sdp"
-                    app:cardBackgroundColor="@color/colorWhite"
+
+                <TextView
+                    android:id="@+id/tvPriceOrder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="@dimen/_14sdp">
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/shape_waiting_box"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:paddingHorizontal="@dimen/_20sdp"
+                    android:paddingVertical="@dimen/_2sdp"
+                    android:text="17.94 ريال"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/_8sdp" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardDeleteOrder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:elevation="@dimen/_7sdp"
+                    android:layout_alignParentEnd="true"
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardCornerRadius="@dimen/_4sdp">
 
                     <TextView
-                        android:layout_marginHorizontal="@dimen/_5sdp"
-                        android:padding="@dimen/_5sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/_8sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:drawablePadding="@dimen/_6sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_2sdp"
+
                         android:text="حذف الطلب"
                         android:textColor="@color/colorPrimary"
-                        android:drawablePadding="@dimen/_5sdp"
-                        android:drawableEnd="@drawable/ic_icon_delete">
-                    </TextView>
+                        android:textSize="@dimen/_8sdp"
+                        app:drawableStartCompat="@drawable/ic_delete" />
 
                 </androidx.cardview.widget.CardView>
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_margin="@dimen/_5sdp"
-                    android:elevation="@dimen/_7sdp"
-                    app:cardBackgroundColor="@color/colorWhite"
+                    android:id="@+id/cardRetry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="@dimen/_14sdp">
+                    android:layout_margin="@dimen/_5sdp"
+                    android:elevation="@dimen/_7sdp"
+                    android:layout_toStartOf="@+id/cardDeleteOrder"
+
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardCornerRadius="@dimen/_4sdp">
 
                     <TextView
-                        android:layout_marginHorizontal="@dimen/_5sdp"
-                        android:padding="@dimen/_5sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:background="@drawable/shape_waiting_box"
+                        android:backgroundTint="@color/colorWhite"
+                        android:drawablePadding="@dimen/_6sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_2sdp"
                         android:text="إعادة طلب"
-                        android:textSize="@dimen/_8sdp"
                         android:textColor="@color/colorPrimary"
-                        android:drawablePadding="@dimen/_5sdp"
-                        android:drawableEnd="@drawable/ic_icon_retry">
-                    </TextView>
+                        android:textSize="@dimen/_8sdp"
+                        app:drawableStartCompat="@drawable/ic_repeat"
+                        app:drawableTint="@color/colorPrimary" />
 
                 </androidx.cardview.widget.CardView>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                </LinearLayout>
+                    android:layout_weight="1" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_margin="@dimen/_5sdp"
-                    android:elevation="@dimen/_7sdp"
-                    app:cardBackgroundColor="@color/colorGrey"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="@dimen/_14sdp">
 
-                    <TextView
-                        android:textSize="@dimen/_8sdp"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:padding="@dimen/_5sdp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="17.94 ريال"
-                        android:textColor="@color/colorPrimary"
-                        android:drawablePadding="@dimen/_5sdp"
-                        >
-                    </TextView>
-
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
+            </RelativeLayout>
 
         </LinearLayout>
 
