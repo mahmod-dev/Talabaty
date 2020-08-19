@@ -6,7 +6,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.android.talabaty.R
-import com.hzdawoud.tatbeqakum.auth.VerificationActivity
 
 class SignInActivity : AppCompatActivity() {
     var forget: TextView? = null

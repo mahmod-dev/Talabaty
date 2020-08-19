@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/toolbar" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:drawablePadding="@dimen/_5sdp"
+                android:fontFamily="@font/cairo_bold"
+                android:text="مساعدة"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_13ssp"
+                app:drawableStartCompat="@drawable/ic_vertical_indecator" />
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|start"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/cairo_bold"
+                        android:text="لدي اقتراح"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:fontFamily="@font/cairo_bold"
+                            android:text="لدي اقتراح لتطوير خدمة التوسع والتوصيل"
+                            android:textColor="@color/colorGrey2"
+                            android:textSize="@dimen/_13ssp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:fontFamily="@font/cairo_bold"
+                            android:gravity="top"
+                            android:text="-"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_14ssp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|start"
+                        android:layout_marginHorizontal="10dp"
+                        android:fontFamily="@font/cairo_bold"
+                        android:text="نسعد باستقبال اقتراحاتكم لتطوير الخدمة"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorGrey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingVertical="@dimen/_15sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:text="فريق خدمة العملاء جاهز لمزيد من المساعدة"
+                            android:layout_marginBottom="@dimen/_20sdp"
+                            android:textColor="@color/colorGrey2" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/shape_waiting_box"
+                            android:drawablePadding="@dimen/_6sdp"
+                            android:fontFamily="@font/cairo_bold"
+                            android:paddingHorizontal="@dimen/_20sdp"
+                            android:paddingVertical="@dimen/_5sdp"
+                            android:text="اتصل بنا"
+                            android:textColor="@color/colorWhite"
+                            app:drawableStartCompat="@drawable/ic_email" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/colorGrey" />
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="@dimen/_2sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/cairo_bold"
+                            android:text="لدي اقتراح في التطبيق"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_13ssp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/cairo_bold"
+                            android:text="+"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_14ssp" />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/colorGrey" />
+
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

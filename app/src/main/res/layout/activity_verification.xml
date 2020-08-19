@@ -27,7 +27,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/cairo_bold"
+                android:fontFamily="@font/cairo_reqular"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_30ssp"
                 android:text="@string/thanks">
@@ -36,7 +36,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_icon_thanks"
+                android:src="@drawable/ic_thank_you"
                 android:layout_gravity="center_horizontal">
             </ImageView>
 
@@ -53,15 +53,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/cairo_bold"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_15ssp"
                     android:text="@string/enter_code">
                 </TextView>
 
                 <EditText
                     android:inputType="textEmailAddress"
                     android:textSize="@dimen/_10ssp"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorGrey2"
+                    android:fontFamily="@font/cairo_reqular"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey">
@@ -77,9 +79,9 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/cairo_bold"
+                android:fontFamily="@font/cairo_reqular"
                 android:textColor="@color/colorGrey"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="@dimen/_10ssp"
                 android:text="@string/activiation_message">
             </TextView>
 
@@ -94,8 +96,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_20sdp"
-                android:background="@drawable/ripple_main_btn"
-                android:textColor="@color/colorWhite">
+                android:background="@drawable/shape_light_green"
+                android:backgroundTint="@color/colorPrimary"                  android:textColor="@color/colorWhite">
             </Button>
 
             <LinearLayout
@@ -120,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/cairo_bold"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_12ssp"
                     android:text="@string/send_again">
                 </TextView>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvMessageReceiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/shape_chat_receiver"
+        android:maxWidth="@dimen/_180sdp"
+        android:padding="@dimen/_10sdp"
+        android:text="يعطيك العافية كابتن,وين وصلت؟"
+        android:textColor="@color/colorBlack" />
+
+</LinearLayout>

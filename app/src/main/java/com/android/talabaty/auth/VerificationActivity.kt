@@ -1,12 +1,12 @@
-package com.hzdawoud.tatbeqakum.auth
+package com.android.talabaty.auth
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.hzdawoud.tatbeqakum.MainActivity
-import com.hzdawoud.tatbeqakum.R
+import com.android.talabaty.MainActivity
+import com.android.talabaty.R
 
 class VerificationActivity : AppCompatActivity() {
     var confirm: Button? = null

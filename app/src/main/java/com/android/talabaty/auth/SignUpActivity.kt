@@ -1,11 +1,10 @@
-package com.hzdawoud.tatbeqakum.auth
+package com.android.talabaty.auth
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.android.talabaty.R
-import com.android.talabaty.auth.SignInActivity
 
 class SignUpActivity : AppCompatActivity() {
     var login: TextView? = null

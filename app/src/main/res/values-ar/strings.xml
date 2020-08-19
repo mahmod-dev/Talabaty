@@ -15,16 +15,16 @@
     <string name="sign_up">تسجيل</string>
     <string name="full_name">إسم المستخدم</string>
     <string name="mobile_number">رقم الموبايل</string>
-    <string name="you_have_account">لدي حساب بالفعل؟</string>
-    <string name="reset">إستعادة</string>
+    <string name="you_have_account">هل قمت بالتسجيل من قبل؟</string>
+    <string name="reset">إسترجاع كلمة المرور</string>
     <string name="password_recovery">إسترجاع كلمة المرور</string>
-    <string name="thanks">شكراً لك</string>
+    <string name="thanks">شكراً لك!</string>
     <string name="enter_code">أدخل الرمز</string>
     <string name="activiation_message">لقد تم إرسال كود التفعيل إلى رقم الهاتف
 الرجاء التحقق من الرسائل</string>
     <string name="code_confirm">تأكيد الرمز</string>
-    <string name="didnt_recieve">لم أستلم أي رمز؟</string>
-    <string name="send_again">إعادة المحاولة</string>
+    <string name="didnt_recieve">لم يصل الكود؟</string>
+    <string name="send_again">إعادة الإرسال</string>
     <string name="search_here">Search here</string>
     <string name="all">All</string>
     <string name="restaurants">Restaurants</string>

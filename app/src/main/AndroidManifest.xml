@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".HelpDetailsActivity"></activity>
         <activity android:name=".CarServiceActivity"></activity>
         <activity android:name=".RemoteServiceActivity" />
         <activity android:name=".FamilyDetailsActivity" />

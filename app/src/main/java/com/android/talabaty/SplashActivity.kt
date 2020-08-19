@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.hzdawoud.tatbeqakum.auth.SignUpActivity
+import com.android.talabaty.auth.SignUpActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
