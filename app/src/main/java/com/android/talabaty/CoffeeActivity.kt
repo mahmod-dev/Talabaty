@@ -5,13 +5,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_coffee.*
 
 class CoffeeActivity : AppCompatActivity() {
-    var btn: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coffee)
-        btn = findViewById(R.id.coffee_btn)
-        btn.setOnClickListener(View.OnClickListener { startActivity(Intent(applicationContext, PhotographyActivity::class.java)) })
+        btnCoffee.setOnClickListener { startActivity(Intent(applicationContext, SuccessActivity::class.java)) }
     }
 }

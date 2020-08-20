@@ -53,7 +53,7 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:drawablePadding="@dimen/_5sdp"
                 android:fontFamily="@font/cairo_bold"
-                android:text="تفاصيل الطلب"
+                android:text="@string/order_details"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/_15ssp"
                 app:drawableStartCompat="@drawable/ic_vertical_indecator" />
@@ -79,7 +79,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:drawablePadding="@dimen/_5sdp"
                 android:fontFamily="@font/cairo_bold"
-                android:text="عنوان التوصيل"
+                android:text="@string/delivery_address"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/_15ssp"
                 app:drawableStartCompat="@drawable/ic_vertical_indecator" />
@@ -101,7 +101,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:drawablePadding="@dimen/_5sdp"
                 android:fontFamily="@font/cairo_bold"
-                android:text="مدة التوصيل المتوقعة"
+                android:text="@string/predict_period"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/_15ssp"
                 app:drawableStartCompat="@drawable/ic_vertical_indecator" />

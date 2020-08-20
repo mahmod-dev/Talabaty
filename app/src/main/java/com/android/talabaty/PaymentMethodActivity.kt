@@ -14,7 +14,7 @@ class PaymentMethodActivity : AppCompatActivity() {
         setContentView(R.layout.activity_payment_method)
         viewPager = findViewById(R.id.pager)
         adapter = SliderAdapter(this, 2)
-        viewPager.setAdapter(adapter)
+        viewPager?.setAdapter(adapter)
         val indicator = findViewById<CutoutViewIndicator>(R.id.indicator_details)
         indicator.setViewPager(viewPager)
     }

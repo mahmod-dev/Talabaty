@@ -12,6 +12,6 @@ class DeliveryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_delivery)
         confirm = findViewById(R.id.btn_confirm)
-        confirm.setOnClickListener(View.OnClickListener { startActivity(Intent(applicationContext, WithoutDelivaryActivity::class.java)) })
+        //confirm.setOnClickListener(View.OnClickListener { startActivity(Intent(applicationContext, WithoutDelivaryActivity::class.java)) })
     }
 }

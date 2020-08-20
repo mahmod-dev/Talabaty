@@ -11,7 +11,5 @@ class PhotographyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_photography)
-        btn = findViewById(R.id.btn_photo)
-        btn.setOnClickListener(View.OnClickListener { startActivity(Intent(applicationContext, ElectronicServiceActivity::class.java)) })
     }
 }

@@ -11,7 +11,5 @@ class SuccessActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_success)
-        btn = findViewById(R.id.my_orders)
-        btn.setOnClickListener(View.OnClickListener { startActivity(Intent(applicationContext, FreeDeliveryActivity::class.java)) })
-    }
+          }
 }

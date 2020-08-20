@@ -6,7 +6,7 @@
     android:layoutDirection="rtl"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite"
-    tools:context=".fragment.ResturentFragment">
+    tools:context=".fragment.mainTab.ResturentFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,7 +20,10 @@
             android:orientation="vertical"
             android:paddingBottom="@dimen/_70sdp">
 
-            <include layout="@layout/item_restaurant_above"/>
+            <include layout="@layout/item_restaurant_above" />
+            <androidx.viewpager2.widget.ViewPager2
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <TextView
                 android:layout_width="wrap_content"

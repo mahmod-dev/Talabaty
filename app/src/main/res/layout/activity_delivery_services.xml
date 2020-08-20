@@ -37,7 +37,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="مكان الإستلام"
+                    android:text="@string/receive_place"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_13ssp" />
 
@@ -56,7 +56,7 @@
                         android:layout_gravity="center_horizontal"
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_reqular"
-                        android:hint="حدد موقع الاستلام"
+                        android:hint="@string/select_receive_place"
                         android:padding="@dimen/_10sdp"
                         app:drawableStartCompat="@drawable/ic_icon_place" />
 
@@ -79,7 +79,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="مكان التوصيل"
+                    android:text="@string/delivary_place"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_13ssp" />
 
@@ -98,7 +98,7 @@
                         android:layout_gravity="center_horizontal"
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_reqular"
-                        android:hint="حدد موقع التسليم"
+                        android:hint="@string/select_delivary_place"
                         android:padding="@dimen/_10sdp"
                         app:drawableStartCompat="@drawable/ic_icon_place" />
 
@@ -155,7 +155,7 @@
                 android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:fontFamily="@font/cairo_reqular"
-                android:text="تفاصيل الطلب"
+                android:text="@string/order_details"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/_13ssp" />
 
@@ -170,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_text_vie"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="اكتب طلباتك وملاحظات الطلب"
+                    android:hint="@string/write_ur_notice"
                     android:lines="8"
                     android:padding="@dimen/_10sdp" />
 
@@ -200,7 +200,7 @@
                 android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:fontFamily="@font/cairo_reqular"
-                android:text="كم تتوقع يكلف الطلب؟"
+                android:text="@string/predict_cost"
                 android:textColor="@color/colorBlack" />
 
             <LinearLayout
@@ -256,7 +256,7 @@
                 android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/cairo_reqular"
-                android:text="تقدير التكلفة تساعدنا نلقى لك المندوب المناسب لتنفيذ طلبك"
+                android:text="@string/cost_help"
                 android:textColor="@color/colorGrey3"
                 android:textSize="@dimen/_10ssp" />
 
@@ -279,7 +279,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_30sdp"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="رسوم التوصيل"
+                    android:text="@string/delivery_charging"
                     android:textColor="@color/colorGrey3"
                     android:textSize="@dimen/_10ssp" />
 
@@ -299,7 +299,7 @@
                 android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/cairo_reqular"
-                android:text="طرق الدفع"
+                android:text="@string/payment_way"
                 android:textColor="@color/colorGrey3"
                 android:textSize="@dimen/_10ssp" />
 

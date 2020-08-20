@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:layoutDirection="rtl"
+
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.MainFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_38sdp"
+        android:layout_margin="@dimen/_10sdp"
+        app:contentPaddingLeft="@dimen/_10sdp"
+        app:contentPaddingRight="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_10sdp">
+
+        <EditText
+            android:id="@+id/searchHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:drawableEnd="@drawable/ic_icon_search"
+            android:fontFamily="@font/cairo_reqular"
+            android:hint="@string/search_in_offer_service"
+            android:importantForAutofill="no"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:textSize="@dimen/_12ssp"
+            android:textColorHint="@color/colorGrey" />
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.tabs.TabLayout
+        app:tabMode="scrollable"
+        android:id="@+id/tabs"
+        app:tabTextColor="@color/colorGrey2"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        android:layout_width="match_parent"
+        app:tabTextAppearance="@style/tab_text"
+        android:layout_height="wrap_content">
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </androidx.viewpager.widget.ViewPager>
+
+
+</LinearLayout>

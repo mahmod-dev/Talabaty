@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".fragment.AllFragment">
+    tools:context=".fragment.mainTab.AllFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.viewpager2.widget.ViewPager2
+            <androidx.viewpager.widget.ViewPager
                 android:id="@+id/pager"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_110sdp"
@@ -40,13 +40,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="horizontal"
-                android:paddingVertical="@dimen/_5sdp">
+                android:paddingVertical="@dimen/_5sdp"
+                android:baselineAligned="false">
 
                 <LinearLayout
-                    android:id="@+id/services"
+                    android:id="@+id/linRemoteServices"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:paddingVertical="@dimen/_5sdp">
@@ -68,11 +72,13 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/order_car"
+                    android:id="@+id/linOrderCar"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:paddingVertical="@dimen/_5sdp">
@@ -93,11 +99,13 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/order_service"
+                    android:id="@+id/linOrderService"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:paddingVertical="@dimen/_5sdp">
@@ -118,11 +126,13 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/free_delivery"
+                    android:id="@+id/linFreeDelivery"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:paddingVertical="@dimen/_5sdp">
@@ -167,11 +177,13 @@
                     android:layout_weight="1" />
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/first_card"
+                    android:id="@+id/cardOfferServices"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
                     app:cardBackgroundColor="@android:color/transparent"
                     app:cardCornerRadius="@dimen/_90sdp"
                     app:cardElevation="0dp">

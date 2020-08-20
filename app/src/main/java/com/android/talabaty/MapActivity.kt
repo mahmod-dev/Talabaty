@@ -15,20 +15,21 @@ class MapActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
-        mMapView = findViewById(R.id.map_view)
-        mMapView.onCreate(savedInstanceState)
-        mMapView.onResume()
-        mMapView.getMapAsync(OnMapReadyCallback { mMap ->
-            mMapView.onResume()
-            val sydney = LatLng((-34).toDouble(), 151)
-            googleMap = mMap
-            googleMap!!.setMapStyle(MapStyleOptions.loadRawResourceStyle(applicationContext, R.raw.style_json))
-            googleMap!!.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-            googleMap!!.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-        })
-    }
-
-    companion object {
-        private var googleMap: GoogleMap? = null
+//        mMapView = findViewById(R.id.map_view)
+//        mMapView.onCreate(savedInstanceState)
+//        mMapView.onResume()
+//        mMapView.getMapAsync(OnMapReadyCallback { mMap ->
+//            mMapView.onResume()
+//            val sydney = LatLng((-34).toDouble(), 151)
+//            googleMap = mMap
+//            googleMap!!.setMapStyle(MapStyleOptions.loadRawResourceStyle(applicationContext, R.raw.style_json))
+//            googleMap!!.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+//            googleMap!!.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+//        })
+//    }
+//
+//    companion object {
+//        private var googleMap: GoogleMap? = null
+//    }
     }
 }

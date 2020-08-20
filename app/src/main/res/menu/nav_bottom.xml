@@ -19,7 +19,7 @@
         android:id="@+id/navCategory"
         android:enabled="true"
         android:icon="@drawable/ic_nav_window"
-        android:title="@string/profile"
+        android:title="@string/category"
         />
 
     <item

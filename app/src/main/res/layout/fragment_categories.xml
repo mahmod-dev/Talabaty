@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:text="الفئات الأخيرة"
                 android:fontFamily="@font/cairo_bold"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/_13ssp">
             </TextView>
 
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="كل الفئات"
                 android:fontFamily="@font/cairo_bold"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/_13ssp">
             </TextView>
 

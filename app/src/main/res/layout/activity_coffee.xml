@@ -32,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="اسم الكريم"
+                    android:hint="@string/ur_name"
                     android:textColorHint="@color/colorBlack"
 
                     android:textSize="@dimen/_10ssp" />
@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="المدينة"
+                    android:hint="@string/city"
                     android:textColorHint="@color/colorBlack"
 
                     android:textSize="@dimen/_10ssp" />
@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="القاعة"
+                    android:hint="@string/room"
                     android:textColorHint="@color/colorBlack"
 
                     android:textSize="@dimen/_10ssp" />
@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="رجال / نساء"
+                    android:hint="@string/male_female"
                     android:textColorHint="@color/colorBlack"
 
                     android:textSize="@dimen/_10ssp" />
@@ -73,7 +73,7 @@
                     android:backgroundTint="@color/colorGrey"
                     android:drawableEnd="@drawable/ic_triangle_arrow"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="تاريخ الزواج"
+                    android:hint="@string/wedding_date"
                     android:textColorHint="@color/colorBlack"
 
                     android:paddingEnd="@dimen/_10sdp"
@@ -89,7 +89,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/colorGrey"
                         android:fontFamily="@font/cairo_reqular"
-                        android:hint="عدد المباشرين"
+                        android:hint="@string/customer_num"
                         android:textColorHint="@color/colorBlack"
 
                         android:paddingEnd="@dimen/_50sdp"
@@ -105,7 +105,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/colorGrey"
                         android:fontFamily="@font/cairo_reqular"
-                        android:hint="عدد القهوجي"
+                        android:hint="@string/coffeer_num"
 
                         android:paddingEnd="@dimen/_50sdp"
                         android:textSize="@dimen/_10ssp" />
@@ -117,7 +117,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="عدد سقايا زمزم"
+                    android:hint="@string/zamzam_num"
                     android:textColorHint="@color/colorBlack"
 
                     android:textSize="@dimen/_10ssp" />
@@ -127,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="رقم التواصل"
+                    android:hint="@string/delivery_num"
                     android:textColorHint="@color/colorBlack"
 
                     android:textSize="@dimen/_10ssp" />
@@ -156,17 +156,16 @@
 
             <Button
 
-                android:id="@+id/coffee_btn"
+                android:id="@+id/btnCoffee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginHorizontal="@dimen/_50sdp"
                 android:layout_marginTop="@dimen/_40sdp"
                 android:layout_marginBottom="@dimen/_30sdp"
                 android:background="@drawable/hape_btn_gradiant"
                 android:fontFamily="@font/cairo_bold"
-                android:text="تأكيد الطلب"
+                android:text="@string/confirm_order"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/_13ssp" />

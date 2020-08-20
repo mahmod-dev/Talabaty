@@ -1,67 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutFamilyDetails"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_gravity="center"
-        android:background="@android:color/transparent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabTextColor="@color/colorGrey2">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
+    </com.google.android.material.tabs.TabLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/cairo_bold"
-                android:text="@string/current_location"
-                android:textColor="@color/colorGrey2"
-                android:textSize="@dimen/_10ssp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:drawablePadding="@dimen/_5sdp"
-                android:fontFamily="@font/cairo_bold"
-                android:text="مكة المكرمة"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/_8ssp"
-                app:drawableEndCompat="@drawable/ic_tool_arrow"
-                app:drawableStartCompat="@drawable/ic_tool_location" />
-
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
-
-
-    <FrameLayout
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavMain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Widget.BottomNavigationView"
-        app:itemBackground="@color/colorWhite"
-        app:itemIconSize="@dimen/_25sdp"
-        app:itemIconTint="@drawable/sh_nav_bottom"
-        app:itemTextColor="@drawable/sh_nav_bottom"
-        app:menu="@menu/nav_bottom" />
 
 
 </LinearLayout>

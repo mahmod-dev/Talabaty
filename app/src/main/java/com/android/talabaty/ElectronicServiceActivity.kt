@@ -11,7 +11,5 @@ class ElectronicServiceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_electronic_service)
-        btn = findViewById(R.id.btn_electronic)
-        btn.setOnClickListener(View.OnClickListener { startActivity(Intent(applicationContext, SearchLocationActivity::class.java)) })
     }
 }

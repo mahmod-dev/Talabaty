@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_25sdp"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="للون"
+                    android:text="@string/color"
                     android:textColor="@color/colorPrimary" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="المقاس"
+                    android:text="@string/size"
                     android:textColor="@color/colorPrimary" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -150,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="تاريخ وصول المنتج:"
+                    android:text="@string/arrive_date"
                     android:textColor="@color/colorGrey2"
                     android:textSize="@dimen/_10ssp" />
 
@@ -181,7 +181,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="رسوم الشحن:"
+                    android:text="@string/charging_fee"
                     android:textColor="@color/colorGrey2"
                     android:textSize="@dimen/_10ssp" />
 
@@ -235,7 +235,7 @@
                     android:fontFamily="@font/cairo_bold"
                     android:gravity="center"
                     android:padding="@dimen/_10sdp"
-                    android:text="الكمية"
+                    android:text="@string/quantity"
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -245,7 +245,7 @@
                     android:fontFamily="@font/cairo_bold"
                     android:gravity="center"
                     android:padding="@dimen/_10sdp"
-                    android:text="شراء الان"
+                    android:text="@string/buy_now"
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -255,7 +255,7 @@
                     android:fontFamily="@font/cairo_bold"
                     android:gravity="center"
                     android:padding="@dimen/_10sdp"
-                    android:text="أضف الى السلة"
+                    android:text="@string/add_to_cart"
                     android:textColor="@color/colorBlack" />
 
             </LinearLayout>
@@ -271,7 +271,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/cairo_bold"
-                    android:text="بيانات البائع"
+                    android:text="@string/saller_info"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_14sdp" />
 

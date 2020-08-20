@@ -142,7 +142,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/btn_confirm"
+                android:id="@+id/btnConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -150,7 +150,7 @@
                 android:background="@drawable/shape_light_green"
                 android:backgroundTint="@color/colorPrimary"
                 android:fontFamily="@font/cairo_reqular"
-                android:text="تم"
+                android:text="@string/ok"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/_16ssp" />

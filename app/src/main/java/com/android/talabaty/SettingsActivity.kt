@@ -13,11 +13,11 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        question = findViewById(R.id.tv_question)
-        suggestion = findViewById(R.id.tv_suggestion)
-        contactUs = findViewById(R.id.tv_contact)
-        question.setOnClickListener(View.OnClickListener { startActivity(Intent(applicationContext, WelcomeActivity::class.java)) })
-        suggestion.setOnClickListener(View.OnClickListener { startActivity(Intent(applicationContext, DeliveryActivity::class.java)) })
-        contactUs.setOnClickListener(View.OnClickListener { startActivity(Intent(applicationContext, HelpActivity::class.java)) })
+//        question = findViewById(R.id.tv_question)
+//        suggestion = findViewById(R.id.tv_suggestion)
+//        contactUs = findViewById(R.id.tv_contact)
+//        question.setOnClickListener(View.OnClickListener { startActivity(Intent(applicationContext, WelcomeActivity::class.java)) })
+//        suggestion.setOnClickListener(View.OnClickListener { startActivity(Intent(applicationContext, DeliveryActivity::class.java)) })
+//        contactUs.setOnClickListener(View.OnClickListener { startActivity(Intent(applicationContext, HelpActivity::class.java)) })
     }
 }

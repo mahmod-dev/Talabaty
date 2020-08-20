@@ -7,7 +7,7 @@
     android:layoutDirection="rtl"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.HomeFragment">
+    tools:context=".fragment.MainFragment">
 
     <include layout="@layout/toolbar" />
     <TextView

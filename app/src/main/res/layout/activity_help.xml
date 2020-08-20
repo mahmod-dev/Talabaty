@@ -48,7 +48,7 @@
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_bold"
                         android:padding="@dimen/_5sdp"
-                        android:text="محادثة فورية"
+                        android:text="@string/chatting_now"
                         android:textColor="@color/colorPrimary"
                         app:drawableStartCompat="@drawable/ic_selected_message" />
                     <View
@@ -75,7 +75,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorBlack"
                             android:fontFamily="@font/cairo_bold"
-                            android:text="خدمة العملاء"
+                            android:text="@string/customer_service"
                             android:layout_toEndOf="@+id/imgFace"/>
 
                         <TextView
@@ -83,7 +83,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorGrey"
                             android:fontFamily="@font/cairo_bold"
-                            android:text="كيف يمكننا مساعدتك؟"
+                            android:text="@string/how_help_you"
                             android:textSize="@dimen/_8ssp"
                             android:layout_below="@+id/tvTitleHelp"
                             android:layout_toEndOf="@+id/imgFace"/>
@@ -116,7 +116,7 @@
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_bold"
                         android:padding="@dimen/_5sdp"
-                        android:text="أحتاج مساعدة في طلبي الحالي"
+                        android:text="@string/help_current_order"
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />
@@ -133,7 +133,7 @@
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_bold"
                         android:padding="@dimen/_5sdp"
-                        android:text="كيف أطلب من تطبيقكم؟"
+                        android:text="@string/help_how_order"
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />
@@ -150,7 +150,7 @@
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_bold"
                         android:padding="@dimen/_5sdp"
-                        android:text="طريقة العرض"
+                        android:text="@string/show_way"
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />
@@ -167,7 +167,7 @@
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_bold"
                         android:padding="@dimen/_5sdp"
-                        android:text="أحتاج مساعدة في طلب تم إستلامه"
+                        android:text="@string/help_order_received"
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />
@@ -184,7 +184,7 @@
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_bold"
                         android:padding="@dimen/_5sdp"
-                        android:text="لدي إستفسار كصاحب متجر"
+                        android:text="@string/question_trader"
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />
@@ -201,7 +201,7 @@
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_bold"
                         android:padding="@dimen/_5sdp"
-                        android:text="كيف أعمل مع تطبيقكم؟"
+                        android:text="@string/how_work_with_our_app"
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />
@@ -218,7 +218,7 @@
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_bold"
                         android:padding="@dimen/_5sdp"
-                        android:text="لدي اقتراح"
+                        android:text="@string/have_suggestion"
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />
@@ -235,7 +235,7 @@
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_bold"
                         android:padding="@dimen/_5sdp"
-                        android:text="أسئلة شائعة أخرى"
+                        android:text="@string/common_question"
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />

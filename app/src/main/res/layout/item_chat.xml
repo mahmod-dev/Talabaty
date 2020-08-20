@@ -68,11 +68,11 @@
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/_12ssp" />
 
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1sdp"
         android:layout_marginHorizontal="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10ssp"
         android:layout_marginBottom="@dimen/_5sdp"
         android:background="@color/colorGrey" />
 

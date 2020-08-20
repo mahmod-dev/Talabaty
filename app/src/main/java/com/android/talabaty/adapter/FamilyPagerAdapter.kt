@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.android.talabaty.R
-import com.android.talabaty.fragment.AllFragment
-import com.android.talabaty.fragment.ResturentFragment
+import com.android.talabaty.fragment.mainTab.AllFragment
+import com.android.talabaty.fragment.mainTab.ResturentFragment
 
 
 class FamilyPagerAdapter(var context:Context,fm: FragmentManager?) : FragmentPagerAdapter(fm!!) {

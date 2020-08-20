@@ -37,7 +37,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="مكان الإستلام"
+                    android:text="@string/receive_place"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_13ssp" />
 
@@ -56,7 +56,7 @@
                         android:layout_gravity="center_horizontal"
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_reqular"
-                        android:hint="حدد موقع الاستلام"
+                        android:hint="@string/select_receive_place"
                         android:padding="@dimen/_10sdp"
                         app:drawableStartCompat="@drawable/ic_icon_place" />
 
@@ -79,7 +79,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="مكان التوصيل"
+                    android:text="@string/delivary_place"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_13ssp" />
 
@@ -98,7 +98,7 @@
                         android:layout_gravity="center_horizontal"
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_reqular"
-                        android:hint="حدد موقع التسليم"
+                        android:hint="@string/select_delivary_place"
                         android:padding="@dimen/_10sdp"
                         app:drawableStartCompat="@drawable/ic_icon_place" />
 
@@ -121,7 +121,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="نوع السيارة"
+                    android:text="@string/car_type"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_13ssp" />
 
@@ -140,7 +140,7 @@
                         android:layout_gravity="center_horizontal"
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_reqular"
-                        android:hint="نوع السيارة"
+                        android:hint="@string/car_type"
                         android:padding="@dimen/_10sdp"
                         app:drawableStartCompat="@drawable/ic_delivery_car" />
 
@@ -155,7 +155,7 @@
                 android:layout_marginHorizontal="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:fontFamily="@font/cairo_reqular"
-                android:text="الى أين تريد الذهاب؟"
+                android:text="@string/where_you_go"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/_13ssp" />
 
@@ -170,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_text_vie"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="اكتب أين تريد الذهاب..."
+                    android:hint="@string/write_where_you_go"
 
                     android:padding="@dimen/_10sdp" />
             </androidx.cardview.widget.CardView>
@@ -195,7 +195,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_30sdp"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="رسوم التوصيل"
+                    android:text="@string/delivery_charging"
                     android:textColor="@color/colorGrey3"
                     android:textSize="@dimen/_10ssp" />
 
@@ -215,7 +215,7 @@
                 android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/cairo_reqular"
-                android:text="طرق الدفع"
+                android:text="@string/payment_way"
                 android:textColor="@color/colorGrey3"
                 android:textSize="@dimen/_10ssp" />
 
@@ -260,7 +260,7 @@
                 android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/cairo_reqular"
-                android:text="ملاحظة: قبل ارسال الطلب يجب الدفع أولا"
+                android:text="@string/notice_pay"
                 android:textColor="@color/colorGrey3"
                 android:textSize="@dimen/_8ssp" />
             <Button
@@ -273,7 +273,7 @@
                 android:background="@drawable/shape_light_green"
                 android:backgroundTint="@color/colorPrimary"
                 android:fontFamily="@font/cairo_bold"
-                android:text="أرسل الطلب"
+                android:text="@string/send_order"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/_16ssp" />

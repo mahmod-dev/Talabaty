@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.android.talabaty.R
 import com.android.talabaty.adapter.SliderAdapter
-import com.android.talabaty.adapter.ViewPagerAdapter
+import com.android.talabaty.adapter.MainPagerAdapter
 import com.google.android.material.tabs.TabLayout
 
 class FamilyFragment : Fragment() {
@@ -19,12 +19,12 @@ class FamilyFragment : Fragment() {
     var linear3: LinearLayout? = null
     var tabLayout: TabLayout? = null
     var viewPager: ViewPager? = null
-    var viewPagerAdapter: ViewPagerAdapter? = null
+    var viewPagerAdapter: MainPagerAdapter? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        val root = inflater.inflate(R.layout.fragment_main, container, false)
         viewPager = root.findViewById<View>(R.id.viewPager) as ViewPager
-        viewPagerAdapter = ViewPagerAdapter(context!!, fragmentManager)
+        viewPagerAdapter = MainPagerAdapter(context!!, fragmentManager)
         viewPager!!.adapter = viewPagerAdapter
         tabLayout = root.findViewById<View>(R.id.tabs) as TabLayout
         tabLayout!!.setupWithViewPager(viewPager)

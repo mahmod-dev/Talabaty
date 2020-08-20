@@ -1,74 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
+    android:layout_margin="@dimen/_10sdp"
     android:orientation="vertical"
-    android:background="@color/colorWhite"
-    tools:context=".SuccessActivity">
-
-
-    <include layout="@layout/toolbar"/>
-
+    app:cardCornerRadius="@dimen/_10sdp">
 
     <LinearLayout
-
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
         android:orientation="vertical">
 
-
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_icon_loading">
-        </ImageView>
-
-        <TextView
-            android:layout_marginTop="@dimen/_40sdp"
-            android:layout_marginHorizontal="@dimen/_50sdp"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/cairo_bold"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/_13ssp"
-            android:text="عزيزي تم إرسال طلبك للسائقين
-بإنتظار العروض">
-        </TextView>
-
-
-        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_marginTop="@dimen/_20sdp"
+            android:src="@drawable/ic_success" />
 
-            android:layout_marginHorizontal="@dimen/_50sdp"
-            android:gravity="center"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/cairo_bold"
+            android:fontFamily="@font/cairo_reqular"
+            android:padding="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:textSize="@dimen/_14ssp"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/_10ssp"
-            android:text="يمكنك متابعة طلباتك من خلال قسم طلباتي في التطبيق
-شكراً لك ">
-        </TextView>
+            android:text="تهانينا" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cairo_reqular"
+            android:textSize="@dimen/_14ssp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColor="@color/colorBlack"
+            android:text="لقد تم طلبك بنجاح" />
+
 
 
         <Button
-            android:id="@+id/my_orders"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:fontFamily="@font/cairo_bold"
-            android:text="طلباتي"
-            android:textAllCaps="false"
-            android:paddingHorizontal="@dimen/_50sdp"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_electronic"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_20sdp"
-            android:background="@drawable/ripple_main_btn"
-            android:textColor="@color/colorWhite">
-        </Button>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:background="@drawable/hape_btn_gradiant"
+            android:fontFamily="@font/cairo_bold"
+            android:text="العودة للرئيسية"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_13ssp" />
     </LinearLayout>
 
-</LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -5,11 +5,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.android.talabaty.R
-import com.android.talabaty.fragment.AllFragment
-import com.android.talabaty.fragment.ResturentFragment
+import com.android.talabaty.fragment.mainTab.*
 
 
-class ViewPagerAdapter(var context: Context, fm: FragmentManager?) : FragmentPagerAdapter(fm!!) {
+class MainPagerAdapter(var context: Context, fm: FragmentManager?) : FragmentPagerAdapter(fm!!) {
 
     // This determines the fragment for each tab
     override fun getItem(position: Int): Fragment {
@@ -20,8 +19,23 @@ class ViewPagerAdapter(var context: Context, fm: FragmentManager?) : FragmentPag
             1 -> {
                 ResturentFragment()
             }
-            else -> {
-                ResturentFragment()
+            2 -> {
+                StoreFragment()
+            }
+            3 -> {
+                WearFragment()
+            }
+
+            4 -> {
+                GiftFragment()
+            }
+
+            5 -> {
+                ElectronicDevicesFragment()
+            }
+
+            else ->{
+                AllFragment()
             }
         }
     }
@@ -44,5 +58,6 @@ class ViewPagerAdapter(var context: Context, fm: FragmentManager?) : FragmentPag
             else -> null
         }
     }
+
 
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.mainTab.ElectronicDevicesFragment">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_70sdp">
+
+                <include layout="@layout/item_restaurant_above" />
+                <androidx.viewpager2.widget.ViewPager2
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:fontFamily="@font/cairo_bold"
+                    android:text="أماكن قريبة منك"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_14ssp" />
+
+                <include
+                    android:id="@+id/first_view" layout="@layout/item_restaurant_under"/>
+                <include layout="@layout/item_restaurant_under"/>
+                <include layout="@layout/item_restaurant_under"/>
+                <include layout="@layout/item_restaurant_under"/>
+                <include layout="@layout/item_restaurant_under"/>
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
+</FrameLayout>
