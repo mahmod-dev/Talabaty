@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.android.talabaty">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".BaseActivity"></activity>
-        <activity android:name=".DeliveryServicesActivity"></activity>
-        <activity android:name=".FreeDeliveryActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="q">
+        <activity android:name=".FavoriteActivity"></activity>
+        <activity android:name=".BaseActivity" />
+        <activity android:name=".DeliveryServicesActivity" />
+        <activity android:name=".FreeDeliveryActivity" />
+        <activity android:name=".NewestOffersServicesActivity" />
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".CartActivity" />
+        <activity android:name=".auth.SignInActivity"></activity>
+        <activity android:name=".auth.VerificationActivity"></activity>
+        <activity android:name=".auth.ResetPasswordActivity"></activity>
+        <activity android:name=".auth.SignUpActivity"></activity>
+        <activity android:name=".StoreDetailsActivity"></activity>
+        <activity android:name=".PaymentMethodActivity"></activity>
         <activity android:name=".HelpDetailsActivity" />
         <activity android:name=".CarServiceActivity" />
         <activity android:name=".RemoteServiceActivity" />
@@ -21,6 +41,31 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
     </application>

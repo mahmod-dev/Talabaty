@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
@@ -21,25 +23,22 @@
             <include layout="@layout/toolbar" />
 
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/cairo_bold"
+                android:text="@string/sign_in"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_15ssp" />
 
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:fontFamily="@font/cairo_bold"
-                        android:text="@string/sign_in"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_15ssp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:src="@drawable/logo_main" />
-
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:src="@drawable/logo_main" />
 
 
             <LinearLayout
@@ -59,15 +58,15 @@
                     android:textSize="@dimen/_12ssp" />
 
                 <EditText
+                    android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autofillHints=""
                     android:backgroundTint="@color/colorGrey"
-                    android:gravity="start"
-                    android:hint="@string/email"
                     android:fontFamily="@font/cairo_reqular"
+                    android:gravity="start"
                     android:inputType="textEmailAddress"
-                    android:text="hzdawoud@gmail.com"
+                    android:hint="hzdawoud@gmail.com"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorGrey2"
                     android:textSize="@dimen/_10ssp" />
@@ -80,6 +79,7 @@
                 android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -89,18 +89,23 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_12ssp" />
 
-                <EditText
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/ic_icon_eye"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:gravity="start"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorGrey2"
-                    android:textColorHint="@color/colorGrey2"
-                    android:textSize="@dimen/_10ssp" />
+                    app:passwordToggleEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:gravity="start"
+                        android:inputType="textPassword"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorGrey2"
+                        android:textSize="@dimen/_12ssp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
             </LinearLayout>
 
@@ -123,9 +128,11 @@
                     android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/forget_password"
+                    android:id="@+id/tvForgetPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:fontFamily="@font/cairo_bold"
                     android:foreground="?attr/selectableItemBackground"
                     android:paddingHorizontal="@dimen/_10sdp"
@@ -135,14 +142,17 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/sign_in"
+                android:id="@+id/btnSignIn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:background="@drawable/shape_light_green"
                 android:backgroundTint="@color/colorPrimary"
+                android:clickable="true"
+                android:focusable="true"
                 android:fontFamily="@font/cairo_reqular"
+                android:foreground="?attr/selectableItemBackground"
                 android:text="@string/sign_in"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
@@ -164,10 +174,13 @@
                     android:textSize="@dimen/_12ssp" />
 
                 <TextView
+                    android:id="@+id/btnSignUp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|start"
                     android:layout_marginStart="5dp"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:fontFamily="@font/cairo_bold"
                     android:foreground="?attr/selectableItemBackground"
                     android:text="@string/create_account"
@@ -184,6 +197,7 @@
                 android:baselineAligned="false">
 
                 <FrameLayout
+                    android:id="@+id/btnGoogle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_10sdp"
@@ -201,6 +215,7 @@
 
 
                 <FrameLayout
+                    android:id="@+id/btnFacebook"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
@@ -215,6 +230,11 @@
                         android:layout_gravity="center"
                         android:src="@drawable/ic_icon_facebook" />
                 </FrameLayout>
+
+                <!--                <com.facebook.login.widget.LoginButton-->
+                <!--                    android:id="@+id/btnFacebooka"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"/>-->
             </LinearLayout>
 
 

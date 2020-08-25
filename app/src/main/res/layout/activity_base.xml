@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".BaseActivity">
 
-    <include layout="@layout/main_toolbar"
+    <include layout="@layout/logo_toolbar"
         android:id="@+id/toolbar"/>
 
 

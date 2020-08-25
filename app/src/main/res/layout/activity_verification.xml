@@ -14,118 +14,115 @@
         android:fillViewport="true">
 
         <LinearLayout
-            android:paddingBottom="@dimen/_40sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_40sdp">
 
-            <include layout="@layout/toolbar"/>
+            <include layout="@layout/toolbar" />
 
 
             <TextView
-                android:layout_marginTop="@dimen/_40sdp"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_40sdp"
                 android:fontFamily="@font/cairo_reqular"
+                android:text="@string/thanks"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_30ssp"
-                android:text="@string/thanks">
-            </TextView>
+                android:textSize="@dimen/_30ssp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_thank_you"
-                android:layout_gravity="center_horizontal">
-            </ImageView>
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_thank_you" />
 
 
             <LinearLayout
-                android:layout_marginTop="@dimen/_70sdp"
-                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_70sdp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/cairo_bold"
+                    android:text="@string/enter_code"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_15ssp"
-                    android:text="@string/enter_code">
-                </TextView>
+                    android:textSize="@dimen/_15ssp" />
 
                 <EditText
-                    android:inputType="textEmailAddress"
-                    android:textSize="@dimen/_10ssp"
-                    android:textColor="@color/colorGrey2"
-                    android:fontFamily="@font/cairo_reqular"
-
+                    android:id="@+id/tvCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorGrey">
-                </EditText>
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/cairo_reqular"
 
+                    android:inputType="number"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_12ssp" />
 
 
             </LinearLayout>
 
             <TextView
-                android:layout_marginHorizontal="@dimen/_20sdp"
-                android:gravity="center"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:fontFamily="@font/cairo_reqular"
+                android:gravity="center"
+                android:text="@string/activiation_message"
                 android:textColor="@color/colorGrey"
-                android:textSize="@dimen/_10ssp"
-                android:text="@string/activiation_message">
-            </TextView>
-
+                android:textSize="@dimen/_10ssp" />
 
 
             <Button
-                android:id="@+id/confirm_btn"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:fontFamily="@font/cairo_bold"
-                android:text="@string/code_confirm"
-                android:textAllCaps="false"
+                android:id="@+id/btnConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_30sdp"
                 android:background="@drawable/shape_light_green"
-                android:backgroundTint="@color/colorPrimary"                  android:textColor="@color/colorWhite">
-            </Button>
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/cairo_bold"
+                android:text="@string/code_confirm"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite" />
 
             <LinearLayout
-                android:layout_marginTop="@dimen/_20sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_20sdp">
 
                 <TextView
-                    android:layout_gravity="center_horizontal|start"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/cairo_bold"
+                    android:text="@string/didnt_recieve"
                     android:textColor="@color/colorGrey"
-                    android:textSize="@dimen/_12ssp"
-                    android:text="@string/didnt_recieve">
-                </TextView>
+                    android:textSize="@dimen/_12ssp" />
 
                 <TextView
-                    android:layout_marginStart="5dp"
-                    android:layout_gravity="center_horizontal|start"
+                    android:id="@+id/tvResendCode"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|start"
+                    android:layout_marginStart="5dp"
+                    android:padding="@dimen/_5sdp"
                     android:fontFamily="@font/cairo_bold"
+                    android:text="@string/send_again"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_12ssp"
-                    android:text="@string/send_again">
-                </TextView>
+                    android:textSize="@dimen/_12ssp" />
 
             </LinearLayout>
 

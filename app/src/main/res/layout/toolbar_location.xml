@@ -11,7 +11,6 @@
 
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_centerInParent="true"
@@ -61,6 +60,23 @@
                     android:focusable="true"
 
                     android:src="@drawable/ic_tool_cart" />
+
+                <TextView
+                    android:id="@+id/tvCartNum"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_alignBottom="@+id/tvHomeLocation"
+                    android:layout_marginEnd="-20dp"
+                    android:visibility="gone"
+                    android:layout_marginBottom="@dimen/_3sdp"
+                    android:layout_toStartOf="@+id/imgHome"
+                    android:background="@drawable/ic_ind_selected_card"
+                    android:backgroundTint="@color/cart_num"
+                    android:fontFamily="@font/cairo_bold"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/_6ssp" />
 
                 <ImageView
                     android:id="@+id/imgArrowBack"

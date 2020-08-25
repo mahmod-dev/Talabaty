@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.android.talabaty.fragment.*
+import com.android.talabaty.util.MyPreferences
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_base.*
 
@@ -13,7 +14,7 @@ open class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
        // window.statusBarColor = ContextCompat.getColor(this, R.color.colorWhite)
-
+        MyPreferences.context = applicationContext
         handleBottomNav()
         supportFragmentManager.beginTransaction().replace(
             R.id.fragmentContainer,

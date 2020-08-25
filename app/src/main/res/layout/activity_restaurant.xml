@@ -19,7 +19,7 @@
             android:orientation="vertical"
             android:paddingBottom="@dimen/_70sdp">
 
-            <include layout="@layout/side_toolbar"/>
+            <include layout="@layout/toolbar_location"/>
 
             <androidx.appcompat.widget.SearchView
                 android:elevation="@dimen/_7sdp"

@@ -33,4 +33,19 @@
     </style>
 
 
+    <style name="AlertDialogCustom" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:actionModeBackground">@color/colorAccent</item>
+
+        <item name="android:fontFamily">@font/cairo_reqular</item>
+        <item name="android:textSize">15sp</item>
+
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="textColorAlertDialogListItem">@color/colorPrimaryDark</item>
+    </style>
+
+
 </resources>

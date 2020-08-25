@@ -14,15 +14,17 @@
         android:layout_height="wrap_content"
         android:fillViewport="true">
 
+
+
         <LinearLayout
             android:paddingHorizontal="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <LinearLayout
                 android:paddingVertical="@dimen/_5sdp"
                 android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -31,7 +33,7 @@
                     android:text="خيارات الدفع"
                     android:textColor="@color/colorBlack"
                     android:fontFamily="@font/cairo_bold"
-                    android:textSize="@dimen/_16ssp">
+                    android:textSize="@dimen/_12sdp">
                 </TextView>
 
                 <LinearLayout
@@ -55,8 +57,16 @@
                 android:clipChildren="false"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_width="wrap_content"
+                android:visibility="gone"
                 android:layout_height="@dimen/_110sdp">
             </androidx.viewpager.widget.ViewPager>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:src="@drawable/img_wp"/>
 
             <com.fuzz.indicator.CutoutViewIndicator
                 android:id="@+id/indicator_details"
@@ -85,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/_10sdp">
+                android:padding="@dimen/_5sdp">
 
                 <ImageView
                     android:id="@+id/imgPay"
@@ -105,7 +115,7 @@
                     android:text="@string/apple_pay"
                     android:layout_toEndOf="@id/imgPay"
                     android:layout_centerVertical="true"
-                    android:textSize="@dimen/_15ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:layout_gravity="center"/>
 
                 <ImageView
@@ -129,7 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/_10sdp">
+                android:padding="@dimen/_5sdp">
 
                 <ImageView
                     android:id="@+id/imgStc"
@@ -149,7 +159,7 @@
                     android:text="@string/stc_pay"
                     android:layout_toEndOf="@id/imgStc"
                     android:layout_centerVertical="true"
-                    android:textSize="@dimen/_15ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:layout_gravity="center"/>
 
                 <ImageView
@@ -173,7 +183,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/_10sdp">
+                android:padding="@dimen/_5sdp">
 
                 <ImageView
                     android:id="@+id/imgMada"
@@ -193,7 +203,7 @@
                     android:text="@string/mada"
                     android:layout_toEndOf="@id/imgMada"
                     android:layout_centerVertical="true"
-                    android:textSize="@dimen/_15ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:layout_gravity="center"/>
 
                 <ImageView
@@ -217,7 +227,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/_10sdp">
+                android:padding="@dimen/_5sdp">
 
                 <ImageView
                     android:id="@+id/imgOther"
@@ -237,7 +247,7 @@
                     android:text="@string/other_ways"
                     android:layout_toEndOf="@id/imgOther"
                     android:layout_centerVertical="true"
-                    android:textSize="@dimen/_15ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:layout_gravity="center"/>
 
                 <ImageView
@@ -263,9 +273,12 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:fontFamily="@font/cairo_reqular"
                 android:text="@string/next"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/_16ssp" />
+                android:textSize="@dimen/_12sdp" />
 
 
         </LinearLayout>

@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.android.talabaty.R
 import com.android.talabaty.fragment.mainTab.AllFragment
-import com.android.talabaty.fragment.mainTab.ResturentFragment
+import com.android.talabaty.fragment.mainTab.RestaurantFragment
 
 
 class FamilyPagerAdapter(var context:Context,fm: FragmentManager?) : FragmentPagerAdapter(fm!!) {
@@ -18,10 +18,10 @@ class FamilyPagerAdapter(var context:Context,fm: FragmentManager?) : FragmentPag
                 AllFragment()
             }
             1 -> {
-                ResturentFragment()
+                RestaurantFragment()
             }
             else -> {
-                ResturentFragment()
+                RestaurantFragment()
             }
         }
     }

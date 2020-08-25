@@ -57,6 +57,9 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_chat_call" />
         </LinearLayout>
 
@@ -84,6 +87,9 @@
             android:layout_height="wrap_content"
             app:backgroundTint="@color/colorPrimary"
             android:layout_margin="@dimen/_10sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
             app:srcCompat="@drawable/ic_mic_itself"
             app:tint="@color/colorWhite" />
 
@@ -98,14 +104,17 @@
             android:drawablePadding="@dimen/_10sdp"
             android:gravity="center_vertical"
             android:hint="@string/type_message"
-            android:padding="@dimen/_5sdp"
-            android:textSize="@dimen/_10ssp" />
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:textSize="@dimen/_12ssp" />
 
         <ImageView
             android:id="@+id/imgCamera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_camera_chat" />
 
     </LinearLayout>

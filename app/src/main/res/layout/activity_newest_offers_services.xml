@@ -9,7 +9,7 @@
     tools:context=".NewestOffersServicesActivity">
 
 
-    <include layout="@layout/side_toolbar"/>
+    <include layout="@layout/toolbar_location"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

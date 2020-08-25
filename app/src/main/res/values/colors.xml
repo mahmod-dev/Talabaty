@@ -12,6 +12,8 @@
     <color name="colorBlack">#000</color>
     <color name="colorRed">#BF0927</color>
     <color name="colorRed2">#E20000</color>
+    <color name="colorRed3">#FF0000</color>
     <color name="rateBarActive">#FFD500</color>
+    <color name="cart_num">#FFC107</color>
     <color name="green_light">#DEF1F0</color>
 </resources>

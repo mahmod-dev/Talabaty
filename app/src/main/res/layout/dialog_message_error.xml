@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_20sdp"
+    android:orientation="vertical"
+>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_dialog_btn"
+        android:gravity="center"
+        android:backgroundTint="@color/colorWhite"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:src="@drawable/ic_warning" />
+
+        <TextView
+            android:id="@+id/tvErrorMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cairo_reqular"
+            android:padding="@dimen/_5sdp"
+            android:text="وفرنا لك مينو خاص يسهل عليك الطلب ليش ما تجرب؟" />
+
+        <Button
+            android:id="@+id/btnConfirmDialogError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/shape_dialog_btn"
+            android:fontFamily="@font/cairo_reqular"
+            android:text="@string/confirm"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_14ssp" />
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Talabaty</string>
-
+    <string name="facebook_app_id">300288838058286</string>
+    <string name="fb_login_protocol_scheme">fb300288838058286</string>
     <string name="tatbeqakum_ar">تطبيقكم</string>
     <string name="tatbeqakum_en">tatbeqakum</string>
     <string name="welcome">Welcome</string>
@@ -56,6 +57,8 @@
     <string name="shopping_cart">Shopping cart</string>
     <string name="payment_way">Payment methods</string>
     <string name="purchases">المشتريات</string>
+    <string name="opened">Opened</string>
+    <string name="closed">Closed</string>
     <string name="delivery_fee">رسوم التوصيل</string>
     <string name="added_tax">الضريبة المضافة</string>
     <string name="total_amount">المبلغ الإجمالي</string>
@@ -80,7 +83,9 @@
     <string name="reviews">التقييمات</string>
     <string name="add_the_discount_coupon">Add the discount coupon</string>
     <string name="send_the_order">Send the order</string>
-    <string name="discount">الخصم</string>
+    <string name="the_discount">discount</string>
+    <string name="discount">discount</string>
+
     <string name="receive_place">مكان الإستلام</string>
     <string name="select_receive_place">حدد موقع الاستلام</string>
     <string name="delivary_place">مكان التوصيل</string>
@@ -157,4 +162,11 @@
     <string name="near_places">أماكن قريبة منك</string>
     <string name="search_all_service">البحث في جميع الخدمات</string>
     <string name="category">Category</string>
+    <string name="email_valid">Email is not valid</string>
+    <string name="reial">ريال</string>
+    <string name="empty">empty!</string>
+    <string name="something_went_error">Something Went Wrong</string>
+    <string name="please_wait">Please wait</string>
+    <string name="delete">delete</string>
+    <string name="confirm">confirm</string>
 </resources>

@@ -24,7 +24,7 @@ class FamilyFragment : Fragment() {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_main, container, false)
         viewPager = root.findViewById<View>(R.id.viewPager) as ViewPager
-        viewPagerAdapter = MainPagerAdapter(context!!, fragmentManager)
+        viewPagerAdapter = MainPagerAdapter(activity!!, fragmentManager)
         viewPager!!.adapter = viewPagerAdapter
         tabLayout = root.findViewById<View>(R.id.tabs) as TabLayout
         tabLayout!!.setupWithViewPager(viewPager)

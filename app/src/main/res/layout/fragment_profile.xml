@@ -78,6 +78,9 @@
                     android:layout_gravity="top"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_weight="1.5"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     android:background="@drawable/shape_text_vie"
                     android:drawablePadding="@dimen/_6sdp"
                     android:fontFamily="@font/cairo_reqular"
@@ -557,10 +560,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    app:cardCornerRadius="@dimen/_30sdp"
-                    app:cardElevation="@dimen/_10sdp">
+                    android:layout_margin="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                 >
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -601,10 +603,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    app:cardCornerRadius="@dimen/_30sdp"
-                    app:cardElevation="@dimen/_10sdp">
+                    android:layout_margin="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_5sdp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -631,8 +631,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_light_green"
+    android:foreground="?attr/selectableItemBackground"
     android:backgroundTint="@color/gray_light"
     android:layout_marginHorizontal="@dimen/_10sdp"
+    android:clickable="true"
+    android:focusable="true"
     android:paddingVertical="@dimen/_5sdp"
     android:layout_marginTop="@dimen/_20sdp"
 
@@ -683,21 +686,28 @@
   </RelativeLayout>
 </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/rlLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_text_vie"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:layout_marginHorizontal="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_20sdp"
-
                 >
 
 
                     <Button
+                        style="?android:attr/borderlessButtonStyle"
                         android:id="@+id/btnProfileLogout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cairo_bold"
                         android:text="تسجيل الخروج"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
                         android:layout_centerInParent="true"
                         android:layout_marginHorizontal="@dimen/_5sdp"
                         android:layout_marginTop="@dimen/_5sdp"

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    tools:context=".fragment.mainTab.RestaurantFragment">
+
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerStore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_gravity="center"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvStore"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_restaurant_under" />
+
+
+</LinearLayout>

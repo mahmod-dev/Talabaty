@@ -20,7 +20,7 @@
             android:orientation="vertical"
             android:paddingBottom="@dimen/_50sdp">
 
-            <include layout="@layout/side_toolbar" />
+            <include layout="@layout/toolbar_location" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -217,9 +217,11 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_weight="1"
+                    android:gravity="center"
+
                     android:background="@drawable/shape_text_vie"
                     android:fontFamily="@font/cairo_reqular"
-                    android:padding="@dimen/_10sdp"
+                    android:padding="@dimen/_5sdp"
                     android:text="10-100 SR"
                     android:textColor="@color/colorBlack" />
 
@@ -230,9 +232,11 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_weight="1"
+                    android:gravity="center"
+
                     android:background="@drawable/shape_text_vie"
                     android:fontFamily="@font/cairo_reqular"
-                    android:padding="@dimen/_10sdp"
+                    android:padding="@dimen/_5sdp"
                     android:text="100-200 SR"
                     android:textColor="@color/colorBlack" />
 
@@ -243,9 +247,10 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:background="@drawable/shape_text_vie"
                     android:fontFamily="@font/cairo_reqular"
-                    android:padding="@dimen/_10sdp"
+                    android:padding="@dimen/_5sdp"
                     android:text="200-300 SR"
                     android:textColor="@color/colorBlack" />
             </LinearLayout>
@@ -304,8 +309,13 @@
                 android:textSize="@dimen/_10ssp" />
 
             <LinearLayout
+                android:id="@+id/linPayment1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="@dimen/_5sdp"
+                android:background="?attr/selectableItemBackground"
                 android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="horizontal">
@@ -343,11 +353,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginHorizontal="@dimen/_50sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:background="@drawable/shape_light_green"
                 android:backgroundTint="@color/colorPrimary"
+                android:clickable="true"
+                android:focusable="true"
                 android:fontFamily="@font/cairo_bold"
+                android:foreground="?attr/selectableItemBackground"
                 android:text="أرسل الطلب"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"

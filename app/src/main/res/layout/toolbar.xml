@@ -1,42 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="@dimen/_7sdp"
+    android:background="@drawable/shape_toolbar"
     android:clipToPadding="false"
-    android:background="@drawable/shape_toolbar">
+    android:elevation="@dimen/_7sdp">
 
 
     <androidx.appcompat.widget.Toolbar
-        android:elevation="@dimen/_7sdp"
-        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@android:color/transparent"
+        android:elevation="@dimen/_7sdp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+
+                android:gravity="center"
+                android:src="@drawable/logo_toolbar" />
+
+            <ImageView
+                android:id="@+id/imgArrowBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+
+                android:src="@drawable/ic_icon_arrow_left"
+                app:tint="@color/colorPrimary" />
+
+
+
+            <ImageView
+                android:id="@+id/imgCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/_5sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+
+                android:src="@drawable/ic_tool_cart" />
+
+            <TextView
+                android:id="@+id/tvCartNum"
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:layout_alignBottom="@+id/title"
+                android:layout_marginEnd="-20dp"
+                android:layout_marginBottom="-12dp"
+                android:layout_toStartOf="@+id/imgHome"
+                android:background="@drawable/ic_ind_selected_card"
+                android:backgroundTint="@color/cart_num"
+                android:fontFamily="@font/cairo_bold"
+                android:gravity="center"
+                android:text="5"
+                android:visibility="gone"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_6ssp" />
+        </RelativeLayout>
+
     </androidx.appcompat.widget.Toolbar>
 
-    <ImageView
-
-        android:layout_centerInParent="true"
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:src="@drawable/logo_toolbar" />
-
-    <ImageView
-        android:id="@+id/imgArrowBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title"
-        android:layout_alignParentEnd="true"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:focusable="true"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:src="@drawable/ic_icon_arrow_left"
-        app:tint="@color/colorPrimary" />
 </RelativeLayout>
