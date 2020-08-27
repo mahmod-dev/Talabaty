@@ -5,7 +5,6 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -14,8 +13,6 @@ import com.android.talabaty.MainActivity
 import com.android.talabaty.R
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.model.LoginPost
-import com.android.talabaty.model.SignUpPost
-import com.android.talabaty.model.UserPost
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomAlertDialog.getDialogInstance
@@ -26,7 +23,7 @@ import com.facebook.*
 import com.facebook.AccessToken
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
-import com.mahmoud.todoapp.util.dbUtil.Status
+import com.android.talabaty.dbUtil.Status
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.json.JSONException
 import java.security.MessageDigest

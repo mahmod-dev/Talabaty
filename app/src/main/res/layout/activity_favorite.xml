@@ -6,6 +6,31 @@
     tools:context=".FavoriteActivity"
     android:orientation="vertical">
 
-    <include layout="@layout/logo_toolbar"/>
+    <include layout="@layout/title_toolbar"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        tools:listitem="@layout/item_cart_favorite"
+        android:layout_marginTop="@dimen/_10sdp"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/_10sdp"/>
+    <TextView
+        android:id="@+id/tvFavEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:fontFamily="@font/cairo_reqular"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:text="@string/empty_fav"/>
 
 </LinearLayout>

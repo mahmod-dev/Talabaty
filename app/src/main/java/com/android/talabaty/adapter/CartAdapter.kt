@@ -20,7 +20,7 @@ import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.CartViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.mahmoud.todoapp.util.dbUtil.Status
+import com.android.talabaty.dbUtil.Status
 import kotlinx.android.synthetic.main.item_cart.view.*
 
 class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
@@ -51,9 +51,9 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        viewHolder.bind(data[i].product)
-        setupObserverAddToCart()
-        setupObserverRemoveFromCart(i)
+        viewHolder.bind(data[i].product, i)
+        setupObserverChangeQuantity()
+        setupObserverRemoveFromCart()
         setupObserverAddToFav()
         setupObserverDeleteFav()
     }
@@ -73,13 +73,13 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
         var imgAdd: ImageView = itemView.imgAdd
         var rlDelete: RelativeLayout = itemView.rlDelete
 
-        var isFav = false
+        fun bind(product: Product, position: Int) {
 
-        fun bind(product: Product) {
-
+            tvQuantity.text = data[position].quantity
+            MyPreferences.setInt("count",data[position].quantity.toInt())
 
             tvCartName.text = product.name
-            tvQuantity.text = MyPreferences.getInt("count").toString()
+            tvCartPrice.text = (product.price*MyPreferences.getInt("count")).toString()
 
             tvCartDetails.text = product.description
             if (tvCartDetails.text.length > 50) {
@@ -88,8 +88,7 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
 
             }
 
-            tvCartPrice.text =
-                "${product.price} ${itemView.context.resources.getString(R.string.reial)}"
+            "${product.price} ${itemView.context.resources.getString(R.string.reial)}"
 
 
             if (product.image.isNotEmpty()) {
@@ -101,12 +100,18 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
             }
 
             rlDelete.setOnClickListener {
+                data.remove(data[position])
+                notifyItemRemoved(position)
+                notifyItemRangeRemoved(position, data.size)
+                notifyDataSetChanged()
                 viewModel.deleteFromCart(product.id)
+                Log.e(TAG, "bind: ${product.id} " )
             }
 
             imgAdd.setOnClickListener {
-                MyPreferences.setInt("count",MyPreferences.getInt("count")+1)
+                  MyPreferences.setInt("count",MyPreferences.getInt("count")+1)
 
+                tvCartPrice.text = (product.price*MyPreferences.getInt("count")).toString()
                 viewModel.changeQuantity(product.id, "increase")
                 tvQuantity.text = MyPreferences.getInt("count").toString()
 
@@ -114,43 +119,48 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
 
             imgSubtract.setOnClickListener {
 
-                if (MyPreferences.getInt("count") <= 0) {
+                if (MyPreferences.getInt("count") <= 1) {
+                    Toast.makeText(
+                        activity,
+                        activity.getString(R.string.minimum_order),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     MyPreferences.setInt("count",1)
                     tvQuantity.text = MyPreferences.getInt("count").toString()
-                    return@setOnClickListener
+                    tvCartPrice.text = product.price.toString()
+
+                }else{
+                    MyPreferences.setInt("count",MyPreferences.getInt("count")-1)
+
+                    tvQuantity.text = MyPreferences.getInt("count").toString()
+                    tvCartPrice.text = (product.price*MyPreferences.getInt("count")).toString()
+
+
+                    viewModel.changeQuantity(product.id, "decrease")
                 }
-                MyPreferences.setInt("count",MyPreferences.getInt("count")-1)
 
-                tvQuantity.text = MyPreferences.getInt("count").toString()
-
-                viewModel.changeQuantity(product.id, "decrease")
             }
 
             if (product.is_favorite == 1) {
-                isFav = true
                 imgCartFav.setImageResource(R.drawable.ic_favo)
-                viewModel.addToFav(product.id)
 
             } else {
-                isFav = false
                 imgCartFav.setImageResource(R.drawable.ic_icon_love)
-                viewModel.deleteFromFav(product.id)
+
             }
 
 
             imgCartFav.setOnClickListener {
                 if (product.is_favorite == 1) {
-                    isFav = true
+                    imgCartFav.setImageResource(R.drawable.ic_icon_love)
+                    viewModel.deleteFromFav(product.id)
+
+                } else {
                     imgCartFav.setImageResource(R.drawable.ic_favo)
                     viewModel.addToFav(product.id)
 
-                } else {
-                    isFav = false
-                    imgCartFav.setImageResource(R.drawable.ic_icon_love)
-                    viewModel.deleteFromFav(product.id)
                 }
             }
-
 
 
         }
@@ -187,7 +197,7 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
         ).get(CartViewModel::class.java)
     }
 
-    private fun setupObserverAddToCart() {
+    private fun setupObserverChangeQuantity() {
 
         viewModel.getChangeQuantity().observe(activity as FragmentActivity,
             Observer {
@@ -195,7 +205,10 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                     Status.SUCCESS -> {
                         // progressBar.visibility = View.GONE
                         it.data?.let { users ->
-                            Toast.makeText(activity, users.message, Toast.LENGTH_LONG).show()
+                           // Toast.makeText(activity, users.message, Toast.LENGTH_SHORT).show()
+
+
+
                         }
                     }
                     Status.LOADING -> {
@@ -215,17 +228,18 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
     }
 
 
-    private fun setupObserverRemoveFromCart(position: Int) {
+    private fun setupObserverRemoveFromCart() {
 
         viewModel.getDeleteToCart().observe(activity as FragmentActivity,
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
+                        // viewModel.getCart()
                         // progressBar.visibility = View.GONE
                         it.data?.let { users ->
-                            Toast.makeText(activity, users.message, Toast.LENGTH_LONG).show()
-                            data.removeAt(position)
-                            notifyItemRemoved(position)
+                            Toast.makeText(activity, users.message, Toast.LENGTH_SHORT).show()
+
+
                         }
                     }
                     Status.LOADING -> {
@@ -246,13 +260,13 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
 
     private fun setupObserverAddToFav() {
 
-        viewModel.getAddToFAv().observe(activity as FragmentActivity,
+        viewModel.getAddToFav().observe(activity as FragmentActivity,
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
                         // progressBar.visibility = View.GONE
                         it.data?.let { users ->
-                            Toast.makeText(activity, users.message, Toast.LENGTH_LONG).show()
+                            Toast.makeText(activity, users.message, Toast.LENGTH_SHORT).show()
                         }
                     }
                     Status.LOADING -> {
@@ -278,9 +292,11 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                 when (it.status) {
                     Status.SUCCESS -> {
                         // progressBar.visibility = View.GONE
+
                         it.data?.let { users ->
-                            Toast.makeText(activity, users.message, Toast.LENGTH_LONG).show()
+                            Toast.makeText(activity, users.message, Toast.LENGTH_SHORT).show()
                         }
+
                     }
                     Status.LOADING -> {
                         //progressBar.visibility = View.VISIBLE

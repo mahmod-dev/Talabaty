@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.android.talabaty.MainActivity
 import com.android.talabaty.R
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.retrofit.ApiHelperImpl
@@ -14,7 +13,7 @@ import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomAlertDialog.getDialogInstance
 import com.android.talabaty.util.Helper
 import com.android.talabaty.viewModel.LoginViewModel
-import com.mahmoud.todoapp.util.dbUtil.Status
+import com.android.talabaty.dbUtil.Status
 import kotlinx.android.synthetic.main.activity_reset_password.*
 
 class ResetPasswordActivity : AppCompatActivity() {

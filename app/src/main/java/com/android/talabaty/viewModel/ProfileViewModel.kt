@@ -6,11 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.talabaty.model.EditProfile
-import com.android.talabaty.model.Login
-import com.android.talabaty.model.SignUp
 import com.android.talabaty.model.UserPost
 import com.android.talabaty.retrofit.ApiHelper
-import com.mahmoud.todoapp.util.dbUtil.Resource
+import com.android.talabaty.dbUtil.Resource
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(private val apiHelper: ApiHelper) : ViewModel() {

@@ -21,7 +21,7 @@ import com.android.talabaty.util.Helper
 import com.android.talabaty.viewModel.StoresViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.mahmoud.todoapp.util.dbUtil.Status
+import com.android.talabaty.dbUtil.Status
 
 class MainFragment : Fragment() {
     val TAG = "MainFragment"

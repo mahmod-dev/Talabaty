@@ -35,7 +35,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
@@ -43,30 +43,30 @@
             android:src="@drawable/ic_icon_arrow_left"
             app:tint="@color/colorPrimary" />
 
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:layout_marginVertical="@dimen/_2sdp"-->
-<!--            android:layout_marginStart="@dimen/_10sdp"-->
-<!--            android:layout_marginEnd="@dimen/_10sdp"-->
-<!--            android:layout_marginBottom="@dimen/_5sdp"-->
-<!--            android:clickable="true"-->
-<!--            android:elevation="@dimen/_2sdp"-->
-<!--            android:focusable="true"-->
-<!--            android:foreground="?attr/selectableItemBackgroundBorderless"-->
-<!--            app:cardCornerRadius="90dp"-->
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_centerVertical="true"-->
+        <!--            android:layout_marginVertical="@dimen/_2sdp"-->
+        <!--            android:layout_marginStart="@dimen/_10sdp"-->
+        <!--            android:layout_marginEnd="@dimen/_10sdp"-->
+        <!--            android:layout_marginBottom="@dimen/_5sdp"-->
+        <!--            android:clickable="true"-->
+        <!--            android:elevation="@dimen/_2sdp"-->
+        <!--            android:focusable="true"-->
+        <!--            android:foreground="?attr/selectableItemBackgroundBorderless"-->
+        <!--            app:cardCornerRadius="90dp"-->
 
-<!--            app:contentPadding="@dimen/_8sdp">-->
+        <!--            app:contentPadding="@dimen/_8sdp">-->
 
-<!--            <ImageView-->
-<!--                android:id="@+id/imgFav"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:elevation="@dimen/_2sdp"-->
-<!--                android:src="@drawable/ic_favorite"-->
-<!--                app:tint="@color/colorRed3" />-->
-<!--        </androidx.cardview.widget.CardView>-->
+        <!--            <ImageView-->
+        <!--                android:id="@+id/imgFav"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:elevation="@dimen/_2sdp"-->
+        <!--                android:src="@drawable/ic_favorite"-->
+        <!--                app:tint="@color/colorRed3" />-->
+        <!--        </androidx.cardview.widget.CardView>-->
 
     </RelativeLayout>
 
@@ -100,18 +100,27 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_5sdp" />
 
+            <TextView
+                android:id="@+id/tvNotFound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/cairo_reqular"
+                android:layout_margin="@dimen/_20sdp"
+                android:visibility="gone"
+                android:text="@string/not_fount_product_in_cart"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCartDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_5sdp"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_cart" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@color/colorGrey" />
 
@@ -137,6 +146,13 @@
                 android:textColor="@color/colorGrey2"
                 android:textSize="@dimen/_11ssp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/colorGrey" />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -160,6 +176,14 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/_11ssp"
                 app:drawableStartCompat="@drawable/ic_icon_watch" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/colorGrey" />
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -237,7 +261,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:drawablePadding="@dimen/_5sdp"
                 android:fontFamily="@font/cairo_bold"
                 android:text="@string/payment_way"
@@ -320,7 +344,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:layout_marginHorizontal="@dimen/_30sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:background="@color/colorGrey" />
 
 
@@ -328,7 +352,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:orientation="horizontal">
 
                 <TextView

@@ -13,7 +13,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.android.talabaty.adapter.ViewPagerCategoriesAdapter
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.model.Categories
-import com.android.talabaty.model.Store
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.Helper
@@ -21,7 +20,7 @@ import com.android.talabaty.viewModel.CategoriesViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.tabs.TabLayoutMediator
-import com.mahmoud.todoapp.util.dbUtil.Status
+import com.android.talabaty.dbUtil.Status
 import kotlinx.android.synthetic.main.activity_store_details.*
 import kotlinx.android.synthetic.main.item_restaurant_under.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -46,6 +45,9 @@ class StoreDetailsActivity : AppCompatActivity() {
             finish()
         }
 
+        imgFav.setOnClickListener {
+            startActivity(Intent(this,FavoriteActivity::class.java))
+        }
         setupObserverCat()
 
 

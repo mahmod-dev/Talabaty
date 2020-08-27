@@ -11,7 +11,7 @@ import com.android.talabaty.fragment.mainTab.*
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.viewModel.StoresViewModel
-import com.mahmoud.todoapp.util.dbUtil.Status
+import com.android.talabaty.dbUtil.Status
 
 
 class MainPagerAdapter(var context: Activity, fm: FragmentManager?) :

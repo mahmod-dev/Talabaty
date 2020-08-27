@@ -1,4 +1,4 @@
-package com.mahmoud.todoapp.util.dbUtil
+package com.android.talabaty.dbUtil
 
 data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
 

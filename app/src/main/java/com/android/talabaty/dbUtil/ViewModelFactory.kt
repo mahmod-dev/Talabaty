@@ -37,6 +37,14 @@ class ViewModelFactory(private val apiHelper: ApiHelper, val application: Applic
         if (modelClass.isAssignableFrom(CartViewModel::class.java)) {
             return CartViewModel(apiHelper) as T
         }
+
+        if (modelClass.isAssignableFrom(AllMainViewModel::class.java)) {
+            return AllMainViewModel(apiHelper,application) as T
+        }
+
+        if (modelClass.isAssignableFrom(OrdersViewModel::class.java)) {
+            return OrdersViewModel(apiHelper,application) as T
+        }
         throw IllegalArgumentException("Unknown class name")
     }
 

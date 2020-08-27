@@ -169,4 +169,17 @@
     <string name="please_wait">Please wait</string>
     <string name="delete">delete</string>
     <string name="confirm">confirm</string>
+    <string name="not_fount_product_in_cart">لا توجد منتجات مضافة إلى السلة</string>
+    <string name="minimum_order">الحد الأدنى طلب واحد</string>
+    <string name="not_fount_free_delivery">لا يوجد خدمات توصيل مجانية</string>
+    <string name="unknown">غير معروف</string>
+    <string name="empty_fav">المفضلة فارغة!</string>
+    <string name="favorite">Favorite</string>
+    <string name="enable_gps">GPS Enable</string>
+    <string name="gps_details_msg">Your GPS seems to be disabled, do you want to enable it?</string>
+    <string name="enable">تفعيل</string>
+    <string name="cancel">إلغاء</string>
+    <string name="selecat_location">نريد تفعيل خدمة الموقع لكي نحدد عنوانك</string>
+    <string name="click_long_map">أنقر مطولا لتحديد أي نمكان على الخريطة</string>
+    <string name="choosen_location">الموقع المختار</string>
 </resources>

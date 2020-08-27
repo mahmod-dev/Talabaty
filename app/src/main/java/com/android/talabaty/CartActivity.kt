@@ -5,23 +5,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.talabaty.adapter.CartAdapter
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.model.Cart
-import com.android.talabaty.model.Product
-import com.android.talabaty.model.ProductEx
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.Helper
-import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.CartViewModel
-import com.mahmoud.todoapp.util.dbUtil.Status
+import com.android.talabaty.dbUtil.Status
 
 import kotlinx.android.synthetic.main.activity_cart.*
 
@@ -41,9 +36,9 @@ class CartActivity : AppCompatActivity() {
             startActivity(Intent(applicationContext, CreditCardActivity::class.java))
         }
 
-//        imgFav.setOnClickListener {
-//
-//        }
+        imgArrowBackCart.setOnClickListener {
+            finish()
+        }
 
 
 
@@ -79,16 +74,20 @@ class CartActivity : AppCompatActivity() {
                     Status.SUCCESS -> {
                          progressBar.visibility = View.GONE
                         it.data?.let { users ->
+                            if (users.cart.isEmpty()){
+                                tvNotFound.visibility  = View.VISIBLE
+                            }else
                             initRecycleView(users.cart)
-
                         }
                     }
                     Status.LOADING -> {
                         progressBar.visibility = View.VISIBLE
+                        tvNotFound.visibility = View.GONE
 
                     }
                     Status.ERROR -> {
-                         progressBar.visibility = View.GONE
+                        tvNotFound.visibility = View.GONE
+                        progressBar.visibility = View.GONE
                         Helper.showFilterDialog(this, it.message!!).show()
                         Log.e(TAG, "setupObserver: " + it.message)
 

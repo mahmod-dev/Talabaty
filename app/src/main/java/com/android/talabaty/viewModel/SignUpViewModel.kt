@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.talabaty.model.*
 import com.android.talabaty.retrofit.ApiHelper
-import com.mahmoud.todoapp.util.dbUtil.Resource
+import com.android.talabaty.dbUtil.Resource
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(private val apiHelper: ApiHelper) : ViewModel() {

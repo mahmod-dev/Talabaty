@@ -12,6 +12,7 @@
         android:layout_marginHorizontal="@dimen/_10sdp"
         android:layout_marginVertical="@dimen/_5sdp"
         android:elevation="@dimen/_7sdp"
+        app:cardElevation="@dimen/_5sdp"
         app:cardCornerRadius="@dimen/_15sdp">
 
         <LinearLayout
@@ -34,7 +35,7 @@
                     android:fontFamily="@font/cairo_bold"
                     android:text="عرض لمدة يوم واحد فقط"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_8ssp" />
+                    android:textSize="@dimen/_10ssp" />
 
 
                 <TextView

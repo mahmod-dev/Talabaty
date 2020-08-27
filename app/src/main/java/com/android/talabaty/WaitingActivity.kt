@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_waiting.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class WaitingActivity : AppCompatActivity() {
 
@@ -15,5 +16,9 @@ class WaitingActivity : AppCompatActivity() {
 
         btnTrackWaiting.setOnClickListener { startActivity(Intent(applicationContext, TrackingMapActivity::class.java)) }
         btnChatWaiting.setOnClickListener { startActivity(Intent(applicationContext, ChatActivity::class.java)) }
+
+        imgFav.setOnClickListener {
+            startActivity(Intent(this,FavoriteActivity::class.java))
+        }
     }
 }

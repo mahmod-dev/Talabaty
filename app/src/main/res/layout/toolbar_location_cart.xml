@@ -47,7 +47,7 @@
 
 
             <ImageView
-                android:id="@+id/imgHome"
+                android:id="@+id/imgCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/tvHomeLocation"
@@ -70,7 +70,7 @@
                 android:layout_marginEnd="-20dp"
                 android:visibility="gone"
                 android:layout_marginBottom="@dimen/_3sdp"
-                android:layout_toStartOf="@+id/imgHome"
+                android:layout_toStartOf="@+id/imgCart"
                 android:background="@drawable/ic_ind_selected_card"
                 android:backgroundTint="@color/cart_num"
                 android:fontFamily="@font/cairo_bold"

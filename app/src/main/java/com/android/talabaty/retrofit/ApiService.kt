@@ -62,10 +62,21 @@ interface ApiService {
     @GET("myCart")
     suspend fun getMyCart(): MyCart
 
+    @GET("myOrders")
+    suspend fun getMyOrders(): MyOrders
+
+    @GET("storesFreeDelivery")
+    suspend fun getStoresFreeDelivery(): StoresFreeDelivery
+
+
     /////////////////////////////////////////////
 
     @POST("signUp")
     suspend fun signUp(@Body user: SignUpPost): SignUp
+
+
+    @GET("getHomePageCategories")
+    suspend fun getHomePageCategories(): HomePageCategories
 
 
     @FormUrlEncoded
@@ -118,4 +129,8 @@ interface ApiService {
         @Field("product_id") productId: Int,
         @Field("type") type: String
     ): ChangeQuantity
+
+
+    @POST("createNewOrder")
+    suspend fun createNewOrder(@Body order: NewOrderPost): CreateNewOrder
 }

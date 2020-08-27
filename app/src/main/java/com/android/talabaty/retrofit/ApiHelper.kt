@@ -1,6 +1,7 @@
 package com.android.talabaty.retrofit
 
 import com.android.talabaty.model.*
+import retrofit2.http.Body
 
 
 interface ApiHelper {
@@ -66,4 +67,14 @@ interface ApiHelper {
     suspend fun changeQuantity(productId: Int, type: String): ChangeQuantity
 
     suspend fun requestNewCode(mobile: String): GeneralResponse
+
+
+    suspend fun getHomePageCategories(): HomePageCategories
+
+    suspend fun getMyOrders(): MyOrders
+
+    suspend fun getStoresFreeDelivery(): StoresFreeDelivery
+
+    suspend fun createNewOrder(@Body order: NewOrderPost): CreateNewOrder
+
 }

@@ -1,13 +1,11 @@
 package com.android.talabaty.viewModel
 
 import android.app.Application
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.*
 import com.android.talabaty.model.*
 import com.android.talabaty.retrofit.ApiHelper
-import com.mahmoud.todoapp.util.dbUtil.Resource
-import kotlinx.coroutines.async
+import com.android.talabaty.dbUtil.Resource
 import kotlinx.coroutines.launch
 
 class StoresViewModel(private val apiHelper: ApiHelper?, application: Application) :

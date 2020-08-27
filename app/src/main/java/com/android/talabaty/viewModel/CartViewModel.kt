@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.android.talabaty.model.*
 import com.android.talabaty.retrofit.ApiHelper
-import com.mahmoud.todoapp.util.dbUtil.Resource
+import com.android.talabaty.dbUtil.Resource
 import kotlinx.coroutines.launch
 
 class CartViewModel(private val apiHelper: ApiHelper?) : ViewModel() {
@@ -15,6 +15,7 @@ class CartViewModel(private val apiHelper: ApiHelper?) : ViewModel() {
     private val addToFav = MutableLiveData<Resource<ProductToFav>>()
     private val deleteFromFav = MutableLiveData<Resource<GeneralResponse>>()
     private val myCart = MutableLiveData<Resource<MyCart>>()
+    private val myFav = MutableLiveData<Resource<FavProducts>>()
 
     fun getCart() {
         viewModelScope.launch {
@@ -34,6 +35,28 @@ class CartViewModel(private val apiHelper: ApiHelper?) : ViewModel() {
             } catch (e: Exception) {
                 Log.e(TAG, "getCart: ${e.message}")
                 myCart.postValue(Resource.error("Something Went Wrong", null))
+            }
+        }
+    }
+
+    fun getFavorite() {
+        viewModelScope.launch {
+
+            myFav.postValue(Resource.loading(null))
+            try {
+                val usersFromApi = apiHelper?.getMyFavProducts()
+
+                if (usersFromApi!!.status && usersFromApi.code == 200)
+                    myFav.postValue(Resource.success(usersFromApi))
+                else {
+                    myFav.postValue(Resource.error(usersFromApi.message, null))
+
+                }
+
+
+            } catch (e: Exception) {
+                Log.e(TAG, "getFavorite: ${e.message}")
+                myFav.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }
@@ -163,11 +186,15 @@ class CartViewModel(private val apiHelper: ApiHelper?) : ViewModel() {
         return deleteFromFav
     }
 
-    fun getAddToFAv(): LiveData<Resource<ProductToFav>> {
+    fun getAddToFav(): LiveData<Resource<ProductToFav>> {
         return addToFav
     }
 
     fun getAllCart(): LiveData<Resource<MyCart>> {
         return myCart
+    }
+
+    fun getAllFavorite(): LiveData<Resource<FavProducts>> {
+        return myFav
     }
 }

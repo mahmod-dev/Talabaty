@@ -3,7 +3,6 @@ package com.android.talabaty.auth
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -16,8 +15,7 @@ import com.android.talabaty.util.CustomAlertDialog.getDialogInstance
 import com.android.talabaty.util.Helper
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.SignUpViewModel
-import com.mahmoud.todoapp.util.dbUtil.Status
-import kotlinx.android.synthetic.main.activity_sign_up.*
+import com.android.talabaty.dbUtil.Status
 import kotlinx.android.synthetic.main.activity_verification.*
 
 class VerificationActivity : AppCompatActivity() {

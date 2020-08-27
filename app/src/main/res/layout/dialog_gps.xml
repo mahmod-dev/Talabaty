@@ -10,41 +10,49 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_dialog_btn"
         android:gravity="center"
-        android:backgroundTint="@color/colorWhite"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_100sdp"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_20sdp"
-            android:src="@drawable/ic_warning" />
+            android:src="@drawable/ic_location" />
 
         <TextView
-            android:id="@+id/tvErrorMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/cairo_reqular"
             android:padding="@dimen/_5sdp"
-            android:text="وفرنا لك مينو خاص يسهل عليك الطلب ليش ما تجرب؟" />
+            android:textColor="@color/colorBlack"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/selecat_location" />
 
         <Button
-            android:id="@+id/btnConfirmDialogError"
+            android:id="@+id/btnEnable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
             android:background="@drawable/shape_dialog_btn"
-            android:fontFamily="@font/cairo_reqular"
-            android:text="@string/confirm"
+            android:text="@string/enable"
+            android:layout_marginTop="@dimen/_20sdp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
-            android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_14ssp" />
+            android:fontFamily="@font/cairo_reqular"
+            android:textColor="@color/colorWhite"/>
 
-
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack"
+            android:text="@string/cancel"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:fontFamily="@font/cairo_reqular"
+            android:textColor="@color/colorWhite"/>
     </LinearLayout>
 
 

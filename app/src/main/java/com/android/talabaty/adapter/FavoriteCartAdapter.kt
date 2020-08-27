@@ -19,10 +19,10 @@ import com.android.talabaty.util.Helper
 import com.android.talabaty.viewModel.CartViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.mahmoud.todoapp.util.dbUtil.Status
-import kotlinx.android.synthetic.main.item_cart.view.*
+import com.android.talabaty.dbUtil.Status
+import kotlinx.android.synthetic.main.item_cart_favorite.view.*
 
-class FavoriteCartAdapter(var activity: Activity, var data: ArrayList<ProductEx>) :
+class FavoriteCartAdapter(var activity: Activity, var data: ArrayList<Product>) :
     RecyclerView.Adapter<FavoriteCartAdapter.ViewHolder>() {
     val TAG = "FavoriteCartAdapter"
     var mListener: OnItemClickListener? = null
@@ -44,13 +44,13 @@ class FavoriteCartAdapter(var activity: Activity, var data: ArrayList<ProductEx>
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_cart, viewGroup, false)
+            .inflate(R.layout.item_cart_favorite, viewGroup, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        viewHolder.bind(data[i])
-        setupObserverAddToCart()
+        viewHolder.bind(data[i],i)
+        setupObserverDeleteFromCart()
     }
 
     override fun getItemCount(): Int {
@@ -62,14 +62,10 @@ class FavoriteCartAdapter(var activity: Activity, var data: ArrayList<ProductEx>
         var tvCartName: TextView = itemView.tvCartName
         var tvCartDetails: TextView = itemView.tvCartDetails
         var tvCartPrice: TextView = itemView.tvCartPrice
-        var tvQuantity: TextView = itemView.tvQuantity
         var imgFav: ImageView = itemView.imgCartFav
         var imgCart: ImageView = itemView.imgCart
-        var imgSubtract: ImageView = itemView.imgSubtract
-        var imgAdd: ImageView = itemView.imgAdd
-        var rlDelete: RelativeLayout = itemView.rlDelete
-        var count =0
-        fun bind(product: ProductEx) {
+
+        fun bind(product: Product,position: Int) {
             tvCartName.text = product.name
 
             tvCartDetails.text = product.description
@@ -90,21 +86,13 @@ class FavoriteCartAdapter(var activity: Activity, var data: ArrayList<ProductEx>
                     .into(imgCart)
             }
 
-            rlDelete.setOnClickListener {
-                viewModel.deleteFromCart(product.id)
-            }
-
-            imgAdd.setOnClickListener {
-                count++
-                viewModel.changeQuantity(product.id,"increase")
-            }
-
-            imgSubtract.setOnClickListener {
-                count--
-                viewModel.changeQuantity(product.id,"decrease")
-            }
-
             imgFav.setOnClickListener {
+                data.remove(data[position])
+                notifyItemRemoved(position)
+                notifyItemRangeRemoved(position, data.size)
+                notifyDataSetChanged()
+
+                    viewModel.deleteFromFav(product.id)
 
             }
 
@@ -142,7 +130,7 @@ class FavoriteCartAdapter(var activity: Activity, var data: ArrayList<ProductEx>
         ).get(CartViewModel::class.java)
     }
 
-    private fun setupObserverAddToCart() {
+    private fun setupObserverDeleteFromCart() {
 
         viewModel.getDeleteToCart().observe(activity as FragmentActivity,
             Observer {

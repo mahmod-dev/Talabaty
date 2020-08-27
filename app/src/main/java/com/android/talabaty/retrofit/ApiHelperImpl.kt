@@ -119,5 +119,19 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
         return apiService.requestNewCode(mobile)
     }
 
+    override suspend fun getHomePageCategories(): HomePageCategories {
+        return apiService.getHomePageCategories()
+    }
 
+    override suspend fun getMyOrders(): MyOrders {
+        return apiService.getMyOrders()
+    }
+
+    override suspend fun getStoresFreeDelivery(): StoresFreeDelivery {
+        return apiService.getStoresFreeDelivery()
+    }
+
+    override suspend fun createNewOrder(order: NewOrderPost): CreateNewOrder {
+        return apiService.createNewOrder(order)
+    }
 }

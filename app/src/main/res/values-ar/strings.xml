@@ -35,7 +35,7 @@
     <string name="digital_services">خدمات رقمية</string>
     <string name="order_car">Order a car</string>
     <string name="order_service">Order a service</string>
-    <string name="free_delivery">Free Delivery</string>
+    <string name="free_delivery">توصيل مجاني</string>
     <string name="latest_offers">آخر العروض والخصومات</string>
     <string name="productive_families">الأسر المنتجة</string>
     <string name="places_near_you">Places Near You</string>
@@ -130,4 +130,17 @@
     <string name="please_wait">الرجاء الانتظار</string>
     <string name="delete">حذف</string>
     <string name="confirm">تأكيد</string>
+    <string name="not_fount_product_in_cart">لا توجد منتجات مضافة إلى السلة</string>
+    <string name="minimum_order">الحد الأدنى طلب واحد</string>
+    <string name="not_fount_free_delivery">لا يوجد خدمات توصيل مجانية</string>
+    <string name="unknown">غير معروف</string>
+    <string name="empty_fav">المفضلة فارغة!</string>
+    <string name="favorite">المفضلة</string>
+    <string name="enable_gps">GPS Enable</string>
+    <string name="gps_details_msg">Your GPS seems to be disabled, do you want to enable it?</string>
+    <string name="enable">تفعيل</string>
+    <string name="cancel">إلغاء</string>
+    <string name="selecat_location">نريد تفعيل خدمة الموقع لكي نحدد عنوانك</string>
+    <string name="click_long_map">أنقر مطولا لتحديد أي مكان على الخريطة</string>
+    <string name="choosen_location">الموقع المختار</string>
 </resources>

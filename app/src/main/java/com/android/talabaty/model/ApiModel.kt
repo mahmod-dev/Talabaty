@@ -1,13 +1,6 @@
 package com.android.talabaty.model
 
 
-data class Settings(
-    val code: Int,
-    val items: Items,
-    val message: String,
-    val status: Boolean
-
-)
 
 
 data class Users(
@@ -138,6 +131,58 @@ data class CheckCode(
     val user: User
 )
 
+data class StoresFreeDelivery(
+    val code: Int,
+    val message: String,
+    val status: Boolean,
+    val storesFreeDelivery: List<FreeDelivery>
+)
+
+data class FreeDelivery(
+    val activity: Activity,
+    val activity_id: Int,
+    val address: String,
+    val available: Int,
+    val bio: String,
+    val car_license: String,
+    val cars_count: Int,
+    val city: City,
+    val city_id: Int,
+    val country: Country,
+    val country_id: Int,
+    val created_at: String,
+    val delivery_cost: Int,
+    val discount_percent: Int,
+    val email: String,
+    val id: Int,
+    val image_profile: String,
+    val images: List<Image>,
+    val latitude: String,
+    val longitude: String,
+    val mobile: String,
+    val name: String,
+    val `open`: Int,
+    val owner_id_card: String,
+    val provider_id_card: String,
+    val provider_license: String,
+    val rate: Int,
+    val remember_token: Any,
+    val reviews: List<Any>,
+    val status: String,
+    val time_from: String,
+    val time_to: String,
+    val type: Int,
+    val user_categories: List<UserCategory>
+)
+
+data class Activity(
+    val created_at: String,
+    val id: Int,
+    val image: String,
+    val name: String,
+    val status: String
+)
+
 
 data class SignUp(
     val code: Int,
@@ -190,8 +235,40 @@ data class City(
     val status: String
 )
 
+data class CreateNewOrder(
+    val code: Int,
+    val message: String,
+    val order: Order,
+    val status: Boolean
+)
+
+data class NewOrderPost(
+    val category_id: Int,
+    val details: String,
+    val ordered_date: String,
+    val from_latitude: Long,
+    val from_longitude: Long,
+    val to_latitude: Long,
+    val to_longitude: Long,
+    val orders_delivery_cost: Double
+)
+
+data class Order(
+    val category_id: String,
+    val cost: String,
+    val created_at: String,
+    val details: String,
+    val from_latitude: String,
+    val from_longitude: String,
+    val id: Int,
+    val ordered_date: String,
+    val to_latitude: String,
+    val to_longitude: String,
+    val user_id: Int
+)
+
 data class FavProducts(
-    val ads: List<Ad>,
+    val products: ArrayList<Product>,
     val code: Int,
     val message: String,
     val status: Boolean
@@ -299,6 +376,52 @@ data class Product(
     val store_id: Int
 )
 
+data class MyOrders(
+    val code: Int,
+    val message: String,
+    val myOrders: List<MyOrder>,
+    val status: Boolean
+)
+
+data class MyOrder(
+    val car: Any,
+    val car_id: Int,
+    val category: Category,
+    val category_id: Int,
+    val cost: Int,
+    val created_at: String,
+    val details: String,
+    val from_latitude: String,
+    val from_longitude: String,
+    val id: Int,
+    val offers: List<Offer>,
+    val ordered_date: String,
+    val provider: Any,
+    val status: Int,
+    val to_latitude: String,
+    val to_longitude: String,
+    val user: User,
+    val user_id: Int
+)
+
+data class HomePageCategories(
+    val code: Int,
+    val home_page_categories: List<HomePageCategory>,
+    val message: String,
+    val status: Boolean,
+    val settings: Settings
+
+)
+
+data class HomePageCategory(
+    val created_at: Any,
+    val id: Int,
+    val image: String,
+    val name: String,
+    val status: String,
+    val type: String
+)
+
 data class MyCart(
     val cart: ArrayList<Cart>,
     val code: Int,
@@ -387,7 +510,7 @@ data class UserCategory(
 )
 
 
-data class Items(
+data class Settings(
     val aboutUs: AboutUs,
     val myActivities: List<MyActivity>,
     val address: String,
@@ -412,7 +535,9 @@ data class Items(
     val terms: Terms,
     val title: String,
     val twitter: String,
-    val url: String
+    val url: String,
+    val request_car_cost: Double,
+    val orders_delivery_cost: Double
 )
 
 data class AboutUs(

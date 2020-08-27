@@ -18,8 +18,7 @@ import com.android.talabaty.model.*
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.viewModel.CategoriesViewModel
-import com.android.talabaty.viewModel.StoresViewModel
-import com.mahmoud.todoapp.util.dbUtil.Status
+import com.android.talabaty.dbUtil.Status
 import kotlinx.android.synthetic.main.item_stores.view.*
 
 

@@ -1,12 +1,14 @@
 package com.android.talabaty.util
 
 import android.content.Context
+import android.text.format.DateFormat
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.android.talabaty.R
+import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -56,6 +58,9 @@ object Helper {
         return flag
     }
 
+    fun getFormatDateTime(format: String = "yyyy-MM-dd hh:mm:ss a") =
+        DateFormat.format(format, Date()).toString()
+
 
 
     fun showFilterDialog(context: Context,message:String):MaterialDialog{
@@ -73,6 +78,9 @@ object Helper {
 
        return dialog
     }
+
+
+
 
 
 }

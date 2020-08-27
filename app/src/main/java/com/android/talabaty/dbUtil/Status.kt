@@ -1,4 +1,4 @@
-package com.mahmoud.todoapp.util.dbUtil
+package com.android.talabaty.dbUtil
 
 enum class Status {
     SUCCESS,

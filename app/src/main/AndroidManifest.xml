@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.android.talabaty">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature
@@ -31,6 +33,9 @@
         <activity android:name=".auth.ResetPasswordActivity"></activity>
         <activity android:name=".auth.SignUpActivity"></activity>
         <activity android:name=".StoreDetailsActivity"></activity>
+        <activity android:name=".MapActivity">
+
+        </activity>
         <activity android:name=".PaymentMethodActivity"></activity>
         <activity android:name=".HelpDetailsActivity" />
         <activity android:name=".CarServiceActivity" />
@@ -68,6 +73,11 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
 
 </manifest>

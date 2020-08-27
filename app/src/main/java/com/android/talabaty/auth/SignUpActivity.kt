@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.android.talabaty.R
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.model.SignUpPost
-import com.android.talabaty.model.UserPost
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomAlertDialog.getDialogInstance
@@ -18,7 +17,7 @@ import com.android.talabaty.util.Helper
 import com.android.talabaty.util.Helper.emailValid
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.SignUpViewModel
-import com.mahmoud.todoapp.util.dbUtil.Status
+import com.android.talabaty.dbUtil.Status
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : AppCompatActivity() {
