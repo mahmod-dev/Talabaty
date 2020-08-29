@@ -6,7 +6,7 @@ import retrofit2.http.Body
 
 interface ApiHelper {
 
-    suspend fun getSettings(): Settings
+    suspend fun getSettings(): MainSettings
 
     suspend fun getCountries(): Countries
 
@@ -75,6 +75,11 @@ interface ApiHelper {
 
     suspend fun getStoresFreeDelivery(): StoresFreeDelivery
 
-    suspend fun createNewOrder(@Body order: NewOrderPost): CreateNewOrder
+    suspend fun createNewOrder(order: NewOrderPost): CreateNewOrder
+
+    suspend fun getCars(): GetCars
+
+    suspend fun requestCar(car: RequestCarPost): RequestCar
+
 
 }

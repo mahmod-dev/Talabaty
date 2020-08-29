@@ -75,7 +75,27 @@ class DeliveryServicesActivity : AppCompatActivity() {
         }
 
         btnConfirm.setOnClickListener {
+
           val details =  etDetails.text.toString()
+            if (latSrc==0L || lngSrc==0L){
+                tvPlaceOrderSrc.error = getString(R.string.enter_place)
+                return@setOnClickListener
+            }
+
+            if (latDist==0L ||lngDist==0L ){
+                tvPlaceOrderDist.error = getString(R.string.enter_place)
+                return@setOnClickListener
+            }
+
+            if (details.isEmpty()){
+                etDetails.error = getString(R.string.empty)
+                return@setOnClickListener
+            }
+
+
+
+
+
 
             viewModel.createNewOrder(NewOrderPost(categoryId!!,details,Helper.getFormatDateTime(),latSrc,lngSrc,latDist,lngDist,deliveryCost!!))
         }

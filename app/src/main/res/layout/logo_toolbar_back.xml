@@ -7,46 +7,46 @@
     android:clipToPadding="false"
     android:elevation="@dimen/_7sdp">
 
+
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:elevation="@dimen/_7sdp"
         android:background="@android:color/transparent"
+        android:elevation="@dimen/_7sdp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="match_parent">
 
-            android:gravity="center_vertical">
 
-            <TextView
-                android:id="@+id/tvTitleToolbar"
+            <ImageView
+
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:fontFamily="@font/cairo_bold"
                 android:gravity="center"
-                android:text="@string/free_delivery"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/_12ssp" />
+                android:src="@drawable/logo_toolbar" />
 
             <ImageView
                 android:id="@+id/imgArrowBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_4sdp"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:padding="@dimen/_10sdp"
+
                 android:src="@drawable/ic_icon_arrow_left"
                 app:tint="@color/colorPrimary" />
-
         </RelativeLayout>
+
     </androidx.appcompat.widget.Toolbar>
+
+
 </RelativeLayout>

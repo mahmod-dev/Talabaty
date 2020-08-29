@@ -39,6 +39,7 @@
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgProfile"
                     android:layout_width="@dimen/_60sdp"
                     android:layout_height="@dimen/_60sdp"
                     android:padding="@dimen/_10sdp"
@@ -54,6 +55,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvProfileName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cairo_reqular"
@@ -63,6 +65,8 @@
                         android:textSize="@dimen/_10ssp" />
 
                     <TextView
+                        android:id="@+id/tvProfileMobile"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cairo_reqular"
@@ -78,12 +82,12 @@
                     android:layout_gravity="top"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_weight="1.5"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
                     android:background="@drawable/shape_text_vie"
+                    android:clickable="true"
                     android:drawablePadding="@dimen/_6sdp"
+                    android:focusable="true"
                     android:fontFamily="@font/cairo_reqular"
+                    android:foreground="?attr/selectableItemBackground"
 
                     android:gravity="center"
                     android:text="تعديل الحساب"
@@ -561,8 +565,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_margin="@dimen/_10sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
-                 >
+                    app:cardCornerRadius="@dimen/_5sdp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -627,98 +630,97 @@
             </RelativeLayout>
 
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/shape_light_green"
-    android:foreground="?attr/selectableItemBackground"
-    android:backgroundTint="@color/gray_light"
-    android:layout_marginHorizontal="@dimen/_10sdp"
-    android:clickable="true"
-    android:focusable="true"
-    android:paddingVertical="@dimen/_5sdp"
-    android:layout_marginTop="@dimen/_20sdp"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/shape_light_green"
+                android:backgroundTint="@color/gray_light"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:paddingVertical="@dimen/_5sdp"
 
-    >
+                >
 
-    <TextView
-        android:id="@+id/tv_settingsProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|start"
-        android:layout_marginHorizontal="@dimen/_10sdp"
-        android:drawablePadding="@dimen/_10sdp"
-        android:layout_toEndOf="@+id/icon"
-        android:fontFamily="@font/cairo_reqular"
-        android:layout_centerInParent="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:text="الإعدادات"
-        android:textColor="@color/colorBlack"
-        android:textSize="@dimen/_13ssp" />
+                <TextView
+                    android:id="@+id/tv_settingsProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_horizontal|start"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_toEndOf="@+id/icon"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:text="الإعدادات"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_13ssp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="@dimen/_5sdp"
-        android:src="@drawable/ic_icon_arrow_left"
-        app:tint="@color/colorPrimary" />
-
-
-  <RelativeLayout
-      android:id="@+id/icon"
-      android:layout_width="@dimen/_30sdp"
-      android:layout_height="@dimen/_30sdp"
-      android:background="@drawable/shape_waiting_box"
-      android:layout_centerVertical="true"
-      android:layout_alignParentStart="true">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:src="@drawable/ic_icon_arrow_left"
+                    app:tint="@color/colorPrimary" />
 
 
+                <RelativeLayout
+                    android:id="@+id/icon"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/shape_waiting_box">
 
-      <ImageView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:src="@drawable/ic_icon_settings"
-          android:layout_centerInParent="true"
-          app:tint="@color/colorWhite" />
 
-  </RelativeLayout>
-</RelativeLayout>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_icon_settings"
+                        app:tint="@color/colorWhite" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/rlLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:background="@drawable/shape_text_vie"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:layout_marginHorizontal="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                >
+                android:foreground="?attr/selectableItemBackground">
 
 
-                    <Button
-                        style="?android:attr/borderlessButtonStyle"
-                        android:id="@+id/btnProfileLogout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/cairo_bold"
-                        android:text="تسجيل الخروج"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:layout_centerInParent="true"
-                        android:layout_marginHorizontal="@dimen/_5sdp"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:background="@color/colorWhite"
-                        android:textColor="@color/colorPrimary" />
+                <Button
+                    android:id="@+id/btnProfileLogout"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@color/colorWhite"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/cairo_bold"
+                    android:text="تسجيل الخروج"
+                    android:textColor="@color/colorPrimary" />
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toStartOf="@+id/btnProfileLogout"
-                    android:src="@drawable/ic_logout"/>
+                    android:src="@drawable/ic_logout" />
 
 
             </RelativeLayout>
@@ -736,12 +738,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
                     android:layout_gravity="bottom|center"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:drawablePadding="@dimen/_10sdp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignParentBottom="true"
                     android:layout_marginBottom="@dimen/_20sdp"
+                    android:drawablePadding="@dimen/_10sdp"
                     android:fontFamily="@font/cairo_bold"
                     android:text="انضم إلى تطبيقكم"
                     android:textColor="@color/colorPrimary"

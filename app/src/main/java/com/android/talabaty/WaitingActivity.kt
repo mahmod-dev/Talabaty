@@ -17,8 +17,23 @@ class WaitingActivity : AppCompatActivity() {
         btnTrackWaiting.setOnClickListener { startActivity(Intent(applicationContext, TrackingMapActivity::class.java)) }
         btnChatWaiting.setOnClickListener { startActivity(Intent(applicationContext, ChatActivity::class.java)) }
 
+        handleToolbar()
+    }
+
+    private fun handleToolbar(){
+        imgArrowBack.setOnClickListener {
+            finish()
+
+        }
+
+        imgCart.setOnClickListener {
+            startActivity(Intent(this,CartActivity::class.java))
+
+        }
+
         imgFav.setOnClickListener {
             startActivity(Intent(this,FavoriteActivity::class.java))
+
         }
     }
 }

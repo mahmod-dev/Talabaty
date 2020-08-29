@@ -17,7 +17,7 @@ class ProfileViewModel(private val apiHelper: ApiHelper) : ViewModel() {
     private val editProfile = MutableLiveData<Resource<EditProfile>>()
 
 
-    private fun profile() {
+     fun profile() {
         viewModelScope.launch {
             profile.postValue(Resource.loading(null))
             try {
@@ -36,7 +36,7 @@ class ProfileViewModel(private val apiHelper: ApiHelper) : ViewModel() {
         }
     }
 
-    private fun editProfile(profile: UserPost) {
+     fun editProfile(profile: UserPost) {
         viewModelScope.launch {
             editProfile.postValue(Resource.loading(null))
             try {

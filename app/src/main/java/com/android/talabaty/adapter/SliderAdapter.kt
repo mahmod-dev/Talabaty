@@ -20,7 +20,7 @@ class SliderAdapter(var activity: Activity, var counts: Int) : PagerAdapter() {
             .inflate(R.layout.item_home_page, container, false)
         container.addView(view)
         val img: ImageView
-        img = view.findViewById(R.id.img)
+        img = view.findViewById(R.id.imgArrowFish)
         if (count == 3) {
             img.setImageResource(R.drawable.img_aklak)
         } else {

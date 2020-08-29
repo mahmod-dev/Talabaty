@@ -143,4 +143,7 @@
     <string name="selecat_location">نريد تفعيل خدمة الموقع لكي نحدد عنوانك</string>
     <string name="click_long_map">أنقر مطولا لتحديد أي مكان على الخريطة</string>
     <string name="choosen_location">الموقع المختار</string>
+    <string name="enter_place">أدخل الموقع!</string>
+    <string name="select_type">اختر النوع</string>
+    <string name="select_car_type">اختر نوع السيارة!</string>
 </resources>

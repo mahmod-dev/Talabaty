@@ -1,5 +1,6 @@
 package com.android.talabaty
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import com.android.talabaty.fragment.*
 import com.android.talabaty.util.MyPreferences
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_base.*
+import kotlinx.android.synthetic.main.toolbar_location_cart.*
 
 
 open class BaseActivity : AppCompatActivity() {
@@ -20,6 +22,10 @@ open class BaseActivity : AppCompatActivity() {
             R.id.fragmentContainer,
             MainFragment()
         ).commit()
+
+        imgCart.setOnClickListener {
+            startActivity(Intent(this,CartActivity::class.java))
+        }
     }
 
     private fun handleBottomNav() {

@@ -7,39 +7,54 @@
     tools:context=".SplashActivity"
     android:background="@drawable/splash_backgeound">
 
-    <LinearLayout
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
-        <ImageView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_splash_icon">
-        </ImageView>
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_horizontal"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_splash_icon">
+            </ImageView>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo_bold"
+                android:textColor="@color/colorWhite"
+                android:textSize="25sp"
+                android:text="@string/tatbeqakum_ar">
+            </TextView>
+
+            <TextView
+
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo_bold"
+                android:textColor="@color/colorWhite"
+                android:textSize="25sp"
+                android:text="@string/tatbeqakum_en">
+            </TextView>
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/cairo_bold"
-            android:textColor="@color/colorWhite"
-            android:textSize="25sp"
-            android:text="@string/tatbeqakum_ar">
-        </TextView>
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_50sdp"/>
 
-        <TextView
-
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/cairo_bold"
-            android:textColor="@color/colorWhite"
-            android:textSize="25sp"
-            android:text="@string/tatbeqakum_en">
-        </TextView>
-    </LinearLayout>
+    </RelativeLayout>
 
 </FrameLayout>

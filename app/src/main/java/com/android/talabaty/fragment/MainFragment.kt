@@ -1,5 +1,6 @@
 package com.android.talabaty.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,24 +10,26 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager.widget.ViewPager
+import com.android.talabaty.CartActivity
 import com.android.talabaty.R
-import com.android.talabaty.adapter.ViewPagerStoresAdapter
+import com.android.talabaty.adapter.MainPagerAdapter
+import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
-import com.android.talabaty.model.Activities
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomAlertDialog.getDialogInstance
 import com.android.talabaty.util.Helper
 import com.android.talabaty.viewModel.StoresViewModel
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
-import com.android.talabaty.dbUtil.Status
+import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
+import kotlinx.android.synthetic.main.toolbar_location_cart.*
 
 class MainFragment : Fragment() {
     val TAG = "MainFragment"
     private lateinit var viewModel: StoresViewModel
-    var viewpager: ViewPager2? = null
+
+    var viewpager: ViewPager? = null
     var tabs: TabLayout? = null
     var catId = 1
     override fun onCreateView(
@@ -34,19 +37,30 @@ class MainFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_main, container, false)
         initViewModel()
-        viewpager = root.findViewById<View>(R.id.viewPagerMain) as ViewPager2
+        viewModel.stores()
+        viewpager = root.findViewById<View>(R.id.viewPagerMain) as ViewPager
         tabs = root.findViewById<View>(R.id.tabs) as TabLayout
 
-        viewpager?.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                Log.e(TAG, "onPageSelected: $position ")
-                catId = position
-                Log.e(TAG, "catId: $catId ")
 
-                viewModel.storesById(catId)
+        viewpager?.addOnPageChangeListener(TabLayoutOnPageChangeListener(tabs))
+
+        tabs?.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                if (tab?.position!!>0){
+                    viewModel.storesById( tab?.position!!)
+
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
             }
         })
+        tabs?.setupWithViewPager(viewpager)
+
+
         setupObserver()
 
         return root
@@ -54,36 +68,14 @@ class MainFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-      //  viewpager?.currentItem = 0
-    }
-
-
-    private fun viewPager2Init(activities: Activities) {
-          if (viewpager?.adapter ==null) {
-              viewpager?.adapter = ViewPagerStoresAdapter(activity!!, activities.activities)
-
-        val  names =   ArrayList<String>()
-        names.add(0, getString(R.string.all))
-        for (i in activities.activities.indices) {
-            names.add(i+1,activities.activities[i].name)
-        }
-        names.add(activities.activities.size-1,activities.activities[activities.activities.size-1].name)
-
-
-        TabLayoutMediator(tabs!!, viewpager!!,
-            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-
-                tab.text = names[position]
-
-            }).attach()
-          }
+//          viewpager?.currentItem = 0
     }
 
 
     private fun initViewModel() {
 
         viewModel = ViewModelProviders.of(
-            activity as FragmentActivity,
+            activity!! ,
             ViewModelFactory(ApiHelperImpl(RetrofitBuilder.apiService), activity!!.application)
         ).get(StoresViewModel::class.java)
     }
@@ -92,7 +84,8 @@ class MainFragment : Fragment() {
     private fun setupObserver() {
         val dialog = activity?.getDialogInstance()
 
-        viewModel.getAllStores().observe(activity as FragmentActivity,
+        viewModel.getAllStores().observe(
+            viewLifecycleOwner,
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
@@ -101,7 +94,14 @@ class MainFragment : Fragment() {
                             for (i in users.activities.indices) {
                                 Log.e(TAG, "setupObserver: ${users.activities[i].name}")
                             }
-                            viewPager2Init(users)
+                            viewpager?.adapter = MainPagerAdapter(
+                                activity,
+                                users.activities.size,
+                                users.activities,
+                                activity?.supportFragmentManager
+                            )
+
+                            // viewPager2Init(users)
                         }
                     }
                     Status.LOADING -> {
@@ -111,7 +111,7 @@ class MainFragment : Fragment() {
                     Status.ERROR -> {
                         //Handle Error
                         dialog?.dismiss()
-                        Helper.showFilterDialog(context!!, it.message!!).show ()
+                        Helper.showFilterDialog(context!!, it.message!!).show()
                         Log.e(TAG, "setupObserver: " + it.message)
                     }
                 }

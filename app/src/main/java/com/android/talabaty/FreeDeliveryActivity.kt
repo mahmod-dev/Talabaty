@@ -20,7 +20,6 @@ import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.Helper
 import com.android.talabaty.viewModel.CartViewModel
 import com.android.talabaty.viewModel.OrdersViewModel
-import kotlinx.android.synthetic.main.activity_cart.*
 import kotlinx.android.synthetic.main.activity_free_delivery.*
 import kotlinx.android.synthetic.main.title_toolbar.*
 
@@ -86,9 +85,9 @@ class FreeDeliveryActivity : AppCompatActivity() {
 
         val adapter = FreeDeliveryAdapter(this, data)
         val linearLayoutManager = LinearLayoutManager(this)
-        rvCartDetails.layoutManager = linearLayoutManager
-        rvCartDetails.adapter = adapter
-        rvCartDetails.setHasFixedSize(true)
+        rvFreeDelivery.layoutManager = linearLayoutManager
+        rvFreeDelivery.adapter = adapter
+        rvFreeDelivery.setHasFixedSize(true)
 
 
     }

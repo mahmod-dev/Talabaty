@@ -65,8 +65,25 @@ class StoreDetailsActivity : AppCompatActivity() {
         })
 
 
+
+        handleToolbar()
+    }
+
+    private fun handleToolbar(){
+        imgArrowBack.setOnClickListener {
+            finish()
+
+        }
+
         imgCart.setOnClickListener {
             startActivity(Intent(this,CartActivity::class.java))
+
+        }
+
+
+        imgFav.setOnClickListener {
+            startActivity(Intent(this,FavoriteActivity::class.java))
+
         }
     }
 
@@ -110,7 +127,7 @@ class StoreDetailsActivity : AppCompatActivity() {
 
 
     private fun viewPager2Init(categories: Categories) {
-        viewPagerStoreDetails?.adapter = ViewPagerCategoriesAdapter(this, categories.categories)
+        viewPagerStoreDetails?.adapter = ViewPagerCategoriesAdapter(this, categories.categories,swipeRefresh)
 
         TabLayoutMediator(tabsStoreDetails!!, viewPagerStoreDetails!!,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->

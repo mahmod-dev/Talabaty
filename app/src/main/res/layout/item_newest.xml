@@ -34,7 +34,7 @@
               >
 
                 <ImageView
-                    android:id="@+id/imgCat"
+                    android:id="@+id/imgFish"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -49,7 +49,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvTitleCat"
+                    android:id="@+id/tvTitleFish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_8sdp"
@@ -57,7 +57,7 @@
                     android:text="خضروات طبيعية بكل الأصناف"
                     android:gravity="center"
                     android:textDirection="locale"
-                    android:layout_toStartOf="@+id/img"
+                    android:layout_toStartOf="@+id/imgArrowFish"
                     android:layout_centerHorizontal="true"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_11ssp" />
@@ -65,7 +65,7 @@
 
 
                 <ImageView
-                    android:id="@+id/img"
+                    android:id="@+id/imgArrowFish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_10sdp"

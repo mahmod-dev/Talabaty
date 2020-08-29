@@ -19,6 +19,7 @@ import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.SignUpViewModel
 import com.android.talabaty.dbUtil.Status
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.logo_toolbar_back.*
 
 class SignUpActivity : AppCompatActivity() {
     val TAG ="SignUpActivity"
@@ -46,6 +47,9 @@ class SignUpActivity : AppCompatActivity() {
         }
         setupObserver()
 
+        imgArrowBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun initViewModel() {
@@ -79,7 +83,7 @@ class SignUpActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         dialog.dismiss()
-                        Helper.showFilterDialog(this!!, it.message!!)
+                        Helper.showFilterDialog(this!!, it.message!!).show()
 
                         //Handle Error
                         Log.e(TAG, "setupObserver: " + it.message)

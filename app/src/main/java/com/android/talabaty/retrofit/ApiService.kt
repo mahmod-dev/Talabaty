@@ -6,7 +6,7 @@ import retrofit2.http.*
 interface ApiService {
 
     @GET("settings")
-    suspend fun getSettings(): Settings
+    suspend fun getSettings(): MainSettings
 
     @GET("getCountries")
     suspend fun getCountries(): Countries
@@ -78,6 +78,8 @@ interface ApiService {
     @GET("getHomePageCategories")
     suspend fun getHomePageCategories(): HomePageCategories
 
+    @GET("getCars")
+    suspend fun getCars(): GetCars
 
     @FormUrlEncoded
     @POST("checkCode")
@@ -133,4 +135,7 @@ interface ApiService {
 
     @POST("createNewOrder")
     suspend fun createNewOrder(@Body order: NewOrderPost): CreateNewOrder
+
+    @POST("requestCar")
+    suspend fun requestCar(@Body car: RequestCarPost): RequestCar
 }

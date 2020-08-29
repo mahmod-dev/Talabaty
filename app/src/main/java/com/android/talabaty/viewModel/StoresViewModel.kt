@@ -14,11 +14,7 @@ class StoresViewModel(private val apiHelper: ApiHelper?, application: Applicatio
     private val stores = MutableLiveData<Resource<Activities>>()
     private val viewStores = MutableLiveData<Resource<ViewStores>>()
 
-    init {
-        stores()
-    }
-
-    private fun stores() {
+     fun stores() {
         viewModelScope.launch {
 
             stores.postValue(Resource.loading(null))

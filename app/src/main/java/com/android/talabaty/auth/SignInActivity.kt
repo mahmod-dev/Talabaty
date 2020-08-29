@@ -46,6 +46,17 @@ class SignInActivity : AppCompatActivity() {
         getKey()
         forget = findViewById(R.id.tvForgetPassword)
 
+        if (MyPreferences.getInt("isLogin")==1){
+            startActivity(
+                Intent(
+                    applicationContext,
+                    MainActivity::class.java
+                )
+            )
+            finish()
+
+        }
+
         forget?.setOnClickListener {
             startActivity(
                 Intent(
@@ -58,7 +69,8 @@ class SignInActivity : AppCompatActivity() {
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
 
-            handleLogin(email, password)
+
+                handleLogin(email, password)
             viewModel.login( LoginPost(email = email,password = password,fcm_token = "sssasas"))
 
         }
@@ -77,6 +89,7 @@ class SignInActivity : AppCompatActivity() {
                 )
             )
         }
+
 
         setupObserver()
     }
@@ -181,8 +194,11 @@ class SignInActivity : AppCompatActivity() {
                         dialog.dismiss()
 
                         it.data?.let { users ->
-
+                            if ( rb.isChecked ){
+                                MyPreferences.setInt("isLogin",1)
+                            }
                             startActivity(Intent(applicationContext, MainActivity::class.java))
+                            finish()
 
                         }
                     }
@@ -192,7 +208,7 @@ class SignInActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         dialog.dismiss()
-                        Helper.showFilterDialog(this!!, it.message!!)
+                        Helper.showFilterDialog(this!!, it.message!!).show()
 
                         //Handle Error
                         Log.e(TAG, "setupObserver: " + it.message)

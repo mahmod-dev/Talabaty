@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/_15sdp"
-        android:elevation="@dimen/_7sdp">
+        app:cardElevation="@dimen/_5sdp">
 
         <LinearLayout
 
@@ -45,18 +45,17 @@
 
                 <TextView
                     android:drawablePadding="@dimen/_10sdp"
-                    android:drawableEnd="@drawable/ic_icon_address"
                     android:fontFamily="@font/cairo_bold"
-                    android:textSize="@dimen/_9ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textColor="@color/colorBlack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="مطعم KFC للدجاج">
-                </TextView>
+                    android:text="مطعم KFC للدجاج"
+                    app:drawableStartCompat="@drawable/ic_icon_address" />
 
 
                 <TextView
-                    android:fontFamily="@font/cairo_bold"
+                    android:fontFamily="@font/cairo_reqular"
                     android:textSize="@dimen/_9ssp"
                     android:textColor="@color/colorGrey2"
                     android:layout_width="wrap_content"
@@ -66,7 +65,7 @@
 
 
                 <TextView
-                    android:fontFamily="@font/cairo_bold"
+                    android:fontFamily="@font/cairo_reqular"
                     android:textSize="@dimen/_9ssp"
                     android:textColor="@color/colorBlack"
                     android:layout_width="wrap_content"

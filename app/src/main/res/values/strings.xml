@@ -182,4 +182,7 @@
     <string name="selecat_location">نريد تفعيل خدمة الموقع لكي نحدد عنوانك</string>
     <string name="click_long_map">أنقر مطولا لتحديد أي نمكان على الخريطة</string>
     <string name="choosen_location">الموقع المختار</string>
+    <string name="enter_place">أدخل الموقع!</string>
+    <string name="select_type">اختر النوع</string>
+    <string name="select_car_type">Select car type!</string>
 </resources>

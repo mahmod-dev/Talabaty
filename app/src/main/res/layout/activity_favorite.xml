@@ -8,21 +8,23 @@
 
     <include layout="@layout/title_toolbar"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFav"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        tools:listitem="@layout/item_cart_favorite"
-        android:layout_marginTop="@dimen/_10sdp"/>
+        android:layout_height="match_parent">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone"
-        android:layout_marginTop="@dimen/_10sdp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            tools:listitem="@layout/item_cart_favorite"
+            android:layout_marginTop="@dimen/_10sdp"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+
     <TextView
         android:id="@+id/tvFavEmpty"
         android:layout_width="wrap_content"

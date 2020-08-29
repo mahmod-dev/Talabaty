@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.talabaty.adapter.CartAdapter
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.model.Cart
@@ -19,6 +20,7 @@ import com.android.talabaty.viewModel.CartViewModel
 import com.android.talabaty.dbUtil.Status
 
 import kotlinx.android.synthetic.main.activity_cart.*
+import kotlinx.android.synthetic.main.title_toolbar.*
 
 
 class CartActivity : AppCompatActivity() {
@@ -40,9 +42,8 @@ class CartActivity : AppCompatActivity() {
             finish()
         }
 
-
-
         setupObserverGetCart()
+        swipeToRefresh()
     }
 
 
@@ -72,7 +73,7 @@ class CartActivity : AppCompatActivity() {
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
-                         progressBar.visibility = View.GONE
+                        swipeRefresh?.isRefreshing = false
                         it.data?.let { users ->
                             if (users.cart.isEmpty()){
                                 tvNotFound.visibility  = View.VISIBLE
@@ -81,13 +82,13 @@ class CartActivity : AppCompatActivity() {
                         }
                     }
                     Status.LOADING -> {
-                        progressBar.visibility = View.VISIBLE
+                        swipeRefresh?.isRefreshing = true
                         tvNotFound.visibility = View.GONE
 
                     }
                     Status.ERROR -> {
                         tvNotFound.visibility = View.GONE
-                        progressBar.visibility = View.GONE
+                        swipeRefresh?.isRefreshing = false
                         Helper.showFilterDialog(this, it.message!!).show()
                         Log.e(TAG, "setupObserver: " + it.message)
 
@@ -98,4 +99,21 @@ class CartActivity : AppCompatActivity() {
         )
     }
 
+
+
+    private fun swipeToRefresh(){
+        swipeRefresh?.setOnRefreshListener {
+
+            setupObserverGetCart()
+        }
+
+    }
+
+    private fun initTitleToolbar() {
+        imgArrowBack.setOnClickListener {
+            finish()
+        }
+
+        tvTitleToolbar.setText(R.string.shopping_cart)
+    }
 }

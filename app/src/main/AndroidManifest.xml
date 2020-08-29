@@ -33,10 +33,17 @@
         <activity android:name=".auth.ResetPasswordActivity"></activity>
         <activity android:name=".auth.SignUpActivity"></activity>
         <activity android:name=".StoreDetailsActivity"></activity>
+        <activity android:name=".WelcomeActivity">
+
+        </activity>
         <activity android:name=".MapActivity">
 
         </activity>
         <activity android:name=".PaymentMethodActivity"></activity>
+        <activity android:name=".SplashActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar">
+
+        </activity>
         <activity android:name=".HelpDetailsActivity" />
         <activity android:name=".CarServiceActivity" />
         <activity android:name=".RemoteServiceActivity" />

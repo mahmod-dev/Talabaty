@@ -14,7 +14,6 @@ import com.android.talabaty.util.MyPreferences
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.item_free_delivery.view.*
-import kotlinx.android.synthetic.main.item_newest.view.*
 
 class FreeDeliveryAdapter(var activity: Activity, var data: List<FreeDelivery>) :
     RecyclerView.Adapter<FreeDeliveryAdapter.ViewHolder>() {
@@ -51,8 +50,7 @@ class FreeDeliveryAdapter(var activity: Activity, var data: List<FreeDelivery>) 
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var linCat: LinearLayout = itemView.linCat
-        var tvTitleCat: TextView = itemView.tvTitleCat
+        var tvDeliveryTitle: TextView = itemView.tvDeliveryTitle
         var tvDiscountFree: TextView = itemView.tvDiscountFree
         var imgFreeDelivery: ImageView = itemView.imgFreeDelivery
 
@@ -60,9 +58,8 @@ class FreeDeliveryAdapter(var activity: Activity, var data: List<FreeDelivery>) 
         fun bind(freeDelivery: FreeDelivery) {
 
 
-            tvTitleCat.text = freeDelivery.name
-            tvDiscountFree.text =
-                "${freeDelivery.discount_percent}% ${itemView.context.resources.getString(R.string.discount)} "
+            tvDeliveryTitle.text = freeDelivery.name
+            tvDiscountFree.text = "${freeDelivery.discount_percent}% ${itemView.context.resources.getString(R.string.discount)} "
 
             if (freeDelivery.image_profile.isNotEmpty()) {
                 Glide.with(itemView.context).load(freeDelivery.image_profile)
@@ -72,10 +69,10 @@ class FreeDeliveryAdapter(var activity: Activity, var data: List<FreeDelivery>) 
                     .into(imgFreeDelivery)
             }
 
-            linCat.setOnClickListener {
-                val intent = Intent(activity, DeliveryServicesActivity::class.java)
-                activity.startActivity(intent)
-            }
+//            linCat.setOnClickListener {
+//                val intent = Intent(activity, DeliveryServicesActivity::class.java)
+//                activity.startActivity(intent)
+//            }
 
         }
 

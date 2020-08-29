@@ -5,32 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-
     android:layoutDirection="rtl"
     android:orientation="vertical"
     tools:context=".fragment.MainFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_38sdp"
-        android:layout_margin="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_10sdp"
-        app:contentPaddingLeft="@dimen/_10sdp"
-        app:contentPaddingRight="@dimen/_10sdp">
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginVertical="@dimen/_3sdp"
+
+        app:cardCornerRadius="@dimen/_5sdp"
+>
 
         <EditText
             android:id="@+id/searchHome"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorWhite"
-            android:drawableEnd="@drawable/ic_icon_search"
+            android:drawableEnd="@drawable/ic_search"
+            android:drawablePadding="@dimen/_5sdp"
+            android:padding="@dimen/_3sdp"
             android:fontFamily="@font/cairo_reqular"
             android:hint="@string/search_in_offer_service"
             android:imeOptions="actionSearch"
             android:importantForAutofill="no"
             android:inputType="text"
             android:textColorHint="@color/colorGrey"
-            android:textSize="@dimen/_12ssp" />
+            android:textSize="@dimen/_10ssp" />
 
 
     </androidx.cardview.widget.CardView>
@@ -49,7 +51,7 @@
     </com.google.android.material.tabs.TabLayout>
 
 
-    <androidx.viewpager2.widget.ViewPager2
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

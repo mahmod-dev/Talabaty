@@ -3,7 +3,7 @@ package com.android.talabaty.retrofit
 import com.android.talabaty.model.*
 
 class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
-    override suspend fun getSettings(): Settings {
+    override suspend fun getSettings(): MainSettings {
         return apiService.getSettings()
     }
 
@@ -133,5 +133,13 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
 
     override suspend fun createNewOrder(order: NewOrderPost): CreateNewOrder {
         return apiService.createNewOrder(order)
+    }
+
+    override suspend fun getCars(): GetCars {
+        return apiService.getCars()
+    }
+
+    override suspend fun requestCar(car: RequestCarPost): RequestCar {
+        return apiService.requestCar(car)
     }
 }

@@ -214,7 +214,7 @@ data class FaqX(
 )
 
 data class Categories(
-    val categories: List<Category>,
+    val categories: ArrayList<Category>,
     val code: Int,
     val message: String,
     val status: Boolean
@@ -242,6 +242,19 @@ data class CreateNewOrder(
     val status: Boolean
 )
 
+data class SpinnerObj(
+    val id: Int,
+    val name: String
+
+
+
+){
+    override fun toString(): String {
+        return name
+    }
+}
+
+
 data class NewOrderPost(
     val category_id: Int,
     val details: String,
@@ -251,6 +264,16 @@ data class NewOrderPost(
     val to_latitude: Long,
     val to_longitude: Long,
     val orders_delivery_cost: Double
+)
+
+data class RequestCarPost(
+    val car_id: Int,
+    val details: String,
+    val from_latitude: Long,
+    val from_longitude: Long,
+    val to_latitude: Long,
+    val to_longitude: Long,
+    val request_car_cost: Double
 )
 
 data class Order(
@@ -264,7 +287,8 @@ data class Order(
     val ordered_date: String,
     val to_latitude: String,
     val to_longitude: String,
-    val user_id: Int
+    val user_id: Int,
+    val car_id: Int
 )
 
 data class FavProducts(
@@ -286,7 +310,7 @@ data class ViewStores(
     val message: String,
     val offers: List<Offer>,
     val status: Boolean,
-    val stores: List<Store>
+    val stores: ArrayList<Store>
 )
 
 data class Offer(
@@ -345,7 +369,7 @@ data class Store(
 data class StoreProducts(
     val code: Int,
     val message: String,
-    val products: List<Product>,
+    val products: ArrayList<Product>,
     val status: Boolean
 )
 
@@ -470,7 +494,7 @@ data class StoreDetails(
 
 
 data class Activities(
-    val activities: List<MyActivity>,
+    val activities: ArrayList<MyActivity>,
     val code: Int,
     val message: String,
     val status: Boolean
@@ -509,6 +533,13 @@ data class UserCategory(
     val user_id: Int
 )
 
+data class MainSettings(
+    val code: Int,
+    val message: String,
+    val status: Boolean,
+    val items: Settings
+)
+
 
 data class Settings(
     val aboutUs: AboutUs,
@@ -539,6 +570,29 @@ data class Settings(
     val request_car_cost: Double,
     val orders_delivery_cost: Double
 )
+
+data class RequestCar(
+    val code: Int,
+    val message: String,
+    val order: Order,
+    val status: Boolean
+)
+
+data class GetCars(
+    val cars: List<Car>,
+    val code: Int,
+    val message: String,
+    val status: Boolean
+)
+
+data class Car(
+    val created_at: String,
+    val id: Int,
+    val name: String,
+    val status: String
+)
+
+
 
 data class AboutUs(
     val created_at: String,

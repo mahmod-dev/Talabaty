@@ -69,7 +69,7 @@ class ResetPasswordActivity : AppCompatActivity() {
                     Status.ERROR -> {
                         //Handle Error
                         dialog.dismiss()
-                        Helper.showFilterDialog(this!!, it.message!!)
+                        Helper.showFilterDialog(this!!, it.message!!).show()
 
                         Log.e(TAG, "setupObserver: " + it.message)
                     }

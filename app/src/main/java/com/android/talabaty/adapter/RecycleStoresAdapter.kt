@@ -24,10 +24,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.item_restaurant_under.view.*
 
 
-class RecycleStoresAdapter(var activity: Activity, var data: ViewStores) :
+class RecycleStoresAdapter(var activity: Activity, var data: ArrayList<Store>) :
     RecyclerView.Adapter<RecycleStoresAdapter.ViewHolder>() {
     var mListener: OnItemClickListener? = null
-    val selectedItems = SparseBooleanArray()
     val TAG = "RecycleStoresAdapter"
 
     interface OnItemClickListener {
@@ -39,14 +38,7 @@ class RecycleStoresAdapter(var activity: Activity, var data: ViewStores) :
         mListener = listener
     }
 
-    fun getStores(): List<Store> {
-        return data.stores
-    }
 
-
-    fun getOffers(): List<Offer> {
-        return data.offers
-    }
 
     override fun onCreateViewHolder(
         viewGroup: ViewGroup,
@@ -61,11 +53,11 @@ class RecycleStoresAdapter(var activity: Activity, var data: ViewStores) :
         viewHolder: ViewHolder,
         i: Int
     ) {
-        viewHolder.bind(data.stores[i])
+        viewHolder.bind(data[i])
     }
 
     override fun getItemCount(): Int {
-        return data.stores.size
+        return data.size
     }
 
     inner class ViewHolder(itemView: View) :
@@ -145,7 +137,7 @@ class RecycleStoresAdapter(var activity: Activity, var data: ViewStores) :
                 if (mListener != null) {
                     val position = adapterPosition
                     if (position != RecyclerView.NO_POSITION) {
-                        mListener!!.onItemClick(position, data.stores[position].id)
+                        mListener!!.onItemClick(position, data[position].id)
                     }
                 }
             }

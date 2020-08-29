@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.android.talabaty.R
 import com.android.talabaty.dbUtil.ViewModelFactory
@@ -19,17 +20,19 @@ import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.viewModel.CategoriesViewModel
 import com.android.talabaty.dbUtil.Status
-import kotlinx.android.synthetic.main.item_stores.view.*
+import kotlinx.android.synthetic.main.item_stores_category.view.*
 
 
-class ViewPagerCategoriesAdapter(var activity: Activity, var data: List<Category>) :
+class ViewPagerCategoriesAdapter(var activity: Activity, var data: ArrayList<Category>,var swipeRefresh:SwipeRefreshLayout) :
     RecyclerView.Adapter<ViewPagerCategoriesAdapter.ViewHolder>() {
     private val TAG = "ViewPagerStoresAdapter"
     var mListener: OnItemClickListener? = null
+    var viewStores: ArrayList<Product>? = null
     private lateinit var viewModel: CategoriesViewModel
 
     init {
         initViewModel()
+        viewStores = ArrayList()
     }
 
     interface OnItemClickListener {
@@ -40,8 +43,6 @@ class ViewPagerCategoriesAdapter(var activity: Activity, var data: List<Category
     fun setOnClickListener(listener: OnItemClickListener?) {
         mListener = listener
     }
-
-    fun getCategories(): List<Category> = data
 
 
     override fun onCreateViewHolder(
@@ -58,7 +59,9 @@ class ViewPagerCategoriesAdapter(var activity: Activity, var data: List<Category
         viewHolder: ViewHolder,
         i: Int
     ) {
-        setupObserver(viewHolder.rvStore,viewHolder.progressBar)
+        setupObserver(viewHolder.rvStore)
+        swipeToRefresh(viewHolder.rvStore)
+
     }
 
     override fun getItemCount(): Int = data.size
@@ -66,9 +69,7 @@ class ViewPagerCategoriesAdapter(var activity: Activity, var data: List<Category
 
     inner class ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
-        var viewPagerStore: ViewPager2 = itemView.viewPagerStore
         var rvStore: RecyclerView = itemView.rvStore
-        var progressBar: ProgressBar = itemView.progressBar
 
 
         init {
@@ -96,9 +97,9 @@ class ViewPagerCategoriesAdapter(var activity: Activity, var data: List<Category
 
 
 
-    private fun initRecycleView(rv: RecyclerView, viewStores: StoreProducts) {
+    private fun initRecycleView(rv: RecyclerView) {
 
-        val adapter = RecycleCategoryAdapter(activity,viewStores)
+        val adapter = RecycleCategoryAdapter(activity,viewStores!!)
         rv.layoutManager = LinearLayoutManager(activity)
         rv.adapter = adapter
         rv.setHasFixedSize(true)
@@ -113,28 +114,30 @@ class ViewPagerCategoriesAdapter(var activity: Activity, var data: List<Category
     }
 
 
-    private fun setupObserver(rv: RecyclerView,progressBar: ProgressBar) {
+    private fun setupObserver(rv: RecyclerView) {
 
         viewModel.getStoresById().observe(activity as FragmentActivity,
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
-                        progressBar.visibility  = View.GONE
+                        swipeRefresh.isRefreshing= false
 
                         it.data?.let { users ->
+                            viewStores = users.products
                             for (i in users.products.indices) {
                                 Log.e(TAG, "setupObserver: ${users.products[i]}")
                             }
-                            initRecycleView(rv, users)
+                            initRecycleView(rv)
                         }
                     }
                     Status.LOADING -> {
-                        progressBar.visibility  = View.VISIBLE
+                      viewStores?.clear()
+                        swipeRefresh.isRefreshing= true
+                        initRecycleView(rv)
 
                     }
                     Status.ERROR -> {
-                        progressBar.visibility  = View.GONE
-
+                        swipeRefresh.isRefreshing= false
                         //Handle Error
                         Log.e(TAG, "setupObserver: " + it.message)
 
@@ -143,6 +146,15 @@ class ViewPagerCategoriesAdapter(var activity: Activity, var data: List<Category
 
             }
         )
+    }
+
+
+    private fun swipeToRefresh(rv:RecyclerView){
+        swipeRefresh.setOnRefreshListener {
+
+            setupObserver(rv)
+        }
+
     }
 
 }

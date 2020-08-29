@@ -14,6 +14,9 @@ class OrdersViewModel(private val apiHelper: ApiHelper?, application: Applicatio
     private val orders = MutableLiveData<Resource<MyOrders>>()
     private val storesFreeDelivery = MutableLiveData<Resource<StoresFreeDelivery>>()
     private val newOrder = MutableLiveData<Resource<CreateNewOrder>>()
+    private val requestCar = MutableLiveData<Resource<RequestCar>>()
+    private val cars = MutableLiveData<Resource<GetCars>>()
+    private val settings = MutableLiveData<Resource<MainSettings>>()
 
 
      fun myOrders() {
@@ -37,6 +40,75 @@ class OrdersViewModel(private val apiHelper: ApiHelper?, application: Applicatio
             }
         }
     }
+
+    fun settings() {
+        viewModelScope.launch {
+
+            settings.postValue(Resource.loading(null))
+            try {
+                val usersFromApi = apiHelper?.getSettings()
+
+                if (usersFromApi!!.status && usersFromApi.code == 200)
+                    settings.postValue(Resource.success(usersFromApi))
+                else {
+                    settings.postValue(Resource.error(usersFromApi.message, null))
+
+                }
+
+
+            } catch (e: Exception) {
+                Log.e(TAG, "settings: ${e.message}")
+                settings.postValue(Resource.error("Something Went Wrong", null))
+            }
+        }
+    }
+
+
+    fun requestCar(car:RequestCarPost) {
+        viewModelScope.launch {
+
+            requestCar.postValue(Resource.loading(null))
+            try {
+                val usersFromApi = apiHelper?.requestCar(car)
+
+                if (usersFromApi!!.status && usersFromApi.code == 200)
+                    requestCar.postValue(Resource.success(usersFromApi))
+                else {
+                    requestCar.postValue(Resource.error(usersFromApi.message, null))
+
+                }
+
+
+            } catch (e: Exception) {
+                Log.e(TAG, "requestCar: ${e.message}")
+                requestCar.postValue(Resource.error("Something Went Wrong", null))
+            }
+        }
+    }
+
+
+    fun getCars() {
+        viewModelScope.launch {
+
+            cars.postValue(Resource.loading(null))
+            try {
+                val usersFromApi = apiHelper?.getCars()
+
+                if (usersFromApi!!.status && usersFromApi.code == 200)
+                    cars.postValue(Resource.success(usersFromApi))
+                else {
+                    cars.postValue(Resource.error(usersFromApi.message, null))
+
+                }
+
+
+            } catch (e: Exception) {
+                Log.e(TAG, "getCars: ${e.message}")
+                cars.postValue(Resource.error("Something Went Wrong", null))
+            }
+        }
+    }
+
 
     fun createNewOrder(order: NewOrderPost) {
         viewModelScope.launch {
@@ -96,5 +168,16 @@ class OrdersViewModel(private val apiHelper: ApiHelper?, application: Applicatio
         return newOrder
     }
 
+    fun getRequestCar(): LiveData<Resource<RequestCar>> {
+        return requestCar
+    }
+
+    fun getAllCars(): LiveData<Resource<GetCars>> {
+        return cars
+    }
+
+    fun getAllSettings(): LiveData<Resource<MainSettings>> {
+        return settings
+    }
 
 }

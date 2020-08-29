@@ -51,8 +51,8 @@ class MainCategoryAdapter(var activity: Activity, var data:  HomePageCategories)
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var linCat: LinearLayout = itemView.linCat
-        var tvTitleCat: TextView = itemView.tvTitleCat
-        var imgCat: ImageView = itemView.imgCat
+        var tvTitleCat: TextView = itemView.tvTitleFish
+        var imgCat: ImageView = itemView.imgFish
 
 
 

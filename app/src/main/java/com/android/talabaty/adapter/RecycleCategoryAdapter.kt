@@ -25,7 +25,7 @@ import com.android.talabaty.dbUtil.Status
 import kotlinx.android.synthetic.main.item_product.view.*
 
 
-class RecycleCategoryAdapter(var activity: Activity, var data: StoreProducts) :
+class RecycleCategoryAdapter(var activity: Activity, var data: ArrayList<Product>) :
     RecyclerView.Adapter<RecycleCategoryAdapter.ViewHolder>() {
     val TAG = "RecycleCategoryAdapter"
     var mListener: OnItemClickListener? = null
@@ -46,7 +46,7 @@ class RecycleCategoryAdapter(var activity: Activity, var data: StoreProducts) :
     }
 
     fun getStores(): List<Product> {
-        return data.products
+        return data
     }
 
 
@@ -63,12 +63,12 @@ class RecycleCategoryAdapter(var activity: Activity, var data: StoreProducts) :
         viewHolder: ViewHolder,
         i: Int
     ) {
-        viewHolder.bind(data.products[i])
+        viewHolder.bind(data[i])
         setupObserverAddToCart()
     }
 
     override fun getItemCount(): Int {
-        return data.products.size
+        return data.size
     }
 
     inner class ViewHolder(itemView: View) :
@@ -153,6 +153,7 @@ class RecycleCategoryAdapter(var activity: Activity, var data: StoreProducts) :
                         }
                     }
                     Status.LOADING -> {
+
                         //progressBar.visibility = View.VISIBLE
 
                     }

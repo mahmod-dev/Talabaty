@@ -79,7 +79,7 @@ class VerificationActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         //Handle Error
-                        Helper.showFilterDialog(this, it.message!!)
+                        Helper.showFilterDialog(this!!, it.message!!).show()
 
                         Log.e(TAG, "setupObserver: " + it.message)
                     }
@@ -111,7 +111,7 @@ class VerificationActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         dialog.dismiss()
-                        Helper.showFilterDialog(this, it.message!!)
+                        Helper.showFilterDialog(this!!, it.message!!).show()
 
                         //Handle Error
                         Log.e(TAG, "setupObserver: " + it.message)

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="150dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:contentPaddingBottom="@dimen/_5sdp"
+        app:cardElevation="@dimen/_5sdp"
         android:layout_margin="@dimen/_5sdp">
 
         <LinearLayout
@@ -15,9 +18,10 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/_120sdp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/img_family" />
+                android:scaleType="center"
+                android:src="@drawable/img_toy" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -25,14 +29,13 @@
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/cairo_bold"
                 android:text="ألعاب أطفال"
-                android:textColor="@color/colorGrey2" />
+                android:textColor="@color/colorBlack" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/cairo_bold"
-                android:background="@drawable/shape_light_green"
+                android:fontFamily="@font/cairo_reqular"
                 android:text="33.2 ر.س"
                 android:textColor="@color/colorPrimary" />
         </LinearLayout>

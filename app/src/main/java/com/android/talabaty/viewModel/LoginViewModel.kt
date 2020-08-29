@@ -25,6 +25,10 @@ class LoginViewModel(private val apiHelper: ApiHelper) : ViewModel() {
 
                 if (usersFromApi.status && usersFromApi.code == 200)
                     login.postValue(Resource.success(usersFromApi))
+                else{
+                    login.postValue(Resource.error("Something Went Wrong", null))
+                }
+
 
 
             } catch (e: Exception) {

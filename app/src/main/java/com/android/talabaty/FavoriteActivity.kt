@@ -7,6 +7,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.talabaty.adapter.FavoriteCartAdapter
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
@@ -28,6 +29,7 @@ class FavoriteActivity : AppCompatActivity() {
         initViewModel()
         viewModel.getFavorite()
         setupObserverGetCart()
+        swipeToRefresh()
         imgArrowBack.setOnClickListener {
             finish()
         }
@@ -60,7 +62,8 @@ class FavoriteActivity : AppCompatActivity() {
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
-                        progressBar.visibility = View.GONE
+                        swipeRefresh?.isRefreshing = false
+
                         it.data?.let { users ->
                             if (users.products.isEmpty()) {
                                 tvFavEmpty.visibility = View.VISIBLE
@@ -69,13 +72,13 @@ class FavoriteActivity : AppCompatActivity() {
                         }
                     }
                     Status.LOADING -> {
-                        progressBar.visibility = View.VISIBLE
+                        swipeRefresh?.isRefreshing = true
                         tvFavEmpty.visibility = View.GONE
 
                     }
                     Status.ERROR -> {
+                        swipeRefresh?.isRefreshing = false
                         tvFavEmpty.visibility = View.GONE
-                        progressBar.visibility = View.GONE
                         Helper.showFilterDialog(this, it.message!!).show()
                         Log.e(TAG, "setupObserver: " + it.message)
 
@@ -84,6 +87,14 @@ class FavoriteActivity : AppCompatActivity() {
 
             }
         )
+    }
+
+    private fun swipeToRefresh(){
+        swipeRefresh?.setOnRefreshListener {
+
+            setupObserverGetCart()
+        }
+
     }
 
 }
