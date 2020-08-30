@@ -40,9 +40,13 @@ class SignUpActivity : AppCompatActivity() {
             val deviceType = "android"
             val user  = SignUpPost(username,email,mobile,password,"1wdasdasdasd",deviceType)
 
-            validationInput(username,email,mobile,password)
+           if ( validationInput(username,email,mobile,password)){
+               return@setOnClickListener
+           }else{
+               viewModel.signUp(user)
 
-            viewModel.signUp(user)
+           }
+
 
         }
         setupObserver()
@@ -94,32 +98,34 @@ class SignUpActivity : AppCompatActivity() {
         )
     }
 
-    private fun validationInput(username:String,email:String,mobile:String,password:String){
+    private fun validationInput(username:String,email:String,mobile:String,password:String): Boolean{
 
         if (username.isEmpty()){
             etUsername.error = getString(R.string.empty)
-            return
+            return true
         }
 
         if (email.isEmpty()){
             etEmail.error = getString(R.string.empty)
-            return
+            return true
         }
 
         if (password.isEmpty()){
             etPassword.error = getString(R.string.empty)
-            return
+            return true
         }
 
         if (mobile.isEmpty()){
             etMobile.error = getString(R.string.empty)
-            return
+            return true
         }
 
         if (!emailValid(email)){
             etEmail.error = getString(R.string.email_valid)
-            return
+            return true
         }
+
+        return false
     }
 
 

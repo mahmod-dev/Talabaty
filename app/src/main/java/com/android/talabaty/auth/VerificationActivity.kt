@@ -62,7 +62,6 @@ class VerificationActivity : AppCompatActivity() {
 
 
     private fun setupObserver() {
-        val dialog = getDialogInstance()
 
         viewModel.sendCode().observe(this,
             Observer {

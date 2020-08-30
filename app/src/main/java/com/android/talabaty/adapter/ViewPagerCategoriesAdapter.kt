@@ -103,6 +103,16 @@ class ViewPagerCategoriesAdapter(var activity: Activity, var data: ArrayList<Cat
         rv.layoutManager = LinearLayoutManager(activity)
         rv.adapter = adapter
         rv.setHasFixedSize(true)
+
+        adapter.setOnClickListener(object :RecycleCategoryAdapter.OnItemClickListener{
+            override fun onItemClick(position: Int) {
+                Log.e(TAG, "onItemClick: " )
+            }
+
+            override fun onItemLongClick(position: Int) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 
     private fun initViewModel() {

@@ -53,7 +53,6 @@ class ProfileFragment : Fragment() {
         viewModel.profile()
         btnProfileLogout.setOnClickListener {
             MyPreferences.setInt("isLogin", 0)
-
             startActivity(Intent(activity, SignInActivity::class.java))
             activity?.finish()
         }

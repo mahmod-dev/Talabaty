@@ -64,7 +64,7 @@ class RecycleCategoryAdapter(var activity: Activity, var data: ArrayList<Product
         i: Int
     ) {
         viewHolder.bind(data[i])
-        setupObserverAddToCart()
+        setupObserverAddToCart(0)
     }
 
     override fun getItemCount(): Int {
@@ -106,6 +106,7 @@ class RecycleCategoryAdapter(var activity: Activity, var data: ArrayList<Product
             btnAddToCartProduct.setOnClickListener {
                 Log.e(TAG, "productId: ${product.id}" )
                 viewModel.addToCart(product.id,1)
+                setupObserverAddToCart(1)
             }
 
         }
@@ -115,7 +116,7 @@ class RecycleCategoryAdapter(var activity: Activity, var data: ArrayList<Product
                 if (mListener != null) {
                     val position = adapterPosition
                     if (position != RecyclerView.NO_POSITION) {
-                        mListener!!.onItemClick(position)
+                        mListener!!.onItemClick(data[position].id)
                     }
                 }
             }
@@ -141,7 +142,7 @@ class RecycleCategoryAdapter(var activity: Activity, var data: ArrayList<Product
         ).get(CartViewModel::class.java)
     }
 
-    private fun setupObserverAddToCart() {
+    private fun setupObserverAddToCart( a: Int) {
 
         viewModel.getAddToCart().observe(activity as FragmentActivity,
             Observer {
@@ -149,7 +150,11 @@ class RecycleCategoryAdapter(var activity: Activity, var data: ArrayList<Product
                     Status.SUCCESS -> {
                         // progressBar.visibility = View.GONE
                         it.data?.let { users ->
-                            Toast.makeText(activity, users.message, Toast.LENGTH_LONG).show()
+                            if (a==1){
+                                Toast.makeText(activity, users.message, Toast.LENGTH_LONG).show()
+
+                            }
+                            viewModel.getCart()
                         }
                     }
                     Status.LOADING -> {

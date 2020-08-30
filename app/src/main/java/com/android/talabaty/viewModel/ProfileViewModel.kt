@@ -31,7 +31,7 @@ class ProfileViewModel(private val apiHelper: ApiHelper) : ViewModel() {
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "profile: ${e.message}")
-                profile.postValue(Resource.error("context.getString(R.string.something_went_error)", null))
+                profile.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }
@@ -51,7 +51,7 @@ class ProfileViewModel(private val apiHelper: ApiHelper) : ViewModel() {
 
             } catch (e: Exception) {
                 Log.e(TAG, "profile: ${e.message}")
-                editProfile.postValue(Resource.error("context.getString(R.string.something_went_error)", null))
+                editProfile.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }

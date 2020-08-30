@@ -18,7 +18,6 @@ import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
-import com.android.talabaty.util.CustomAlertDialog.getDialogInstance
 import com.android.talabaty.util.Helper
 import com.android.talabaty.viewModel.StoresViewModel
 import com.google.android.material.tabs.TabLayout
@@ -82,14 +81,12 @@ class MainFragment : Fragment() {
 
 
     private fun setupObserver() {
-        val dialog = activity?.getDialogInstance()
 
         viewModel.getAllStores().observe(
             viewLifecycleOwner,
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
-                        dialog?.dismiss()
                         it.data?.let { users ->
                             for (i in users.activities.indices) {
                                 Log.e(TAG, "setupObserver: ${users.activities[i].name}")
@@ -100,17 +97,13 @@ class MainFragment : Fragment() {
                                 users.activities,
                                 activity?.supportFragmentManager
                             )
-
-                            // viewPager2Init(users)
                         }
                     }
                     Status.LOADING -> {
-                        dialog?.show()
 
                     }
                     Status.ERROR -> {
                         //Handle Error
-                        dialog?.dismiss()
                         Helper.showFilterDialog(context!!, it.message!!).show()
                         Log.e(TAG, "setupObserver: " + it.message)
                     }

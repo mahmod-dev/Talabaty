@@ -10,7 +10,9 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
+import com.android.talabaty.MainActivity
 import com.android.talabaty.R
+import com.android.talabaty.StoreDetailsActivity
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.model.*
 import com.android.talabaty.retrofit.ApiHelperImpl
@@ -105,6 +107,8 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                 notifyItemRangeRemoved(position, data.size)
                 notifyDataSetChanged()
                 viewModel.deleteFromCart(product.id)
+
+
                 Log.e(TAG, "bind: ${product.id} " )
             }
 
@@ -238,7 +242,6 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                         // progressBar.visibility = View.GONE
                         it.data?.let { users ->
                             Toast.makeText(activity, users.message, Toast.LENGTH_SHORT).show()
-
 
                         }
                     }

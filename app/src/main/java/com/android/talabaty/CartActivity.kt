@@ -21,6 +21,7 @@ import com.android.talabaty.dbUtil.Status
 
 import kotlinx.android.synthetic.main.activity_cart.*
 import kotlinx.android.synthetic.main.title_toolbar.*
+import kotlinx.android.synthetic.main.title_toolbar.imgArrowBack
 
 
 class CartActivity : AppCompatActivity() {

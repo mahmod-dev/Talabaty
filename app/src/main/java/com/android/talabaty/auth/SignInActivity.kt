@@ -69,8 +69,16 @@ class SignInActivity : AppCompatActivity() {
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
 
+            if (email.isEmpty()) {
+                etEmail.error = getString(R.string.empty)
+                return@setOnClickListener
+            }
+            if (password.isEmpty()) {
+                etPassword.error = getString(R.string.empty)
+                return@setOnClickListener
 
-                handleLogin(email, password)
+            }
+
             viewModel.login( LoginPost(email = email,password = password,fcm_token = "sssasas"))
 
         }
@@ -197,6 +205,7 @@ class SignInActivity : AppCompatActivity() {
                             if ( rb.isChecked ){
                                 MyPreferences.setInt("isLogin",1)
                             }
+                            MyPreferences.setStr("userToken",users.user.access_token)
                             startActivity(Intent(applicationContext, MainActivity::class.java))
                             finish()
 
