@@ -120,8 +120,8 @@
     <string name="order_progress">إنجاز الطلب</string>
     <string name="from">من</string>
     <string name="to">إلى</string>
-    <string name="add_image">إضافة صور</string>
-    <string name="add_files">إضافة ملفات</string>
+    <string name="add_image">إضافة صورة</string>
+    <string name="add_files">إضافة ملف</string>
     <string name="color">للون</string>
     <string name="size">المقاس</string>
     <string name="arrive_date">تاريخ وصول المنتج:</string>
@@ -185,4 +185,10 @@
     <string name="enter_place">أدخل الموقع!</string>
     <string name="select_type">اختر النوع</string>
     <string name="select_car_type">Select car type!</string>
+    <string name="network_error">Network Error</string>
+    <string name="timeout_error">Timeout Error</string>
+    <string name="enter_time_date">أدخل  التاريخ والوقت!</string>
+    <string name="invalid_time">وقت غير صالح!</string>
+    <string name="not_found_offers">لا يود عروض متاحة الآن</string>
+
 </resources>

@@ -1,20 +1,28 @@
 package com.android.talabaty.viewModel
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.android.talabaty.R
 import com.android.talabaty.model.EditProfile
 import com.android.talabaty.model.UserPost
 import com.android.talabaty.retrofit.ApiHelper
 import com.android.talabaty.dbUtil.Resource
+import com.android.talabaty.model.GeneralResponse
+import com.android.talabaty.model.GetUserDetails
+import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import java.io.IOException
 
-class ProfileViewModel(private val apiHelper: ApiHelper) : ViewModel() {
+class ProfileViewModel(private val apiHelper: ApiHelper,var context: Context) : ViewModel() {
     val TAG = "ProfileViewModel"
     private val profile = MutableLiveData<Resource<EditProfile>>()
     private val editProfile = MutableLiveData<Resource<EditProfile>>()
+    private val changeNotificationStatus = MutableLiveData<Resource<GeneralResponse>>()
+    private val UserDetails = MutableLiveData<Resource<GetUserDetails>>()
 
 
      fun profile() {
@@ -29,14 +37,21 @@ class ProfileViewModel(private val apiHelper: ApiHelper) : ViewModel() {
                     profile.postValue(Resource.error(usersFromApi.message, null))
 
                 }
+            } catch (e: TimeoutCancellationException) {
+                profile.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
+                if (e is IOException) {
+                    profile.postValue(Resource.error(context.getString(R.string.network_error), null))
+
+                } else {
+                    profile.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
                 Log.e(TAG, "profile: ${e.message}")
-                profile.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }
 
-     fun editProfile(profile: UserPost) {
+    fun editProfile(profile: UserPost) {
         viewModelScope.launch {
             editProfile.postValue(Resource.loading(null))
             try {
@@ -49,12 +64,68 @@ class ProfileViewModel(private val apiHelper: ApiHelper) : ViewModel() {
 
                 }
 
+            } catch (e: TimeoutCancellationException) {
+                editProfile.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
-                Log.e(TAG, "profile: ${e.message}")
-                editProfile.postValue(Resource.error("Something Went Wrong", null))
+                if (e is IOException) {
+                    editProfile.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    editProfile.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
+                Log.e(TAG, "editProfile: ${e.message}")
             }
         }
     }
+
+    fun userDetails() {
+        viewModelScope.launch {
+            UserDetails.postValue(Resource.loading(null))
+            try {
+                val usersFromApi = apiHelper.getUserDetails()
+
+                    UserDetails.postValue(Resource.success(usersFromApi))
+
+
+            } catch (e: TimeoutCancellationException) {
+                UserDetails.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+            } catch (e: Exception) {
+                if (e is IOException) {
+                    UserDetails.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    UserDetails.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
+                Log.e(TAG, "editProfile: ${e.message}")
+            }
+        }
+    }
+
+
+    fun changeNotificationStatus(status: Int, notification: String) {
+        viewModelScope.launch {
+            changeNotificationStatus.postValue(Resource.loading(null))
+            try {
+                val usersFromApi = apiHelper.changeNotifiStatus(status, notification)
+
+                if (usersFromApi.status && usersFromApi.code == 200)
+                    changeNotificationStatus.postValue(Resource.success(usersFromApi))
+                else{
+                    changeNotificationStatus.postValue(Resource.error(usersFromApi.message, null))
+
+                }
+
+            } catch (e: TimeoutCancellationException) {
+                changeNotificationStatus.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+            } catch (e: Exception) {
+                if (e is IOException) {
+                    changeNotificationStatus.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    changeNotificationStatus.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
+                Log.e(TAG, "editProfile: ${e.message}")
+            }
+        }
+    }
+
 
     fun getProfile(): LiveData<Resource<EditProfile>> {
         return profile
@@ -62,6 +133,14 @@ class ProfileViewModel(private val apiHelper: ApiHelper) : ViewModel() {
 
     fun editProfile(): LiveData<Resource<EditProfile>> {
         return profile
+    }
+
+    fun getChangeNotificationStatus(): LiveData<Resource<GeneralResponse>> {
+        return changeNotificationStatus
+    }
+
+    fun getUserDetails(): LiveData<Resource<GetUserDetails>> {
+        return UserDetails
     }
 
 

@@ -94,10 +94,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 101) {
             initGpsLocation()
-        } else {
-
         }
-
     }
 
 

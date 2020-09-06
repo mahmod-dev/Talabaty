@@ -18,11 +18,10 @@ import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
-import com.android.talabaty.util.Helper
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import com.android.talabaty.viewModel.StoresViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
-import kotlinx.android.synthetic.main.toolbar_location_cart.*
 
 class MainFragment : Fragment() {
     val TAG = "MainFragment"
@@ -30,7 +29,6 @@ class MainFragment : Fragment() {
 
     var viewpager: ViewPager? = null
     var tabs: TabLayout? = null
-    var catId = 1
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -46,7 +44,7 @@ class MainFragment : Fragment() {
         tabs?.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab?.position!!>0){
-                    viewModel.storesById( tab?.position!!)
+                    viewModel.storesById(tab.position)
 
                 }
             }
@@ -104,7 +102,8 @@ class MainFragment : Fragment() {
                     }
                     Status.ERROR -> {
                         //Handle Error
-                        Helper.showFilterDialog(context!!, it.message!!).show()
+                        activity?.getMaterialDialogInstance(it.message!!)
+                        //Helper.showFilterDialog(context!!, it.message!!).show()
                         Log.e(TAG, "setupObserver: " + it.message)
                     }
                 }

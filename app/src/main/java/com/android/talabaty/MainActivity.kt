@@ -10,6 +10,8 @@ import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
+import com.android.talabaty.util.CustomMaterialDialog
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import com.android.talabaty.util.Helper
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.CartViewModel
@@ -66,7 +68,7 @@ class MainActivity : BaseActivity() {
                     }
                     Status.ERROR -> {
 
-                        Helper.showFilterDialog(this, it.message!!).show()
+                        getMaterialDialogInstance(it.message!!)
                         Log.e(TAG, "setupObserver: " + it.message)
 
                     }

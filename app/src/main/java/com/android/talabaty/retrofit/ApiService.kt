@@ -17,14 +17,29 @@ interface ApiService {
     @GET("getAds")
     suspend fun getAds(): Ads
 
+    @GET("getOffers")
+    suspend fun getOffers(): GetOffers
+
+    @GET("getOtherServices")
+    suspend fun getOtherServices(): OtherServices
+
     @GET("getFaq")
     suspend fun getFaq(): FaqX
 
     @GET("getCategories")
     suspend fun getCategories(@Query("store_id") storeId: Int): Categories
 
+    @GET("changeNotifiStatus")
+    suspend fun changeNotifiStatus(
+        @Query("status") status: Int,
+        @Query("notification") notification: String
+    ): GeneralResponse
+
     @GET("profile")
     suspend fun getProfile(): EditProfile
+
+    @GET("getUserDetails")
+    suspend fun getUserDetails(): GetUserDetails
 
     @GET("changeUserStatus")
     suspend fun getChangeUserStatus(): ChangeUserStatus

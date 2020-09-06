@@ -22,6 +22,8 @@ import com.android.talabaty.viewModel.CartViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.android.talabaty.dbUtil.Status
+import com.android.talabaty.util.CustomMaterialDialog
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import kotlinx.android.synthetic.main.item_product.view.*
 
 
@@ -164,7 +166,7 @@ class RecycleCategoryAdapter(var activity: Activity, var data: ArrayList<Product
                     }
                     Status.ERROR -> {
                         // progressBar.visibility = View.GONE
-                        Helper.showFilterDialog(activity, it.message!!).show()
+                        activity.getMaterialDialogInstance(it.message!!)
                         Log.e(TAG, "setupObserver: " + it.message)
 
                     }

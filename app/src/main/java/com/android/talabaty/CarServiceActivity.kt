@@ -17,6 +17,8 @@ import com.android.talabaty.model.RequestCarPost
 import com.android.talabaty.model.SpinnerObj
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
+import com.android.talabaty.util.CustomMaterialDialog
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import com.android.talabaty.util.Helper
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.OrdersViewModel
@@ -141,7 +143,7 @@ class CarServiceActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                        // progressBar.visibility = View.GONE
-                        Helper.showFilterDialog(this, it.message!!).show()
+                        getMaterialDialogInstance(it.message!!)
                         Log.e(TAG, "setupObserver: " + it.message)
 
                     }
@@ -170,7 +172,7 @@ class CarServiceActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         progressBar.visibility = View.GONE
-                        Helper.showFilterDialog(this, it.message!!).show()
+                        getMaterialDialogInstance(it.message!!)
                         Log.e(TAG, "setupObserver: " + it.message)
 
                     }

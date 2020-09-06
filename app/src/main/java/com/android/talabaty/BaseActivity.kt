@@ -1,6 +1,5 @@
 package com.android.talabaty
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -13,9 +12,11 @@ import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.fragment.*
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
-import com.android.talabaty.util.Helper
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
+import com.android.talabaty.util.LocationHelper
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.CartViewModel
+import com.android.talabaty.viewModel.ProfileViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.activity_cart.*
@@ -24,20 +25,24 @@ import kotlinx.android.synthetic.main.toolbar_location_cart.*
 
 open class BaseActivity : AppCompatActivity() {
     open val TAG = "BaseActivity"
-    private lateinit var viewModel: CartViewModel
+    private lateinit var viewModel: ProfileViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
-       // window.statusBarColor = ContextCompat.getColor(this, R.color.colorWhite)
+        // window.statusBarColor = ContextCompat.getColor(this, R.color.colorWhite)
         MyPreferences.context = applicationContext
+        initViewModel()
         handleBottomNav()
         supportFragmentManager.beginTransaction().replace(
             R.id.fragmentContainer,
             MainFragment()
         ).commit()
 
+        viewModel.userDetails()
 
+        setupObserver()
     }
 
     private fun handleBottomNav() {
@@ -73,13 +78,48 @@ open class BaseActivity : AppCompatActivity() {
                     selectedFragment!!
                 ).commit()
 
-                 true
+                true
             }
 
         bottomNavMain.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
     }
 
+
+
+    private fun initViewModel() {
+
+        viewModel = ViewModelProviders.of(
+            this,
+            ViewModelFactory(ApiHelperImpl(RetrofitBuilder.apiService), application)
+        ).get(ProfileViewModel::class.java)
+    }
+
+    private fun setupObserver() {
+
+        viewModel.getUserDetails().observe(this,
+            Observer {
+                when (it.status) {
+                    Status.SUCCESS -> {
+                        it.data?.let { users ->
+                            if (users.city.isNotEmpty()){
+                                tvHomeLocation.text = users.city
+                            }else
+                            tvHomeLocation.text = getString(R.string.unknown)
+
+                        }
+                    }
+                    Status.LOADING -> {
+
+                    }
+                    Status.ERROR -> {
+
+                    }
+                }
+
+            }
+        )
+    }
 
 
 

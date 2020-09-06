@@ -1,15 +1,19 @@
 package com.android.talabaty.viewModel
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.*
+import com.android.talabaty.R
 import com.android.talabaty.model.*
 import com.android.talabaty.retrofit.ApiHelper
 import com.android.talabaty.dbUtil.Resource
+import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import java.io.IOException
 
-class OrdersViewModel(private val apiHelper: ApiHelper?, application: Application) :
-    AndroidViewModel(application) {
+class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
+    ViewModel() {
     private val TAG = "OrdersViewModel"
     private val orders = MutableLiveData<Resource<MyOrders>>()
     private val storesFreeDelivery = MutableLiveData<Resource<StoresFreeDelivery>>()
@@ -34,9 +38,15 @@ class OrdersViewModel(private val apiHelper: ApiHelper?, application: Applicatio
                 }
 
 
+            }catch (e: TimeoutCancellationException) {
+                orders.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
-                Log.e(TAG, "homePageCategories: ${e.message}")
-                orders.postValue(Resource.error("Something Went Wrong", null))
+                if (e is IOException) {
+                    orders.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    orders.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
+                Log.e(TAG, "myOrders: ${e.message}")
             }
         }
     }
@@ -56,9 +66,15 @@ class OrdersViewModel(private val apiHelper: ApiHelper?, application: Applicatio
                 }
 
 
+            } catch (e: TimeoutCancellationException) {
+                settings.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
+                if (e is IOException) {
+                    settings.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    settings.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
                 Log.e(TAG, "settings: ${e.message}")
-                settings.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }
@@ -79,9 +95,15 @@ class OrdersViewModel(private val apiHelper: ApiHelper?, application: Applicatio
                 }
 
 
+            } catch (e: TimeoutCancellationException) {
+                requestCar.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
+                if (e is IOException) {
+                    requestCar.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    requestCar.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
                 Log.e(TAG, "requestCar: ${e.message}")
-                requestCar.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }
@@ -102,9 +124,15 @@ class OrdersViewModel(private val apiHelper: ApiHelper?, application: Applicatio
                 }
 
 
+            }catch (e: TimeoutCancellationException) {
+                cars.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
+                if (e is IOException) {
+                    cars.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    cars.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
                 Log.e(TAG, "getCars: ${e.message}")
-                cars.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }
@@ -125,9 +153,15 @@ class OrdersViewModel(private val apiHelper: ApiHelper?, application: Applicatio
                 }
 
 
+            }catch (e: TimeoutCancellationException) {
+                newOrder.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
-                Log.e(TAG, "homePageCategories: ${e.message}")
-                newOrder.postValue(Resource.error("Something Went Wrong", null))
+                if (e is IOException) {
+                    newOrder.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    newOrder.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
+                Log.e(TAG, "createNewOrder: ${e.message}")
             }
         }
     }
@@ -147,9 +181,15 @@ class OrdersViewModel(private val apiHelper: ApiHelper?, application: Applicatio
                 }
 
 
+            } catch (e: TimeoutCancellationException) {
+                storesFreeDelivery.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
+                if (e is IOException) {
+                    storesFreeDelivery.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    storesFreeDelivery.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
                 Log.e(TAG, "storesFreeDelivery: ${e.message}")
-                storesFreeDelivery.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }

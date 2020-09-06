@@ -9,7 +9,7 @@
 
     tools:context=".RemoteServiceActivity">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/title_toolbar"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,15 +25,18 @@
             android:layout_margin="@dimen/_5sdp"
             app:cardCornerRadius="@dimen/_5sdp"
             app:contentPaddingBottom="@dimen/_23sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
 
             app:contentPadding="@dimen/_10sdp"
             >
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:gravity="center"
+                 android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
@@ -58,6 +61,10 @@
             android:id="@+id/cardMarketing"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_5sdp"
             app:contentPaddingBottom="@dimen/_23sdp"
@@ -66,8 +73,8 @@
             >
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:orientation="vertical">
 
@@ -96,11 +103,15 @@
             android:layout_margin="@dimen/_5sdp"
             app:cardCornerRadius="@dimen/_5sdp"
             app:contentPadding="@dimen/_10sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+
             >
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:orientation="vertical">
 
@@ -141,6 +152,9 @@
             android:layout_margin="@dimen/_5sdp"
             app:cardCornerRadius="@dimen/_5sdp"
             app:contentPaddingBottom="@dimen/_23sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
 
             app:contentPadding="@dimen/_10sdp"
             >
@@ -179,6 +193,10 @@
             app:contentPaddingBottom="@dimen/_23sdp"
             app:cardCornerRadius="@dimen/_5sdp"
             app:contentPadding="@dimen/_10sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+
             >
 
             <LinearLayout
@@ -213,6 +231,10 @@
             app:contentPaddingBottom="@dimen/_23sdp"
             app:cardCornerRadius="@dimen/_5sdp"
             app:contentPadding="@dimen/_10sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+
             >
 
             <LinearLayout
@@ -257,6 +279,9 @@
             android:layout_margin="@dimen/_5sdp"
             app:cardCornerRadius="@dimen/_5sdp"
             app:contentPaddingBottom="@dimen/_23sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
 
             app:contentPadding="@dimen/_10sdp"
             >
@@ -295,6 +320,10 @@
             app:contentPaddingBottom="@dimen/_23sdp"
             app:cardCornerRadius="@dimen/_5sdp"
             app:contentPadding="@dimen/_10sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+
             >
 
             <LinearLayout
@@ -321,7 +350,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardCoffee"
+            android:id="@+id/cardOther"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
@@ -329,6 +358,10 @@
             app:contentPaddingBottom="@dimen/_23sdp"
             app:cardCornerRadius="@dimen/_5sdp"
             app:contentPadding="@dimen/_10sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+
             >
 
             <LinearLayout

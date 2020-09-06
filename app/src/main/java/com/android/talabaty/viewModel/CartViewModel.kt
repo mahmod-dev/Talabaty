@@ -1,13 +1,18 @@
 package com.android.talabaty.viewModel
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.*
+import com.android.talabaty.R
 import com.android.talabaty.model.*
 import com.android.talabaty.retrofit.ApiHelper
 import com.android.talabaty.dbUtil.Resource
+import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import java.io.IOException
+import java.net.ConnectException
 
-class CartViewModel(private val apiHelper: ApiHelper?) : ViewModel() {
+class CartViewModel(private val apiHelper: ApiHelper?,var context: Context) : ViewModel() {
     private val TAG = "CartViewModel"
     private val addCart = MutableLiveData<Resource<AddProductToCart>>()
     private val deleteCart = MutableLiveData<Resource<GeneralResponse>>()
@@ -32,9 +37,15 @@ class CartViewModel(private val apiHelper: ApiHelper?) : ViewModel() {
                 }
 
 
+            }catch (e: TimeoutCancellationException) {
+                myCart.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
+                if (e is IOException) {
+                    myCart.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    myCart.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
                 Log.e(TAG, "getCart: ${e.message}")
-                myCart.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }
@@ -54,9 +65,15 @@ class CartViewModel(private val apiHelper: ApiHelper?) : ViewModel() {
                 }
 
 
+            } catch (e: TimeoutCancellationException) {
+                myFav.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
+                if (e is IOException) {
+                    myFav.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    myFav.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
                 Log.e(TAG, "getFavorite: ${e.message}")
-                myFav.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }
@@ -77,9 +94,15 @@ class CartViewModel(private val apiHelper: ApiHelper?) : ViewModel() {
                 }
 
 
+            } catch (e: TimeoutCancellationException) {
+                addCart.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
+                if (e is IOException) {
+                    addCart.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    addCart.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
                 Log.e(TAG, "addToCart: ${e.message}")
-                addCart.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }
@@ -98,9 +121,15 @@ class CartViewModel(private val apiHelper: ApiHelper?) : ViewModel() {
 
                 }
 
+            }catch (e: TimeoutCancellationException) {
+                deleteCart.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
+                if (e is IOException) {
+                    deleteCart.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    deleteCart.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
                 Log.e(TAG, "deleteFromCart: ${e.message}")
-                deleteCart.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }
@@ -119,9 +148,15 @@ class CartViewModel(private val apiHelper: ApiHelper?) : ViewModel() {
 
                 }
 
+            } catch (e: TimeoutCancellationException) {
+                deleteFromFav.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
+                if (e is IOException) {
+                    deleteFromFav.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    deleteFromFav.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
                 Log.e(TAG, "deleteFromFav: ${e.message}")
-                deleteFromFav.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }
@@ -140,9 +175,15 @@ class CartViewModel(private val apiHelper: ApiHelper?) : ViewModel() {
 
                 }
 
+            } catch (e: TimeoutCancellationException) {
+                addToFav.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
+                if (e is IOException) {
+                    addToFav.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    addToFav.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
                 Log.e(TAG, "addToFav: ${e.message}")
-                addToFav.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }
@@ -162,9 +203,15 @@ class CartViewModel(private val apiHelper: ApiHelper?) : ViewModel() {
 
                 }
 
+            } catch (e: TimeoutCancellationException) {
+                changeQuantity.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
+                if (e is IOException) {
+                    changeQuantity.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    changeQuantity.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
                 Log.e(TAG, "changeQuantity: ${e.message}")
-                changeQuantity.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }

@@ -2,6 +2,7 @@ package com.android.talabaty.retrofit
 
 import com.android.talabaty.model.*
 import retrofit2.http.Body
+import retrofit2.http.Query
 
 
 interface ApiHelper {
@@ -13,6 +14,8 @@ interface ApiHelper {
     suspend fun getCities(countryId: String): Cities
 
     suspend fun getAds(): Ads
+
+    suspend fun getOffers(): GetOffers
 
     suspend fun getFaq(): FaqX
 
@@ -81,5 +84,10 @@ interface ApiHelper {
 
     suspend fun requestCar(car: RequestCarPost): RequestCar
 
+    suspend fun getOtherServices(): OtherServices
+
+    suspend fun changeNotifiStatus(status: Int, notification: String): GeneralResponse
+
+    suspend fun getUserDetails(): GetUserDetails
 
 }

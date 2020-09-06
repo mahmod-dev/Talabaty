@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".fragment.mainTab.AllFragment">
 
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
@@ -30,10 +31,11 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:clipChildren="false"
                     android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
                     android:paddingHorizontal="@dimen/_30sdp" />
 
                 <com.fuzz.indicator.CutoutViewIndicator
-                    android:id="@+id/indicator_details"
+                    android:id="@+id/indicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -197,6 +199,7 @@
                     android:id="@+id/cardOfferServices"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:focusable="true"
@@ -208,7 +211,7 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_bold"
                         android:gravity="center_vertical"
-                        android:text="احدث العروض والخصومات"
+                        android:text="@string/latest_offers_discounts"
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_12ssp" />
 
@@ -237,7 +240,14 @@
                 </LinearLayout>
 
 
-                <include layout="@layout/item_newest_offers" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvNewestOffers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:nestedScrollingEnabled="false"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_newest_offers" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvCatHome"

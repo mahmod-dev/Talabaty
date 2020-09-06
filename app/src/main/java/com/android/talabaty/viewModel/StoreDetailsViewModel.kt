@@ -1,16 +1,20 @@
 package com.android.talabaty.viewModel
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.*
+import com.android.talabaty.R
 import com.android.talabaty.model.*
 import com.android.talabaty.retrofit.ApiHelper
 import com.android.talabaty.dbUtil.Resource
+import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import java.io.IOException
 
-class CategoriesViewModel(private val apiHelper: ApiHelper?, application: Application) :
-    AndroidViewModel(application) {
-    private val TAG = "CategoriesViewModel"
+class StoreDetailsViewModel(private val apiHelper: ApiHelper?, var context: Context) :
+    ViewModel() {
+    private val TAG = "StoreDetailsViewModel"
     private val categories = MutableLiveData<Resource<Categories>>()
     private val viewStoresProduct = MutableLiveData<Resource<StoreProducts>>()
 
@@ -32,9 +36,15 @@ class CategoriesViewModel(private val apiHelper: ApiHelper?, application: Applic
 
 
 
+            } catch (e: TimeoutCancellationException) {
+                categories.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
-                Log.e(TAG, "categories: ${e.message}")
-                categories.postValue(Resource.error("Something Went Wrong", null))
+                if (e is IOException) {
+                    categories.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    categories.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
+                Log.e(TAG, "storeCategories: ${e.message}")
             }
         }
     }
@@ -55,10 +65,15 @@ class CategoriesViewModel(private val apiHelper: ApiHelper?, application: Applic
 
                 // }.await()
 
-
+            }catch (e: TimeoutCancellationException) {
+                viewStoresProduct.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
-                Log.e(TAG, "viewStoresProduct: ${e.message}")
-                viewStoresProduct.postValue(Resource.error("Something Went Wrong", null))
+                if (e is IOException) {
+                    viewStoresProduct.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    viewStoresProduct.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
+                Log.e(TAG, "storesFreeDelivery: ${e.message}")
             }
         }
     }

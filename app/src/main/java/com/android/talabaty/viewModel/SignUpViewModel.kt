@@ -1,16 +1,20 @@
 package com.android.talabaty.viewModel
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.android.talabaty.R
 import com.android.talabaty.model.*
 import com.android.talabaty.retrofit.ApiHelper
 import com.android.talabaty.dbUtil.Resource
+import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import java.io.IOException
 
-class SignUpViewModel(private val apiHelper: ApiHelper) : ViewModel() {
+class SignUpViewModel(private val apiHelper: ApiHelper,var context: Context) : ViewModel() {
     val TAG = "SignUpViewModel"
     private val signUp = MutableLiveData<Resource<SignUp>>()
     private val sendCode = MutableLiveData<Resource<CheckCode>>()
@@ -31,9 +35,16 @@ class SignUpViewModel(private val apiHelper: ApiHelper) : ViewModel() {
 
                 }
 
+            } catch (e: TimeoutCancellationException) {
+                signUp.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
-                Log.e(TAG, "singUp: ${e.message}")
-                signUp.postValue(Resource.error("Something Went Wrong", null))
+                if (e is IOException) {
+                    signUp.postValue(Resource.error(context.getString(R.string.network_error), null))
+
+                } else {
+                    signUp.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
+                Log.e(TAG, "signUp: ${e.message}")
             }
         }
     }
@@ -53,9 +64,16 @@ class SignUpViewModel(private val apiHelper: ApiHelper) : ViewModel() {
 
                 }
 
+            } catch (e: TimeoutCancellationException) {
+                sendCode.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
+                if (e is IOException) {
+                    sendCode.postValue(Resource.error(context.getString(R.string.network_error), null))
+
+                } else {
+                    sendCode.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
                 Log.e(TAG, "sendCode: ${e.message}")
-                sendCode.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }
@@ -73,9 +91,16 @@ class SignUpViewModel(private val apiHelper: ApiHelper) : ViewModel() {
 
                 }
 
+            } catch (e: TimeoutCancellationException) {
+                reSendCode.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
+                if (e is IOException) {
+                    reSendCode.postValue(Resource.error(context.getString(R.string.network_error), null))
+
+                } else {
+                    reSendCode.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
                 Log.e(TAG, "reSendCode: ${e.message}")
-                reSendCode.postValue(Resource.error("Something Went Wrong", null))
             }
         }
     }

@@ -16,6 +16,8 @@ import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
+import com.android.talabaty.util.CustomMaterialDialog
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import com.android.talabaty.util.Helper
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.OrdersViewModel
@@ -71,7 +73,10 @@ class SplashActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         progressBar.visibility = View.GONE
-                        Helper.showFilterDialog(this, it.message!!).show()
+                      //  this.getMaterialDialogInstance(it.message!!)
+                        Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
+                        finish()
+
                         Log.e(TAG, "setupObserver: " + it.message)
 
                     }

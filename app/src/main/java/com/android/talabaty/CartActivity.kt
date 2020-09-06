@@ -18,6 +18,9 @@ import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.Helper
 import com.android.talabaty.viewModel.CartViewModel
 import com.android.talabaty.dbUtil.Status
+import com.android.talabaty.util.CustomAlertDialog.getDialogInstance
+import com.android.talabaty.util.CustomMaterialDialog
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 
 import kotlinx.android.synthetic.main.activity_cart.*
 import kotlinx.android.synthetic.main.title_toolbar.*
@@ -90,7 +93,7 @@ class CartActivity : AppCompatActivity() {
                     Status.ERROR -> {
                         tvNotFound.visibility = View.GONE
                         swipeRefresh?.isRefreshing = false
-                        Helper.showFilterDialog(this, it.message!!).show()
+                        getMaterialDialogInstance(it.message!!)
                         Log.e(TAG, "setupObserver: " + it.message)
 
                     }

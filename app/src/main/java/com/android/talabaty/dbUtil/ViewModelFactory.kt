@@ -15,27 +15,27 @@ class ViewModelFactory(private val apiHelper: ApiHelper, val application: Applic
         }
 
         if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
-            return ProfileViewModel(apiHelper) as T
+            return ProfileViewModel(apiHelper,application) as T
         }
 
-        if (modelClass.isAssignableFrom(CategoriesViewModel::class.java)) {
-            return CategoriesViewModel(apiHelper,application) as T
+        if (modelClass.isAssignableFrom(StoreDetailsViewModel::class.java)) {
+            return StoreDetailsViewModel(apiHelper,application) as T
         }
 
         if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-            return LoginViewModel(apiHelper) as T
+            return LoginViewModel(apiHelper,application) as T
         }
 
         if (modelClass.isAssignableFrom(SignUpViewModel::class.java)) {
-            return SignUpViewModel(apiHelper) as T
+            return SignUpViewModel(apiHelper,application) as T
         }
 
         if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
-            return ProfileViewModel(apiHelper) as T
+            return ProfileViewModel(apiHelper,application) as T
         }
 
         if (modelClass.isAssignableFrom(CartViewModel::class.java)) {
-            return CartViewModel(apiHelper) as T
+            return CartViewModel(apiHelper,application) as T
         }
 
         if (modelClass.isAssignableFrom(AllMainViewModel::class.java)) {
@@ -44,6 +44,10 @@ class ViewModelFactory(private val apiHelper: ApiHelper, val application: Applic
 
         if (modelClass.isAssignableFrom(OrdersViewModel::class.java)) {
             return OrdersViewModel(apiHelper,application) as T
+        }
+
+        if (modelClass.isAssignableFrom(CategoryViewModel::class.java)) {
+            return CategoryViewModel(apiHelper,application) as T
         }
         throw IllegalArgumentException("Unknown class name")
     }

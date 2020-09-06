@@ -140,10 +140,16 @@
     <string name="gps_details_msg">Your GPS seems to be disabled, do you want to enable it?</string>
     <string name="enable">تفعيل</string>
     <string name="cancel">إلغاء</string>
-    <string name="selecat_location">نريد تفعيل خدمة الموقع لكي نحدد عنوانك</string>
+    <string name="selecat_location">نريد تفعيل خدمة الموقع لإعطائك نتائج أكثر دقة </string>
     <string name="click_long_map">أنقر مطولا لتحديد أي مكان على الخريطة</string>
     <string name="choosen_location">الموقع المختار</string>
     <string name="enter_place">أدخل الموقع!</string>
     <string name="select_type">اختر النوع</string>
     <string name="select_car_type">اختر نوع السيارة!</string>
+    <string name="network_error">تأكد من الاتصال بالانترنت!</string>
+    <string name="timeout_error">انتهت مدة الاتصال، حاول مرة أخرى!</string>
+    <string name="enter_time_date">أدخل  التاريخ والوقت!</string>
+    <string name="invalid_time">وقت غير صالح!</string>
+    <string name="not_found_offers">لا يود عروض متاحة الآن</string>
+
 </resources>

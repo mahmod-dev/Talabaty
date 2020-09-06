@@ -14,6 +14,8 @@ import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.model.Product
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
+import com.android.talabaty.util.CustomMaterialDialog
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import com.android.talabaty.util.Helper
 import com.android.talabaty.viewModel.CartViewModel
 import kotlinx.android.synthetic.main.activity_favorite.*
@@ -79,7 +81,7 @@ class FavoriteActivity : AppCompatActivity() {
                     Status.ERROR -> {
                         swipeRefresh?.isRefreshing = false
                         tvFavEmpty.visibility = View.GONE
-                        Helper.showFilterDialog(this, it.message!!).show()
+                        getMaterialDialogInstance(it.message!!)
                         Log.e(TAG, "setupObserver: " + it.message)
 
                     }

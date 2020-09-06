@@ -7,8 +7,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import com.android.talabaty.R
+import com.android.talabaty.model.Ad
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 
-class SliderAdapter(var activity: Activity, var counts: Int) : PagerAdapter() {
+class SliderAdapter(var activity: Activity, var data: ArrayList<Ad>) : PagerAdapter() {
+    init {
+
+        notifyDataSetChanged()
+
+    }
+
+
 
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
@@ -20,12 +30,16 @@ class SliderAdapter(var activity: Activity, var counts: Int) : PagerAdapter() {
             .inflate(R.layout.item_home_page, container, false)
         container.addView(view)
         val img: ImageView
-        img = view.findViewById(R.id.imgArrowFish)
-        if (count == 3) {
-            img.setImageResource(R.drawable.img_aklak)
-        } else {
-            img.setImageResource(R.drawable.img_wp)
+        img = view.findViewById(R.id.imgArrow)
+
+        if (data[position].image.isNotEmpty()) {
+            Glide.with(activity).load(data[position].image)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.ic_icon_loading)
+                .error(R.drawable.white)
+                .into(img)
         }
+
         return view
     }
 
@@ -38,7 +52,7 @@ class SliderAdapter(var activity: Activity, var counts: Int) : PagerAdapter() {
     }
 
     override fun getCount(): Int {
-        return counts
+        return data.size
     }
 
 }

@@ -5,21 +5,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import androidx.viewpager2.widget.ViewPager2
 import com.android.talabaty.R
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.model.*
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
-import com.android.talabaty.viewModel.CategoriesViewModel
+import com.android.talabaty.viewModel.StoreDetailsViewModel
 import com.android.talabaty.dbUtil.Status
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import kotlinx.android.synthetic.main.item_stores_category.view.*
 
 
@@ -28,7 +27,7 @@ class ViewPagerCategoriesAdapter(var activity: Activity, var data: ArrayList<Cat
     private val TAG = "ViewPagerStoresAdapter"
     var mListener: OnItemClickListener? = null
     var viewStores: ArrayList<Product>? = null
-    private lateinit var viewModel: CategoriesViewModel
+    private lateinit var viewModel: StoreDetailsViewModel
 
     init {
         initViewModel()
@@ -120,7 +119,7 @@ class ViewPagerCategoriesAdapter(var activity: Activity, var data: ArrayList<Cat
         viewModel = ViewModelProviders.of(
             activity as FragmentActivity,
             ViewModelFactory(ApiHelperImpl(RetrofitBuilder.apiService), activity.application)
-        ).get(CategoriesViewModel::class.java)
+        ).get(StoreDetailsViewModel::class.java)
     }
 
 
@@ -148,6 +147,8 @@ class ViewPagerCategoriesAdapter(var activity: Activity, var data: ArrayList<Cat
                     }
                     Status.ERROR -> {
                         swipeRefresh.isRefreshing= false
+                        activity.getMaterialDialogInstance(it.message!!)
+
                         //Handle Error
                         Log.e(TAG, "setupObserver: " + it.message)
 

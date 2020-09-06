@@ -3,14 +3,13 @@ package com.android.talabaty.util
 
 import android.Manifest
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.provider.Settings
 import android.util.Log
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.afollestad.materialdialogs.MaterialDialog
@@ -25,10 +24,13 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.mahmoud.todoapp.util.LocationManager
+import java.io.IOException
+import java.util.*
+
 
 class LocationHelper(var activity: Activity, var locationManager: LocationManager) {
     private val INTERVAL = 4 * 1000 /* 4 secs */
-    private val FAST_INTERVAL = 2000; /* 2 sec */
+    private val FAST_INTERVAL = 2000 /* 2 sec */
     private val PERMISSIONS = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION)
     private var fusedLocationClient: FusedLocationProviderClient? = null
     private var locationCallback: LocationCallback? = null
@@ -242,4 +244,5 @@ class LocationHelper(var activity: Activity, var locationManager: LocationManage
     fun getGrantedLocation(): Boolean {
         return permissionLocationGranted
     }
+
 }

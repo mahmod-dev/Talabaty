@@ -84,4 +84,8 @@ dependencies {
     //request permission library
     implementation 'com.karumi:dexter:6.2.0'
 
+
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
+
+
 }

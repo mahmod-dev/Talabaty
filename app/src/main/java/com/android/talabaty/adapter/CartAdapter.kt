@@ -23,6 +23,8 @@ import com.android.talabaty.viewModel.CartViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.android.talabaty.dbUtil.Status
+import com.android.talabaty.util.CustomMaterialDialog
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import kotlinx.android.synthetic.main.item_cart.view.*
 
 class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
@@ -221,7 +223,7 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                     }
                     Status.ERROR -> {
                         // progressBar.visibility = View.GONE
-                        Helper.showFilterDialog(activity, it.message!!).show()
+                        activity.getMaterialDialogInstance(it.message!!)
                         Log.e(TAG, "setupObserver: " + it.message)
 
                     }
@@ -242,6 +244,7 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                         // progressBar.visibility = View.GONE
                         it.data?.let { users ->
                             Toast.makeText(activity, users.message, Toast.LENGTH_SHORT).show()
+                            notifyDataSetChanged()
 
                         }
                     }
@@ -251,7 +254,7 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                     }
                     Status.ERROR -> {
                         // progressBar.visibility = View.GONE
-                        Helper.showFilterDialog(activity, it.message!!).show()
+                        activity.getMaterialDialogInstance(it.message!!)
                         Log.e(TAG, "setupObserver: " + it.message)
 
                     }
@@ -278,7 +281,7 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                     }
                     Status.ERROR -> {
                         // progressBar.visibility = View.GONE
-                        Helper.showFilterDialog(activity, it.message!!).show()
+                        activity.getMaterialDialogInstance(it.message!!)
                         Log.e(TAG, "setupObserver: " + it.message)
 
                     }
@@ -307,7 +310,9 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                     }
                     Status.ERROR -> {
                         // progressBar.visibility = View.GONE
-                        Helper.showFilterDialog(activity, it.message!!).show()
+                       // Helper.showFilterDialog(activity, it.message!!).show()
+                        activity.getMaterialDialogInstance(it.message!!)
+
                         Log.e(TAG, "setupObserver: " + it.message)
 
                     }

@@ -83,6 +83,23 @@ data class Msg(
     val user_id: Int
 )
 
+data class GetUserDetails(
+    val `as`: String,
+    val city: String,
+    val country: String,
+    val countryCode: String,
+    val isp: String,
+    val lat: Double,
+    val lon: Double,
+    val org: String,
+    val query: String,
+    val region: String,
+    val regionName: String,
+    val status: String,
+    val timezone: String,
+    val zip: String
+)
+
 data class GeneralResponse(
     val code: Int,
     val message: String,
@@ -157,8 +174,8 @@ data class FreeDelivery(
     val id: Int,
     val image_profile: String,
     val images: List<Image>,
-    val latitude: String,
-    val longitude: String,
+    val latitude: Double,
+    val longitude: Double,
     val mobile: String,
     val name: String,
     val `open`: Int,
@@ -308,9 +325,31 @@ data class Ads(
 data class ViewStores(
     val code: Int,
     val message: String,
-    val offers: List<Offer>,
+    val offers: Offer,
     val status: Boolean,
     val stores: ArrayList<Store>
+)
+
+data class OtherServices(
+    val code: Int,
+    val digitals: List<Digital>,
+    val message: String,
+    val status: Boolean
+)
+
+data class Digital(
+    val created_at: String,
+    val id: Int,
+    val image: String,
+    val name: String,
+    val status: String,
+    val type: String
+)
+data class GetOffers(
+    val code: Int,
+    val message: String,
+    val offers: List<Offer>,
+    val status: Boolean
 )
 
 data class Offer(
@@ -326,7 +365,8 @@ data class Offer(
     val rate: Int,
     val status: String,
     val store: Store,
-    val store_id: Int
+    val store_id: Int,
+    val delivery_cost: Int
 )
 
 
@@ -348,8 +388,8 @@ data class Store(
     val id: Int,
     val image_profile: String,
     val images: List<Image>,
-    val latitude: String,
-    val longitude: String,
+    val latitude: Double,
+    val longitude: Double,
     val mobile: String,
     val name: String,
     val `open`: Int,
@@ -363,6 +403,7 @@ data class Store(
     val time_from: String,
     val time_to: String,
     val type: Int,
+    val delivery_cost: Int,
     val user_categories: List<UserCategory>
 )
 

@@ -15,23 +15,22 @@ import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.model.Categories
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
-import com.android.talabaty.util.Helper
-import com.android.talabaty.viewModel.CategoriesViewModel
+import com.android.talabaty.viewModel.StoreDetailsViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.tabs.TabLayoutMediator
 import com.android.talabaty.dbUtil.Status
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import com.android.talabaty.viewModel.CartViewModel
 import kotlinx.android.synthetic.main.activity_store_details.*
 import kotlinx.android.synthetic.main.item_restaurant_under.*
 import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.toolbar.imgCart
 import kotlinx.android.synthetic.main.toolbar.tvCartNum
-import kotlinx.android.synthetic.main.toolbar_location_cart.*
 
 class StoreDetailsActivity : AppCompatActivity() {
     val TAG = "StoreDetailsActivity"
-    private lateinit var viewModelCategory: CategoriesViewModel
+    private lateinit var viewModelCategory: StoreDetailsViewModel
     private lateinit var viewModelCart: CartViewModel
     var catId = 1
 
@@ -98,7 +97,7 @@ class StoreDetailsActivity : AppCompatActivity() {
         viewModelCategory = ViewModelProviders.of(
             this,
             ViewModelFactory(ApiHelperImpl(RetrofitBuilder.apiService), application)
-        ).get(CategoriesViewModel::class.java)
+        ).get(StoreDetailsViewModel::class.java)
     }
 
 
@@ -122,7 +121,7 @@ class StoreDetailsActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         //Handle Error
-                        Helper.showFilterDialog(this,it.message!!).show()
+                        getMaterialDialogInstance(it.message!!)
                         Log.e(TAG, "setupObserverCat: " + it.message)
                     }
                 }
@@ -229,7 +228,7 @@ class StoreDetailsActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
 
-                        Helper.showFilterDialog(this, it.message!!).show()
+                        getMaterialDialogInstance(it.message!!)
                         Log.e(TAG, "setupObserver: " + it.message)
 
                     }

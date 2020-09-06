@@ -1,6 +1,8 @@
 package com.android.talabaty.fragment.mainTab
 
 
+import android.content.Intent
+import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -21,8 +23,12 @@ import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.model.Store
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
+import com.android.talabaty.util.CustomMaterialDialog
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import com.android.talabaty.util.Helper
+import com.android.talabaty.util.LocationHelper
 import com.android.talabaty.viewModel.StoresViewModel
+import com.mahmoud.todoapp.util.LocationManager
 
 class OthersFragment(var position: Int) : Fragment() {
     val TAG = "OthersFragment"
@@ -30,12 +36,15 @@ class OthersFragment(var position: Int) : Fragment() {
     private lateinit var data: ArrayList<Store>
     var swipeRefresh: SwipeRefreshLayout? = null
     var tvNotFound: TextView? = null
-
+    private lateinit var locationHelper: LocationHelper
+    private var long: Double? = 0.0
+    private var lat: Double? = 0.0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        initGpsLocation()
         initViewModel()
         val root = inflater.inflate(R.layout.fragment_others, container, false)
         val rvStore = root.findViewById<RecyclerView>(R.id.rvStore)
@@ -75,7 +84,9 @@ class OthersFragment(var position: Int) : Fragment() {
                     Status.ERROR -> {
                         tvNotFound?.visibility = View.GONE
                         swipeRefresh?.isRefreshing = false
-                        Helper.showFilterDialog(activity!!, it.message!!).show()
+                      //  Helper.showFilterDialog(activity!!, it.message!!).show()
+                        activity?.getMaterialDialogInstance(it.message!!)
+
                         Log.e(TAG, "setupObserver: " + it.message)
                     }
                 }
@@ -94,7 +105,7 @@ class OthersFragment(var position: Int) : Fragment() {
 
     private fun initRecycleView(rv: RecyclerView) {
         if ( activity != null) {
-            val adapter = RecycleStoresAdapter(activity!!, data)
+            val adapter = RecycleStoresAdapter(activity!!, data,lat!!,long!!)
             rv.layoutManager = LinearLayoutManager(activity)
             rv.adapter = adapter
             rv.setHasFixedSize(true)
@@ -108,6 +119,60 @@ class OthersFragment(var position: Int) : Fragment() {
         }
 
     }
+
+
+    private fun initGpsLocation() {
+        locationHelper = LocationHelper(activity!!, object : LocationManager {
+
+            override fun onLocationChanged(location: Location?) {
+
+                lat = location?.latitude
+                long = location?.longitude
+                Log.e(TAG, "onLocationChanged latitude: ${location?.latitude}")
+                Log.e(TAG, "onLocationChanged longitude: ${location?.longitude}")
+
+
+            }
+
+            override fun getLastKnownLocation(location: Location?) {
+
+                Log.e(TAG, "getLastKnownLocation latitude: ${location?.latitude}")
+                Log.e(TAG, "getLastKnownLocation longitude: ${location?.longitude}")
+                lat = location?.latitude
+                long = location?.longitude
+
+
+            }
+
+        })
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        locationHelper.stopLocationUpdates()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (locationHelper.checkLocationPermissions()) {
+            if (locationHelper.checkMapServices()) {
+                locationHelper.startLocationUpdates()
+
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 101) {
+            initGpsLocation()
+            viewModel.storesById(position)
+        }
+    }
+
 
 
 }

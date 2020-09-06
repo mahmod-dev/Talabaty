@@ -2,6 +2,7 @@ package com.android.talabaty.adapter
 
 import android.app.Activity
 import android.content.Intent
+import android.location.Location
 import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
@@ -24,7 +25,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.item_restaurant_under.view.*
 
 
-class RecycleStoresAdapter(var activity: Activity, var data: ArrayList<Store>) :
+class RecycleStoresAdapter(
+    var activity: Activity, var data: ArrayList<Store>, var lat: Double,
+    var lng: Double
+) :
     RecyclerView.Adapter<RecycleStoresAdapter.ViewHolder>() {
     var mListener: OnItemClickListener? = null
     val TAG = "RecycleStoresAdapter"
@@ -37,7 +41,6 @@ class RecycleStoresAdapter(var activity: Activity, var data: ArrayList<Store>) :
     fun setOnClickListener(listener: OnItemClickListener) {
         mListener = listener
     }
-
 
 
     override fun onCreateViewHolder(
@@ -129,6 +132,11 @@ class RecycleStoresAdapter(var activity: Activity, var data: ArrayList<Store>) :
 
             }
 
+            if (lat == 0.0 || lng == 0.0) {
+                tvDistanceStore.text = activity.getString(R.string.unknown)
+            } else
+                tvDistanceStore.text =
+                    "${calculateDistance(stores.latitude, stores.longitude)} KM"
 
         }
 
@@ -154,5 +162,19 @@ class RecycleStoresAdapter(var activity: Activity, var data: ArrayList<Store>) :
             }
         }
     }
+
+    private fun calculateDistance(distLat: Double, distLong: Double): String {
+        val selected_location = Location("locationA")
+        selected_location.latitude = lat
+        selected_location.longitude = lng
+        val near_locations = Location("locationB")
+        near_locations.latitude = distLat
+        near_locations.longitude = distLong
+
+        val distance = (selected_location.distanceTo(near_locations)) / 1000
+
+        return String.format("%.2f", distance)
+    }
+
 
 }

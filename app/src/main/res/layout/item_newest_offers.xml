@@ -18,13 +18,16 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <TextView
@@ -33,8 +36,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/cairo_bold"
                     android:text="عرض لمدة يوم واحد فقط"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_10ssp" />
+                    android:textSize="@dimen/_12ssp" />
 
 
                 <TextView
@@ -43,6 +48,11 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/cairo_bold"
                     android:text="بدلة كلاسيك رجالي"
+                    android:maxLines="2"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
                     android:textColor="@color/colorRed"
                     android:textSize="@dimen/_8ssp" />
 
@@ -52,11 +62,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_star_newst" />
+
 
                     <TextView
                         android:id="@+id/tvNewestDelivery"
@@ -64,16 +70,21 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:fontFamily="@font/cairo_bold"
-                        android:text="توصيل مجاني"
+                        android:gravity="center"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:text="@string/free_delivery"
+
                         android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_8ssp" />
+                        android:textSize="@dimen/_10ssp"
+                        app:drawableStartCompat="@drawable/ic_star_newst" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
                         app:cardBackgroundColor="#FAB03E"
+                        android:layout_gravity="center"
                         app:cardCornerRadius="@dimen/_5sdp">
 
                         <TextView
@@ -81,7 +92,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:fontFamily="@font/cairo_bold"
+                            android:fontFamily="@font/cairo_reqular"
                             android:paddingHorizontal="@dimen/_5sdp"
                             android:text="550$"
                             android:textColor="@color/colorBlack"
@@ -96,7 +107,8 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_100sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
-                android:layout_weight="1"
+                android:layout_marginVertical="@dimen/_5sdp"
+                android:layout_weight="0.9"
                 android:elevation="0dp"
                 app:cardCornerRadius="@dimen/_15sdp"
                 app:cardElevation="0dp">
@@ -105,6 +117,7 @@
                     android:id="@+id/imgNewestOffer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/img_newest" />
             </androidx.cardview.widget.CardView>
 

@@ -1,13 +1,25 @@
 package com.android.talabaty.util
 
+import android.Manifest
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.provider.Settings
 import android.text.format.DateFormat
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.app.ActivityCompat
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.android.talabaty.R
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import java.net.InetAddress
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -58,8 +70,16 @@ object Helper {
         return flag
     }
 
-    fun getFormatDateTime(format: String = "yyyy-MM-dd hh:mm:ss a") =
-        DateFormat.format(format, Date()).toString()
+    fun getFormatDateTime(format: String = "yyyy-MM-dd hh:mm:ss a",date:Date = Date()) =
+        DateFormat.format(format,date).toString()
+
+    fun getFormatTime(format: String = "hh:mm a",time:Date = Date()) =
+        DateFormat.format(format,time).toString()
+
+    fun getFormatDate(format: String = "yyyy-MM-dd",date:Date = Date()) =
+        DateFormat.format(format, date).toString()
+    fun getFormatDate(format: String = "yyyy-MM-dd", date: Calendar) =
+        DateFormat.format(format, date).toString()
 
 
 
@@ -79,8 +99,15 @@ object Helper {
        return dialog
     }
 
-
-
+    fun isInternetAvailable(): Boolean {
+        return try {
+            val ipAddr: InetAddress = InetAddress.getByName("google.com")
+            //You can replace it with your name
+            !ipAddr.equals("")
+        } catch (e: Exception) {
+            false
+        }
+    }
 
 
 }

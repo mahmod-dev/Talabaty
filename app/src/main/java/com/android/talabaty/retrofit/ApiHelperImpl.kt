@@ -19,6 +19,10 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
         return apiService.getAds()
     }
 
+    override suspend fun getOffers(): GetOffers {
+        return apiService.getOffers()
+    }
+
     override suspend fun getFaq(): FaqX {
         return apiService.getFaq()
     }
@@ -141,5 +145,18 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
 
     override suspend fun requestCar(car: RequestCarPost): RequestCar {
         return apiService.requestCar(car)
+    }
+
+    override suspend fun getOtherServices(): OtherServices {
+        return apiService.getOtherServices()
+
+    }
+
+    override suspend fun changeNotifiStatus(status: Int, notification: String): GeneralResponse {
+        return apiService.changeNotifiStatus(status, notification)
+    }
+
+    override suspend fun getUserDetails(): GetUserDetails {
+        return apiService.getUserDetails()
     }
 }
