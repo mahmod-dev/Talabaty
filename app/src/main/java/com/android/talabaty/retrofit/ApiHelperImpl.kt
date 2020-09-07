@@ -159,4 +159,20 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
     override suspend fun getUserDetails(): GetUserDetails {
         return apiService.getUserDetails()
     }
+
+    override suspend fun requestDigitalService(user: DigitalServiceBody): DigitalService {
+        return apiService.requestDigitalService(user)
+    }
+
+    override suspend fun getDigitals(): getDigitals {
+        return apiService.getDigitals()
+    }
+
+    override suspend fun requestOtherService(request: RequestOtherServicePost): RequestOtherService {
+        return apiService.requestOtherService(request)
+    }
+
+    override suspend fun requestService(request: RequestServicePost): RequestOtherService {
+        return apiService.requestService(request)
+    }
 }

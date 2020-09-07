@@ -6,8 +6,12 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardCat"
         android:layout_width="@dimen/_90sdp"
         android:layout_height="@dimen/_90sdp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
         android:layout_margin="@dimen/_5sdp"
         app:cardCornerRadius="@dimen/_10sdp">
 

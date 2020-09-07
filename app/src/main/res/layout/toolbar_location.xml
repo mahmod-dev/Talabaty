@@ -40,7 +40,7 @@
                     android:layout_centerHorizontal="true"
                     android:drawablePadding="@dimen/_5sdp"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="مكة المكرمة"
+                    android:text="@string/unknown"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_10sdp"
                     app:drawableEndCompat="@drawable/ic_tool_arrow"

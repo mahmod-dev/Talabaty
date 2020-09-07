@@ -1,25 +1,26 @@
 package com.android.talabaty.util
 
-import android.Manifest
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.provider.Settings
+import android.database.Cursor
+import android.graphics.Color
+import android.net.Uri
+import android.provider.OpenableColumns
 import android.text.format.DateFormat
+import android.util.Base64
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.android.talabaty.R
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.MultiplePermissionsReport
-import com.karumi.dexter.PermissionToken
-import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import java.io.File
 import java.net.InetAddress
+import java.net.URISyntaxException
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -78,6 +79,7 @@ object Helper {
 
     fun getFormatDate(format: String = "yyyy-MM-dd",date:Date = Date()) =
         DateFormat.format(format, date).toString()
+
     fun getFormatDate(format: String = "yyyy-MM-dd", date: Calendar) =
         DateFormat.format(format, date).toString()
 
@@ -109,5 +111,101 @@ object Helper {
         }
     }
 
+
+
+    fun selectImageDialog(activity: Activity) {
+        val options =
+            arrayOf<CharSequence>(
+                activity.resources.getString(R.string.take_photo),
+                activity.getString(R.string.choose_gallery)
+            )
+        val builder = MaterialAlertDialogBuilder(activity, R.style.AlertDialogCustom)
+
+        val title = TextView(activity)
+        title.text = activity.getString(R.string.choose_pic)
+        title.setPadding(30, 30, 30, 30)
+        title.textSize = 18f
+        title.typeface = ResourcesCompat.getFont(activity, R.font.cairo_bold)
+
+        title.setBackgroundColor(ContextCompat.getColor(activity, R.color.colorPrimary))
+        title.setTextColor(Color.WHITE)
+
+        builder.setCustomTitle(title)
+        builder.setItems(options) { dialog, item ->
+            if (options[item] == activity.resources.getString(R.string.take_photo)) {
+                ImagePicker.with(activity)
+                    .cameraOnly()
+                    .crop()
+                    .start()
+            } else if (options[item] == activity.getString(R.string.choose_gallery)) {
+
+                ImagePicker.with(activity)
+                    .galleryOnly()
+                    .crop()
+                    .start()
+            }
+        }
+
+        builder.setNegativeButton(activity.resources.getString(R.string.cancel)) { dialog, which ->
+            dialog.dismiss()
+
+        }
+        builder.show()
+    }
+
+
+    @Throws(URISyntaxException::class)
+    fun getPath(context: Context, uri: Uri): String? {
+        if ("content".equals(uri.getScheme(), ignoreCase = true)) {
+            val projection = arrayOf("_data")
+            var cursor: Cursor? = null
+            try {
+                cursor = context.contentResolver.query(uri, projection, null, null, null)
+                if (cursor!=null){
+                    val column_index: Int = cursor.getColumnIndexOrThrow("_data")
+
+                    if (cursor.moveToFirst()) {
+                        return cursor.getString(column_index)
+                    }
+                }
+
+            } catch (e: java.lang.Exception) {
+                // Eat it
+            }
+        } else if ("file".equals(uri.getScheme(), ignoreCase = true)) {
+            return uri.getPath()
+        }
+        return null
+    }
+
+    fun getFileName(context: Context, uri: Uri): String? {
+        var result: String? = null
+        if (uri.scheme == "content") {
+            context.contentResolver.query(uri, null, null, null, null).use { cursor ->
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
+                }
+            }
+        }
+        if (result == null) {
+            result = uri.path
+            var cut = 0
+            if (result != null) {
+                cut = result!!.lastIndexOf('/')
+            }
+            if (cut != -1) {
+                if (result != null) {
+                    result = result!!.substring(cut + 1)
+                }
+            }
+        }
+        return result
+    }
+
+
+    fun encodeFile(myFile: File): String? {
+        val bytes = ByteArray(myFile.length().toInt())
+        return Base64.encodeToString(bytes, 0)
+    }
 
 }

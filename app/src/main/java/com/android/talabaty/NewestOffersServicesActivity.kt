@@ -1,5 +1,6 @@
 package com.android.talabaty
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -17,9 +18,11 @@ import com.android.talabaty.model.Store
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
+import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.AllMainViewModel
 import com.android.talabaty.viewModel.StoresViewModel
 import kotlinx.android.synthetic.main.activity_newest_offers_services.*
+import kotlinx.android.synthetic.main.toolbar_location.*
 
 class NewestOffersServicesActivity : AppCompatActivity() {
     val TAG = "NewestOffersActivity"
@@ -29,7 +32,9 @@ class NewestOffersServicesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_newest_offers_services)
+        MyPreferences.context  =this
         data = ArrayList()
+        handleToolbar ()
         initViewModel()
         viewModel.allOffers()
         setupObserver()
@@ -96,5 +101,25 @@ class NewestOffersServicesActivity : AppCompatActivity() {
         rvNewestOffers.setHasFixedSize(true)
 
     }
+
+    private fun  handleToolbar (){
+        imgArrowBack.setOnClickListener {
+            finish()
+        }
+
+        imgCart.setOnClickListener {
+            startActivity(Intent(this, CartActivity::class.java))
+
+        }
+
+        imgFav.setOnClickListener {
+            startActivity(Intent(this, FavoriteActivity::class.java))
+
+        }
+
+        tvHomeLocation.text = MyPreferences.getStr("city")
+
+    }
+
 
 }

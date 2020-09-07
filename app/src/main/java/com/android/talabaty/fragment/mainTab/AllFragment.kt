@@ -28,9 +28,6 @@ import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import com.android.talabaty.viewModel.AllMainViewModel
-import com.fuzz.indicator.CutoutViewIndicator
-import com.google.android.material.tabs.TabLayout
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 import kotlinx.android.synthetic.main.fragment_all.*
 
 class AllFragment : Fragment() {
@@ -89,12 +86,11 @@ class AllFragment : Fragment() {
             )
         }
         linOrderService?.setOnClickListener {
-            startActivity(
-                Intent(
-                    activity,
-                    DeliveryServicesActivity::class.java
-                )
-            )
+
+               val intent =  Intent(activity, OrderServiceActivity::class.java)
+            intent.putExtra("cat","")
+            startActivity(intent)
+
         }
         linOrderCar?.setOnClickListener {
             startActivity(

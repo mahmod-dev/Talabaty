@@ -63,6 +63,8 @@ class SplashActivity : AppCompatActivity() {
                         it.data?.let { users ->
 
                             MyPreferences.setLong("carCost", users.items.request_car_cost.toLong())
+                            MyPreferences.setLong("other_service_cost", users.items.other_service_cost.toLong())
+                            MyPreferences.setLong("request_service_cost", users.items.request_service_cost.toLong())
                             startActivity(Intent(this@SplashActivity, SignInActivity::class.java))
                             finish()
                         }

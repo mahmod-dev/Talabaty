@@ -18,6 +18,8 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
     private val orders = MutableLiveData<Resource<MyOrders>>()
     private val storesFreeDelivery = MutableLiveData<Resource<StoresFreeDelivery>>()
     private val newOrder = MutableLiveData<Resource<CreateNewOrder>>()
+    private val otherServices = MutableLiveData<Resource<RequestOtherService>>()
+    private val services = MutableLiveData<Resource<RequestOtherService>>()
     private val requestCar = MutableLiveData<Resource<RequestCar>>()
     private val cars = MutableLiveData<Resource<GetCars>>()
     private val settings = MutableLiveData<Resource<MainSettings>>()
@@ -166,6 +168,63 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
         }
     }
 
+    fun requestOtherService(order: RequestOtherServicePost) {
+        viewModelScope.launch {
+
+            otherServices.postValue(Resource.loading(null))
+            try {
+                val usersFromApi = apiHelper?.requestOtherService(order)
+
+                if (usersFromApi!!.status && usersFromApi.code == 200)
+                    otherServices.postValue(Resource.success(usersFromApi))
+                else {
+                    otherServices.postValue(Resource.error(usersFromApi.message, null))
+
+                }
+
+
+            }catch (e: TimeoutCancellationException) {
+                otherServices.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+            } catch (e: Exception) {
+                if (e is IOException) {
+                    otherServices.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    otherServices.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
+                Log.e(TAG, "requestOtherService: ${e.message}")
+            }
+        }
+    }
+
+    fun requestService(order: RequestServicePost) {
+        viewModelScope.launch {
+
+            services.postValue(Resource.loading(null))
+            try {
+                val usersFromApi = apiHelper?.requestService(order)
+
+                if (usersFromApi!!.status && usersFromApi.code == 200)
+                    services.postValue(Resource.success(usersFromApi))
+                else {
+                    services.postValue(Resource.error(usersFromApi.message, null))
+
+                }
+
+
+            }catch (e: TimeoutCancellationException) {
+                services.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+            } catch (e: Exception) {
+                if (e is IOException) {
+                    services.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    services.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
+                Log.e(TAG, "requestService: ${e.message}")
+            }
+        }
+    }
+
+
     fun storesFreeDelivery() {
         viewModelScope.launch {
 
@@ -218,6 +277,13 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
 
     fun getAllSettings(): LiveData<Resource<MainSettings>> {
         return settings
+    }
+
+    fun getAllOtherService(): LiveData<Resource<RequestOtherService>> {
+        return otherServices
+    }
+    fun getService(): LiveData<Resource<RequestOtherService>> {
+        return services
     }
 
 }

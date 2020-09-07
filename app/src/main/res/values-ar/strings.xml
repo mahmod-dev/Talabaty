@@ -13,8 +13,8 @@
     <string name="you_dont_have_account">ليس لديك حساب؟</string>
     <string name="create_account">إنشاء حساب</string>
     <string name="sign_up">تسجيل</string>
-    <string name="full_name">إسم المستخدم</string>
-    <string name="mobile_number">رقم الموبايل</string>
+    <string name="full_name">الاسم بالكامل</string>
+    <string name="mobile_number">رقم الهاتف المحمول</string>
     <string name="you_have_account">هل قمت بالتسجيل من قبل؟</string>
     <string name="reset">إستعادة</string>
     <string name="password_recovery">إسترجاع كلمة المرور</string>
@@ -151,5 +151,17 @@
     <string name="enter_time_date">أدخل  التاريخ والوقت!</string>
     <string name="invalid_time">وقت غير صالح!</string>
     <string name="not_found_offers">لا يود عروض متاحة الآن</string>
+    <string name="high">عالي</string>
+    <string name="middle">متوسط</string>
+    <string name="low">منخفض</string>
+    <string name="select_date">اختر التاريخ</string>
+    <string name="invalid_date">Invalid date!</string>
+    <string name="select_start_date_before">اختر تاريخ البداية أولا!</string>
+
+    <string name="choose_pic">اختار صورة</string>
+    <string name="take_photo">التقاط صورة</string>
+    <string name="choose_gallery">اختار من الاستوديو</string>
+    <string name="not_found_remote_service">لا يوجد خدمات رقمية</string>
+    <string name="not_fount_product_in_favorite">لا يوجد منتجات مفضلة</string>
 
 </resources>

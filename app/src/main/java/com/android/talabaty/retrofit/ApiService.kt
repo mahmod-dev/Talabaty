@@ -83,12 +83,18 @@ interface ApiService {
     @GET("storesFreeDelivery")
     suspend fun getStoresFreeDelivery(): StoresFreeDelivery
 
+    @GET("getDigitals")
+    suspend fun getDigitals(): getDigitals
+
 
     /////////////////////////////////////////////
+
 
     @POST("signUp")
     suspend fun signUp(@Body user: SignUpPost): SignUp
 
+    @POST("requestDigitalService")
+    suspend fun requestDigitalService(@Body user: DigitalServiceBody): DigitalService
 
     @GET("getHomePageCategories")
     suspend fun getHomePageCategories(): HomePageCategories
@@ -153,4 +159,10 @@ interface ApiService {
 
     @POST("requestCar")
     suspend fun requestCar(@Body car: RequestCarPost): RequestCar
+
+    @POST("requestOtherService")
+    suspend fun requestOtherService(@Body request: RequestOtherServicePost): RequestOtherService
+
+    @POST("requestService")
+    suspend fun requestService(@Body request: RequestServicePost): RequestOtherService
 }

@@ -5,18 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    android:orientation="vertical"
     android:layoutDirection="rtl"
+    android:orientation="vertical"
     tools:context=".PhotographyActivity">
 
-    <include layout="@layout/title_toolbar"/>
+    <include layout="@layout/title_toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_5sdp"
-        android:scrollbars="none"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,6 +43,7 @@
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
                     android:hint="@string/full_name"
+                    android:paddingVertical="@dimen/_10sdp"
                     android:textSize="@dimen/_11ssp" />
 
                 <EditText
@@ -47,31 +53,8 @@
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
                     android:hint="@string/email"
-                    android:textSize="@dimen/_11ssp" />
+                    android:paddingVertical="@dimen/_10sdp"
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorGrey"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:hint="@string/mobile_number"
-                    android:textSize="@dimen/_11ssp" />
-
-                <EditText
-                    android:id="@+id/etProp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorGrey"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:hint="@string/periorty"
-                    android:textSize="@dimen/_11ssp" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorGrey"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:hint="@string/come_time"
                     android:textSize="@dimen/_11ssp" />
 
                 <EditText
@@ -80,8 +63,38 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
-                    android:hint="@string/call_time"
+                    android:hint="@string/mobile_number"
+                    android:inputType="number"
+                    android:paddingVertical="@dimen/_10sdp"
+
                     android:textSize="@dimen/_11ssp" />
+
+                <!--                <Spinner-->
+                <!--                    android:id="@+id/spProp"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:backgroundTint="@color/gray_light"-->
+                <!--                    android:fontFamily="@font/cairo_reqular"-->
+
+                <!--                    android:hint="@string/periorty" />-->
+
+                <TextView
+                    android:id="@+id/tvPriority"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="@string/periorty"
+                    android:paddingStart="2dp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingEnd="2dp"
+                    android:textColor="@color/colorBlack" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="@color/colorGrey" />
 
 
             </LinearLayout>
@@ -110,11 +123,11 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:backgroundTint="@android:color/transparent"
+                    android:drawableTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
                     android:gravity="start"
                     android:hint="@string/add_text"
                     android:lines="5"
-                    android:drawableTint="@color/colorGrey"
                     android:textSize="@dimen/_10ssp" />
             </androidx.cardview.widget.CardView>
 
@@ -135,11 +148,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_weight="0.5"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_reqular"
                         android:gravity="center"
                         android:text="@string/order_progress"
+
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_12ssp" />
 
@@ -147,7 +161,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_weight="1"
                         android:fontFamily="@font/cairo_reqular"
                         android:gravity="center"
                         android:text="@string/from"
@@ -155,14 +168,44 @@
                         android:textSize="@dimen/_12ssp" />
 
                     <TextView
+                        android:id="@+id/tvStartDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_weight="1"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/_5sdp"
+                        android:text="@string/select_date"
+                        android:textColor="@color/colorGrey2"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_12sdp"
                         android:fontFamily="@font/cairo_reqular"
                         android:gravity="center"
                         android:text="@string/to"
                         android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <TextView
+                        android:id="@+id/tvEndDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/_5sdp"
+
+                        android:text="@string/select_date"
+                        android:textColor="@color/colorGrey2"
                         android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
@@ -191,7 +234,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/_5sdp"
-                                              android:orientation="vertical">
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -209,13 +252,29 @@
                             app:drawableTint="@color/colorBlack" />
 
                         <ImageView
+                            android:id="@+id/imgAdd"
                             android:layout_width="@dimen/_90sdp"
                             android:layout_height="@dimen/_70sdp"
                             android:layout_gravity="center"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:scaleType="centerInside"
+                            android:adjustViewBounds="true"
+
                             android:src="@drawable/ic_icon_add_photo" />
 
+                        <TextView
+                            android:id="@+id/tvImgName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginHorizontal="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:textColor="@color/colorGrey2"
+                            android:textSize="@dimen/_8ssp"
+                            />
 
                     </LinearLayout>
 
@@ -255,6 +314,7 @@
                             app:drawableTint="@color/colorBlack" />
 
                         <ImageView
+                            android:id="@+id/imgFile"
                             android:layout_width="@dimen/_90sdp"
                             android:layout_height="@dimen/_70sdp"
                             android:layout_gravity="center"
@@ -262,6 +322,19 @@
                             android:scaleType="centerInside"
                             android:src="@drawable/ic_icon_add_file" />
 
+                        <TextView
+                            android:id="@+id/tvFileName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginHorizontal="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:textColor="@color/colorGrey2"
+                            android:textSize="@dimen/_8ssp"
+                            />
 
                     </LinearLayout>
 
@@ -284,6 +357,16 @@
                 android:textSize="@dimen/_13ssp" />
 
         </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+
     </ScrollView>
 
 </LinearLayout>

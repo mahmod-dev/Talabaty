@@ -58,6 +58,9 @@ class FavoriteCartAdapter(var activity: Activity, var data: ArrayList<Product>) 
     override fun getItemCount(): Int {
         return data.size
     }
+    fun getProduct(position:Int):Product{
+      return  data[position]
+    }
 
     inner class ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {

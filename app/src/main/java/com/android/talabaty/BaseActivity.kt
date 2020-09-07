@@ -1,8 +1,6 @@
 package com.android.talabaty
 
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -12,21 +10,17 @@ import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.fragment.*
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
-import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
-import com.android.talabaty.util.LocationHelper
 import com.android.talabaty.util.MyPreferences
-import com.android.talabaty.viewModel.CartViewModel
 import com.android.talabaty.viewModel.ProfileViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_base.*
-import kotlinx.android.synthetic.main.activity_cart.*
 import kotlinx.android.synthetic.main.toolbar_location_cart.*
 
 
 open class BaseActivity : AppCompatActivity() {
     open val TAG = "BaseActivity"
     private lateinit var viewModel: ProfileViewModel
-
+var a =1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,29 +48,71 @@ open class BaseActivity : AppCompatActivity() {
                 when (item.itemId) {
 
                     R.id.navMain -> {
-                        selectedFragment = MainFragment()
 
+                        if (a!=1){
+                            selectedFragment = MainFragment()
+                            supportFragmentManager.beginTransaction().replace(
+                                R.id.fragmentContainer,
+                                selectedFragment!!
+                            ).commit()
+                        }
+
+
+                        a = 1
                     }
                     R.id.navRequests -> {
-                        selectedFragment = OrdersFragment()
+                        if (a!=2){
+                            selectedFragment = OrdersFragment()
+                            supportFragmentManager.beginTransaction().replace(
+                                R.id.fragmentContainer,
+                                selectedFragment!!
+                            ).commit()
+                        }
+
+                        a = 2
                     }
                     R.id.navChat -> {
-                        selectedFragment = ChatFragment()
+                        if (a!=3){
+                            selectedFragment = ChatFragment()
+                            supportFragmentManager.beginTransaction().replace(
+                                R.id.fragmentContainer,
+                                selectedFragment!!
+                            ).commit()
+                        }
+
+                        a = 3
                     }
 
                     R.id.navCategory -> {
-                        selectedFragment = CategoriesFragment()
+                        if (a!=4){
+                            selectedFragment = CategoriesFragment()
+                            supportFragmentManager.beginTransaction().replace(
+                                R.id.fragmentContainer,
+                                selectedFragment!!
+                            ).commit()
+                        }
+
+                        a = 4
                     }
 
                     R.id.navProfile -> {
-                        selectedFragment = ProfileFragment()
+                        if (a!=5){
+                            selectedFragment = ProfileFragment()
+                            supportFragmentManager.beginTransaction().replace(
+                                R.id.fragmentContainer,
+                                selectedFragment!!
+                            ).commit()
+
+                        }
+
+                        a = 5
                     }
                 }
 
-                supportFragmentManager.beginTransaction().replace(
-                    R.id.fragmentContainer,
-                    selectedFragment!!
-                ).commit()
+//                supportFragmentManager.beginTransaction().replace(
+//                    R.id.fragmentContainer,
+//                    selectedFragment!!
+//                ).commit()
 
                 true
             }
@@ -104,6 +140,7 @@ open class BaseActivity : AppCompatActivity() {
                         it.data?.let { users ->
                             if (users.city.isNotEmpty()){
                                 tvHomeLocation.text = users.city
+                                MyPreferences.setStr("city",users.city)
                             }else
                             tvHomeLocation.text = getString(R.string.unknown)
 

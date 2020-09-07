@@ -1,27 +1,24 @@
 package com.android.talabaty
 
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.android.talabaty.util.LocationHelper
 import com.android.talabaty.util.MyPreferences
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.mahmoud.todoapp.util.LocationManager
 import kotlinx.android.synthetic.main.activity_map.*
+
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     val TAG = "MapActivity"
@@ -66,9 +63,24 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         mMap.isMyLocationEnabled = true
 
-        mMap.setOnMapLongClickListener {
-            addMarker(it.latitude, it.longitude)
-        }
+
+        mMap.setOnMarkerDragListener(object : OnMarkerDragListener {
+            override fun onMarkerDragStart(markerDragStart: Marker) {
+                // TODO Auto-generated method stub
+                Log.e(TAG, "onMarkerDragStart: " )
+            }
+
+            override fun onMarkerDragEnd(markerDragEnd: Marker) {
+                Log.e(TAG, "onMarkerDragEnd: " )
+                mMap.animateCamera(CameraUpdateFactory.newLatLng(markerDragEnd.position))
+                lat = markerDragEnd.position.latitude
+                long = markerDragEnd.position.longitude
+            }
+
+            override fun onMarkerDrag(markerDrag: Marker) {
+                Log.e(TAG, "onMarkerDrag: " )
+            }
+        })
     }
 
 
@@ -145,11 +157,15 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             LatLng(lat, long)
         ).icon(
             BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)
-        )
+        ).draggable(true)
         this.lat = lat
         this.long = long
-        mMap.addMarker(options).title = "lat: ${lat.toFloat()}, lng: ${long.toFloat()}"
-        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+      val marker  =  mMap.addMarker(options)
+        marker.title = "lat: ${lat.toFloat()}, lng: ${long.toFloat()}"
+        marker.isDraggable = true
+     //   mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+
 
     }
 

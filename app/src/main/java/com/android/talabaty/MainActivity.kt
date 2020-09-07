@@ -10,9 +10,7 @@ import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
-import com.android.talabaty.util.CustomMaterialDialog
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
-import com.android.talabaty.util.Helper
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.CartViewModel
 import kotlinx.android.synthetic.main.toolbar_location_cart.*
@@ -34,6 +32,10 @@ class MainActivity : BaseActivity() {
 
         imgCart.setOnClickListener {
             startActivity(Intent(this, CartActivity::class.java))
+        }
+
+        imgFav.setOnClickListener {
+            startActivity(Intent(this, FavoriteActivity::class.java))
         }
     }
 

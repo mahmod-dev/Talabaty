@@ -1,6 +1,6 @@
 package com.android.talabaty.model
 
-
+import com.google.gson.annotations.SerializedName
 
 
 data class Users(
@@ -259,6 +259,36 @@ data class CreateNewOrder(
     val status: Boolean
 )
 
+data class DigitalService(
+    val code: Int,
+    val message: String,
+    val order: Order,
+    val status: Boolean
+)
+data class getDigitals(
+    val code: Int,
+    val digitals: List<Digital>,
+    val message: String,
+    val status: Boolean
+)
+
+data class DigitalServiceBody(
+    var digital_id: Int,
+    var name: String,
+    var email: String,
+    var mobile: String,
+    var priority: String,
+    var details: String,
+    var date_from: String,
+    var date_to: String,
+    @SerializedName("order_images[0]")
+    var order_images: String? =null,
+    @SerializedName("order_files[0]")
+    var order_files: String? =null
+
+
+)
+
 data class SpinnerObj(
     val id: Int,
     val name: String
@@ -281,6 +311,28 @@ data class NewOrderPost(
     val to_latitude: Long,
     val to_longitude: Long,
     val orders_delivery_cost: Double
+)
+
+data class RequestOtherServicePost(
+
+    val other_service_id: Int,
+    val details: String,
+    val ordered_date: String,
+    val from_latitude: Long,
+    val from_longitude: Long,
+    val to_latitude: Long,
+    val to_longitude: Long,
+    val other_service_cost: Long
+)
+
+data class RequestServicePost(
+    val details: String,
+    val ordered_date: String,
+    val from_latitude: Long,
+    val from_longitude: Long,
+    val to_latitude: Long,
+    val to_longitude: Long,
+    val request_service_cost: Long
 )
 
 data class RequestCarPost(
@@ -609,7 +661,17 @@ data class Settings(
     val twitter: String,
     val url: String,
     val request_car_cost: Double,
-    val orders_delivery_cost: Double
+    val orders_delivery_cost: Double,
+    val request_service_cost: Double,
+    val other_service_cost: Double
+
+)
+
+data class RequestOtherService(
+    val code: Int,
+    val message: String,
+    val order: Order,
+    val status: Boolean
 )
 
 data class RequestCar(

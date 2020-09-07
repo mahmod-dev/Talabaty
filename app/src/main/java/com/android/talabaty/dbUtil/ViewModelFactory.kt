@@ -49,6 +49,11 @@ class ViewModelFactory(private val apiHelper: ApiHelper, val application: Applic
         if (modelClass.isAssignableFrom(CategoryViewModel::class.java)) {
             return CategoryViewModel(apiHelper,application) as T
         }
+
+        if (modelClass.isAssignableFrom(DigitalServiceViewModel::class.java)) {
+            return DigitalServiceViewModel(apiHelper,application) as T
+        }
+
         throw IllegalArgumentException("Unknown class name")
     }
 

@@ -2,32 +2,31 @@ package com.android.talabaty
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.DialogInterface
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
-import com.android.talabaty.model.NewOrderPost
+import com.android.talabaty.model.RequestOtherServicePost
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import com.android.talabaty.util.Helper
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.OrdersViewModel
-import kotlinx.android.synthetic.main.activity_delivery_services.*
+import kotlinx.android.synthetic.main.activity_other_service.*
 import kotlinx.android.synthetic.main.toolbar_location.*
 import java.util.*
 
-
-class DeliveryServicesActivity : AppCompatActivity() {
-    val TAG = "DeliveryServicesAct"
+class OtherServiceActivity : AppCompatActivity() {
+    val TAG = "OtherServiceActivity"
     private lateinit var viewModel: OrdersViewModel
+
     private var calendarDate: Calendar? = null
     private var calendarTime: Calendar? = null
     private var date: Date? = null
@@ -40,27 +39,20 @@ class DeliveryServicesActivity : AppCompatActivity() {
     var lngSrc = 0L
     var latDist = 0L
     var lngDist = 0L
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_delivery_services)
-        initViewModel()
-        val categoryId = intent.extras?.getInt("categoryId")
-        val deliveryCost = intent.extras?.getDouble("deliveryCost")
-        MyPreferences.context = this
-        MyPreferences.setInt("type", 0)
-        setupObserverGetCart()
+        setContentView(R.layout.activity_other_service)
+        MyPreferences.context = applicationContext
         calendarDate = Calendar.getInstance()
         calendarTime = Calendar.getInstance()
-        Log.e(TAG, "deliveryCost: $deliveryCost ,, categoryId: $categoryId  ")
-
-
+        initViewModel()
+        val other_service_id = intent.extras?.getInt("other_service_id")
+        val otherCost = MyPreferences.getLong("other_service_cost")
         handleToolbar()
-
         linPayment1.setOnClickListener {
             startActivity(Intent(this, PaymentMethodActivity::class.java))
         }
-        tvCost.text = deliveryCost.toString()
+        tvCost.text = otherCost.toString()
 
         tvPlaceOrderSrc.setOnClickListener {
             val intent = Intent(this, MapActivity::class.java)
@@ -91,17 +83,18 @@ class DeliveryServicesActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if (date==null || time ==null){
+            if (date == null || time == null) {
                 tvTimePeriod.error = getString(R.string.enter_time_date)
                 return@setOnClickListener
-            }else
-                dateTime =   "${Helper.getFormatDate(date = date!!)} ${Helper.getFormatTime(time = time!!)}"
+            } else
+                dateTime =
+                    "${Helper.getFormatDate(date = date!!)} ${Helper.getFormatTime(time = time!!)}"
 
 
-            if (isToday()){
+            if (isToday()) {
                 if (time!!.time < System.currentTimeMillis()) {
                     tvTimePeriod.error = getString(R.string.invalid_time)
-                  //  Toast.makeText(this, getString(R.string.invalid_time), Toast.LENGTH_LONG).show()
+                    //  Toast.makeText(this, getString(R.string.invalid_time), Toast.LENGTH_LONG).show()
                     return@setOnClickListener
                 }
             }
@@ -112,65 +105,24 @@ class DeliveryServicesActivity : AppCompatActivity() {
             }
 
 
-
-
-
-
-            viewModel.createNewOrder(
-                NewOrderPost(
-                    categoryId!!,
+            viewModel.requestOtherService(
+                RequestOtherServicePost(
+                    other_service_id!!,
                     details,
                     dateTime!!,
                     latSrc,
                     lngSrc,
                     latDist,
                     lngDist,
-                    deliveryCost!!
+                    otherCost
                 )
             )
         }
 
+        setupObserver()
 
     }
 
-    private fun initViewModel() {
-
-        viewModel = ViewModelProviders.of(
-            this,
-            ViewModelFactory(ApiHelperImpl(RetrofitBuilder.apiService), application)
-        ).get(OrdersViewModel::class.java)
-    }
-
-    private fun setupObserverGetCart() {
-
-        viewModel.getCreateNewOrder().observe(this,
-            Observer {
-                when (it.status) {
-                    Status.SUCCESS -> {
-                        progressBar.visibility = View.GONE
-                        it.data?.let { users ->
-                            Toast.makeText(this, users.message, Toast.LENGTH_SHORT).show()
-                            MyPreferences.setLong("long", 0)
-                            MyPreferences.setLong("lat", 0)
-                            finish()
-
-                        }
-                    }
-                    Status.LOADING -> {
-                        progressBar.visibility = View.VISIBLE
-
-                    }
-                    Status.ERROR -> {
-                        progressBar.visibility = View.GONE
-                        getMaterialDialogInstance(it.message!!)
-                        Log.e(TAG, "setupObserver: " + it.message)
-
-                    }
-                }
-
-            }
-        )
-    }
 
     override fun onStart() {
         super.onStart()
@@ -190,6 +142,7 @@ class DeliveryServicesActivity : AppCompatActivity() {
             latDist = lat
             lngDist = lng
         }
+
         MyPreferences.setInt("type", 0)
 
     }
@@ -281,7 +234,46 @@ class DeliveryServicesActivity : AppCompatActivity() {
         }
         tvHomeLocation.text = MyPreferences.getStr("city")
 
+
     }
 
+    private fun initViewModel() {
+
+        viewModel = ViewModelProviders.of(
+            this,
+            ViewModelFactory(ApiHelperImpl(RetrofitBuilder.apiService), application)
+        ).get(OrdersViewModel::class.java)
+    }
+
+    private fun setupObserver() {
+
+        viewModel.getAllOtherService().observe(this,
+            Observer {
+                when (it.status) {
+                    Status.SUCCESS -> {
+                        progressBar.visibility = View.GONE
+                        it.data?.let { users ->
+                            Toast.makeText(this, users.message, Toast.LENGTH_SHORT).show()
+                            MyPreferences.setLong("long", 0)
+                            MyPreferences.setLong("lat", 0)
+                            finish()
+
+                        }
+                    }
+                    Status.LOADING -> {
+                        progressBar.visibility = View.VISIBLE
+
+                    }
+                    Status.ERROR -> {
+                        progressBar.visibility = View.GONE
+                        getMaterialDialogInstance(it.message!!)
+                        Log.e(TAG, "setupObserver: " + it.message)
+
+                    }
+                }
+
+            }
+        )
+    }
 
 }

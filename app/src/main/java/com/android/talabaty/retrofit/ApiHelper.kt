@@ -71,7 +71,6 @@ interface ApiHelper {
 
     suspend fun requestNewCode(mobile: String): GeneralResponse
 
-
     suspend fun getHomePageCategories(): HomePageCategories
 
     suspend fun getMyOrders(): MyOrders
@@ -89,5 +88,12 @@ interface ApiHelper {
     suspend fun changeNotifiStatus(status: Int, notification: String): GeneralResponse
 
     suspend fun getUserDetails(): GetUserDetails
+
+    suspend fun requestDigitalService(user: DigitalServiceBody): DigitalService
+
+    suspend fun getDigitals(): getDigitals
+
+    suspend fun requestOtherService( request: RequestOtherServicePost): RequestOtherService
+    suspend fun requestService( request: RequestServicePost): RequestOtherService
 
 }

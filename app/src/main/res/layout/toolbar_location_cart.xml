@@ -39,7 +39,7 @@
                 android:layout_centerHorizontal="true"
                 android:drawablePadding="@dimen/_5sdp"
                 android:fontFamily="@font/cairo_reqular"
-                android:text="مكة المكرمة"
+                android:text="@string/unknown"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/_8ssp"
                 app:drawableEndCompat="@drawable/ic_tool_arrow"
@@ -58,6 +58,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:padding="@dimen/_5sdp"
+                android:layout_marginVertical="@dimen/_3sdp"
 
                 android:src="@drawable/ic_tool_cart" />
 
@@ -78,6 +79,27 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/_6ssp" />
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/imgCart"
+                app:cardBackgroundColor="@color/gray_light"
+                android:layout_alignBottom="@+id/tvHomeLocation"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginVertical="@dimen/_2sdp"
+                app:cardCornerRadius="@dimen/_50sdp">
+
+                <ImageView
+                    android:id="@+id/imgFav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+
+                    android:src="@drawable/ic_favo" />
+            </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
