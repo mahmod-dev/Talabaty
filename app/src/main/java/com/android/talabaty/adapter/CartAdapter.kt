@@ -10,63 +10,52 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
-import com.android.talabaty.MainActivity
 import com.android.talabaty.R
-import com.android.talabaty.StoreDetailsActivity
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.model.*
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
-import com.android.talabaty.util.Helper
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.CartViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.android.talabaty.dbUtil.Status
-import com.android.talabaty.util.CustomMaterialDialog
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import kotlinx.android.synthetic.main.item_cart.view.*
 
 class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
-    RecyclerView.Adapter<CartAdapter.ViewHolder>() {
-    val TAG = "CartAdapter"
-    var mListener: OnItemClickListener? = null
-    private lateinit var viewModel: CartViewModel
 
+    RecyclerView.Adapter<CartAdapter.MyViewHolder>() {
+    val TAG = "CartAdapter"
+    var onItemClick: ((Cart,Int )-> Unit)? = null
+
+    private lateinit var viewModel: CartViewModel
     init {
         MyPreferences.context = activity
         initViewModel()
     }
 
-    interface OnItemClickListener {
-        fun onItemClick(position: Int)
-        fun onItemLongClick(position: Int)
-    }
 
-    fun setOnClickListener(listener: OnItemClickListener?) {
-        mListener = listener
-    }
-
-
-    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): MyViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.item_cart, viewGroup, false)
-        return ViewHolder(view)
+        return MyViewHolder(view)
+
     }
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        viewHolder.bind(data[i].product, i)
+    override fun onBindViewHolder(myViewHolder: MyViewHolder, i: Int) {
+        myViewHolder.bind(data[i].product!!, i)
         setupObserverChangeQuantity()
-        setupObserverRemoveFromCart()
         setupObserverAddToFav()
         setupObserverDeleteFav()
+
     }
 
     override fun getItemCount(): Int {
         return data.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvCartName: TextView = itemView.tvCartName
         var tvCartDetails: TextView = itemView.tvCartDetails
         var tvCartPrice: TextView = itemView.tvCartPrice
@@ -103,15 +92,23 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                     .into(imgCart)
             }
 
+//            rlDelete.setOnClickListener {
+//                data.removeAt(position)
+////                notifyItemRemoved(position)
+////                notifyItemRangeRemoved(position, data.size)
+//                notifyDataSetChanged()
+//                viewModel.deleteFromCart(product.id)
+//
+//
+//                Log.e(TAG, "bind: ${product.id} " )
+//
+//
+//            }
+
             rlDelete.setOnClickListener {
-                data.remove(data[position])
-                notifyItemRemoved(position)
-                notifyItemRangeRemoved(position, data.size)
-                notifyDataSetChanged()
-                viewModel.deleteFromCart(product.id)
-
-
-                Log.e(TAG, "bind: ${product.id} " )
+                Log.e(TAG, "bind product id: ${product.id}" )
+                Log.e(TAG, "bind: ${adapterPosition},,, $position" )
+                onItemClick?.invoke(data[adapterPosition],position)
             }
 
             imgAdd.setOnClickListener {
@@ -172,26 +169,10 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
         }
 
         init {
-            itemView.setOnClickListener {
-                if (mListener != null) {
-                    val position = adapterPosition
-                    if (position != RecyclerView.NO_POSITION) {
-                        mListener!!.onItemClick(position)
-                    }
-                }
-            }
 
-            itemView.setOnLongClickListener {
-                if (mListener != null) {
-                    val position = adapterPosition
-                    if (position != RecyclerView.NO_POSITION) {
-                        mListener!!.onItemLongClick(position)
-                    }
-                }
-                false
-
-            }
         }
+
+
     }
 
 
@@ -234,35 +215,6 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
     }
 
 
-    private fun setupObserverRemoveFromCart() {
-
-        viewModel.getDeleteToCart().observe(activity as FragmentActivity,
-            Observer {
-                when (it.status) {
-                    Status.SUCCESS -> {
-                        // viewModel.getCart()
-                        // progressBar.visibility = View.GONE
-                        it.data?.let { users ->
-                            Toast.makeText(activity, users.message, Toast.LENGTH_SHORT).show()
-                            notifyDataSetChanged()
-
-                        }
-                    }
-                    Status.LOADING -> {
-                        //progressBar.visibility = View.VISIBLE
-
-                    }
-                    Status.ERROR -> {
-                        // progressBar.visibility = View.GONE
-                        activity.getMaterialDialogInstance(it.message!!)
-                        Log.e(TAG, "setupObserver: " + it.message)
-
-                    }
-                }
-
-            }
-        )
-    }
 
     private fun setupObserverAddToFav() {
 
@@ -321,6 +273,5 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
             }
         )
     }
-
 
 }

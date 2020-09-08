@@ -574,8 +574,8 @@ data class Cart(
     val quantity: String,
     val store_id: Int,
     val user_id: Int,
-    val store: Store,
-    val product: Product
+    val store: Store? = null,
+    val product: Product?  = null
 )
 
 data class StoreDetails(
