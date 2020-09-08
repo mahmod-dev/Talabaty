@@ -56,8 +56,6 @@ var a =1
                                 selectedFragment!!
                             ).commit()
                         }
-
-
                         a = 1
                     }
                     R.id.navRequests -> {
@@ -68,7 +66,6 @@ var a =1
                                 selectedFragment!!
                             ).commit()
                         }
-
                         a = 2
                     }
                     R.id.navChat -> {
@@ -79,7 +76,6 @@ var a =1
                                 selectedFragment!!
                             ).commit()
                         }
-
                         a = 3
                     }
 
@@ -91,7 +87,6 @@ var a =1
                                 selectedFragment!!
                             ).commit()
                         }
-
                         a = 4
                     }
 
@@ -104,7 +99,6 @@ var a =1
                             ).commit()
 
                         }
-
                         a = 5
                     }
                 }

@@ -1,41 +1,63 @@
 package com.android.talabaty
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.talabaty.adapter.CartAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.android.talabaty.adapter.RemoteServiceAdapter
+import com.android.talabaty.adapter.RemoteServicePagerAdapter
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
-import com.android.talabaty.model.Cart
 import com.android.talabaty.model.Digital
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.viewModel.DigitalServiceViewModel
-import kotlinx.android.synthetic.main.activity_cart.*
 import kotlinx.android.synthetic.main.activity_remote_service.*
 import kotlinx.android.synthetic.main.activity_remote_service.swipeRefresh
 import kotlinx.android.synthetic.main.activity_remote_service.tvNotFound
 import kotlinx.android.synthetic.main.title_toolbar.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class RemoteServiceActivity : AppCompatActivity() {
     val TAG = "RemoteServiceActivity"
     private lateinit var viewModel: DigitalServiceViewModel
+    var currentPage = 0
+    var data: ArrayList<Int>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_remote_service)
+        data = ArrayList<Int>()
+
         initViewModel()
         viewModel.digitals()
         handleToolbar()
         swipeToRefresh()
         setupObserver()
+        initViewPager()
+
+        cardArrowRight.setOnClickListener {
+            if (currentPage == 2) {
+                currentPage = -1
+            }
+            currentPage += 1
+            viewPager.setCurrentItem(currentPage, true)
+        }
+
+        cardArrowLeft.setOnClickListener {
+            if (currentPage == 0) {
+                currentPage = data!!.size
+            }
+
+            currentPage -= 1
+            viewPager.setCurrentItem(currentPage, true)
+        }
     }
 
     private fun handleToolbar() {
@@ -69,7 +91,7 @@ class RemoteServiceActivity : AppCompatActivity() {
                         it.data?.let { users ->
                             if (users.digitals.isEmpty()) {
                                 tvNotFound.visibility = View.VISIBLE
-                            }else{
+                            } else {
                                 initRecycleView(users.digitals)
                             }
 
@@ -107,17 +129,42 @@ class RemoteServiceActivity : AppCompatActivity() {
         rvRemote.adapter = adapter
         rvRemote.setHasFixedSize(true)
 
+    }
 
-//        adapter.setOnClickListener(object : RemoteServiceAdapter.OnItemClickListener{
-//            override fun onItemClick(position: Int) {
-//                Toast.makeText(this@RemoteServiceActivity,position,Toast.LENGTH_SHORT).show()
-//            }
-//
-//            override fun onItemLongClick(position: Int) {
-//                Toast.makeText(this@RemoteServiceActivity,position,Toast.LENGTH_SHORT).show()
-//            }
-//        })
+    private fun initViewPager() {
+        data?.add(R.drawable.img_wp)
+        data?.add(R.drawable.img_fish)
+        data?.add(R.drawable.img_newest)
+        val adapter = RemoteServicePagerAdapter(this, data!!)
+        with(viewPager) {
+            clipToPadding = false
+            clipChildren = false
+            offscreenPageLimit = 3
 
+            //to disable touch swiping
+            isUserInputEnabled = false
+            orientation = ViewPager2.ORIENTATION_HORIZONTAL
+            this.adapter = adapter
+
+        }
+
+        val timer = Timer()
+        val handler = Handler()
+        val runnable = Runnable {
+            if (currentPage == 2) {
+                currentPage = -1
+            }
+            currentPage += 1
+            viewPager.setCurrentItem(currentPage, true)
+            viewPager.animation
+        }
+
+        val timerTask: TimerTask = object : TimerTask() {
+            override fun run() {
+                handler.post(runnable)
+            }
+        }
+        timer.schedule(timerTask, 1, 4000)
 
     }
 
