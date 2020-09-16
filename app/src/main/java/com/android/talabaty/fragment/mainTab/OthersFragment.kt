@@ -27,6 +27,7 @@ import com.android.talabaty.util.CustomMaterialDialog
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import com.android.talabaty.util.Helper
 import com.android.talabaty.util.LocationHelper
+import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.StoresViewModel
 import com.mahmoud.todoapp.util.LocationManager
 
@@ -46,31 +47,32 @@ class OthersFragment(var position: Int) : Fragment() {
         // Inflate the layout for this fragment
         initGpsLocation()
         initViewModel()
+        MyPreferences.context = context
         val root = inflater.inflate(R.layout.fragment_others, container, false)
         val rvStore = root.findViewById<RecyclerView>(R.id.rvStore)
          swipeRefresh = root.findViewById(R.id.swipeRefresh)
         tvNotFound = root.findViewById(R.id.tvNotFound)
         data = ArrayList()
         setupObserver(rvStore)
-        swipeToRefresh(rvStore)
+        swipeToRefresh()
 
         return root
     }
 
     private fun setupObserver(rv: RecyclerView) {
         tvNotFound?.visibility = View.GONE
-        viewModel.getStoresById().observe(viewLifecycleOwner!!,
+        viewModel.getStoresById().observe(
+            viewLifecycleOwner,
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
                         swipeRefresh?.isRefreshing = false
                         tvNotFound?.visibility = View.GONE
                         it.data?.let { users ->
-                            data.clear()
                             data.addAll(users.stores)
                             if (users.stores.isEmpty()){
                                 tvNotFound?.visibility = View.VISIBLE
-                            }
+                            }else
                             initRecycleView(rv)
                         }
                     }
@@ -112,10 +114,10 @@ class OthersFragment(var position: Int) : Fragment() {
         }
     }
 
-    private fun swipeToRefresh(rv:RecyclerView){
+    private fun swipeToRefresh(){
         swipeRefresh?.setOnRefreshListener {
 
-            setupObserver(rv)
+            viewModel.storesById(position)
         }
 
     }
@@ -130,6 +132,8 @@ class OthersFragment(var position: Int) : Fragment() {
                 long = location?.longitude
                 Log.e(TAG, "onLocationChanged latitude: ${location?.latitude}")
                 Log.e(TAG, "onLocationChanged longitude: ${location?.longitude}")
+                MyPreferences.setLong("lat",lat!!.toLong())
+                MyPreferences.setLong("lng",long!!.toLong())
 
 
             }
@@ -141,6 +145,8 @@ class OthersFragment(var position: Int) : Fragment() {
                 lat = location?.latitude
                 long = location?.longitude
 
+                MyPreferences.setLong("lat",lat!!.toLong())
+                MyPreferences.setLong("lng",long!!.toLong())
 
             }
 

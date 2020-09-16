@@ -56,6 +56,9 @@ interface ApiService {
         @Query("category_id") categoryId: Int
     ): StoreProducts
 
+    @GET("productDetails")
+    suspend fun getProductDetails(@Query("product_id") productId: Int): ProductDetails
+
     @GET("getActivities")
     suspend fun getActivities(): Activities
 
@@ -86,6 +89,26 @@ interface ApiService {
     @GET("getDigitals")
     suspend fun getDigitals(): getDigitals
 
+    @GET("getHomePageCategories")
+    suspend fun getHomePageCategories(): HomePageCategories
+
+    @GET("getCars")
+    suspend fun getCars(): GetCars
+
+    @GET("getPaymentMethods")
+    suspend fun getPaymentMethods(): GetPaymentMethod
+
+    @GET("getMyPaymentCards")
+    suspend fun getMyPaymentCards(): GetMyPaymentCard
+
+    @GET("nearbyStores")
+    suspend fun nearbyStores(
+        @Query("latitude") latitude: Long,
+        @Query("longitude") longitude: Long
+    ): GetNearbyStores
+
+    @GET("viewTatbeqakumProducts")
+    suspend fun viewTatbeqakumProducts(@Query("activity_id") activityId: Int): GetViewTatbeqakumProducts
 
     /////////////////////////////////////////////
 
@@ -96,11 +119,6 @@ interface ApiService {
     @POST("requestDigitalService")
     suspend fun requestDigitalService(@Body user: DigitalServiceBody): DigitalService
 
-    @GET("getHomePageCategories")
-    suspend fun getHomePageCategories(): HomePageCategories
-
-    @GET("getCars")
-    suspend fun getCars(): GetCars
 
     @FormUrlEncoded
     @POST("checkCode")
@@ -165,4 +183,17 @@ interface ApiService {
 
     @POST("requestService")
     suspend fun requestService(@Body request: RequestServicePost): RequestOtherService
+
+    @POST("addPaymentCard")
+    suspend fun addPaymentCard(@Body request: AddPaymentCardPost): AddPaymentCard
+
+    @POST("editPaymentCard")
+    suspend fun editPaymentCard(@Body request: EditPaymentCardPost): AddPaymentCard
+
+    @FormUrlEncoded
+    @POST("deletePaymentCard")
+    suspend fun deletePaymentCard(
+        @Field("card_id") cardId: Int
+    ): GeneralResponse
+
 }

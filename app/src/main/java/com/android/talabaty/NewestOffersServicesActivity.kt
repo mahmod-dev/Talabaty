@@ -88,8 +88,7 @@ class NewestOffersServicesActivity : AppCompatActivity() {
 
     private fun swipeToRefresh() {
         swipeRefresh?.setOnRefreshListener {
-
-            setupObserver()
+            viewModel.allOffers()
         }
 
     }

@@ -1,288 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:layoutDirection="rtl">
 
-
-    <ScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
-        android:scrollbars="none"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:fontFamily="@font/cairo_bold"
-                android:text="مرحبا بك"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/_14ssp" />
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
 
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/imgProfile"
-                    android:layout_width="@dimen/_60sdp"
-                    android:layout_height="@dimen/_60sdp"
-                    android:padding="@dimen/_10sdp"
-                    android:src="@drawable/ic_profile" />
-
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_5sdp"
-                    android:layout_weight="2"
-                    android:gravity="start"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvProfileName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/cairo_reqular"
-                        android:text="بلال أحمد"
-
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_10ssp" />
-
-                    <TextView
-                        android:id="@+id/tvProfileMobile"
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/cairo_reqular"
-                        android:text="+972589897"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_10ssp" />
-
-                </LinearLayout>
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_weight="1.5"
-                    android:background="@drawable/shape_text_vie"
-                    android:clickable="true"
-                    android:drawablePadding="@dimen/_6sdp"
-                    android:focusable="true"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:foreground="?attr/selectableItemBackground"
-
-                    android:gravity="center"
-                    android:text="تعديل الحساب"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_10ssp"
-                    app:drawableStartCompat="@drawable/ic_edit" />
-
-
-            </LinearLayout>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:drawablePadding="@dimen/_5sdp"
-                android:fontFamily="@font/cairo_bold"
-                android:text="الحساب"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/_13ssp"
-                app:drawableStartCompat="@drawable/ic_vertical_indecator" />
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                app:cardCornerRadius="@dimen/_10sdp"
-                app:cardElevation="@dimen/_1sdp">
+                    android:layout_gravity="start"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:fontFamily="@font/cairo_bold"
+                    android:text="مرحبا بك"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_14ssp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:orientation="vertical">
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgProfile"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/ic_profile" />
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_weight="2"
+                        android:gravity="start"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvProfileName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:text="بلال أحمد"
+
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <TextView
+                            android:id="@+id/tvProfileMobile"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:text="+972589897"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_10ssp" />
+
+                    </LinearLayout>
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:drawablePadding="@dimen/_10sdp"
-                        android:fontFamily="@font/cairo_bold"
-                        android:gravity="center_vertical"
-                        android:padding="@dimen/_5sdp"
-                        android:text="الطلبات"
-                        android:textColor="@color/colorGrey3"
-                        android:textSize="@dimen/_11ssp"
-                        app:drawableStartCompat="@drawable/ic_icon_orders" />
+                        android:layout_gravity="top"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/shape_text_vie"
+                        android:clickable="true"
+                        android:drawablePadding="@dimen/_6sdp"
+                        android:focusable="true"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:foreground="?attr/selectableItemBackground"
 
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_1sdp"
-                        android:background="@color/colorGrey" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginHorizontal="@dimen/_10sdp"
-                            android:drawablePadding="@dimen/_10sdp"
-                            android:fontFamily="@font/cairo_bold"
-                            android:gravity="center_vertical"
-                            android:padding="@dimen/_5sdp"
-                            android:text="المحفظة"
-                            android:textColor="@color/colorGrey3"
-                            android:textSize="@dimen/_11ssp"
-                            app:drawableStartCompat="@drawable/ic_icon_portfolio" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_gravity="end"
-                            android:layout_marginHorizontal="@dimen/_5sdp"
-                            android:fontFamily="@font/cairo_bold"
-                            android:gravity="center"
-                            android:padding="@dimen/_5sdp"
-                            android:text="200.05"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/_10ssp" />
-
-                    </RelativeLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_1sdp"
-                        android:background="@color/colorGrey" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-
-                        <TextView
-                            android:id="@+id/tvVisaProfile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginHorizontal="@dimen/_10sdp"
-                            android:drawablePadding="@dimen/_10sdp"
-                            android:fontFamily="@font/cairo_bold"
-                            android:gravity="center_vertical"
-                            android:padding="@dimen/_5sdp"
-                            android:text="البطاقات"
-                            android:textColor="@color/colorGrey3"
-                            android:textSize="@dimen/_11ssp"
-                            app:drawableStartCompat="@drawable/ic_icon_visa" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginHorizontal="@dimen/_5sdp"
-                            android:fontFamily="@font/cairo_bold"
-                            android:gravity="center"
-                            android:padding="@dimen/_5sdp"
-                            android:text="2"
-
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/_10ssp" />
-
-                    </RelativeLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_1sdp"
-                        android:background="@color/colorGrey" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginHorizontal="@dimen/_10sdp"
-                            android:drawablePadding="@dimen/_10sdp"
-                            android:fontFamily="@font/cairo_bold"
-                            android:gravity="center_vertical"
-                            android:padding="@dimen/_5sdp"
-                            android:text="الكبونات"
-                            android:textColor="@color/colorGrey3"
-                            android:textSize="@dimen/_11ssp"
-                            app:drawableStartCompat="@drawable/ic_icon_copon" />
-
-                        <TextView
-                            android:id="@+id/tvAddCobon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginHorizontal="@dimen/_5sdp"
-                            android:drawablePadding="@dimen/_5sdp"
-                            android:fontFamily="@font/cairo_bold"
-                            android:gravity="center_vertical"
-                            android:padding="@dimen/_5sdp"
-                            android:text="أضف كوبون"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/_8ssp"
-
-                            app:drawableStartCompat="@drawable/ic_icon_add_copon" />
-
-                    </RelativeLayout>
+                        android:gravity="center"
+                        android:text="تعديل الحساب"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10ssp"
+                        app:drawableStartCompat="@drawable/ic_edit" />
 
 
                 </LinearLayout>
 
-
-            </androidx.cardview.widget.CardView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
                     android:drawablePadding="@dimen/_5sdp"
                     android:fontFamily="@font/cairo_bold"
                     android:text="الحساب"
@@ -291,397 +117,606 @@
                     app:drawableStartCompat="@drawable/ic_vertical_indecator" />
 
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_margin="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardElevation="@dimen/_1sdp">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="@dimen/_20sdp"
-                    android:src="@drawable/ic_icon_above_arrow" />
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:orientation="vertical">
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:fontFamily="@font/cairo_bold"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/_5sdp"
-                    android:text="إشعارات الطلبات"
-                    android:textColor="@color/colorGrey3"
-                    android:textSize="@dimen/_12ssp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swOrders"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:fontFamily="@font/cairo_bold"
+                            android:gravity="center_vertical"
+                            android:padding="@dimen/_5sdp"
+                            android:text="الطلبات"
+                            android:textColor="@color/colorGrey3"
+                            android:textSize="@dimen/_11ssp"
+                            app:drawableStartCompat="@drawable/ic_icon_orders" />
 
 
-            </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="@color/colorGrey" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1sdp"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:background="@color/colorGrey" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:fontFamily="@font/cairo_bold"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/_5sdp"
-                    android:text="إشعارات المتاجر الجديدة"
-                    android:textColor="@color/colorGrey3"
-                    android:textSize="@dimen/_12ssp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginHorizontal="@dimen/_10sdp"
+                                android:drawablePadding="@dimen/_10sdp"
+                                android:fontFamily="@font/cairo_bold"
+                                android:gravity="center_vertical"
+                                android:padding="@dimen/_5sdp"
+                                android:text="المحفظة"
+                                android:textColor="@color/colorGrey3"
+                                android:textSize="@dimen/_11ssp"
+                                app:drawableStartCompat="@drawable/ic_icon_portfolio" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                            <TextView
+                                android:id="@+id/tvWalletAmount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end"
+                                android:layout_marginHorizontal="@dimen/_5sdp"
+                                android:fontFamily="@font/cairo_bold"
+                                android:gravity="center"
+                                android:padding="@dimen/_5sdp"
+                                android:text="000.05"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/_10ssp" />
 
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swStores"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                        </RelativeLayout>
 
-            </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="@color/colorGrey" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1sdp"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:background="@color/colorGrey" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:fontFamily="@font/cairo_bold"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/_5sdp"
-                    android:text="إشعارات العروض الجديدة"
-                    android:textColor="@color/colorGrey3"
-                    android:textSize="@dimen/_12ssp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swOffers"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1sdp"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:background="@color/colorGrey" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:drawablePadding="@dimen/_5sdp"
-                android:fontFamily="@font/cairo_bold"
-                android:text="الأماكن المفضلة"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/_13ssp"
-                app:drawableStartCompat="@drawable/ic_vertical_indecator" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginHorizontal="@dimen/_10sdp"
+                                android:drawablePadding="@dimen/_10sdp"
+                                android:fontFamily="@font/cairo_bold"
+                                android:gravity="center_vertical"
+                                android:padding="@dimen/_5sdp"
+                                android:text="البطاقات"
+                                android:textColor="@color/colorGrey3"
+                                android:textSize="@dimen/_11ssp"
+                                app:drawableStartCompat="@drawable/ic_icon_visa" />
+
+                            <TextView
+                                android:id="@+id/tvCardAmount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toStartOf="@+id/tvShowCard"
+                                android:layout_marginHorizontal="@dimen/_5sdp"
+                                android:fontFamily="@font/cairo_bold"
+                                android:gravity="center"
+                                android:padding="@dimen/_5sdp"
+                                android:text="0"
+                                android:layout_centerVertical="true"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/_10ssp" />
+
+                            <TextView
+                                android:id="@+id/tvShowCard"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginHorizontal="@dimen/_5sdp"
+                                android:layout_marginEnd="10dp"
+                                android:background="@drawable/ripple_square_btn"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:fontFamily="@font/cairo_reqular"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:gravity="center"
+                                android:layout_centerVertical="true"
+                                android:paddingHorizontal="@dimen/_5sdp"
+                                android:text="@string/show_cards"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="@color/colorGrey" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                app:cardCornerRadius="@dimen/_10sdp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginHorizontal="@dimen/_10sdp"
+                                android:drawablePadding="@dimen/_10sdp"
+                                android:fontFamily="@font/cairo_bold"
+                                android:gravity="center_vertical"
+                                android:padding="@dimen/_5sdp"
+                                android:text="الكبونات"
+                                android:textColor="@color/colorGrey3"
+                                android:textSize="@dimen/_11ssp"
+                                app:drawableStartCompat="@drawable/ic_icon_copon" />
+
+                            <TextView
+                                android:id="@+id/tvAddCobon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginHorizontal="@dimen/_5sdp"
+                                android:drawablePadding="@dimen/_5sdp"
+                                android:fontFamily="@font/cairo_bold"
+                                android:gravity="center_vertical"
+                                android:padding="@dimen/_5sdp"
+                                android:text="أضف كوبون"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/_8ssp"
+
+                                app:drawableStartCompat="@drawable/ic_icon_add_copon"
+                                app:drawableTint="@color/colorBlack" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="@dimen/_20sdp">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/_5sdp"
-                        android:drawablePadding="@dimen/_10sdp"
-                        android:fontFamily="@font/cairo_bold"
-                        android:text="مطعم الروتس"
-                        android:textColor="@color/colorGrey3"
-                        android:textSize="@dimen/_10ssp"
-                        app:drawableStartCompat="@drawable/ic_location" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/_5sdp"
-                        android:drawablePadding="@dimen/_10sdp"
-                        android:fontFamily="@font/cairo_bold"
-                        android:text="متجر الزين للملابس"
-                        android:textColor="@color/colorGrey3"
-                        android:textSize="@dimen/_10ssp"
-                        app:drawableStartCompat="@drawable/ic_location" />
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:fontFamily="@font/cairo_bold"
-                    android:text="طلب عرض سعر"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_13ssp" />
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_margin="@dimen/_10sdp"
-                    app:cardCornerRadius="@dimen/_5sdp">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/shape_text_vie"
-                        android:backgroundTint="@color/colorPrimaryDark"
-                        android:drawablePadding="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:drawablePadding="@dimen/_5sdp"
                         android:fontFamily="@font/cairo_bold"
-                        android:paddingHorizontal="@dimen/_10sdp"
-                        android:paddingVertical="@dimen/_3sdp"
-                        android:text="إضافة طلب"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/_10ssp"
-                        app:drawableStartCompat="@drawable/ic_icon_add_copon" />
-
-                </androidx.cardview.widget.CardView>
+                        android:text="@string/notifications"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_13ssp"
+                        app:drawableStartCompat="@drawable/ic_vertical_indecator" />
 
 
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|start"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:fontFamily="@font/cairo_bold"
-                    android:text="تواصل مع البوت"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_13ssp" />
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_margin="@dimen/_10sdp"
-                    app:cardCornerRadius="@dimen/_5sdp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/shape_text_vie"
-                        android:backgroundTint="@color/colorPrimaryDark"
-                        android:drawablePadding="@dimen/_10sdp"
-                        android:fontFamily="@font/cairo_bold"
-                        android:paddingHorizontal="@dimen/_10sdp"
-                        android:paddingVertical="@dimen/_3sdp"
-                        android:text="بدء الدردشة"
-
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/_10ssp"
-                        app:drawableStartCompat="@drawable/ic_icon_chat" />
-
-                </androidx.cardview.widget.CardView>
-
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:background="@drawable/shape_light_green"
-                android:backgroundTint="@color/gray_light"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:paddingVertical="@dimen/_5sdp"
-
-                >
-
-                <TextView
-                    android:id="@+id/tv_settingsProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_gravity="center_horizontal|start"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_toEndOf="@+id/icon"
-                    android:drawablePadding="@dimen/_10sdp"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:text="الإعدادات"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_13ssp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:src="@drawable/ic_icon_arrow_left"
-                    app:tint="@color/colorPrimary" />
-
-
-                <RelativeLayout
-                    android:id="@+id/icon"
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/shape_waiting_box">
-
+                        android:layout_weight="1" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/ic_icon_settings"
-                        app:tint="@color/colorWhite" />
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:src="@drawable/ic_icon_above_arrow" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:fontFamily="@font/cairo_bold"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="إشعارات الطلبات"
+                        android:textColor="@color/colorGrey3"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/swOrders"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:background="@color/colorGrey" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:fontFamily="@font/cairo_bold"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="إشعارات المتاجر الجديدة"
+                        android:textColor="@color/colorGrey3"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/swStores"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:background="@color/colorGrey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:fontFamily="@font/cairo_bold"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="إشعارات العروض الجديدة"
+                        android:textColor="@color/colorGrey3"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/swOffers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:background="@color/colorGrey" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:fontFamily="@font/cairo_bold"
+                    android:text="الأماكن المفضلة"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_13ssp"
+                    app:drawableStartCompat="@drawable/ic_vertical_indecator" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/_20sdp">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_5sdp"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:fontFamily="@font/cairo_bold"
+                            android:text="مطعم الروتس"
+                            android:textColor="@color/colorGrey3"
+                            android:textSize="@dimen/_10ssp"
+                            app:drawableStartCompat="@drawable/ic_location" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_5sdp"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:fontFamily="@font/cairo_bold"
+                            android:text="متجر الزين للملابس"
+                            android:textColor="@color/colorGrey3"
+                            android:textSize="@dimen/_10ssp"
+                            app:drawableStartCompat="@drawable/ic_location" />
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/cairo_bold"
+                        android:text="طلب عرض سعر"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="@dimen/_10sdp"
+                        app:cardCornerRadius="@dimen/_5sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/shape_text_vie"
+                            android:backgroundTint="@color/colorPrimaryDark"
+                            android:clickable="true"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:focusable="true"
+                            android:fontFamily="@font/cairo_bold"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_3sdp"
+                            android:text="إضافة طلب"
+
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_10ssp"
+                            app:drawableStartCompat="@drawable/ic_icon_add_copon" />
+
+                    </androidx.cardview.widget.CardView>
+
 
                 </RelativeLayout>
-            </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rlLogout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:background="@drawable/shape_text_vie"
-                android:clickable="true"
-                android:focusable="true"
-                android:paddingVertical="@dimen/_10sdp"
-                android:foreground="?attr/selectableItemBackground">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|start"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/cairo_bold"
+                        android:text="تواصل مع البوت"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_13ssp" />
 
-                <TextView
-                    android:id="@+id/btnProfileLogout"
-                    android:layout_width="wrap_content"
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="@dimen/_10sdp"
+                        app:cardCornerRadius="@dimen/_5sdp">
+
+                        <TextView
+                            android:id="@+id/tvStartChat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/shape_text_vie"
+                            android:backgroundTint="@color/colorPrimaryDark"
+                            android:clickable="true"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:focusable="true"
+                            android:fontFamily="@font/cairo_bold"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_3sdp"
+                            android:text="@string/start_chat"
+
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_10ssp"
+                            app:drawableStartCompat="@drawable/ic_icon_chat" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginHorizontal="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@color/colorWhite"
-                    android:clickable="false"
-                    android:fontFamily="@font/cairo_bold"
-                    android:text="تسجيل الخروج"
-                    android:textColor="@color/colorPrimary" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toStartOf="@+id/btnProfileLogout"
-                    android:src="@drawable/ic_logout" />
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_100sdp"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:background="@drawable/shape_join_us"
-                android:elevation="@dimen/_2sdp"
-                android:orientation="vertical">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="bottom|center"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginBottom="@dimen/_20sdp"
-                    android:drawablePadding="@dimen/_10sdp"
-                    android:fontFamily="@font/cairo_bold"
-                    android:text="انضم إلى تطبيقكم"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_10ssp"
-                    app:drawableStartCompat="@drawable/ic_icon_join_us" />
+                    android:background="@drawable/shape_light_green"
+                    android:backgroundTint="@color/gray_light"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:paddingVertical="@dimen/_5sdp"
 
-            </RelativeLayout>
+                    >
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_settingsProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_horizontal|start"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_toEndOf="@+id/icon"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:text="الإعدادات"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_13ssp" />
 
-    </ScrollView>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:src="@drawable/ic_icon_arrow_left"
+                        app:tint="@color/colorBlack" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/icon"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/shape_waiting_box">
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_icon_settings"
+                            app:tint="@color/colorWhite" />
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/shape_text_vie"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:paddingVertical="@dimen/_10sdp">
+
+
+                    <TextView
+                        android:id="@+id/btnProfileLogout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@color/colorWhite"
+                        android:clickable="false"
+                        android:fontFamily="@font/cairo_bold"
+                        android:text="تسجيل الخروج"
+                        android:textColor="@color/colorPrimary" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_toStartOf="@+id/btnProfileLogout"
+                        android:src="@drawable/ic_logout" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:background="@drawable/shape_join_us"
+                    android:elevation="@dimen/_2sdp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:fontFamily="@font/cairo_bold"
+                        android:text="انضم إلى تطبيقكم"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10ssp"
+                        app:drawableStartCompat="@drawable/ic_icon_join_us" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

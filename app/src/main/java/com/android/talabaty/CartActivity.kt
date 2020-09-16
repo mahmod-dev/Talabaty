@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,8 +20,6 @@ import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 
 import kotlinx.android.synthetic.main.activity_cart.*
-import kotlinx.android.synthetic.main.title_toolbar.*
-import kotlinx.android.synthetic.main.title_toolbar.imgArrowBack
 
 
 class CartActivity : AppCompatActivity() {
@@ -38,7 +35,7 @@ class CartActivity : AppCompatActivity() {
         initViewModel()
         viewModel.getCart()
         btnCompleteOrder?.setOnClickListener {
-            startActivity(Intent(applicationContext, CreditCardActivity::class.java))
+            startActivity(Intent(applicationContext, PaymentMethodActivity::class.java))
         }
 
         imgArrowBackCart.setOnClickListener {
@@ -52,10 +49,7 @@ class CartActivity : AppCompatActivity() {
 
 
     private fun initRecycleView(carts: ArrayList<Cart>) {
-
-
         adapter = CartAdapter(this, carts)
-
         val linearLayoutManager = LinearLayoutManager(this)
         rvCartDetails.layoutManager = linearLayoutManager
         rvCartDetails.adapter = adapter
@@ -63,16 +57,11 @@ class CartActivity : AppCompatActivity() {
 
         adapter!!.onItemClick = { cart, position ->
 
-            Log.e(TAG, "position: $position ")
-            Log.e(TAG, "cart_product id : ${cart.product!!.id} ")
-
             viewModel.deleteFromCart(cart.product!!.id)
             carts.removeAt(position)
             adapter?.notifyDataSetChanged()
 
         }
-
-
     }
 
 
@@ -120,17 +109,9 @@ class CartActivity : AppCompatActivity() {
     private fun swipeToRefresh() {
         swipeRefresh?.setOnRefreshListener {
 
-            setupObserverGetCart()
+            viewModel.getCart()
         }
 
-    }
-
-    private fun initTitleToolbar() {
-        imgArrowBack.setOnClickListener {
-            finish()
-        }
-
-        tvTitleToolbar.setText(R.string.shopping_cart)
     }
 
     private fun setupObserverRemoveFromCart() {

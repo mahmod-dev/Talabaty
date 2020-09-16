@@ -2,6 +2,7 @@ package com.android.talabaty.retrofit
 
 import com.android.talabaty.model.*
 import retrofit2.http.Body
+import retrofit2.http.Field
 import retrofit2.http.Query
 
 
@@ -93,7 +94,27 @@ interface ApiHelper {
 
     suspend fun getDigitals(): getDigitals
 
-    suspend fun requestOtherService( request: RequestOtherServicePost): RequestOtherService
-    suspend fun requestService( request: RequestServicePost): RequestOtherService
+    suspend fun requestOtherService(request: RequestOtherServicePost): RequestOtherService
+
+    suspend fun requestService(request: RequestServicePost): RequestOtherService
+
+    suspend fun getProductDetails(productId: Int): ProductDetails
+
+    suspend fun addPaymentCard(request: AddPaymentCardPost): AddPaymentCard
+
+    suspend fun getPaymentMethods(): GetPaymentMethod
+
+    suspend fun getMyPaymentCards(): GetMyPaymentCard
+
+    suspend fun editPaymentCard(request: EditPaymentCardPost): AddPaymentCard
+
+    suspend fun deletePaymentCard(cardId: Int): GeneralResponse
+
+    suspend fun nearbyStores(
+        latitude: Long,
+        longitude: Long
+    ): GetNearbyStores
+
+    suspend fun viewTatbeqakumProducts( activityId: Int): GetViewTatbeqakumProducts
 
 }

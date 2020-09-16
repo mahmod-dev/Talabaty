@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -16,19 +17,19 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.android.talabaty.*
-import com.android.talabaty.adapter.MainCategoryAdapter
-import com.android.talabaty.adapter.NewestOffersAdapter
-import com.android.talabaty.adapter.SliderAdapter
+import com.android.talabaty.adapter.*
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
-import com.android.talabaty.model.Ad
-import com.android.talabaty.model.HomePageCategories
-import com.android.talabaty.model.Offer
+import com.android.talabaty.model.*
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
+import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.AllMainViewModel
+import com.android.talabaty.viewModel.StoresViewModel
+import kotlinx.android.synthetic.main.activity_nearby.*
 import kotlinx.android.synthetic.main.fragment_all.*
+import kotlinx.android.synthetic.main.fragment_all.rvNearby
 
 class AllFragment : Fragment() {
     val TAG = "AllFragment"
@@ -38,29 +39,43 @@ class AllFragment : Fragment() {
     var linOrderCar: LinearLayout? = null
     var linRemoteServices: LinearLayout? = null
     var cardOfferServices: LinearLayout? = null
+    var linProducts: LinearLayout? = null
+    var linNearby: LinearLayout? = null
     var viewPager: ViewPager? = null
     var swipeRefresh: SwipeRefreshLayout? = null
     var rvNewestOffers: RecyclerView? = null
+    var rvProducts: RecyclerView? = null
+    var tvNotFound: TextView? = null
     private lateinit var data: ArrayList<Offer>
     private lateinit var arrImages: ArrayList<Ad>
-    var idd =0
+    var idd = 0
 
     private lateinit var viewModelMain: AllMainViewModel
+    private lateinit var viewModelNearby: StoresViewModel
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        MyPreferences.context = context
+
         val root = inflater.inflate(R.layout.fragment_all, container, false)
         initViewModelMain()
+        initViewModelNearby()
         linFreeDelivery = root.findViewById(R.id.linFreeDelivery)
         linOrderService = root.findViewById(R.id.linOrderService)
         linOrderCar = root.findViewById(R.id.linOrderCar)
         linRemoteServices = root.findViewById(R.id.linRemoteServices)
+        linNearby = root.findViewById(R.id.linNearby)
+        linProducts = root.findViewById(R.id.linProducts)
         cardOfferServices = root.findViewById(R.id.cardOfferServices)
         swipeRefresh = root.findViewById(R.id.swipeRefresh)
         rvNewestOffers = root.findViewById(R.id.rvNewestOffers)
+        rvProducts = root.findViewById(R.id.rvProducts)
         viewPager = root.findViewById(R.id.pager)
+        tvNotFound = root.findViewById(R.id.tvNotFound)
 
         val rvCatHome = root.findViewById<RecyclerView>(R.id.rvCatHome)
         data = ArrayList()
@@ -71,11 +86,28 @@ class AllFragment : Fragment() {
         viewModelMain.allOffers()
         viewModelMain.allAdds()
         setupObserverMainCat(rvCatHome)
-        swipeToRefresh(rvCatHome)
+        swipeToRefresh()
         setupObserver(rvNewestOffers!!)
         setupObserverAdds()
+        nearbyLocation()
+        setupObserverNearby()
+        linProducts?.setOnClickListener {
+            startActivity(
+                Intent(
+                    activity,
+                    TatbeqActivity::class.java
+                )
+            )
+        }
 
-
+        linNearby?.setOnClickListener {
+            startActivity(
+                Intent(
+                    activity,
+                    NearbyActivity::class.java
+                )
+            )
+        }
 
         linFreeDelivery?.setOnClickListener {
             startActivity(
@@ -87,8 +119,8 @@ class AllFragment : Fragment() {
         }
         linOrderService?.setOnClickListener {
 
-               val intent =  Intent(activity, OrderServiceActivity::class.java)
-            intent.putExtra("cat","")
+            val intent = Intent(activity, OrderServiceActivity::class.java)
+            intent.putExtra("cat", "")
             startActivity(intent)
 
         }
@@ -121,7 +153,6 @@ class AllFragment : Fragment() {
 
 
     private fun initViewModelMain() {
-
         viewModelMain = ViewModelProviders.of(
             activity!!,
             ViewModelFactory(ApiHelperImpl(RetrofitBuilder.apiService), activity!!.application)
@@ -139,29 +170,25 @@ class AllFragment : Fragment() {
                         it.data?.let { users ->
                             Log.e(TAG, "setupObserverMainCat: ${users.home_page_categories}")
                             initRecycleViewMainCat(rv, users)
+                            initRecycleViewMainTatbeq(rvProducts!!,users.tatbeqakumProducts)
                         }
                     }
                     Status.LOADING -> {
                         //progressBar.visibility = View.VISIBLE
                         swipeRefresh?.isRefreshing = true
-
                     }
                     Status.ERROR -> {
                         swipeRefresh?.isRefreshing = false
                         //    Helper.showFilterDialog(activity!!, it.message!!).show()
                         activity?.getMaterialDialogInstance(it.message!!)
-
                         Log.e(TAG, "setupObserver: " + it.message)
-
                     }
                 }
-
             }
         )
     }
 
     private fun setupObserverAdds() {
-
         viewModelMain.getAdds().observe(viewLifecycleOwner,
             Observer {
                 when (it.status) {
@@ -169,22 +196,22 @@ class AllFragment : Fragment() {
                         it.data?.let { users ->
                             arrImages.addAll(users.ads)
                             initViewPager()
-                            idd =1
-
+                            idd = 1
                         }
-
                     }
                     Status.LOADING -> {
                         arrImages.clear()
+                        adapter?.notifyDataSetChanged()
+
                     }
                     Status.ERROR -> {
                         arrImages.clear()
+                        adapter?.notifyDataSetChanged()
+
 
                         activity?.getMaterialDialogInstance(it.message!!)
-
                     }
                 }
-
             }
         )
     }
@@ -200,14 +227,32 @@ class AllFragment : Fragment() {
 
     }
 
-    private fun swipeToRefresh(rv: RecyclerView) {
-        swipeRefresh?.setOnRefreshListener {
+    private fun initRecycleViewMainTatbeq(rv: RecyclerView, data: ArrayList<TatbeqakumProduct>) {
 
-            setupObserverMainCat(rv)
-        }
+        Log.e(TAG, "initRecycleViewMainCat: $data")
+        val adapterMainCat = TatbeqakumProductsAdapter(activity!!, data)
+        rv.layoutManager = LinearLayoutManager(activity,RecyclerView.HORIZONTAL,false)
+        rv.adapter = adapterMainCat
+        rv.setHasFixedSize(true)
 
     }
 
+
+    private fun swipeToRefresh() {
+        swipeRefresh?.setOnRefreshListener {
+            val lat = MyPreferences.getLong("lat")
+            val lng = MyPreferences.getLong("lng")
+            if (lat != 0L && lng != 0L) {
+                viewModelNearby.nearbyStores(lat, lng)
+            } else {
+                tvNotFound?.visibility = View.VISIBLE
+            }
+            viewModelMain.homePageCategories()
+            viewModelMain.allOffers()
+            viewModelMain.allAdds()
+        }
+
+    }
 
 
     private fun setupObserver(rv: RecyclerView) {
@@ -216,15 +261,16 @@ class AllFragment : Fragment() {
                 when (it.status) {
                     Status.SUCCESS -> {
                         it.data?.let { users ->
-                            data.clear()
-                            data.add(users.offers[0])
+                            val rnds = (users.offers.indices).random()
 
-                            initRecycleView(rv)
+                            data.add(users.offers[rnds])
+
+                            initRecycleView(rv,data)
                         }
                     }
                     Status.LOADING -> {
                         data.clear()
-                        initRecycleView(rv)
+                        initRecycleView(rv,data)
 
                     }
                     Status.ERROR -> {
@@ -235,7 +281,7 @@ class AllFragment : Fragment() {
         )
     }
 
-    private fun initRecycleView(rv : RecyclerView) {
+    private fun initRecycleView(rv: RecyclerView,data: ArrayList<Offer>) {
         val adapter = NewestOffersAdapter(activity!!, data)
         rv.layoutManager = LinearLayoutManager(activity!!)
         rv.adapter = adapter
@@ -243,14 +289,12 @@ class AllFragment : Fragment() {
 
     }
 
-    private fun initViewPager(){
+    private fun initViewPager() {
 
         adapter = SliderAdapter(activity!!, arrImages)
-        adapter?.notifyDataSetChanged()
         viewPager?.adapter = adapter
-
-        if (idd==0)
-        indicator?.setViewPager(viewPager)
+        if (idd == 0)
+            indicator?.setViewPager(viewPager)
 
         viewPager?.addOnPageChangeListener(object : OnPageChangeListener {
             override fun onPageScrolled(position: Int, v: Float, i1: Int) {}
@@ -264,6 +308,72 @@ class AllFragment : Fragment() {
     private fun enableDisableSwipeRefresh(enable: Boolean) {
         if (swipeRefresh != null) {
             swipeRefresh?.isEnabled = enable
+        }
+    }
+
+
+    private fun initViewModelNearby() {
+
+        viewModelNearby = ViewModelProviders.of(
+            this,
+            ViewModelFactory(ApiHelperImpl(RetrofitBuilder.apiService), activity!!.application)
+        ).get(StoresViewModel::class.java)
+    }
+
+    private fun setupObserverNearby() {
+
+        viewModelNearby.getNearbyStores().observe(this,
+            Observer {
+                when (it.status) {
+                    Status.SUCCESS -> {
+                        swipeRefresh?.isRefreshing = false
+                        it.data?.let { users ->
+                            if (users.stores.isEmpty()) {
+                                tvNotFound?.visibility = View.VISIBLE
+                            } else {
+                                val rnds = (0 until users.stores.size).random()
+                                initRecycleViewNearby(users.stores[rnds])
+                            }
+
+                        }
+                    }
+                    Status.LOADING -> {
+                        tvNotFound?.visibility = View.GONE
+
+                    }
+                    Status.ERROR -> {
+                        tvNotFound?.visibility = View.GONE
+                        activity!!.getMaterialDialogInstance(it.message!!)
+                        Log.e(TAG, "setupObserver: " + it.message)
+
+                    }
+                }
+
+            }
+        )
+    }
+
+
+    private fun initRecycleViewNearby(store: Store) {
+        val adapter = NearbyAdapter(activity!!, null, store)
+        val linearLayoutManager = LinearLayoutManager(activity!!)
+        rvNearby.layoutManager = linearLayoutManager
+        rvNearby.adapter = adapter
+        rvNearby.setHasFixedSize(true)
+
+        adapter.onItemClick = { position ->
+
+        }
+    }
+
+    private fun nearbyLocation() {
+        val lat = MyPreferences.getLong("lat")
+        val lng = MyPreferences.getLong("lng")
+        initViewModelNearby()
+        if (lat != 0L && lng != 0L) {
+            viewModelNearby.nearbyStores(lat, lng)
+        } else {
+            tvNotFound?.visibility = View.VISIBLE
         }
     }
 

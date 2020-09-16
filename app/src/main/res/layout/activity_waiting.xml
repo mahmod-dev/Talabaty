@@ -9,542 +9,554 @@
     android:orientation="vertical"
     tools:context=".WaitingActivity">
 
-    <ScrollView
+    <include layout="@layout/toolbar" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include layout="@layout/toolbar"></include>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginVertical="@dimen/_15sdp"
-                android:fontFamily="@font/cairo_bold"
-                android:text="مطعم وفرن زاد الخير"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/_10ssp" />
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:drawablePadding="@dimen/_5sdp"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:gravity="center"
-                    android:text="المنزل"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_7ssp"
-                    app:drawableStartCompat="@drawable/ic_waiting_home" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:drawablePadding="@dimen/_5sdp"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:gravity="center"
-                    android:text="الدفع عند الاستلام"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_7ssp"
-                    app:drawableStartCompat="@drawable/ic_waiting_cash" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btnRateOrder"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="@dimen/_60sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:background="@drawable/ripple_square_btn"
-                android:fontFamily="@font/cairo_reqular"
-                android:gravity="center"
-                android:paddingHorizontal="@dimen/_15sdp"
-                android:paddingVertical="@dimen/_5sdp"
-                android:text="قيم الطلب"
-                android:textColor="@color/colorWhite"
-                android:visibility="gone" />
-
-            <RelativeLayout
-                android:id="@+id/rlOrderFinished"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:background="@color/green_light"
-                android:visibility="gone">
+                android:orientation="vertical">
+
 
                 <TextView
-                    android:id="@+id/tvOrderSuccess"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginVertical="@dimen/_15sdp"
                     android:fontFamily="@font/cairo_bold"
-                    android:gravity="center"
-                    android:padding="@dimen/_5sdp"
-                    android:text="تم التوصيل"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorPrimary"
+                    android:text="مطعم وفرن زاد الخير"
+                    android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_10ssp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toStartOf="@+id/tvOrderSuccess"
-                    android:src="@drawable/ic_true" />
-            </RelativeLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1sdp"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:background="@color/colorGrey" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:gravity="center"
+                        android:text="المنزل"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_7ssp"
+                        app:drawableStartCompat="@drawable/ic_waiting_home" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:gravity="center"
+                        android:text="الدفع عند الاستلام"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_7ssp"
+                        app:drawableStartCompat="@drawable/ic_waiting_cash" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnRateOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/_60sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/ripple_square_btn"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:text="قيم الطلب"
+                    android:textColor="@color/colorWhite"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/rlOrderFinished"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@color/green_light"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tvOrderSuccess"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/cairo_bold"
+                        android:gravity="center"
+                        android:padding="@dimen/_5sdp"
+                        android:text="تم التوصيل"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10ssp" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_waiting_send" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/_15sdp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:drawablePadding="@dimen/_5sdp"
-                        android:fontFamily="@font/cairo_reqular"
-                        android:gravity="center"
-                        android:text="أرسلنا طلبك"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_7ssp" />
-
-                </LinearLayout>
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/tvOrderSuccess"
+                        android:src="@drawable/ic_true" />
+                </RelativeLayout>
 
 
                 <LinearLayout
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="@dimen/_2sdp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:background="#E6F4F4" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:layout_gravity="center"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_waiting_preparing" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/_15sdp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:drawablePadding="@dimen/_5sdp"
-                        android:fontFamily="@font/cairo_reqular"
-                        android:gravity="center"
-                        android:text="تجهيز الطلب"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_7ssp" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="@dimen/_2sdp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:background="#E6F4F4" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:layout_gravity="center"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_waiting_delivery" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/_15sdp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:drawablePadding="@dimen/_5sdp"
-                        android:fontFamily="@font/cairo_reqular"
-                        android:gravity="center"
-                        android:text="توصيل الطلب"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_7ssp" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_marginVertical="@dimen/_15sdp"
-                app:cardCornerRadius="@dimen/_5sdp">
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:background="@color/colorGrey" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/shape_waiting_box"
                         android:orientation="vertical">
 
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_waiting_send" />
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/cairo_bold"
-                            android:text="ملخص الطلب"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="@dimen/_10ssp" />
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:gravity="center"
+                            android:text="أرسلنا طلبك"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_7ssp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginVertical="@dimen/_5sdp"
-                            android:fontFamily="@font/cairo_bold"
-                            android:text="الطلب #٤٥٨٧٦٤٩٨"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="@dimen/_10ssp" />
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginVertical="@dimen/_10sdp"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingHorizontal="@dimen/_10sdp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:fontFamily="@font/cairo_bold"
-                                android:text="1x"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/_10ssp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginStart="@dimen/_10sdp"
-                                android:fontFamily="@font/cairo_bold"
-                                android:text="وجبة شاورما إيطالي"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/_10ssp" />
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:fontFamily="@font/cairo_bold"
-                                android:text="22 ر.س"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/_10ssp" />
-
-                        </LinearLayout>
                     </LinearLayout>
 
+
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_2sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:background="#E6F4F4" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/colorWhite"
                         android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingHorizontal="@dimen/_10sdp">
+                        <ImageView
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_gravity="center"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_waiting_preparing" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:fontFamily="@font/cairo_reqular"
-                                android:text="الطلب"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/_10ssp" />
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:fontFamily="@font/cairo_reqular"
-                                android:text="22 ر.س"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/_10ssp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_gravity="center"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingHorizontal="@dimen/_10sdp">
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:gravity="center"
+                            android:text="تجهيز الطلب"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_7ssp" />
+                    </LinearLayout>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:fontFamily="@font/cairo_reqular"
-                                android:text="رسوم التوصيل"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/_10ssp" />
 
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
+                    <LinearLayout
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_2sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:background="#E6F4F4" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:fontFamily="@font/cairo_reqular"
-                                android:text="22 ر.س"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/_10ssp" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_gravity="center"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_waiting_delivery" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_gravity="center"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingHorizontal="@dimen/_10sdp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:fontFamily="@font/cairo_reqular"
-                                android:text="خصم"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/_10ssp" />
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:fontFamily="@font/cairo_reqular"
-                                android:text="22 ر.س-"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/_10ssp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:layout_marginBottom="@dimen/_15sdp"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingHorizontal="@dimen/_10sdp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:fontFamily="@font/cairo_bold"
-                                android:text="المجموع الإجمالي"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/_10ssp" />
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:fontFamily="@font/cairo_bold"
-                                android:text="22 ر.س"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="@dimen/_10ssp" />
-
-                        </LinearLayout>
-
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:gravity="center"
+                            android:text="توصيل الطلب"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_7ssp" />
                     </LinearLayout>
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/green_light"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:paddingVertical="@dimen/_10sdp">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="@font/cairo_bold"
-                    android:text="تبغى رصيد مجاني؟"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_10ssp" />
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginVertical="@dimen/_15sdp"
+                    app:cardCornerRadius="@dimen/_5sdp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/shape_waiting_box"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:fontFamily="@font/cairo_bold"
+                                android:text="ملخص الطلب"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/_13ssp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginVertical="@dimen/_5sdp"
+                                android:fontFamily="@font/cairo_reqular"
+                                android:text="الطلب #٤٥٨٧٦٤٩٨"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/_13ssp" />
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="@dimen/_10sdp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_10sdp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/cairo_bold"
+                                    android:text="1x"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/_10ssp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:fontFamily="@font/cairo_reqular"
+                                    android:text="وجبة شاورما إيطالي"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/cairo_reqular"
+                                    android:text="22 ر.س"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/_12ssp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorWhite"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_10sdp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/cairo_reqular"
+                                    android:text="الطلب"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/_10ssp" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/cairo_reqular"
+                                    android:text="22 ر.س"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/_10ssp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_10sdp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/cairo_reqular"
+                                    android:text="رسوم التوصيل"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/_10ssp" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/cairo_reqular"
+                                    android:text="22 ر.س"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/_10ssp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_10sdp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/cairo_reqular"
+                                    android:text="خصم"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/_10ssp" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/cairo_reqular"
+                                    android:text="22 ر.س-"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/_10ssp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginBottom="@dimen/_15sdp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_10sdp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/cairo_bold"
+                                    android:text="المجموع الإجمالي"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/_10ssp" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/cairo_bold"
+                                    android:text="22 ر.س"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10ssp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:fontFamily="@font/cairo_bold"
-                    android:gravity="center"
-                    android:paddingHorizontal="@dimen/_60sdp"
-                    android:text="حط هالكود للي تحبهم وبعد أول طلب راح
+                    android:background="@color/green_light"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingVertical="@dimen/_10sdp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/cairo_bold"
+                        android:text="تبغى رصيد مجاني؟"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/_60sdp"
+                        android:text="حط هالكود للي تحبهم وبعد أول طلب راح
 تجيهم 20 ريال بمحفظتك خلال ٩ ساعات"
-                    android:textColor="@color/colorGrey2"
-                    android:textSize="@dimen/_10ssp" />
+                        android:textColor="@color/colorGrey2"
+                        android:textSize="@dimen/_10ssp" />
 
 
-                <TextView
+                    <TextView
+                        android:id="@+id/tvCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/shape_text_vie"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:paddingHorizontal="@dimen/_15sdp"
+                        android:paddingVertical="@dimen/_5sdp"
+                        android:text="#6598743"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:textColor="@color/colorPrimary"
+                        app:drawableStartCompat="@drawable/ic_waiting_share" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/shape_text_vie"
-                    android:drawablePadding="@dimen/_5sdp"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:paddingHorizontal="@dimen/_15sdp"
-                    android:paddingVertical="@dimen/_5sdp"
-                    android:text="#6598743"
-                    android:textColor="@color/colorPrimary"
-                    app:drawableStartCompat="@drawable/ic_waiting_share" />
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:id="@+id/btnTrackWaiting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/ripple_square_btn"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingHorizontal="@dimen/_15sdp"
+                        android:paddingVertical="@dimen/_5sdp"
+                        android:text="تتبع المندوب"
+                        android:textColor="@color/colorWhite"
+                        app:drawableStartCompat="@drawable/ic_waiting_tracking" />
+
+                    <Button
+                        android:id="@+id/btnChatWaiting"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/shape_text_vie"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/_15sdp"
+                        android:paddingVertical="@dimen/_5sdp"
+                        android:text="تواصل مع المندوب"
+                        android:textColor="@color/colorPrimary"
+                        app:drawableStartCompat="@drawable/ic_waiting_chat" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
+        </ScrollView>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_20sdp"
-                android:orientation="horizontal">
-
-                <Button
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:id="@+id/btnTrackWaiting"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_35sdp"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/ripple_square_btn"
-                    android:drawablePadding="@dimen/_5sdp"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:gravity="center"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:paddingHorizontal="@dimen/_15sdp"
-                    android:paddingVertical="@dimen/_5sdp"
-                    android:text="تتبع المندوب"
-                    android:textColor="@color/colorWhite"
-                    app:drawableStartCompat="@drawable/ic_waiting_tracking" />
-
-                <Button
-                    android:id="@+id/btnChatWaiting"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_35sdp"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/shape_text_vie"
-                    android:drawablePadding="@dimen/_5sdp"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:paddingHorizontal="@dimen/_15sdp"
-                    android:paddingVertical="@dimen/_5sdp"
-                    android:text="تواصل مع المندوب"
-                    android:textColor="@color/colorPrimary"
-                    app:drawableStartCompat="@drawable/ic_waiting_chat" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

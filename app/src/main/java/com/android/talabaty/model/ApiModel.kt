@@ -57,6 +57,8 @@ data class User(
     val time_from: Any,
     val time_to: Any,
     val type: Int,
+    val wallet_amount: Int,
+    val payment_cards_count: Int,
     val user_categories: List<Any>
 )
 
@@ -325,6 +327,37 @@ data class RequestOtherServicePost(
     val other_service_cost: Long
 )
 
+data class AddPaymentCardPost(
+    val method_id: Int,
+    val card_number: String,
+    val expired_date: String,
+    val validation_number: String,
+    val name_cardholder: String
+)
+
+data class EditPaymentCardPost(
+    val card_id: Int,
+    val method_id: Int,
+    val card_number: String,
+    val expired_date: String,
+    val validation_number: String,
+    val name_cardholder: String
+)
+data class GetPaymentMethod(
+    val code: Int,
+    val message: String,
+    val payment_methods: ArrayList<PaymentMethod>,
+    val status: Boolean
+)
+
+data class PaymentMethod(
+    val created_at: String,
+    val id: Int,
+    val image: String,
+    val name: String,
+    val status: String
+)
+
 data class RequestServicePost(
     val details: String,
     val ordered_date: String,
@@ -423,18 +456,17 @@ data class Offer(
 
 
 data class Store(
-    val myActivity: MyActivity,
+    val activity: Activity,
     val activity_id: Int,
     val address: String,
-    val available: Int,
     val bio: String,
-    val car_license: String,
-    val cars_count: Int,
+    val available: Int,
     val city: City,
     val city_id: Int,
     val country: Country,
     val country_id: Int,
     val created_at: String,
+    val delivery_cost: Int,
     val discount_percent: Int,
     val email: String,
     val id: Int,
@@ -444,53 +476,34 @@ data class Store(
     val longitude: Double,
     val mobile: String,
     val name: String,
+    val new_offer_notifications: Int,
+    val new_store_notifications: Int,
     val `open`: Int,
-    val owner_id_card: String,
-    val provider_id_card: String,
-    val provider_license: String,
+    val order_notifications: Int,
     val rate: Int,
     val remember_token: Any,
-    val reviews: List<Review>,
+    val reviews: List<Any>,
     val status: String,
     val time_from: String,
     val time_to: String,
     val type: Int,
-    val delivery_cost: Int,
-    val user_categories: List<UserCategory>
+    val user_categories: List<UserCategory>,
+    val wallet_amount: Int,
+    val distance: Double
 )
-
-data class StoreProducts(
+data class ProductDetails(
     val code: Int,
     val message: String,
     val products: ArrayList<Product>,
     val status: Boolean
 )
 
-data class ProductEx(
-    val id: Int,
-    val description: String,
-    val image: String,
-    val is_favorite: Int,
-    val name: String,
-    val price: Int
-)
 
-
-data class Product(
-    val category: Category,
-    val category_id: Int,
-    val description: String,
-    val id: Int,
-    val image: String,
-    val is_favorite: Int,
-    val name: String,
-    val offer_price: Int,
-    val price: Int,
-    val rate: Int,
-    val in_cart: Int,
-    val status: String,
-    val store: Store,
-    val store_id: Int
+data class StoreProducts(
+    val code: Int,
+    val message: String,
+    val products: ArrayList<Product>,
+    val status: Boolean
 )
 
 data class MyOrders(
@@ -526,7 +539,9 @@ data class HomePageCategories(
     val home_page_categories: List<HomePageCategory>,
     val message: String,
     val status: Boolean,
-    val settings: Settings
+    val settings: Settings,
+    val tatbeqakumProducts: ArrayList<TatbeqakumProduct>
+
 
 )
 
@@ -758,4 +773,126 @@ data class Terms(
     val key_words: String,
     val title: String,
     val views: Int
+)
+
+data class Product(
+    val category: Category,
+    val category_id: Int,
+    val colors: List<Color>,
+    val description: String,
+    val has_colors: Int,
+    val has_sizes: Int,
+    val id: Int,
+    val image: String,
+    val in_cart: Int,
+    val is_favorite: Int,
+    val name: String,
+    val offer_price: Any,
+    val other_images: List<OtherImage>,
+    val price: Int,
+    val rate: Int,
+    val sizes: List<Size>,
+    val status: String,
+    val store: Store,
+    val store_id: Int,
+    val purchase_counts: Int,
+    val tatbeqakum_product: Int
+
+)
+
+
+data class Color(
+    val name: String,
+    val id: Int,
+    val status: String,
+    var isSelected: Boolean
+
+)
+
+data class OtherImage(
+    val id: Int,
+    val image: String,
+    val product_id: Int,
+    val status: String
+)
+
+data class Size(
+    val name: String,
+    val id: Int,
+    val status: String,
+    var isSelected: Boolean
+)
+data class AddPaymentCard(
+    val code: Int,
+    val message: String,
+    val payment_card: PaymentCard,
+    val status: Boolean
+)
+
+data class GetNearbyStores(
+    val code: Int,
+    val message: String,
+    val status: Boolean,
+    val stores: ArrayList<Store>
+)
+
+data class PaymentCard(
+    val card_number: String,
+    val created_at: String,
+    val expired_date: String,
+    val id: Int,
+    val method_id: String,
+    val name_cardholder: String,
+    val updated_at: String,
+    val user_id: Int,
+    val method: Method,
+
+    val validation_number: String
+)
+
+data class GetMyPaymentCard(
+    val code: Int,
+    val message: String,
+    val payment_cards: ArrayList<PaymentCard>,
+    val status: Boolean
+)
+
+data class Method(
+    val created_at: String,
+    val id: Int,
+    val image: String,
+    val name: String,
+    val status: String
+)
+
+data class TatbeqakumProduct(
+    val activity_id: Int,
+    val category: Category,
+    val category_id: Int,
+    val colors: Any,
+    val description: String,
+    val has_colors: Int,
+    val has_sizes: Int,
+    val id: Int,
+    val image: String,
+    val in_cart: Int,
+    val is_favorite: Int,
+    val name: String,
+    val offer_price: Any,
+    val other_images: List<OtherImage>,
+    val price: Int,
+    val purchase_counts: Int,
+    val rate: Int,
+    val sizes: Any,
+    val status: String,
+    val store: Store,
+    val store_id: Int,
+    val tatbeqakum_product: Int
+)
+
+data class GetViewTatbeqakumProducts(
+    val code: Int,
+    val message: String,
+    val products: ArrayList<Product>,
+    val status: Boolean
 )

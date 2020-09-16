@@ -2,20 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:id="@+id/lin"
     android:layout_gravity="center">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_marginEnd="@dimen/_6sdp"
-        android:background="@drawable/shape_waiting_box"
-        android:fontFamily="@font/cairo_reqular"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/cairo_bold"
         android:paddingStart="@dimen/_15sdp"
         android:paddingTop="@dimen/_5sdp"
+        android:textSize="@dimen/_9sdp"
         android:paddingEnd="@dimen/_15sdp"
         android:paddingBottom="@dimen/_5sdp"
-        android:text="أحمر"
-        android:textColor="@color/colorWhite" />
+        android:text="أحمر" />
 
 </LinearLayout>

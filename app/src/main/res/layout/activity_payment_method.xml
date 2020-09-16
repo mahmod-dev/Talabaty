@@ -3,286 +3,140 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorWhite"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:background="@color/colorWhite"
     android:layoutDirection="rtl"
+    android:orientation="vertical"
     tools:context=".PaymentMethodActivity">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="true">
+        android:orientation="horizontal"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:paddingVertical="@dimen/_5sdp">
 
-
-
-        <LinearLayout
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:fontFamily="@font/cairo_bold"
+            android:text="@string/add_payment_card"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_13ssp" />
+
+
+        <ImageView
+            android:id="@+id/imgArrowBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_further_arrow" />
+    </RelativeLayout>
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+
             <LinearLayout
-                android:paddingVertical="@dimen/_5sdp"
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/_10sdp">
+
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/pager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_110sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="@dimen/_30sdp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_wp" />
+
+                <com.fuzz.indicator.CutoutViewIndicator
+                    android:id="@+id/indicator_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:rcv_drawable="@drawable/ic_ind_selected_card"
+                    app:rcv_drawable_unselected="@drawable/ic_ind_card"
+                    app:rcv_internal_margin="@dimen/_10sdp" />
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="خيارات الدفع"
-                    android:textColor="@color/colorBlack"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:drawablePadding="@dimen/_5sdp"
                     android:fontFamily="@font/cairo_bold"
-                    android:textSize="@dimen/_12sdp">
-                </TextView>
+                    android:text="@string/add_new_payment_way"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_15ssp"
+                    app:drawableStartCompat="@drawable/ic_vertical_indecator" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                </LinearLayout>
 
-                <ImageView
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_further_arrow">
-                </ImageView>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvPaymentMethod"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:itemCount="5"
+                        tools:listitem="@layout/item_payment_method" />
+
+
+                    <!--                <Button-->
+                    <!--                    android:id="@+id/btnConfirm"-->
+                    <!--                    android:layout_width="match_parent"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:layout_gravity="center_horizontal"-->
+                    <!--                    android:layout_marginTop="@dimen/_30sdp"-->
+                    <!--                    android:background="@drawable/shape_light_green"-->
+                    <!--                    android:backgroundTint="@color/colorPrimary"-->
+                    <!--                    android:clickable="true"-->
+                    <!--                    android:focusable="true"-->
+                    <!--                    android:fontFamily="@font/cairo_reqular"-->
+                    <!--                    android:foreground="?attr/selectableItemBackground"-->
+                    <!--                    android:text="@string/next"-->
+                    <!--                    android:textAllCaps="false"-->
+                    <!--                    android:textColor="@color/colorWhite"-->
+                    <!--                    android:layout_alignParentBottom="true"-->
+                    <!--                    android:layout_marginBottom="@dimen/_20sdp"-->
+                    <!--                    android:textSize="@dimen/_12sdp" />-->
+                </RelativeLayout>
+
+
             </LinearLayout>
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/pager"
-                android:paddingHorizontal="@dimen/_30sdp"
-                android:clipToPadding="false"
-                android:clipChildren="false"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="wrap_content"
-                android:visibility="gone"
-                android:layout_height="@dimen/_110sdp">
-            </androidx.viewpager.widget.ViewPager>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_150sdp"
-                android:scaleType="centerCrop"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:src="@drawable/img_wp"/>
-
-            <com.fuzz.indicator.CutoutViewIndicator
-                android:id="@+id/indicator_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginEnd="@dimen/_10sdp"
-                app:rcv_drawable="@drawable/ic_ind_selected_card"
-                app:rcv_internal_margin="@dimen/_10sdp"
-                app:rcv_drawable_unselected="@drawable/ic_ind_card"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:drawablePadding="@dimen/_5sdp"
-                android:fontFamily="@font/cairo_bold"
-                android:text="@string/add_new_payment_way"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/_15ssp"
-                app:drawableStartCompat="@drawable/ic_vertical_indecator" />
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="@dimen/_5sdp">
-
-                <ImageView
-                    android:id="@+id/imgPay"
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="@dimen/_50sdp"
-                    android:src="@drawable/img_pay"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentStart="true"/>
-
-                <TextView
-                    android:id="@+id/tvNamePay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:textColor="@color/colorBlack"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:text="@string/apple_pay"
-                    android:layout_toEndOf="@id/imgPay"
-                    android:layout_centerVertical="true"
-                    android:textSize="@dimen/_12ssp"
-                    android:layout_gravity="center"/>
-
-                <ImageView
-                    android:id="@+id/imgPayAdd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_add"
-                    android:layout_centerVertical="true"
-                    app:tint="@color/colorPrimary"
-                    android:layout_alignParentEnd="true"
-                    />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorGrey2"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="@dimen/_5sdp">
-
-                <ImageView
-                    android:id="@+id/imgStc"
-                    android:layout_width="@dimen/_40sdp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:src="@drawable/img_pay_stc"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentStart="true"/>
-
-                <TextView
-                    android:id="@+id/tvNameStc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:textColor="@color/colorBlack"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:text="@string/stc_pay"
-                    android:layout_toEndOf="@id/imgStc"
-                    android:layout_centerVertical="true"
-                    android:textSize="@dimen/_12ssp"
-                    android:layout_gravity="center"/>
-
-                <ImageView
-                    android:id="@+id/imgStcAdd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_add"
-                    android:layout_centerVertical="true"
-                    app:tint="@color/colorPrimary"
-                    android:layout_alignParentEnd="true"
-                    />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorGrey2"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="@dimen/_5sdp">
-
-                <ImageView
-                    android:id="@+id/imgMada"
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="@dimen/_50sdp"
-                    android:src="@drawable/img_mada"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentStart="true"/>
-
-                <TextView
-                    android:id="@+id/tvNameMada"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:textColor="@color/colorBlack"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:text="@string/mada"
-                    android:layout_toEndOf="@id/imgMada"
-                    android:layout_centerVertical="true"
-                    android:textSize="@dimen/_12ssp"
-                    android:layout_gravity="center"/>
-
-                <ImageView
-                    android:id="@+id/imgPayMada"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_add"
-                    android:layout_centerVertical="true"
-                    app:tint="@color/colorPrimary"
-                    android:layout_alignParentEnd="true"
-                    />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorGrey2"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="@dimen/_5sdp">
-
-                <ImageView
-                    android:id="@+id/imgOther"
-                    android:layout_width="@dimen/_40sdp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:src="@drawable/ic_waiting_cash"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentStart="true"/>
-
-                <TextView
-                    android:id="@+id/tvNameOther"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/cairo_reqular"
-                    android:textColor="@color/colorBlack"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:text="@string/other_ways"
-                    android:layout_toEndOf="@id/imgOther"
-                    android:layout_centerVertical="true"
-                    android:textSize="@dimen/_12ssp"
-                    android:layout_gravity="center"/>
-
-                <ImageView
-                    android:id="@+id/imgAddOther"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_add"
-                    android:layout_centerVertical="true"
-                    app:tint="@color/colorPrimary"
-                    android:layout_alignParentEnd="true"
-                    />
-
-            </RelativeLayout>
-
-
-            <Button
-                android:id="@+id/btn_confirm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:background="@drawable/shape_light_green"
-                android:backgroundTint="@color/colorPrimary"
-                android:fontFamily="@font/cairo_reqular"
-                android:text="@string/next"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/_12sdp" />
-
-
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 </LinearLayout>

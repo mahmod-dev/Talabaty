@@ -175,4 +175,40 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
     override suspend fun requestService(request: RequestServicePost): RequestOtherService {
         return apiService.requestService(request)
     }
+
+    override suspend fun getProductDetails(productId: Int): ProductDetails {
+        return apiService.getProductDetails(productId)
+    }
+
+    override suspend fun addPaymentCard(request: AddPaymentCardPost): AddPaymentCard {
+        return apiService.addPaymentCard(request)
+    }
+
+    override suspend fun getPaymentMethods(): GetPaymentMethod {
+        return apiService.getPaymentMethods()
+    }
+
+    override suspend fun getMyPaymentCards(): GetMyPaymentCard {
+        return apiService.getMyPaymentCards()
+    }
+
+    override suspend fun editPaymentCard(request: EditPaymentCardPost): AddPaymentCard {
+        return apiService.editPaymentCard(request)
+    }
+
+    override suspend fun deletePaymentCard(cardId: Int): GeneralResponse {
+        return apiService.deletePaymentCard(cardId)
+    }
+
+    override suspend fun nearbyStores(latitude: Long, longitude: Long): GetNearbyStores {
+        return apiService.nearbyStores(latitude, longitude)
+    }
+
+    override suspend fun viewTatbeqakumProducts(activityId: Int): GetViewTatbeqakumProducts {
+        return apiService.viewTatbeqakumProducts(activityId)
+    }
+
+
+
+
 }

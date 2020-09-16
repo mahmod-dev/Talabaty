@@ -22,7 +22,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="q">
-        <activity android:name=".OrderServiceActivity"></activity>
+        <activity android:name=".TatbeqActivity"></activity>
+        <activity android:name=".NearbyActivity" />
+        <activity android:name=".MyCardActivity" />
+        <activity android:name=".OrderServiceActivity" />
         <activity android:name=".OtherServiceActivity" />
         <activity android:name=".FavoriteActivity" />
         <activity android:name=".BaseActivity" />
@@ -39,6 +42,9 @@
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".ElectronicServiceActivity" />
         <activity android:name=".MapActivity" />
+        <activity android:name=".AddCreditCardActivity" />
+        <activity android:name=".WaitingActivity" />
+        <activity android:name=".TrackingMapActivity" />
         <activity android:name=".PaymentMethodActivity" />
         <activity
             android:name=".SplashActivity"
@@ -52,7 +58,7 @@
         <activity android:name=".HelpDetailsActivity" />
         <activity android:name=".CarServiceActivity" />
         <activity android:name=".RemoteServiceActivity" />
-        <activity android:name=".FamilyDetailsActivity" />
+        <activity android:name=".ProductDetailsActivity" />
         <activity android:name=".MainActivity" />
 
         <uses-library

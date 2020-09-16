@@ -1,6 +1,5 @@
 package com.android.talabaty.viewModel
 
-import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.*
@@ -17,6 +16,7 @@ class StoreDetailsViewModel(private val apiHelper: ApiHelper?, var context: Cont
     private val TAG = "StoreDetailsViewModel"
     private val categories = MutableLiveData<Resource<Categories>>()
     private val viewStoresProduct = MutableLiveData<Resource<StoreProducts>>()
+    private val productDetails = MutableLiveData<Resource<ProductDetails>>()
 
 
 
@@ -73,10 +73,37 @@ class StoreDetailsViewModel(private val apiHelper: ApiHelper?, var context: Cont
                 } else {
                     viewStoresProduct.postValue(Resource.error(context.getString(R.string.something_went_error), null))
                 }
-                Log.e(TAG, "storesFreeDelivery: ${e.message}")
+                Log.e(TAG, "viewStoreProduct: ${e.message}")
             }
         }
     }
+
+    public fun productDetails(productId: Int) {
+        viewModelScope.launch {
+
+            productDetails.postValue(Resource.loading(null))
+            try {
+                val usersFromApi = apiHelper?.getProductDetails(productId)
+                if (usersFromApi!!.status && usersFromApi.code == 200)
+                    productDetails.postValue(Resource.success(usersFromApi))
+                else{
+                    productDetails.postValue(Resource.error(usersFromApi.message, null))
+
+                }
+
+            }catch (e: TimeoutCancellationException) {
+                productDetails.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+            } catch (e: Exception) {
+                if (e is IOException) {
+                    productDetails.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else {
+                    productDetails.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
+                Log.e(TAG, "productDetails: ${e.message}")
+            }
+        }
+    }
+
 
 
     fun getAllCategory(): LiveData<Resource<Categories>> {
@@ -85,5 +112,9 @@ class StoreDetailsViewModel(private val apiHelper: ApiHelper?, var context: Cont
 
     fun getStoresById(): LiveData<Resource<StoreProducts>> {
         return viewStoresProduct
+    }
+
+    fun getProductDetails(): LiveData<Resource<ProductDetails>> {
+        return productDetails
     }
 }

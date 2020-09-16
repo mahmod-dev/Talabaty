@@ -27,20 +27,10 @@ import kotlinx.android.synthetic.main.item_cart_favorite.view.*
 class FavoriteCartAdapter(var activity: Activity, var data: ArrayList<Product>) :
     RecyclerView.Adapter<FavoriteCartAdapter.ViewHolder>() {
     val TAG = "FavoriteCartAdapter"
-    var mListener: OnItemClickListener? = null
     private lateinit var viewModel: CartViewModel
 
     init {
         initViewModel()
-    }
-
-    interface OnItemClickListener {
-        fun onItemClick(position: Int)
-        fun onItemLongClick(position: Int)
-    }
-
-    fun setOnClickListener(listener: OnItemClickListener?) {
-        mListener = listener
     }
 
 
@@ -101,28 +91,6 @@ class FavoriteCartAdapter(var activity: Activity, var data: ArrayList<Product>) 
 
             }
 
-        }
-
-        init {
-            itemView.setOnClickListener {
-                if (mListener != null) {
-                    val position = adapterPosition
-                    if (position != RecyclerView.NO_POSITION) {
-                        mListener!!.onItemClick(position)
-                    }
-                }
-            }
-
-            itemView.setOnLongClickListener {
-                if (mListener != null) {
-                    val position = adapterPosition
-                    if (position != RecyclerView.NO_POSITION) {
-                        mListener!!.onItemLongClick(position)
-                    }
-                }
-                false
-
-            }
         }
     }
 

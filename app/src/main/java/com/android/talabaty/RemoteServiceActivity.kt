@@ -116,7 +116,7 @@ class RemoteServiceActivity : AppCompatActivity() {
 
     private fun swipeToRefresh() {
         swipeRefresh?.setOnRefreshListener {
-            setupObserver()
+            viewModel.digitals()
         }
 
     }

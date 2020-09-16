@@ -85,7 +85,7 @@ object Helper {
 
 
 
-    fun showFilterDialog(context: Context,message:String):MaterialDialog{
+        fun showFilterDialog(context: Context,message:String):MaterialDialog{
 
         val dialog = MaterialDialog(context)
             .noAutoDismiss()
@@ -100,6 +100,18 @@ object Helper {
 
        return dialog
     }
+
+    fun Activity.showLogoutDialog():MaterialDialog{
+
+        val dialog = MaterialDialog(this)
+            .noAutoDismiss()
+            .cancelable(false)
+            .customView(R.layout.dialog_logout)
+
+
+        return dialog
+    }
+
 
     fun isInternetAvailable(): Boolean {
         return try {

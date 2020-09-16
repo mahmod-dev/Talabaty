@@ -15,5 +15,7 @@
         android:maxWidth="@dimen/_180sdp"
         android:padding="@dimen/_10sdp"
         android:text="انا عند دوار جدة، تبي شي؟"
+        android:fontFamily="@font/cairo_reqular"
+
         android:textColor="@color/colorWhite" />
 </LinearLayout>

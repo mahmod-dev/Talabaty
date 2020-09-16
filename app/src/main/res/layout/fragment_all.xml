@@ -17,8 +17,8 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="none"
-            android:fillViewport="true">
+            android:fillViewport="true"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -261,8 +261,10 @@
 
 
                 <LinearLayout
+                    android:id="@+id/linProducts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:focusable="true"
@@ -274,7 +276,7 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_bold"
                         android:gravity="center_vertical"
-                        android:text="الأسر المنتجة"
+                        android:text="@string/tatbeq_store"
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_12ssp" />
 
@@ -302,22 +304,24 @@
 
                 </LinearLayout>
 
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvProducts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <include layout="@layout/item_productive_family" />
-
-                    <include layout="@layout/item_productive_family" />
-
-                    <include layout="@layout/item_productive_family" />
-                </LinearLayout>
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="horizontal"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_productive_family" />
 
                 <LinearLayout
+                    android:id="@+id/linNearby"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:orientation="horizontal">
 
                     <TextView
@@ -330,10 +334,49 @@
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_12ssp" />
 
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_further_arrow" />
+                    </RelativeLayout>
+
 
                 </LinearLayout>
 
-                <include layout="@layout/item_home_near" />
+                <TextView
+                    android:id="@+id/tvNotFound"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:text="@string/not_found_nearby"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvNearby"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:nestedScrollingEnabled="false"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_home_near" />
 
             </LinearLayout>
         </ScrollView>

@@ -163,5 +163,17 @@
     <string name="choose_gallery">اختار من الاستوديو</string>
     <string name="not_found_remote_service">لا يوجد خدمات رقمية</string>
     <string name="not_fount_product_in_favorite">لا يوجد منتجات مفضلة</string>
+    <string name="copied_text">تم نسخ الكود</string>
+    <string name="notifications">الإشعارات</string>
+    <string name="start_chat">بدء الدردشة</string>
+    <string name="show_details">عرض التفاصيل</string>
+    <string name="show_cards">عرض البطاقات</string>
+    <string name="mycards">بطاقاتي</string>
+    <string name="enter_date">أدخل التاريخ</string>
+    <string name="edit_card">تعديل بطاقة الدفع</string>
+    <string name="not_found_nearby">لا يوجد أماكن قريبة</string>
+    <string name="tatbeq_store">متجر تطبيقكم</string>
+    <string name="rs">ر.س</string>
+    <string name="buy_num">عدد مرات الشراء</string>
 
 </resources>

@@ -18,6 +18,7 @@
 
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgChat"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginHorizontal="@dimen/_10sdp"
@@ -27,6 +28,7 @@
 
 
             <ImageView
+                android:id="@+id/imgIsOnline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_6sdp"
@@ -35,6 +37,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/tvChatName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -49,6 +52,7 @@
             android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/tvChatDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -60,6 +64,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tvLastMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_60sdp"

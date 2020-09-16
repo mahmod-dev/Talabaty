@@ -45,7 +45,7 @@ class CategoriesFragment : Fragment() {
         initViewModel()
         viewModel.otherServices()
         setupObserver(rvOtherServices!!)
-        swipeToRefresh(rvOtherServices!!)
+        swipeToRefresh()
         return view
     }
 
@@ -59,10 +59,10 @@ class CategoriesFragment : Fragment() {
     }
 
 
-    private fun swipeToRefresh(rv: RecyclerView) {
+    private fun swipeToRefresh() {
         swipeRefresh?.setOnRefreshListener {
 
-            setupObserver(rv)
+            viewModel.otherServices()
         }
 
     }

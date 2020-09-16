@@ -32,7 +32,7 @@ var a =1
         supportFragmentManager.beginTransaction().replace(
             R.id.fragmentContainer,
             MainFragment()
-        ).commit()
+        ).commitNow()
 
         viewModel.userDetails()
 
@@ -53,8 +53,8 @@ var a =1
                             selectedFragment = MainFragment()
                             supportFragmentManager.beginTransaction().replace(
                                 R.id.fragmentContainer,
-                                selectedFragment!!
-                            ).commit()
+                                selectedFragment
+                            ).commitNow()
                         }
                         a = 1
                     }
@@ -63,8 +63,8 @@ var a =1
                             selectedFragment = OrdersFragment()
                             supportFragmentManager.beginTransaction().replace(
                                 R.id.fragmentContainer,
-                                selectedFragment!!
-                            ).commit()
+                                selectedFragment
+                            ).commitNow()
                         }
                         a = 2
                     }
@@ -73,8 +73,8 @@ var a =1
                             selectedFragment = ChatFragment()
                             supportFragmentManager.beginTransaction().replace(
                                 R.id.fragmentContainer,
-                                selectedFragment!!
-                            ).commit()
+                                selectedFragment
+                            ).commitNow()
                         }
                         a = 3
                     }
@@ -84,8 +84,8 @@ var a =1
                             selectedFragment = CategoriesFragment()
                             supportFragmentManager.beginTransaction().replace(
                                 R.id.fragmentContainer,
-                                selectedFragment!!
-                            ).commit()
+                                selectedFragment
+                            ).commitNow()
                         }
                         a = 4
                     }
@@ -95,8 +95,8 @@ var a =1
                             selectedFragment = ProfileFragment()
                             supportFragmentManager.beginTransaction().replace(
                                 R.id.fragmentContainer,
-                                selectedFragment!!
-                            ).commit()
+                                selectedFragment
+                            ).commitNow()
 
                         }
                         a = 5

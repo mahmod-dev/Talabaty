@@ -18,6 +18,8 @@ class StoresViewModel(private val apiHelper: ApiHelper?,var context: Context) :
     private val TAG = "StoresViewModel"
     private val stores = MutableLiveData<Resource<Activities>>()
     private val viewStores = MutableLiveData<Resource<ViewStores>>()
+    private val nearbyStores = MutableLiveData<Resource<GetNearbyStores>>()
+    private val tatbeqakumProduct = MutableLiveData<Resource<GetViewTatbeqakumProducts>>()
 
     fun stores() {
         viewModelScope.launch {
@@ -48,7 +50,7 @@ class StoresViewModel(private val apiHelper: ApiHelper?,var context: Context) :
         }
     }
 
-    public fun storesById(id: Int) {
+     fun storesById(id: Int) {
         viewModelScope.launch {
 
             viewStores.postValue(Resource.loading(null))
@@ -76,6 +78,62 @@ class StoresViewModel(private val apiHelper: ApiHelper?,var context: Context) :
         }
     }
 
+     fun tatbeqProductById(id: Int) {
+        viewModelScope.launch {
+
+            tatbeqakumProduct.postValue(Resource.loading(null))
+            try {
+
+                val usersFromApi = apiHelper?.viewTatbeqakumProducts(id)
+                if (usersFromApi!!.status && usersFromApi.code == 200)
+                    tatbeqakumProduct.postValue(Resource.success(usersFromApi))
+                else {
+                    tatbeqakumProduct.postValue(Resource.error(usersFromApi.message, null))
+
+                }
+
+            } catch (e: TimeoutCancellationException) {
+                tatbeqakumProduct.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+            } catch (e: Exception) {
+                if (e is IOException) {
+                    tatbeqakumProduct.postValue(Resource.error(context.getString(R.string.network_error), null))
+
+                } else {
+                    tatbeqakumProduct.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
+                Log.e(TAG, "tatbeqProductById: ${e.message}")
+            }
+        }
+    }
+
+    public fun nearbyStores(lat: Long,lng:Long) {
+        viewModelScope.launch {
+
+            nearbyStores.postValue(Resource.loading(null))
+            try {
+
+                val usersFromApi = apiHelper?.nearbyStores(lat,lng)
+                if (usersFromApi!!.status && usersFromApi.code == 200)
+                    nearbyStores.postValue(Resource.success(usersFromApi))
+                else {
+                    nearbyStores.postValue(Resource.error(usersFromApi.message, null))
+
+                }
+
+            } catch (e: TimeoutCancellationException) {
+                nearbyStores.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+            } catch (e: Exception) {
+                if (e is IOException) {
+                    nearbyStores.postValue(Resource.error(context.getString(R.string.network_error), null))
+
+                } else {
+                    nearbyStores.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                }
+                Log.e(TAG, "nearbyStores: ${e.message}")
+            }
+        }
+    }
+
 
     fun getAllStores(): LiveData<Resource<Activities>> {
         return stores
@@ -84,6 +142,12 @@ class StoresViewModel(private val apiHelper: ApiHelper?,var context: Context) :
     fun getStoresById(): LiveData<Resource<ViewStores>> {
         return viewStores
     }
+    fun getNearbyStores(): LiveData<Resource<GetNearbyStores>> {
+        return nearbyStores
+    }
 
+    fun getAllTatbeqakumProducts(): LiveData<Resource<GetViewTatbeqakumProducts>> {
+        return tatbeqakumProduct
+    }
 
 }

@@ -2,6 +2,7 @@ package com.android.talabaty.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.android.talabaty.MyCardActivity
 import com.android.talabaty.R
 import com.android.talabaty.auth.SignInActivity
 import com.android.talabaty.dbUtil.Status
@@ -19,6 +22,8 @@ import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
+import com.android.talabaty.util.Helper
+import com.android.talabaty.util.Helper.showLogoutDialog
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.ProfileViewModel
 import com.bumptech.glide.Glide
@@ -31,10 +36,14 @@ class ProfileFragment : Fragment() {
     private lateinit var viewModel: ProfileViewModel
     var tvProfileMobile: TextView? = null
     var tvProfileName: TextView? = null
+    var tvWalletAmount: TextView? = null
+    var tvCardAmount: TextView? = null
+    var tvShowCard: TextView? = null
     var imgProfile: ImageView? = null
     var swStores: SwitchMaterial? = null
     var swOrders: SwitchMaterial? = null
     var swOffers: SwitchMaterial? = null
+    var swipeRefresh: SwipeRefreshLayout? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,18 +58,35 @@ class ProfileFragment : Fragment() {
         swOrders = root.findViewById(R.id.swOrders)
         swStores = root.findViewById(R.id.swStores)
         swOffers = root.findViewById(R.id.swOffers)
+        tvShowCard = root.findViewById(R.id.tvShowCard)
+        tvWalletAmount = root.findViewById(R.id.tvWalletAmount)
+        tvCardAmount = root.findViewById(R.id.tvCardAmount)
+        swipeRefresh = root.findViewById(R.id.swipeRefresh)
+
         MyPreferences.context = context
         initViewModel()
         viewModel.profile()
 
         rlLogout.setOnClickListener {
-            MyPreferences.setInt("isLogin", 0)
-            startActivity(Intent(activity, SignInActivity::class.java))
-            activity?.finish()
+            activity?.showLogoutDialog()?.show()
+                    Handler().postDelayed({
+
+                        MyPreferences.setInt("isLogin", 0)
+                        startActivity(Intent(activity, SignInActivity::class.java))
+                        activity?.finish()
+
+        }, 3000)
+
 
         }
-        setupObserver()
 
+        tvShowCard?.setOnClickListener {
+            startActivity(Intent(activity, MyCardActivity::class.java))
+
+        }
+
+        swipeToRefresh()
+        setupObserver()
         handelSettings()
         setupObserverChangeNotification()
         return root
@@ -72,9 +98,13 @@ class ProfileFragment : Fragment() {
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
+                        swipeRefresh?.isRefreshing = false
+
                         it.data?.let { users ->
                             tvProfileName?.text = users.user.name
                             tvProfileMobile?.text = users.user.mobile
+                            tvWalletAmount?.text = users.user.wallet_amount.toString()
+                            tvCardAmount?.text = users.user.payment_cards_count.toString()
                             if (users.user.image_profile.isNotEmpty()) {
                                 Glide.with(context!!).load(users.user.image_profile)
                                     .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -86,9 +116,11 @@ class ProfileFragment : Fragment() {
                         }
                     }
                     Status.LOADING -> {
-
+                        swipeRefresh?.isRefreshing = true
                     }
                     Status.ERROR -> {
+                        swipeRefresh?.isRefreshing = false
+
                         activity?.getMaterialDialogInstance(it.message!!)
 
                         Log.e(TAG, "setupObserver: " + it.message)
@@ -163,5 +195,19 @@ class ProfileFragment : Fragment() {
         )
     }
 
+    private fun swipeToRefresh() {
+        swipeRefresh?.setOnRefreshListener {
+
+            viewModel.profile()
+        }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.profile()
+        setupObserver()
+        handelSettings()
+    }
 
 }

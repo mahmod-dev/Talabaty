@@ -1,6 +1,7 @@
 package com.android.talabaty.adapter
 
 import android.app.Activity
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,17 +13,16 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
+import com.android.talabaty.ProductDetailsActivity
 import com.android.talabaty.R
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.model.*
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
-import com.android.talabaty.util.Helper
 import com.android.talabaty.viewModel.CartViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.android.talabaty.dbUtil.Status
-import com.android.talabaty.util.CustomMaterialDialog
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import kotlinx.android.synthetic.main.item_product.view.*
 
@@ -105,10 +105,24 @@ class RecycleCategoryAdapter(var activity: Activity, var data: ArrayList<Product
                     .into(imgStore);
             }
 
+            if (product.has_colors==1 || product.has_sizes==1){
+                btnAddToCartProduct.text = activity.getString(R.string.show_details)
+            }
+
             btnAddToCartProduct.setOnClickListener {
-                Log.e(TAG, "productId: ${product.id}" )
-                viewModel.addToCart(product.id,1)
-                setupObserverAddToCart(1)
+                if (product.has_colors==1 || product.has_sizes==1){
+                    val intent = Intent(activity,ProductDetailsActivity::class.java)
+                    intent.putExtra("has_colors",product.has_colors)
+                    intent.putExtra("has_sizes", product.has_sizes)
+                    intent.putExtra("productId", product.id)
+                    activity.startActivity(intent)
+
+                }else{
+                    Log.e(TAG, "productId: ${product.id}" )
+                    viewModel.addToCart(product.id,1)
+                    setupObserverAddToCart(1)
+                }
+
             }
 
         }

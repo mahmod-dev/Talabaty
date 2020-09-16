@@ -122,7 +122,7 @@
     <string name="to">إلى</string>
     <string name="add_image">إضافة صورة</string>
     <string name="add_files">إضافة ملف</string>
-    <string name="color">للون</string>
+    <string name="color">اللون</string>
     <string name="size">المقاس</string>
     <string name="arrive_date">تاريخ وصول المنتج:</string>
     <string name="charging_fee">رسوم الشحن:</string>
@@ -202,5 +202,18 @@
     <string name="choose_gallery">اختار من الاستوديو</string>
     <string name="not_found_remote_service">لا يوجد خدمات رقمية</string>
     <string name="not_fount_product_in_favorite">لا يوجد منتجات مفضلة</string>
+    <string name="copied_text">تم نسخ النص</string>
+    <string name="notifications">notifications</string>
+    <string name="start_chat">بدء الدردشة</string>
+    <string name="show_details">details</string>
+    <string name="show_cards">عرض البطاقات</string>
+    <string name="mycards">بطاقاتي</string>
+    <string name="enter_date">أدخل التاريخ</string>
+    <string name="edit_card">تعديل بطاقة الدفع</string>
+    <string name="not_found_nearby">لا يوجد أماكن قريبة</string>
+    <string name="tatbeq_store">متجر تطبيقكم</string>
+    <string name="not_found_products">لا يوجد منتجات</string>
+    <string name="rs">RS</string>
+    <string name="buy_num">عدد مرات الشراء</string>
 
 </resources>

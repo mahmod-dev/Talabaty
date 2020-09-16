@@ -92,22 +92,8 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                     .into(imgCart)
             }
 
-//            rlDelete.setOnClickListener {
-//                data.removeAt(position)
-////                notifyItemRemoved(position)
-////                notifyItemRangeRemoved(position, data.size)
-//                notifyDataSetChanged()
-//                viewModel.deleteFromCart(product.id)
-//
-//
-//                Log.e(TAG, "bind: ${product.id} " )
-//
-//
-//            }
 
             rlDelete.setOnClickListener {
-                Log.e(TAG, "bind product id: ${product.id}" )
-                Log.e(TAG, "bind: ${adapterPosition},,, $position" )
                 onItemClick?.invoke(data[adapterPosition],position)
             }
 

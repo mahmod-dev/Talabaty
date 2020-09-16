@@ -22,10 +22,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="?android:attr/windowBackground"
         android:theme="@style/Widget.BottomNavigationView"
-        app:elevation="@dimen/_5sdp"
+
         app:itemIconTint="@drawable/sh_nav_bottom"
+        app:itemBackground="@android:color/white"
         app:itemTextColor="@drawable/sh_nav_bottom"
         app:menu="@menu/nav_bottom" />
 
