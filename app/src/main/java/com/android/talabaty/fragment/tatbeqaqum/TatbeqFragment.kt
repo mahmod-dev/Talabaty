@@ -32,10 +32,6 @@ class TatbeqFragment(var position: Int) : Fragment() {
     var rvProducts: RecyclerView? = null
     private lateinit var data: ArrayList<Product>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

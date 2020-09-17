@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".BaseActivity">
 
-    <include layout="@layout/toolbar_location_cart"
-        android:id="@+id/toolbar"/>
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_location_cart" />
 
 
     <FrameLayout
@@ -15,19 +16,181 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavMain"
-        android:layout_below="@+id/toolbar"/>
+        android:layout_below="@+id/toolbar" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--        android:id="@+id/bottomNavMain"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:theme="@style/Widget.BottomNavigationView"-->
+    <!--        app:itemIconTint="@drawable/sh_nav_bottom"-->
+    <!--        app:itemBackground="@android:color/white"-->
+    <!--        app:itemTextColor="@drawable/sh_nav_bottom"-->
+    <!--        app:menu="@menu/nav_bottom" />-->
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/bottomNavMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:theme="@style/Widget.BottomNavigationView"
+        android:layout_gravity="bottom"
+        android:elevation="@dimen/_3sdp">
 
-        app:itemIconTint="@drawable/sh_nav_bottom"
-        app:itemBackground="@android:color/white"
-        app:itemTextColor="@drawable/sh_nav_bottom"
-        app:menu="@menu/nav_bottom" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
+            <LinearLayout
+                android:id="@+id/linHome"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_5sdp">
+
+                <ImageView
+                    android:id="@+id/imgHome"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/logo_main" />
+
+                <TextView
+                    android:id="@+id/tvHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/cairo_bold"
+                    android:gravity="center"
+                    android:text="@string/main"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_9ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linOrders"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_5sdp">
+
+                <ImageView
+                    android:id="@+id/imgOrder"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_nav_check" />
+
+                <TextView
+                    android:id="@+id/tvOrder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/cairo_bold"
+                    android:text="@string/orders"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_9ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linCat"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_5sdp">
+
+                <ImageView
+                    android:id="@+id/imgCat"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_nav_window" />
+
+                <TextView
+                    android:id="@+id/tvCat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/cairo_bold"
+                    android:text="@string/category"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_9ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linChat"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_5sdp">
+
+                <ImageView
+                    android:id="@+id/imgChat"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_nav_message" />
+
+                <TextView
+                    android:id="@+id/tvChat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/cairo_bold"
+                    android:text="@string/chatting"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_9ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linProfile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_5sdp">
+
+                <ImageView
+                    android:id="@+id/imgProfile"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_nav_profile" />
+
+                <TextView
+                    android:id="@+id/tvProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/cairo_bold"
+                    android:text="@string/profile"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_9ssp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

@@ -4,9 +4,9 @@
     <item
         android:id="@+id/navMain"
         android:enabled="true"
-        android:icon="@drawable/ic_logo_icon"
-        android:title="@string/main"
+        android:icon="@drawable/logo_main"
 
+        android:title="@string/main"
      />
 
     <item

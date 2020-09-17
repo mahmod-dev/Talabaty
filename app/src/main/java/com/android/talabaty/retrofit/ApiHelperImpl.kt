@@ -111,8 +111,13 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
         return apiService.sendContactUsMsg(title, message)
     }
 
-    override suspend fun addProductToCart(productId: Int, quantity: Int): AddProductToCart {
-        return apiService.addProductToCart(productId, quantity)
+    override suspend fun addProductToCart(
+        productId: Int,
+        quantity: Int,
+        color_id: Int,
+        size_id: Int
+    ): AddProductToCart {
+        return apiService.addProductToCart(productId, quantity,color_id,size_id)
     }
 
     override suspend fun changeQuantity(productId: Int, type: String): ChangeQuantity {
@@ -208,7 +213,19 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
         return apiService.viewTatbeqakumProducts(activityId)
     }
 
+    override suspend fun getMyCoupons(): GetMyCoupons {
+        return apiService.getMyCoupons()
+    }
 
+    override suspend fun chargeWallet(amount: Int): ChargeWallet {
+        return apiService.chargeWallet(amount)
+    }
 
+    override suspend fun addNewCoupon(coupon: String): AddNewCoupon {
+        return apiService.addNewCoupon(coupon)
+    }
 
+    override suspend fun deleteCoupon(coupon_id: Int): GeneralResponse {
+        return apiService.deleteCoupon(coupon_id)
+    }
 }

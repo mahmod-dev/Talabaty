@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 import java.net.ConnectException
 
-class CartViewModel(private val apiHelper: ApiHelper?,var context: Context) : ViewModel() {
+class CartViewModel(private val apiHelper: ApiHelper?, var context: Context) : ViewModel() {
     private val TAG = "CartViewModel"
     private val addCart = MutableLiveData<Resource<AddProductToCart>>()
     private val deleteCart = MutableLiveData<Resource<GeneralResponse>>()
@@ -37,13 +37,23 @@ class CartViewModel(private val apiHelper: ApiHelper?,var context: Context) : Vi
                 }
 
 
-            }catch (e: TimeoutCancellationException) {
+            } catch (e: TimeoutCancellationException) {
                 myCart.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
                 if (e is IOException) {
-                    myCart.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    myCart.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
                 } else {
-                    myCart.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    myCart.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "getCart: ${e.message}")
             }
@@ -71,7 +81,12 @@ class CartViewModel(private val apiHelper: ApiHelper?,var context: Context) : Vi
                 if (e is IOException) {
                     myFav.postValue(Resource.error(context.getString(R.string.network_error), null))
                 } else {
-                    myFav.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    myFav.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "getFavorite: ${e.message}")
             }
@@ -79,12 +94,12 @@ class CartViewModel(private val apiHelper: ApiHelper?,var context: Context) : Vi
     }
 
 
-    fun addToCart(productId: Int, quantity: Int) {
+    fun addToCart(productId: Int, quantity: Int, color_id: Int, size_id: Int) {
         viewModelScope.launch {
 
             addCart.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.addProductToCart(productId, quantity)
+                val usersFromApi = apiHelper?.addProductToCart(productId, quantity,color_id,size_id)
 
                 if (usersFromApi!!.status && usersFromApi.code == 200)
                     addCart.postValue(Resource.success(usersFromApi))
@@ -98,9 +113,19 @@ class CartViewModel(private val apiHelper: ApiHelper?,var context: Context) : Vi
                 addCart.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
                 if (e is IOException) {
-                    addCart.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    addCart.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
                 } else {
-                    addCart.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    addCart.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "addToCart: ${e.message}")
             }
@@ -121,13 +146,28 @@ class CartViewModel(private val apiHelper: ApiHelper?,var context: Context) : Vi
 
                 }
 
-            }catch (e: TimeoutCancellationException) {
-                deleteCart.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+            } catch (e: TimeoutCancellationException) {
+                deleteCart.postValue(
+                    Resource.error(
+                        context.getString(R.string.timeout_error),
+                        null
+                    )
+                )
             } catch (e: Exception) {
                 if (e is IOException) {
-                    deleteCart.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    deleteCart.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
                 } else {
-                    deleteCart.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    deleteCart.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "deleteFromCart: ${e.message}")
             }
@@ -149,12 +189,27 @@ class CartViewModel(private val apiHelper: ApiHelper?,var context: Context) : Vi
                 }
 
             } catch (e: TimeoutCancellationException) {
-                deleteFromFav.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+                deleteFromFav.postValue(
+                    Resource.error(
+                        context.getString(R.string.timeout_error),
+                        null
+                    )
+                )
             } catch (e: Exception) {
                 if (e is IOException) {
-                    deleteFromFav.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    deleteFromFav.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
                 } else {
-                    deleteFromFav.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    deleteFromFav.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "deleteFromFav: ${e.message}")
             }
@@ -179,9 +234,19 @@ class CartViewModel(private val apiHelper: ApiHelper?,var context: Context) : Vi
                 addToFav.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
                 if (e is IOException) {
-                    addToFav.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    addToFav.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
                 } else {
-                    addToFav.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    addToFav.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "addToFav: ${e.message}")
             }
@@ -204,12 +269,27 @@ class CartViewModel(private val apiHelper: ApiHelper?,var context: Context) : Vi
                 }
 
             } catch (e: TimeoutCancellationException) {
-                changeQuantity.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+                changeQuantity.postValue(
+                    Resource.error(
+                        context.getString(R.string.timeout_error),
+                        null
+                    )
+                )
             } catch (e: Exception) {
                 if (e is IOException) {
-                    changeQuantity.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    changeQuantity.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
                 } else {
-                    changeQuantity.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    changeQuantity.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "changeQuantity: ${e.message}")
             }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rlPayment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:paddingVertical="@dimen/_5sdp"
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:fontFamily="@font/cairo_reqular"
+        android:text="#02985552415"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_12ssp" />
+
+    <ImageView
+        android:id="@+id/imgDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="@dimen/_7sdp"
+        android:src="@drawable/ic_delete"
+        app:tint="@color/colorPrimary" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/imgDelete"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@color/colorGrey2" />
+
+
+</RelativeLayout>
+

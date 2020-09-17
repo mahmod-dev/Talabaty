@@ -22,7 +22,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="q">
-        <activity android:name=".TatbeqActivity"></activity>
+        <activity android:name=".AllCouponsActivity"></activity>
+        <activity android:name=".AddCouponActivity" />
+        <activity android:name=".TatbeqActivity" />
         <activity android:name=".NearbyActivity" />
         <activity android:name=".MyCardActivity" />
         <activity android:name=".OrderServiceActivity" />

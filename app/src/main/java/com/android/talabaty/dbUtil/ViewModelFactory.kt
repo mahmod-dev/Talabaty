@@ -58,6 +58,10 @@ class ViewModelFactory(private val apiHelper: ApiHelper, val application: Applic
             return CardPaymentViewModel(apiHelper,application) as T
         }
 
+        if (modelClass.isAssignableFrom(CouponViewModel::class.java)) {
+            return CouponViewModel(apiHelper,application) as T
+        }
+
         throw IllegalArgumentException("Unknown class name")
     }
 

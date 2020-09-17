@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddCouponActivity">
+
+    <include layout="@layout/title_toolbar" />
+
+    <EditText
+        android:id="@+id/etAddCoupon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/shape_border_tevtview"
+        android:drawableStart="@drawable/ic_add"
+        android:drawablePadding="@dimen/_10sdp"
+        android:fontFamily="@font/cairo_reqular"
+        android:hint="@string/enter_coupon"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        android:textColor="@color/colorGrey2"
+        android:textSize="@dimen/_12ssp" />
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:fontFamily="@font/cairo_reqular"
+        android:text="@string/err_coupon"
+        android:textColor="#f00"
+        android:textSize="@dimen/_8ssp"
+        android:visibility="gone" />
+
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:background="@drawable/shape_light_green"
+        android:backgroundTint="@color/colorPrimary"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/cairo_bold"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="@string/verfy"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/_16ssp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/_20sdp"/>
+
+</LinearLayout>

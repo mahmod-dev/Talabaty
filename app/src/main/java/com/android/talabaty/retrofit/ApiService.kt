@@ -110,6 +110,9 @@ interface ApiService {
     @GET("viewTatbeqakumProducts")
     suspend fun viewTatbeqakumProducts(@Query("activity_id") activityId: Int): GetViewTatbeqakumProducts
 
+    @GET("deleteCoupon")
+    suspend fun deleteCoupon(@Query("coupon_id") coupon_id: Int): GeneralResponse
+
     /////////////////////////////////////////////
 
 
@@ -161,7 +164,10 @@ interface ApiService {
     @POST("addProductToCart")
     suspend fun addProductToCart(
         @Field("product_id") productId: Int,
-        @Field("quantity") quantity: Int
+        @Field("quantity") quantity: Int,
+        @Field("color_id")color_id : Int ,
+        @Field("size_id")size_id : Int
+
     ): AddProductToCart
 
     @FormUrlEncoded
@@ -196,4 +202,14 @@ interface ApiService {
         @Field("card_id") cardId: Int
     ): GeneralResponse
 
+    @POST("getMyCoupons")
+    suspend fun getMyCoupons(): GetMyCoupons
+
+    @FormUrlEncoded
+    @POST("chargeWallet")
+    suspend fun chargeWallet(   @Field("amount") amount: Int): ChargeWallet
+
+    @FormUrlEncoded
+    @POST("addNewCoupon")
+    suspend fun addNewCoupon(   @Field("coupon") coupon: String): AddNewCoupon
 }

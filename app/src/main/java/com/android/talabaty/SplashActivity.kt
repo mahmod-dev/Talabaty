@@ -31,6 +31,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
@@ -63,8 +64,14 @@ class SplashActivity : AppCompatActivity() {
                         it.data?.let { users ->
 
                             MyPreferences.setLong("carCost", users.items.request_car_cost.toLong())
-                            MyPreferences.setLong("other_service_cost", users.items.other_service_cost.toLong())
-                            MyPreferences.setLong("request_service_cost", users.items.request_service_cost.toLong())
+                            MyPreferences.setLong(
+                                "other_service_cost",
+                                users.items.other_service_cost.toLong()
+                            )
+                            MyPreferences.setLong(
+                                "request_service_cost",
+                                users.items.request_service_cost.toLong()
+                            )
                             startActivity(Intent(this@SplashActivity, SignInActivity::class.java))
                             finish()
                         }
@@ -75,8 +82,8 @@ class SplashActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         progressBar.visibility = View.GONE
-                      //  this.getMaterialDialogInstance(it.message!!)
-                        Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
+                        //  this.getMaterialDialogInstance(it.message!!)
+                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                         finish()
 
                         Log.e(TAG, "setupObserver: " + it.message)

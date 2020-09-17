@@ -215,13 +215,13 @@
                                 android:id="@+id/tvCardAmount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_toStartOf="@+id/tvShowCard"
+                                android:layout_centerVertical="true"
                                 android:layout_marginHorizontal="@dimen/_5sdp"
+                                android:layout_toStartOf="@+id/tvShowCard"
                                 android:fontFamily="@font/cairo_bold"
                                 android:gravity="center"
                                 android:padding="@dimen/_5sdp"
                                 android:text="0"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="@dimen/_10ssp" />
 
@@ -230,6 +230,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
                                 android:layout_marginHorizontal="@dimen/_5sdp"
                                 android:layout_marginEnd="10dp"
                                 android:background="@drawable/ripple_square_btn"
@@ -238,7 +239,6 @@
                                 android:fontFamily="@font/cairo_reqular"
                                 android:foreground="?attr/selectableItemBackground"
                                 android:gravity="center"
-                                android:layout_centerVertical="true"
                                 android:paddingHorizontal="@dimen/_5sdp"
                                 android:text="@string/show_cards"
                                 android:textColor="@color/colorWhite"
@@ -252,6 +252,10 @@
                             android:background="@color/colorGrey" />
 
                         <RelativeLayout
+                            android:id="@+id/rvCoupons"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
@@ -272,16 +276,20 @@
                                 app:drawableStartCompat="@drawable/ic_icon_copon" />
 
                             <TextView
-                                android:id="@+id/tvAddCobon"
+                                android:id="@+id/tvAddCoupon"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:layout_marginHorizontal="@dimen/_5sdp"
+                                android:background="?attr/selectableItemBackground"
+                                android:clickable="true"
                                 android:drawablePadding="@dimen/_5sdp"
+                                android:focusable="true"
                                 android:fontFamily="@font/cairo_bold"
                                 android:gravity="center_vertical"
                                 android:padding="@dimen/_5sdp"
                                 android:text="أضف كوبون"
+                                android:layout_centerVertical="true"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="@dimen/_8ssp"
 

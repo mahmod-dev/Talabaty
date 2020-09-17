@@ -119,7 +119,7 @@ class RecycleCategoryAdapter(var activity: Activity, var data: ArrayList<Product
 
                 }else{
                     Log.e(TAG, "productId: ${product.id}" )
-                    viewModel.addToCart(product.id,1)
+                    viewModel.addToCart(product.id,1,0,0)
                     setupObserverAddToCart(1)
                 }
 

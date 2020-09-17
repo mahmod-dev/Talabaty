@@ -170,7 +170,7 @@ class AllFragment : Fragment() {
                         it.data?.let { users ->
                             Log.e(TAG, "setupObserverMainCat: ${users.home_page_categories}")
                             initRecycleViewMainCat(rv, users)
-                            initRecycleViewMainTatbeq(rvProducts!!,users.tatbeqakumProducts)
+                            initRecycleViewMainTatbeq(rvProducts!!, users.tatbeqakumProducts)
                         }
                     }
                     Status.LOADING -> {
@@ -230,10 +230,20 @@ class AllFragment : Fragment() {
     private fun initRecycleViewMainTatbeq(rv: RecyclerView, data: ArrayList<TatbeqakumProduct>) {
 
         Log.e(TAG, "initRecycleViewMainCat: $data")
-        val adapterMainCat = TatbeqakumProductsAdapter(activity!!, data)
-        rv.layoutManager = LinearLayoutManager(activity,RecyclerView.HORIZONTAL,false)
-        rv.adapter = adapterMainCat
+        val adapter = TatbeqakumProductsAdapter(activity!!, data)
+        rv.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+        rv.adapter = adapter
         rv.setHasFixedSize(true)
+
+        adapter.onItemClick = {
+            Log.e(TAG, "initRecycleViewMainTatbeq: $it")
+            val intent = Intent(activity, ProductDetailsActivity::class.java)
+            intent.putExtra("has_colors", it.has_colors)
+            intent.putExtra("has_sizes", it.has_sizes)
+            intent.putExtra("productId", it.id)
+            startActivity(intent)
+
+        }
 
     }
 
@@ -265,12 +275,12 @@ class AllFragment : Fragment() {
 
                             data.add(users.offers[rnds])
 
-                            initRecycleView(rv,data)
+                            initRecycleView(rv, data)
                         }
                     }
                     Status.LOADING -> {
                         data.clear()
-                        initRecycleView(rv,data)
+                        initRecycleView(rv, data)
 
                     }
                     Status.ERROR -> {
@@ -281,7 +291,7 @@ class AllFragment : Fragment() {
         )
     }
 
-    private fun initRecycleView(rv: RecyclerView,data: ArrayList<Offer>) {
+    private fun initRecycleView(rv: RecyclerView, data: ArrayList<Offer>) {
         val adapter = NewestOffersAdapter(activity!!, data)
         rv.layoutManager = LinearLayoutManager(activity!!)
         rv.adapter = adapter

@@ -15,6 +15,7 @@ import com.android.talabaty.model.Color
 import com.android.talabaty.model.Size
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.CartViewModel
+import kotlinx.android.synthetic.main.activity_cart.*
 import kotlinx.android.synthetic.main.item_colors_families.view.*
 
 class ProductDetailsAdapter(
@@ -90,6 +91,7 @@ class ProductDetailsAdapter(
                         ContextCompat.getDrawable(activity, R.drawable.shape_border_color)
                     tvName.setTextColor(ContextCompat.getColor(activity, R.color.colorBlack))
                     sizeType = 0
+                    onItemClick?.invoke(0)
                     notifyDataSetChanged()
                 }
 
@@ -113,6 +115,8 @@ class ProductDetailsAdapter(
                         ContextCompat.getDrawable(activity, R.drawable.shape_border_color)
                     tvName.setTextColor(ContextCompat.getColor(activity, R.color.colorBlack))
                     colorType = 0
+                    onItemClick?.invoke(0)
+
                     notifyDataSetChanged()
                 }
             }
@@ -120,6 +124,9 @@ class ProductDetailsAdapter(
         }
 
     }
+
+
+
 
 
 }

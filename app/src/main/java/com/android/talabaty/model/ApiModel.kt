@@ -778,7 +778,6 @@ data class Terms(
 data class Product(
     val category: Category,
     val category_id: Int,
-    val colors: List<Color>,
     val description: String,
     val has_colors: Int,
     val has_sizes: Int,
@@ -787,11 +786,12 @@ data class Product(
     val in_cart: Int,
     val is_favorite: Int,
     val name: String,
-    val offer_price: Any,
+    val offer_price: String?,
     val other_images: List<OtherImage>,
     val price: Int,
     val rate: Int,
-    val sizes: List<Size>,
+    val colors: ArrayList<Color>?,
+    val sizes: ArrayList<Size>?,
     val status: String,
     val store: Store,
     val store_id: Int,
@@ -869,7 +869,6 @@ data class TatbeqakumProduct(
     val activity_id: Int,
     val category: Category,
     val category_id: Int,
-    val colors: Any,
     val description: String,
     val has_colors: Int,
     val has_sizes: Int,
@@ -883,10 +882,11 @@ data class TatbeqakumProduct(
     val price: Int,
     val purchase_counts: Int,
     val rate: Int,
-    val sizes: Any,
     val status: String,
     val store: Store,
     val store_id: Int,
+    val colors: ArrayList<Color>?,
+    val sizes: ArrayList<Size>?,
     val tatbeqakum_product: Int
 )
 
@@ -895,4 +895,46 @@ data class GetViewTatbeqakumProducts(
     val message: String,
     val products: ArrayList<Product>,
     val status: Boolean
+)
+
+data class GetMyCoupons(
+    val code: Int,
+    val coupons: ArrayList<Coupon>,
+    val message: String,
+    val status: Boolean
+)
+
+data class Coupon(
+    val created_at: String,
+    val description: Any,
+    val discount: Int,
+    val end: String,
+    val id: Int,
+    val name: String,
+    val start: String,
+    val status: String,
+    val store_id: Int
+)
+
+data class AddNewCoupon(
+    val code: Int,
+    val coupon: Coupon,
+    val message: String,
+    val status: Boolean
+)
+
+data class ChargeWallet(
+    val code: Int,
+    val message: String,
+    val status: Boolean,
+    val wallet: Wallet
+)
+
+data class Wallet(
+    val amount: String,
+    val created_at: String,
+    val id: Int,
+    val type: String,
+    val user_id: Int,
+    val wallet_amount: Int
 )

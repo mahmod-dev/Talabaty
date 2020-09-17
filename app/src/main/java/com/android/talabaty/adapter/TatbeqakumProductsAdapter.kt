@@ -22,7 +22,7 @@ class TatbeqakumProductsAdapter(
 ) :
     RecyclerView.Adapter<TatbeqakumProductsAdapter.MyViewHolder>() {
     val TAG = "TatbeqakumProductsAdapter"
-    var onItemClick: ((Int) -> Unit)? = null
+    var onItemClick: ((TatbeqakumProduct) -> Unit)? = null
 
     init {
         MyPreferences.context = activity
@@ -70,7 +70,7 @@ class TatbeqakumProductsAdapter(
 
 
             card.setOnClickListener {
-                onItemClick?.invoke(data?.get(adapterPosition)!!.id)
+                onItemClick?.invoke(data?.get(adapterPosition))
             }
 
 

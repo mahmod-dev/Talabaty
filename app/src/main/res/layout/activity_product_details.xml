@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_10sdp"
                     android:fontFamily="@font/cairo_reqular"
-                    android:text="details"
+                    android:text="@string/show_details"
                     android:textColor="@color/colorBlack"
                     android:textDirection="locale" />
 
@@ -181,12 +181,13 @@
                     android:textColor="@color/colorBlack" />
 
                 <TextView
+                    android:id="@+id/tvDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_10sdp"
                     android:fontFamily="@font/cairo_reqular"
                     android:scrollbars="vertical"
-                    android:text="هذا نص تجريبي لاختبار شكل و حجم النصوص و طريقة عرضهاi في هذا المكان و حجم و لون الخط  حجم النصوص و طريقة عرضهاi في هذا المكان و حجم و لون الخط  حجم النصوص و طريقة عرضهاi في هذا المكان و حجم و لون الخط"
+                    android:text="@string/product_describe"
                     android:textColor="@color/colorGrey3" />
 
 
@@ -228,7 +229,7 @@
                             android:layout_gravity="center"
                             android:layout_marginEnd="@dimen/_20sdp"
                             android:fontFamily="@font/cairo_bold"
-                            android:text="Dreem store" />
+                            android:text="@string/store_name" />
 
 
                         <RatingBar
@@ -236,8 +237,7 @@
                             style="@style/Widget.AppCompat.RatingBar.Small"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Dreem store" />
+                            android:layout_gravity="center" />
 
                         <TextView
                             android:id="@+id/tvRateCount"
@@ -255,7 +255,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cairo_reqular"
-                        android:text="هذا نص تجريبي لاختبار شكل و حجم النصوص و طريقة عرضهاi في هذا المكان و حجم و لون الخط حيث يتم التحكم في هذا النص وامكانية تغييرة في اي وقت عن طريق ادارة الموقع . يتم اضافة هذا النص كنص تجريبي للمعاينة "
+                        android:text="@string/stores_describe"
 
                         android:textColor="@color/colorGrey3" />
                 </LinearLayout>
@@ -367,6 +367,7 @@
 
 
         <TextView
+            android:id="@+id/btnAddToCart"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5sdp"

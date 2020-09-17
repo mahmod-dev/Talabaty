@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AllCouponsActivity">
+    <include layout="@layout/title_toolbar" />
+
+    <TextView
+        android:id="@+id/tvNotFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:fontFamily="@font/cairo_reqular"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/not_found_coupons"/>
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCoupons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            tools:listitem="@layout/item_cart_favorite"
+            android:layout_marginTop="@dimen/_10sdp"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+</LinearLayout>

@@ -8,12 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.android.talabaty.AddCouponActivity
+import com.android.talabaty.AllCouponsActivity
 import com.android.talabaty.MyCardActivity
 import com.android.talabaty.R
 import com.android.talabaty.auth.SignInActivity
@@ -40,9 +43,11 @@ class ProfileFragment : Fragment() {
     var tvCardAmount: TextView? = null
     var tvShowCard: TextView? = null
     var imgProfile: ImageView? = null
+    var tvAddCoupon: TextView? = null
     var swStores: SwitchMaterial? = null
     var swOrders: SwitchMaterial? = null
     var swOffers: SwitchMaterial? = null
+    var rvCoupons: RelativeLayout? = null
     var swipeRefresh: SwipeRefreshLayout? = null
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,11 +66,22 @@ class ProfileFragment : Fragment() {
         tvShowCard = root.findViewById(R.id.tvShowCard)
         tvWalletAmount = root.findViewById(R.id.tvWalletAmount)
         tvCardAmount = root.findViewById(R.id.tvCardAmount)
+        tvAddCoupon = root.findViewById(R.id.tvAddCoupon)
         swipeRefresh = root.findViewById(R.id.swipeRefresh)
+        rvCoupons = root.findViewById(R.id.rvCoupons)
 
         MyPreferences.context = context
         initViewModel()
         viewModel.profile()
+
+        tvAddCoupon?.setOnClickListener {
+            startActivity(Intent(activity,AddCouponActivity::class.java))
+
+        }
+        rvCoupons?.setOnClickListener {
+            startActivity(Intent(activity,AllCouponsActivity::class.java))
+        }
+
 
         rlLogout.setOnClickListener {
             activity?.showLogoutDialog()?.show()

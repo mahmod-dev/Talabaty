@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
+import kotlinx.android.synthetic.main.activity_product_details.*
 import kotlinx.android.synthetic.main.item_cart.view.*
 
 class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
@@ -45,7 +46,7 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
 
     override fun onBindViewHolder(myViewHolder: MyViewHolder, i: Int) {
         myViewHolder.bind(data[i].product!!, i)
-        setupObserverChangeQuantity()
+        setupObserverChangeQuantity(myViewHolder.tvQuantity,myViewHolder.tvCartPrice,data[i].product?.price)
         setupObserverAddToFav()
         setupObserverDeleteFav()
 
@@ -78,7 +79,6 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
             if (tvCartDetails.text.length > 50) {
                 val txt = tvCartDetails.text.take(50)
                 tvCartDetails.text = " $txt..."
-
             }
 
             "${product.price} ${itemView.context.resources.getString(R.string.reial)}"
@@ -138,7 +138,6 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
 
             }
 
-
             imgCartFav.setOnClickListener {
                 if (product.is_favorite == 1) {
                     imgCartFav.setImageResource(R.drawable.ic_icon_love)
@@ -150,14 +149,7 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
 
                 }
             }
-
-
         }
-
-        init {
-
-        }
-
 
     }
 
@@ -170,27 +162,24 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
         ).get(CartViewModel::class.java)
     }
 
-    private fun setupObserverChangeQuantity() {
+    private fun setupObserverChangeQuantity(tvQuantity:TextView,tvPrice:TextView,price:Int?) {
 
         viewModel.getChangeQuantity().observe(activity as FragmentActivity,
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
-                        // progressBar.visibility = View.GONE
                         it.data?.let { users ->
                            // Toast.makeText(activity, users.message, Toast.LENGTH_SHORT).show()
-
-
-
                         }
                     }
                     Status.LOADING -> {
-                        //progressBar.visibility = View.VISIBLE
 
                     }
                     Status.ERROR -> {
-                        // progressBar.visibility = View.GONE
                         activity.getMaterialDialogInstance(it.message!!)
+                        MyPreferences.setInt("countQ", 1)
+                        tvQuantity.text = MyPreferences.getInt("countQ").toString()
+                        tvPrice.text = price.toString()
                         Log.e(TAG, "setupObserver: " + it.message)
 
                     }

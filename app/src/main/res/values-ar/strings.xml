@@ -175,5 +175,16 @@
     <string name="tatbeq_store">متجر تطبيقكم</string>
     <string name="rs">ر.س</string>
     <string name="buy_num">عدد مرات الشراء</string>
+    <string name="stores_describe">وصف المتجر</string>
+    <string name="store_name">اسم المتجر</string>
+    <string name="choose_size">اختر مقاس معين!</string>
+    <string name="choose_color">اختر لون معين!</string>
+    <string name="not_found_coupons">لا يوجد كوبونات مضافة</string>
+    <string name="enter_coupon">أدخل الكوبون</string>
+    <string name="verfy">تحقق</string>
+    <string name="err_coupon">الكوبون الذي قمت بادخاله خاطئ</string>
+    <string name="add_coupon">إضافة كوبون</string>
+    <string name="add_coupon_success">تم إضافة كوبون بنجاح</string>
+    <string name="coupons">" الكوبونات"</string>
 
 </resources>

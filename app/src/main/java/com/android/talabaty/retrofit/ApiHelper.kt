@@ -1,9 +1,7 @@
 package com.android.talabaty.retrofit
 
 import com.android.talabaty.model.*
-import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.Query
+import retrofit2.http.*
 
 
 interface ApiHelper {
@@ -66,7 +64,7 @@ interface ApiHelper {
 
     suspend fun sendContactUsMsg(title: String, message: String): ContactUsMsg
 
-    suspend fun addProductToCart(productId: Int, quantity: Int): AddProductToCart
+    suspend fun addProductToCart(productId: Int, quantity: Int,color_id : Int , size_id:Int): AddProductToCart
 
     suspend fun changeQuantity(productId: Int, type: String): ChangeQuantity
 
@@ -116,5 +114,14 @@ interface ApiHelper {
     ): GetNearbyStores
 
     suspend fun viewTatbeqakumProducts( activityId: Int): GetViewTatbeqakumProducts
+
+    suspend fun getMyCoupons(): GetMyCoupons
+
+    suspend fun chargeWallet(  amount: Int): ChargeWallet
+
+    suspend fun addNewCoupon(  coupon: String): AddNewCoupon
+
+    suspend fun deleteCoupon( coupon_id: Int): GeneralResponse
+
 
 }
