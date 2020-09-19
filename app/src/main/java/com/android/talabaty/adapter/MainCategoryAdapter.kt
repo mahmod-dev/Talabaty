@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.talabaty.DeliveryServicesActivity
 import com.android.talabaty.R
 import com.android.talabaty.model.*
+import com.android.talabaty.util.Helper.setUrlImage
 import com.android.talabaty.util.MyPreferences
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -62,11 +63,7 @@ class MainCategoryAdapter(var activity: Activity, var data:  HomePageCategories)
             tvTitleCat.text = categories.name
 
             if (categories.image.isNotEmpty()) {
-                Glide.with(itemView.context).load(categories.image)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.drawable.ic_icon_loading)
-                    .error(R.drawable.white)
-                    .into(imgCat)
+                imgCat.setUrlImage(activity, categories.image)
             }
 
             linCat.setOnClickListener {

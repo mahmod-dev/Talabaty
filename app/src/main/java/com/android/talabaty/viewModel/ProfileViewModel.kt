@@ -22,7 +22,7 @@ class ProfileViewModel(private val apiHelper: ApiHelper,var context: Context) : 
     private val profile = MutableLiveData<Resource<EditProfile>>()
     private val editProfile = MutableLiveData<Resource<EditProfile>>()
     private val changeNotificationStatus = MutableLiveData<Resource<GeneralResponse>>()
-    private val UserDetails = MutableLiveData<Resource<GetUserDetails>>()
+    private val userDetails = MutableLiveData<Resource<GetUserDetails>>()
 
 
      fun profile() {
@@ -79,20 +79,18 @@ class ProfileViewModel(private val apiHelper: ApiHelper,var context: Context) : 
 
     fun userDetails() {
         viewModelScope.launch {
-            UserDetails.postValue(Resource.loading(null))
+            userDetails.postValue(Resource.loading(null))
             try {
                 val usersFromApi = apiHelper.getUserDetails()
-
-                    UserDetails.postValue(Resource.success(usersFromApi))
-
+                    userDetails.postValue(Resource.success(usersFromApi))
 
             } catch (e: TimeoutCancellationException) {
-                UserDetails.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+                userDetails.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
                 if (e is IOException) {
-                    UserDetails.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    userDetails.postValue(Resource.error(context.getString(R.string.network_error), null))
                 } else {
-                    UserDetails.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    userDetails.postValue(Resource.error(context.getString(R.string.something_went_error), null))
                 }
                 Log.e(TAG, "editProfile: ${e.message}")
             }
@@ -132,7 +130,7 @@ class ProfileViewModel(private val apiHelper: ApiHelper,var context: Context) : 
     }
 
     fun editProfile(): LiveData<Resource<EditProfile>> {
-        return profile
+        return editProfile
     }
 
     fun getChangeNotificationStatus(): LiveData<Resource<GeneralResponse>> {
@@ -140,7 +138,7 @@ class ProfileViewModel(private val apiHelper: ApiHelper,var context: Context) : 
     }
 
     fun getUserDetails(): LiveData<Resource<GetUserDetails>> {
-        return UserDetails
+        return userDetails
     }
 
 

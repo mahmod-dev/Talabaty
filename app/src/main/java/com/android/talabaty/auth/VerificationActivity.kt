@@ -12,10 +12,10 @@ import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomAlertDialog.getDialogInstance
-import com.android.talabaty.util.Helper
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.SignUpViewModel
 import com.android.talabaty.dbUtil.Status
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import kotlinx.android.synthetic.main.activity_verification.*
 
 class VerificationActivity : AppCompatActivity() {
@@ -78,7 +78,7 @@ class VerificationActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         //Handle Error
-                        Helper.showFilterDialog(this!!, it.message!!).show()
+                        getMaterialDialogInstance(it.message!!)
 
                         Log.e(TAG, "setupObserver: " + it.message)
                     }
@@ -99,9 +99,6 @@ class VerificationActivity : AppCompatActivity() {
 
                         it.data?.let { users ->
 
-
-                            //show dialog
-
                         }
                     }
                     Status.LOADING -> {
@@ -110,7 +107,7 @@ class VerificationActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         dialog.dismiss()
-                        Helper.showFilterDialog(this!!, it.message!!).show()
+                        getMaterialDialogInstance(it.message!!)
 
                         //Handle Error
                         Log.e(TAG, "setupObserver: " + it.message)

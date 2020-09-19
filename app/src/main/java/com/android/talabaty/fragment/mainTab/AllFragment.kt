@@ -27,7 +27,6 @@ import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.AllMainViewModel
 import com.android.talabaty.viewModel.StoresViewModel
-import kotlinx.android.synthetic.main.activity_nearby.*
 import kotlinx.android.synthetic.main.fragment_all.*
 import kotlinx.android.synthetic.main.fragment_all.rvNearby
 

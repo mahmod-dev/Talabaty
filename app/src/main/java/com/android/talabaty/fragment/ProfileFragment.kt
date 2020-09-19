@@ -15,10 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.android.talabaty.AddCouponActivity
-import com.android.talabaty.AllCouponsActivity
-import com.android.talabaty.MyCardActivity
-import com.android.talabaty.R
+import com.android.talabaty.*
 import com.android.talabaty.auth.SignInActivity
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
@@ -26,6 +23,7 @@ import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import com.android.talabaty.util.Helper
+import com.android.talabaty.util.Helper.setUrlImage
 import com.android.talabaty.util.Helper.showLogoutDialog
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.ProfileViewModel
@@ -44,10 +42,12 @@ class ProfileFragment : Fragment() {
     var tvShowCard: TextView? = null
     var imgProfile: ImageView? = null
     var tvAddCoupon: TextView? = null
+    var tvEditProfile: TextView? = null
     var swStores: SwitchMaterial? = null
     var swOrders: SwitchMaterial? = null
     var swOffers: SwitchMaterial? = null
     var rvCoupons: RelativeLayout? = null
+    var rlWallet: RelativeLayout? = null
     var swipeRefresh: SwipeRefreshLayout? = null
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -67,19 +67,30 @@ class ProfileFragment : Fragment() {
         tvWalletAmount = root.findViewById(R.id.tvWalletAmount)
         tvCardAmount = root.findViewById(R.id.tvCardAmount)
         tvAddCoupon = root.findViewById(R.id.tvAddCoupon)
+        tvEditProfile = root.findViewById(R.id.tvEditProfile)
         swipeRefresh = root.findViewById(R.id.swipeRefresh)
         rvCoupons = root.findViewById(R.id.rvCoupons)
+        rlWallet = root.findViewById(R.id.rlWallet)
 
         MyPreferences.context = context
         initViewModel()
         viewModel.profile()
 
+        rlWallet?.setOnClickListener {
+            startActivity(Intent(activity,ChargeActivity::class.java))
+
+        }
         tvAddCoupon?.setOnClickListener {
             startActivity(Intent(activity,AddCouponActivity::class.java))
 
         }
         rvCoupons?.setOnClickListener {
             startActivity(Intent(activity,AllCouponsActivity::class.java))
+        }
+
+        tvEditProfile?.setOnClickListener {
+            startActivity(Intent(activity,EditProfileActivity::class.java))
+
         }
 
 
@@ -117,16 +128,17 @@ class ProfileFragment : Fragment() {
                         swipeRefresh?.isRefreshing = false
 
                         it.data?.let { users ->
+                            MyPreferences.setStr("userName",users.user.name)
+                            MyPreferences.setStr("userEmail",users.user.email)
+                            MyPreferences.setStr("userMobile",users.user.mobile)
+                            MyPreferences.setStr("userImage",users.user.image_profile)
                             tvProfileName?.text = users.user.name
                             tvProfileMobile?.text = users.user.mobile
                             tvWalletAmount?.text = users.user.wallet_amount.toString()
                             tvCardAmount?.text = users.user.payment_cards_count.toString()
+
                             if (users.user.image_profile.isNotEmpty()) {
-                                Glide.with(context!!).load(users.user.image_profile)
-                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                    .placeholder(R.drawable.ic_icon_loading)
-                                    .error(R.drawable.white)
-                                    .into(imgProfile!!)
+                              imgProfile?.setUrlImage(context!!,users.user.image_profile)
                             }
 
                         }

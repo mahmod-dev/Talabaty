@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.talabaty.R
 import com.android.talabaty.model.Product
+import com.android.talabaty.util.Helper.setUrlImage
 import com.android.talabaty.util.MyPreferences
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -61,11 +62,7 @@ class ProductsAdapter(
 
 
             if (product.image.isNotEmpty()) {
-                Glide.with(itemView.context).load(product.image)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.drawable.ic_icon_loading)
-                    .error(R.drawable.white)
-                    .into(img)
+                img.setUrlImage(activity, product.image)
             }
 
 

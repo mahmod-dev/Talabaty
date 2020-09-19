@@ -3,10 +3,13 @@ package com.android.talabaty
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.viewpager2.widget.ViewPager2
+import com.android.talabaty.adapter.RemoteServicePagerAdapter
 import com.android.talabaty.adapter.TatbeqPagerAdapter
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
@@ -21,11 +24,14 @@ import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.toolbar.imgCart
 import kotlinx.android.synthetic.main.toolbar.imgFav
 import kotlinx.android.synthetic.main.toolbar.tvCartNum
+import java.util.*
+import kotlin.collections.ArrayList
 
 class TatbeqActivity : AppCompatActivity() {
     val TAG = "TatbeqActivity"
     private lateinit var viewModel: StoresViewModel
     private lateinit var viewModelCart: CartViewModel
+    var currentPage = 0
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -36,6 +42,7 @@ class TatbeqActivity : AppCompatActivity() {
         handleToolbar()
         handleCartNum()
         viewModel.stores()
+        initViewPager()
         viewpager?.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
         tabs?.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -165,6 +172,45 @@ class TatbeqActivity : AppCompatActivity() {
         Log.e(TAG, "onStart: " )
 
     }
+
+    private fun initViewPager() {
+        val data = ArrayList<Int>()
+        data?.add(R.drawable.img_kfc)
+        data?.add(R.drawable.img_fish)
+        data?.add(R.drawable.img_newest)
+        val adapter = RemoteServicePagerAdapter(this, data!!)
+        with(viewPagerImg) {
+            clipToPadding = false
+            clipChildren = false
+            offscreenPageLimit = 3
+
+            //to disable touch swiping
+            isUserInputEnabled = false
+            orientation = ViewPager2.ORIENTATION_HORIZONTAL
+            this.adapter = adapter
+
+        }
+
+        val timer = Timer()
+        val handler = Handler()
+        val runnable = Runnable {
+            if (currentPage == 2) {
+                currentPage = -1
+            }
+            currentPage += 1
+            viewPagerImg.setCurrentItem(currentPage, true)
+            viewPagerImg.animation
+        }
+
+        val timerTask: TimerTask = object : TimerTask() {
+            override fun run() {
+                handler.post(runnable)
+            }
+        }
+        timer.schedule(timerTask, 1, 4000)
+
+    }
+
 
 
 }

@@ -18,6 +18,7 @@ import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.viewModel.CartViewModel
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
+import com.android.talabaty.util.Helper
 
 import kotlinx.android.synthetic.main.activity_cart.*
 
@@ -56,10 +57,13 @@ class CartActivity : AppCompatActivity() {
         rvCartDetails.setHasFixedSize(true)
 
         adapter!!.onItemClick = { cart, position ->
+            Helper.dialogConfirm(this,getString(R.string.delete_question_cart))
+            Helper.onItemClick= {
+                viewModel.deleteFromCart(cart.product!!.id)
+                carts.removeAt(position)
+                adapter?.notifyDataSetChanged()
+            }
 
-            viewModel.deleteFromCart(cart.product!!.id)
-            carts.removeAt(position)
-            adapter?.notifyDataSetChanged()
 
         }
     }
@@ -124,6 +128,7 @@ class CartActivity : AppCompatActivity() {
                         // progressBar.visibility = View.GONE
                         it.data?.let { users ->
                             Toast.makeText(this, users.message, Toast.LENGTH_SHORT).show()
+                            viewModel.getCart()
 
                         }
                     }

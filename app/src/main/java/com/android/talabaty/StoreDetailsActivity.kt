@@ -21,7 +21,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.tabs.TabLayoutMediator
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
+import com.android.talabaty.util.Helper.setUrlImage
 import com.android.talabaty.viewModel.CartViewModel
+import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_store_details.*
 import kotlinx.android.synthetic.main.item_restaurant_under.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -188,11 +190,8 @@ class StoreDetailsActivity : AppCompatActivity() {
 
 
         if (image_profile?.isNotEmpty()!!) {
-            Glide.with(this).load(image_profile)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .placeholder(R.drawable.ic_icon_loading)
-                .error(R.drawable.white)
-                .into(imgStore);
+            imgStore.setUrlImage(this, image_profile)
+
         }
 
     }

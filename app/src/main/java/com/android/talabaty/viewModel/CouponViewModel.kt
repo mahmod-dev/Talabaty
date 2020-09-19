@@ -1,6 +1,5 @@
 package com.android.talabaty.viewModel
 
-import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.*
@@ -32,7 +31,6 @@ class CouponViewModel(private val apiHelper: ApiHelper?, var context: Context) :
                     getCoupon.postValue(Resource.success(usersFromApi))
                 else {
                     getCoupon.postValue(Resource.error(usersFromApi.message, null))
-
                 }
 
 
@@ -62,10 +60,8 @@ class CouponViewModel(private val apiHelper: ApiHelper?, var context: Context) :
                     addCoupon.postValue(Resource.error(usersFromApi.message, null))
 
                 }
-
-
             } catch (e: Exception) {
-
+                addCoupon.postValue(Resource.error(context.getString(R.string.something_went_error), null))
                 Log.e(TAG, "addCoupon: ${e.message}")
             }
         }
@@ -110,7 +106,6 @@ class CouponViewModel(private val apiHelper: ApiHelper?, var context: Context) :
                     chargeWallet.postValue(Resource.success(usersFromApi))
                 else {
                     chargeWallet.postValue(Resource.error(usersFromApi.message, null))
-
                 }
 
             } catch (e: TimeoutCancellationException) {

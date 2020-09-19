@@ -22,6 +22,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.util.CustomMaterialDialog
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
+import com.android.talabaty.util.Helper.setUrlImage
 import kotlinx.android.synthetic.main.item_cart_favorite.view.*
 
 class FavoriteCartAdapter(var activity: Activity, var data: ArrayList<Product>) :
@@ -74,11 +75,7 @@ class FavoriteCartAdapter(var activity: Activity, var data: ArrayList<Product>) 
 
 
             if (product.image.isNotEmpty()) {
-                Glide.with(itemView.context).load(product.image)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.drawable.ic_icon_loading)
-                    .error(R.drawable.white)
-                    .into(imgCart)
+                imgCart.setUrlImage(activity, product.image)
             }
 
             imgFav.setOnClickListener {

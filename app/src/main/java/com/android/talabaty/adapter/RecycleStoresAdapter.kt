@@ -20,6 +20,7 @@ import com.android.talabaty.StoreDetailsActivity
 import com.android.talabaty.model.Offer
 import com.android.talabaty.model.Store
 import com.android.talabaty.model.ViewStores
+import com.android.talabaty.util.Helper.setUrlImage
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.item_restaurant_under.view.*
@@ -110,11 +111,7 @@ class RecycleStoresAdapter(
             }
 
             if (stores.image_profile.isNotEmpty()) {
-                Glide.with(itemView.context).load(stores.image_profile)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.drawable.ic_icon_loading)
-                    .error(R.drawable.white)
-                    .into(imgStore);
+                imgStore.setUrlImage(activity, stores.image_profile)
             }
 
             card.setOnClickListener {

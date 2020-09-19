@@ -14,6 +14,7 @@ import com.android.talabaty.R
 import com.android.talabaty.model.Digital
 import com.android.talabaty.model.FreeDelivery
 import com.android.talabaty.model.getDigitals
+import com.android.talabaty.util.Helper.setUrlImage
 import com.android.talabaty.util.MyPreferences
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -67,11 +68,7 @@ class RemoteServiceAdapter(
             tvTitle.text = digital.name
 
             if (digital.image.isNotEmpty()) {
-                Glide.with(itemView.context).load(digital.image)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.drawable.ic_icon_loading)
-                    .error(R.drawable.white)
-                    .into(img)
+                img.setUrlImage(activity, digital.image)
             }
 
 

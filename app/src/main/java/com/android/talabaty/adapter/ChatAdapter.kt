@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.android.talabaty.R
 import com.android.talabaty.model.*
+import com.android.talabaty.util.Helper.setUrlImage
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.item_chat.view.*
@@ -44,11 +45,8 @@ class ChatAdapter(var activity: Activity, var data: ArrayList<Product>) :
 
 
             if (product.image.isNotEmpty()) {
-                Glide.with(itemView.context).load(product.image)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.drawable.ic_icon_loading)
-                    .error(R.drawable.white)
-                    .into(imgChat)
+                imgChat.setUrlImage(activity, product.image)
+
             }
 
 

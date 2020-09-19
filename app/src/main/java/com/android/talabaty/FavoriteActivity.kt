@@ -18,6 +18,7 @@ import com.android.talabaty.model.Product
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
+import com.android.talabaty.util.Helper
 import com.android.talabaty.viewModel.CartViewModel
 import kotlinx.android.synthetic.main.activity_favorite.*
 import kotlinx.android.synthetic.main.title_toolbar.*
@@ -67,12 +68,18 @@ class FavoriteActivity : AppCompatActivity() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
                 //Remove swiped item from list and notify the RecyclerView
                 val position = viewHolder.adapterPosition
-
-               val product =  adapter.getProduct(position)
+                Log.e(TAG, "onSwiped remove: " )
+                val product = adapter.getProduct(position)
                 viewModel.deleteFromFav(product.id)
                 viewStores.removeAt(position)
                 adapter.notifyDataSetChanged()
+                
+//                Helper.dialogConfirm(this@FavoriteActivity,getString(R.string.delete_question_favorite))
+//                Helper.onItemClick={
+//                }
+
             }
+
         }
 
         val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
@@ -121,13 +128,14 @@ class FavoriteActivity : AppCompatActivity() {
         )
     }
 
-    private fun swipeToRefresh(){
+    private fun swipeToRefresh() {
         swipeRefresh?.setOnRefreshListener {
 
             setupObserverGetCart()
         }
 
     }
+
     private fun setupObserverDeleteFav() {
 
         viewModel.getDeleteFav().observe(this,
@@ -136,6 +144,8 @@ class FavoriteActivity : AppCompatActivity() {
                     Status.SUCCESS -> {
                         it.data?.let { users ->
                             Toast.makeText(this, users.message, Toast.LENGTH_SHORT).show()
+                            viewModel.getFavorite()
+
                         }
 
                     }

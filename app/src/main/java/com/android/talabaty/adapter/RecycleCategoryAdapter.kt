@@ -24,6 +24,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
+import com.android.talabaty.util.Helper.setUrlImage
 import kotlinx.android.synthetic.main.item_product.view.*
 
 
@@ -98,11 +99,7 @@ class RecycleCategoryAdapter(var activity: Activity, var data: ArrayList<Product
 
 
             if (product.image.isNotEmpty()) {
-                Glide.with(itemView.context).load(product.image)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.drawable.ic_icon_loading)
-                    .error(R.drawable.white)
-                    .into(imgStore);
+                imgStore.setUrlImage(activity, product.image)
             }
 
             if (product.has_colors==1 || product.has_sizes==1){

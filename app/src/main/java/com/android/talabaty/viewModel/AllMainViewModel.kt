@@ -13,15 +13,15 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 
 class AllMainViewModel(private val apiHelper: ApiHelper?, var context: Context) :
-   ViewModel() {
+    ViewModel() {
     private val TAG = "AllMainViewModel"
     private val homePageCategories = MutableLiveData<Resource<HomePageCategories>>()
     private val adds = MutableLiveData<Resource<Ads>>()
     private val offers = MutableLiveData<Resource<GetOffers>>()
 
 
-     fun homePageCategories() {
-        viewModelScope.launch {
+    fun homePageCategories() {
+            viewModelScope.launch {
 
             homePageCategories.postValue(Resource.loading(null))
             try {
@@ -36,14 +36,36 @@ class AllMainViewModel(private val apiHelper: ApiHelper?, var context: Context) 
 
 
             } catch (e: TimeoutCancellationException) {
-                homePageCategories.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+                homePageCategories.postValue(
+                    Resource.error(
+                        context.getString(R.string.timeout_error),
+                        null
+                    )
+                )
             } catch (e: Exception) {
                 if (e is IOException) {
-                    homePageCategories.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    homePageCategories.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
+                } else if (e is TimeoutCancellationException) {
+                    homePageCategories.postValue(
+                        Resource.error(
+                            context.getString(R.string.timeout_error),
+                            null
+                        )
+                    )
                 } else {
-                    homePageCategories.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    homePageCategories.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
-                Log.e(TAG, "homePageCategories: ${e.message}")
+                Log.e(TAG, "homePageCategories: ${e.localizedMessage}")
             }
         }
     }
@@ -68,8 +90,16 @@ class AllMainViewModel(private val apiHelper: ApiHelper?, var context: Context) 
             } catch (e: Exception) {
                 if (e is IOException) {
                     adds.postValue(Resource.error(context.getString(R.string.network_error), null))
+                } else if (e is TimeoutCancellationException) {
+                    adds.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+
                 } else {
-                    adds.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    adds.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "allAdds: ${e.message}")
             }
@@ -94,18 +124,33 @@ class AllMainViewModel(private val apiHelper: ApiHelper?, var context: Context) 
                 offers.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
                 if (e is IOException) {
-                    offers.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    offers.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
+
+                } else if (e is TimeoutCancellationException) {
+                    offers.postValue(
+                        Resource.error(
+                            context.getString(R.string.timeout_error),
+                            null
+                        )
+                    )
 
                 } else {
-                    offers.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    offers.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "allOffers: ${e.message}")
             }
         }
     }
-
-
-
 
 
     fun getHomePageCategories(): LiveData<Resource<HomePageCategories>> {
@@ -115,6 +160,7 @@ class AllMainViewModel(private val apiHelper: ApiHelper?, var context: Context) 
     fun getAdds(): LiveData<Resource<Ads>> {
         return adds
     }
+
     fun getAllOffers(): LiveData<Resource<GetOffers>> {
         return offers
     }

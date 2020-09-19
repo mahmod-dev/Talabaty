@@ -24,6 +24,7 @@ import com.facebook.AccessToken
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.android.talabaty.dbUtil.Status
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.json.JSONException
 import java.security.MessageDigest
@@ -217,7 +218,7 @@ class SignInActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         dialog.dismiss()
-                        Helper.showFilterDialog(this!!, it.message!!).show()
+                        getMaterialDialogInstance(it.message!!)
 
                         //Handle Error
                         Log.e(TAG, "setupObserver: " + it.message)

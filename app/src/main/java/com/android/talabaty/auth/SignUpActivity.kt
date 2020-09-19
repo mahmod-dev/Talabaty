@@ -18,6 +18,7 @@ import com.android.talabaty.util.Helper.emailValid
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.SignUpViewModel
 import com.android.talabaty.dbUtil.Status
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.logo_toolbar_back.*
 
@@ -87,7 +88,7 @@ class SignUpActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         dialog.dismiss()
-                        Helper.showFilterDialog(this!!, it.message!!).show()
+                        getMaterialDialogInstance(it.message!!)
 
                         //Handle Error
                         Log.e(TAG, "setupObserver: " + it.message)

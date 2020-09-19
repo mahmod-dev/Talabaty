@@ -9,6 +9,7 @@ import androidx.viewpager.widget.PagerAdapter
 import com.android.talabaty.R
 import com.android.talabaty.model.Ad
 import com.android.talabaty.model.OtherImage
+import com.android.talabaty.util.Helper.setUrlImage
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 
@@ -34,11 +35,7 @@ class SliderProductAdapter(var activity: Activity, var data: ArrayList<OtherImag
         img = view.findViewById(R.id.imgArrow)
 
         if (data[position].image.isNotEmpty()) {
-            Glide.with(activity).load(data[position].image)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .placeholder(R.drawable.ic_icon_loading)
-                .error(R.drawable.white)
-                .into(img)
+            img.setUrlImage(activity, data[position].image)
         }
 
         return view

@@ -13,6 +13,7 @@ import com.android.talabaty.OtherServiceActivity
 import com.android.talabaty.R
 import com.android.talabaty.model.Digital
 import com.android.talabaty.model.Offer
+import com.android.talabaty.util.Helper.setUrlImage
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.item_all_categories.view.*
@@ -69,11 +70,7 @@ class OtherServicesAdapter(
 
 
             if (digital.image.isNotEmpty()) {
-                Glide.with(itemView.context).load(digital.image)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.drawable.ic_icon_loading)
-                    .error(R.drawable.white)
-                    .into(img)
+                img.setUrlImage(activity, digital.image)
             }
 
             cardCat.setOnClickListener {

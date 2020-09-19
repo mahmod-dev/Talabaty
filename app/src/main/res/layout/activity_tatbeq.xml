@@ -22,7 +22,10 @@
 
 
     <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerImg"
         android:layout_width="match_parent"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:layout_height="@dimen/_130sdp"/>
 
     <com.google.android.material.tabs.TabLayout

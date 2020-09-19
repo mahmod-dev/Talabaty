@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.talabaty.R
 import com.android.talabaty.model.PaymentCard
 import com.android.talabaty.model.PaymentMethod
+import com.android.talabaty.util.Helper.setUrlImage
 import com.android.talabaty.util.MyPreferences
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -61,11 +62,7 @@ class EditPaymentMethodAdapter(
             tvName.text = paymentMethod.method.name
 
             if (paymentMethod.method.image.isNotEmpty()) {
-                Glide.with(itemView.context).load(paymentMethod.method.image)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.drawable.ic_icon_loading)
-                    .error(R.drawable.white)
-                    .into(imgPayment)
+                imgPayment.setUrlImage(activity, paymentMethod.method.image)
             }
 
 

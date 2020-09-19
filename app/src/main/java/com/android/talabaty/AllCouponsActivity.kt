@@ -15,6 +15,7 @@ import com.android.talabaty.model.Coupon
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
+import com.android.talabaty.util.Helper
 import com.android.talabaty.viewModel.CouponViewModel
 import kotlinx.android.synthetic.main.activity_all_coupons.*
 import kotlinx.android.synthetic.main.title_toolbar.*
@@ -91,6 +92,8 @@ class AllCouponsActivity : AppCompatActivity() {
                     Status.SUCCESS -> {
                         it.data?.let { users ->
                             Toast.makeText(this, users.message, Toast.LENGTH_SHORT).show()
+                            viewModel.allCoupons()
+
 
                         }
                     }
@@ -117,10 +120,13 @@ class AllCouponsActivity : AppCompatActivity() {
         rvCoupons.setHasFixedSize(true)
 
         adapter.onItemClick = { position, coupon ->
+            Helper.dialogConfirm(this, getString(R.string.delete_question_copoun))
+            Helper.onItemClick = {
+                viewModel.deleteCoupon(coupon)
+                data.removeAt(position)
+                adapter.notifyDataSetChanged()
+            }
 
-            viewModel.deleteCoupon(coupon)
-            data.removeAt(position)
-            adapter.notifyDataSetChanged()
 
         }
     }

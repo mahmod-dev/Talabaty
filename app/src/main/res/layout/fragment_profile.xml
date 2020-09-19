@@ -82,6 +82,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tvEditProfile"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
@@ -93,9 +94,9 @@
                         android:focusable="true"
                         android:fontFamily="@font/cairo_reqular"
                         android:foreground="?attr/selectableItemBackground"
-
+                        android:padding="@dimen/_5sdp"
                         android:gravity="center"
-                        android:text="تعديل الحساب"
+                        android:text="@string/edit_account"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_10ssp"
                         app:drawableStartCompat="@drawable/ic_edit" />
@@ -151,8 +152,12 @@
                             android:background="@color/colorGrey" />
 
                         <RelativeLayout
+                            android:id="@+id/rlWallet"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground"
                             android:orientation="horizontal">
 
 

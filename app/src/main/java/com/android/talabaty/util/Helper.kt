@@ -10,14 +10,19 @@ import android.text.format.DateFormat
 import android.util.Base64
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.android.talabaty.R
+import com.android.talabaty.model.Cart
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import de.hdodenhof.circleimageview.CircleImageView
 import java.io.File
 import java.net.InetAddress
 import java.net.URISyntaxException
@@ -27,6 +32,7 @@ import java.util.regex.Pattern
 
 
 object Helper {
+    var onItemClick: (() -> Unit)? = null
 
     private val VALID_EMAIL_ADDRESS_REGEX: Pattern =
         Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE)
@@ -71,37 +77,34 @@ object Helper {
         return flag
     }
 
-    fun getFormatDateTime(format: String = "yyyy-MM-dd hh:mm:ss a",date:Date = Date()) =
-        DateFormat.format(format,date).toString()
+    fun getFormatDateTime(format: String = "yyyy-MM-dd hh:mm:ss a", date: Date = Date()) =
+        DateFormat.format(format, date).toString()
 
-    fun getFormatTime(format: String = "hh:mm a",time:Date = Date()) =
-        DateFormat.format(format,time).toString()
+    fun getFormatTime(format: String = "hh:mm a", time: Date = Date()) =
+        DateFormat.format(format, time).toString()
 
-    fun getFormatDate(format: String = "yyyy-MM-dd",date:Date = Date()) =
+    fun getFormatDate(format: String = "yyyy-MM-dd", date: Date = Date()) =
         DateFormat.format(format, date).toString()
 
     fun getFormatDate(format: String = "yyyy-MM-dd", date: Calendar) =
         DateFormat.format(format, date).toString()
 
 
+//    fun showFilterDialog(context: Context, message: String): MaterialDialog {
+//
+//        val dialog = MaterialDialog(context)
+//            .noAutoDismiss()
+//            .customView(R.layout.dialog_message_error)
+//        dialog.findViewById<TextView>(R.id.tvErrorMessage).text = message
+//
+//        dialog.findViewById<Button>(R.id.btnConfirmDialogError).setOnClickListener {
+//            dialog.dismiss()
+//        }
+//
+//        return dialog
+//    }
 
-        fun showFilterDialog(context: Context,message:String):MaterialDialog{
-
-        val dialog = MaterialDialog(context)
-            .noAutoDismiss()
-            .customView(R.layout.dialog_message_error)
-
-        // set initial preferences
-        dialog.findViewById<TextView>(R.id.tvErrorMessage).text = message
-
-        dialog.findViewById<Button>(R.id.btnConfirmDialogError).setOnClickListener {
-            dialog.dismiss()
-        }
-
-       return dialog
-    }
-
-    fun Activity.showLogoutDialog():MaterialDialog{
+    fun Activity.showLogoutDialog(): MaterialDialog {
 
         val dialog = MaterialDialog(this)
             .noAutoDismiss()
@@ -122,7 +125,6 @@ object Helper {
             false
         }
     }
-
 
 
     fun selectImageDialog(activity: Activity) {
@@ -166,6 +168,30 @@ object Helper {
     }
 
 
+    fun dialogConfirm(activity: Activity, message: String) {
+
+        val builder = MaterialDialog(activity)
+
+            .customView(R.layout.dialog_confirm)
+
+        // set initial preferences
+        builder.findViewById<TextView>(R.id.tvDelete).text = message
+
+        builder.findViewById<Button>(R.id.btnYes).setOnClickListener {
+            onItemClick?.invoke()
+            builder.dismiss()
+
+        }
+
+        builder.findViewById<Button>(R.id.btnNo).setOnClickListener {
+            builder.dismiss()
+
+        }
+        builder.cancelable(false)
+        builder.show()
+    }
+
+
     @Throws(URISyntaxException::class)
     fun getPath(context: Context, uri: Uri): String? {
         if ("content".equals(uri.getScheme(), ignoreCase = true)) {
@@ -173,7 +199,7 @@ object Helper {
             var cursor: Cursor? = null
             try {
                 cursor = context.contentResolver.query(uri, projection, null, null, null)
-                if (cursor!=null){
+                if (cursor != null) {
                     val column_index: Int = cursor.getColumnIndexOrThrow("_data")
 
                     if (cursor.moveToFirst()) {
@@ -218,6 +244,24 @@ object Helper {
     fun encodeFile(myFile: File): String? {
         val bytes = ByteArray(myFile.length().toInt())
         return Base64.encodeToString(bytes, 0)
+    }
+
+    fun ImageView.setUrlImage(context: Context,imgUrl :String?) {
+        Glide.with(context).load(imgUrl)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .placeholder(R.drawable.ic_icon_loading)
+            .error(R.drawable.white)
+            .into(this)
+
+    }
+
+   public fun CircleImageView.setUrlImage(context: Context,imgUrl :String?) {
+        Glide.with(context).load(imgUrl)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .placeholder(R.drawable.ic_icon_loading)
+            .error(R.drawable.white)
+            .into(this)
+
     }
 
 }

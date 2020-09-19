@@ -4,7 +4,6 @@
     <string name="app_name">Tatbeqakum</string>
     <string name="tatbeqakum_ar">تطبيقكم</string>
     <string name="tatbeqakum_en">tatbeqakum</string>
-    <string name="welcome">أهلاً بكم</string>
     <string name="sign_in">تسجيل الدخول</string>
     <string name="email">البريد الإلكتروني</string>
     <string name="password">كلمة المرور</string>
@@ -12,12 +11,10 @@
     <string name="forgot_password">نسيت كلمة المرور؟</string>
     <string name="you_dont_have_account">ليس لديك حساب؟</string>
     <string name="create_account">إنشاء حساب</string>
-    <string name="sign_up">تسجيل</string>
     <string name="full_name">الاسم بالكامل</string>
     <string name="mobile_number">رقم الهاتف المحمول</string>
     <string name="you_have_account">هل قمت بالتسجيل من قبل؟</string>
     <string name="reset">إستعادة</string>
-    <string name="password_recovery">إسترجاع كلمة المرور</string>
     <string name="thanks">شكراً لك!</string>
     <string name="enter_code">أدخل الرمز</string>
     <string name="activiation_message">لقد تم إرسال كود التفعيل إلى رقم الهاتف
@@ -25,22 +22,9 @@
     <string name="code_confirm">تأكيد الرمز</string>
     <string name="didnt_recieve">لم يصل الكود؟</string>
     <string name="send_again">إعادة الإرسال</string>
-    <string name="search_here">Search here</string>
     <string name="all">الكل</string>
-    <string name="restaurants">مطام</string>
-    <string name="stores">متاجر</string>
-    <string name="clothes">ملابس</string>
-    <string name="gifts">هدايا</string>
-    <string name="electrical_devices">أجهزة إلكترونية</string>
     <string name="digital_services">خدمات رقمية</string>
-    <string name="order_car">Order a car</string>
-    <string name="order_service">Order a service</string>
     <string name="free_delivery">توصيل مجاني</string>
-    <string name="latest_offers">آخر العروض والخصومات</string>
-    <string name="productive_families">الأسر المنتجة</string>
-    <string name="places_near_you">Places Near You</string>
-    <string name="delete_order">حذف الطلب</string>
-    <string name="retry">إعادة طلب</string>
     <string name="my_orders">طلباتي</string>
     <string name="settings">الإعدادات</string>
     <string name="about_app">عن تطبيقكم</string>
@@ -64,8 +48,6 @@
     <string name="card_number">رقم البطاقة</string>
     <string name="expired_date">تاريخ الإنتهاء</string>
     <string name="ok">تم</string>
-    <string name="place_of_delivery">Place of Delivery</string>
-    <string name="select_the_receive_location">Select the receive location</string>
     <string name="search_in_offer_service">البحث في العروض والخدمات</string>
     <string name="latest_offers_discounts">أحدث العروض والخصومات</string>
     <string name="current_location">الموقع الحالي</string>
@@ -74,11 +56,7 @@
     <string name="main">الرئيسية</string>
     <string name="orders">طلباتي</string>
     <string name="chatting">دردشة</string>
-    <string name="meals">أكلات</string>
-    <string name="wears">ملابس</string>
-    <string name="furniture">أثاث منزلي</string>
     <string name="product_describe">وصف المنتج</string>
-    <string name="reviews">التقييمات</string>
     <string name="add_the_discount_coupon">اضف كوبون خصم</string>
     <string name="send_the_order">أرسل الطلب</string>
     <string name="the_discount">الخصم</string>
@@ -91,7 +69,6 @@
     <string name="where_you_go">الى أين تريد الذهاب؟</string>
     <string name="write_where_you_go">اكتب أين تريد الذهاب…</string>
     <string name="delivery_charging">رسوم التوصيل</string>
-    <string name="payment_type">طرق الدفع</string>
     <string name="notice_pay">ملاحظة: قبل ارسال الطلب يجب الدفع أولا</string>
     <string name="send_order">أرسل الطلب</string>
     <string name="delivery_address">عنوان التوصيل</string>
@@ -107,11 +84,8 @@
     <string name="delivery_num">رقم التواصل</string>
     <string name="confirm_order">تأكيد الطلب</string>
     <string name="write_ur_notice">اكتب طلباتك وملاحظات الطلب</string>
-    <string name="predict_cost">كم تتوقع يكلف الطلب؟</string>
-    <string name="cost_help">تقدير التكلفة تساعدنا نلقى لك المندوب المناسب لتنفيذ طلبك</string>
     <string name="periorty">الأولوية</string>
     <string name="come_time">وقت الحضور</string>
-    <string name="call_time">رقم التواصل</string>
     <string name="add_text">إضافة نص</string>
     <string name="order_progress">إنجاز الطلب</string>
     <string name="from">من</string>
@@ -136,13 +110,9 @@
     <string name="unknown">غير معروف</string>
     <string name="empty_fav">المفضلة فارغة!</string>
     <string name="favorite">المفضلة</string>
-    <string name="enable_gps">GPS Enable</string>
-    <string name="gps_details_msg">Your GPS seems to be disabled, do you want to enable it?</string>
     <string name="enable">تفعيل</string>
     <string name="cancel">إلغاء</string>
     <string name="selecat_location">نريد تفعيل خدمة الموقع لإعطائك نتائج أكثر دقة </string>
-    <string name="click_long_map">أنقر مطولا لتحديد أي مكان على الخريطة</string>
-    <string name="choosen_location">الموقع المختار</string>
     <string name="enter_place">أدخل الموقع!</string>
     <string name="select_type">اختر النوع</string>
     <string name="select_car_type">اختر نوع السيارة!</string>
@@ -162,7 +132,6 @@
     <string name="take_photo">التقاط صورة</string>
     <string name="choose_gallery">اختار من الاستوديو</string>
     <string name="not_found_remote_service">لا يوجد خدمات رقمية</string>
-    <string name="not_fount_product_in_favorite">لا يوجد منتجات مفضلة</string>
     <string name="copied_text">تم نسخ الكود</string>
     <string name="notifications">الإشعارات</string>
     <string name="start_chat">بدء الدردشة</string>
@@ -186,5 +155,17 @@
     <string name="add_coupon">إضافة كوبون</string>
     <string name="add_coupon_success">تم إضافة كوبون بنجاح</string>
     <string name="coupons">" الكوبونات"</string>
+    <string name="delete_question">هل أنت متأكد من الحذف؟</string>
+    <string name="delete_question_cart">هل تريد حذف هذا العصنر من السلة؟ </string>
+    <string name="delete_question_copoun">هل تريد حذف هذا الكوبون؟ </string>
+    <string name="not_found_products">لا يوجد منتجات</string>
+    <string name="add">إضافة</string>
+    <string name="enter_amount">أدخل المبلغ</string>
+    <string name="add_amount_success">تم إضافة المبلغ بنجاح</string>
+    <string name="add_amount">إضافة مبلغ</string>
+    <string name="edit_profile">تعديل الصفخة الشخصية</string>
+    <string name="password_new">كلمة المرور الحالية</string>
+    <string name="edit_account">تعديل الحساب</string>
+
 
 </resources>

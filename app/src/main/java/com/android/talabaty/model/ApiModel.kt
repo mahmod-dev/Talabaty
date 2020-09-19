@@ -115,8 +115,9 @@ data class UserPost(
     val password: String,
     val fcm_token: String,
     val device_type: String,
-    val latitude: Double,
-    val longitude: Double
+    val image_profile: String?,
+    val latitude: Long,
+    val longitude: Long
 )
 
 data class SignUpPost(

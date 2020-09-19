@@ -21,8 +21,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
+import com.android.talabaty.util.Helper.setUrlImage
 import kotlinx.android.synthetic.main.activity_product_details.*
 import kotlinx.android.synthetic.main.item_cart.view.*
+import kotlinx.android.synthetic.main.item_restaurant_under.*
 
 class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
 
@@ -85,11 +87,8 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
 
 
             if (product.image.isNotEmpty()) {
-                Glide.with(itemView.context).load(product.image)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.drawable.ic_icon_loading)
-                    .error(R.drawable.white)
-                    .into(imgCart)
+                imgCart.setUrlImage(activity, product.image)
+
             }
 
 

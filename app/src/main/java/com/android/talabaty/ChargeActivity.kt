@@ -10,30 +10,28 @@ import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
-import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.CouponViewModel
-import com.android.talabaty.viewModel.ProfileViewModel
-import kotlinx.android.synthetic.main.activity_add_coupon.*
+import kotlinx.android.synthetic.main.activity_charge.*
 import kotlinx.android.synthetic.main.title_toolbar.*
-import kotlinx.android.synthetic.main.toolbar_location_cart.*
 
-class AddCouponActivity : AppCompatActivity() {
-    val TAG = "AddCouponActivity"
+class ChargeActivity : AppCompatActivity() {
+    val TAG = "ChargeActivity"
     private lateinit var viewModel: CouponViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_coupon)
+        setContentView(R.layout.activity_charge)
+
         handleToolbar()
         initViewModel()
 
         btnConfirm.setOnClickListener {
-            val coupon = etAddCoupon.text.toString()
+            val coupon = etAddAmount.text.toString()
             if (coupon.isEmpty()){
-                etAddCoupon.error = getString(R.string.empty)
+                etAddAmount.error = getString(R.string.empty)
                 return@setOnClickListener
             }
-            viewModel.addCoupon(coupon)
+           val amount =coupon.toInt()
+            viewModel.chargeWallet(amount)
 
         }
 
@@ -41,13 +39,14 @@ class AddCouponActivity : AppCompatActivity() {
 
     }
 
+
     private fun handleToolbar() {
         imgArrowBack.setOnClickListener {
             finish()
 
         }
 
-        tvTitleToolbar.text = getString(R.string.add_coupon)
+        tvTitleToolbar.text = getString(R.string.add_amount)
 
     }
 
@@ -62,7 +61,7 @@ class AddCouponActivity : AppCompatActivity() {
 
     private fun setupObserver() {
 
-        viewModel.getAddCoupon().observe(this,
+        viewModel.getChargeWallet().observe(this,
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
@@ -71,8 +70,8 @@ class AddCouponActivity : AppCompatActivity() {
                         it.data?.let { users ->
                             tvEmpty.visibility = View.VISIBLE
                             tvEmpty.setTextColor(ContextCompat.getColor(this,R.color.colorPrimary))
-                            tvEmpty.text = getString(R.string.add_coupon_success)
-                            etAddCoupon.setText("")
+                            tvEmpty.text = getString(R.string.add_amount_success)
+                            etAddAmount.setText("")
                         }
                     }
                     Status.LOADING -> {

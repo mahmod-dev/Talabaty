@@ -14,6 +14,7 @@ import com.android.talabaty.util.CustomAlertDialog.getDialogInstance
 import com.android.talabaty.util.Helper
 import com.android.talabaty.viewModel.LoginViewModel
 import com.android.talabaty.dbUtil.Status
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import kotlinx.android.synthetic.main.activity_reset_password.*
 
 class ResetPasswordActivity : AppCompatActivity() {
@@ -69,7 +70,7 @@ class ResetPasswordActivity : AppCompatActivity() {
                     Status.ERROR -> {
                         //Handle Error
                         dialog.dismiss()
-                        Helper.showFilterDialog(this!!, it.message!!).show()
+                        getMaterialDialogInstance(it.message!!)
 
                         Log.e(TAG, "setupObserver: " + it.message)
                     }
