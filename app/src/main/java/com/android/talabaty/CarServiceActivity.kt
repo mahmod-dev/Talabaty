@@ -47,7 +47,7 @@ class CarServiceActivity : AppCompatActivity() {
         MyPreferences.setInt("type", 0)
          car = ArrayList()
         car?.add(SpinnerObj(0,getString(R.string.car_type)))
-
+        handleToolbar()
         initViewModel()
         initSpinnerAdapter(car!!)
         viewModel.getCars()
@@ -55,16 +55,6 @@ class CarServiceActivity : AppCompatActivity() {
         setupObserverRequestCar()
         linPayment.setOnClickListener {
             startActivity(Intent(this, PaymentMethodActivity::class.java))
-        }
-
-        imgArrowBack.setOnClickListener {
-            finish()
-        }
-        imgCart.setOnClickListener {
-            startActivity(Intent(this, CartActivity::class.java))
-        }
-        imgFav.setOnClickListener {
-            startActivity(Intent(this, FavoriteActivity::class.java))
         }
 
         tvSrc.setOnClickListener {
@@ -211,5 +201,25 @@ class CarServiceActivity : AppCompatActivity() {
             lngDist = lng
         }
     }
+
+    private fun handleToolbar() {
+        imgArrowBack.setOnClickListener {
+            finish()
+        }
+
+        imgCart.setOnClickListener {
+            startActivity(Intent(this, CartActivity::class.java))
+
+        }
+
+        imgFav.setOnClickListener {
+            startActivity(Intent(this, FavoriteActivity::class.java))
+
+        }
+        tvHomeLocation.text = MyPreferences.getStr("city")
+
+
+    }
+
 
 }

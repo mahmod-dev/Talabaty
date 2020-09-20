@@ -10,6 +10,7 @@ import com.android.talabaty.retrofit.ApiHelper
 import com.android.talabaty.dbUtil.Resource
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import java.io.IOException
 
 class CategoryViewModel(private val apiHelper: ApiHelper?, var context: Context) :
@@ -23,16 +24,17 @@ class CategoryViewModel(private val apiHelper: ApiHelper?, var context: Context)
 
             otherServices.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.getOtherServices()
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getOtherServices()
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    otherServices.postValue(Resource.success(usersFromApi))
-                else{
-                    otherServices.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        otherServices.postValue(Resource.success(usersFromApi))
+                    else {
+                        otherServices.postValue(Resource.error(usersFromApi.message, null))
+
+                    }
 
                 }
-
-
 
             } catch (e: TimeoutCancellationException) {
                 otherServices.postValue(Resource.error(context.getString(R.string.timeout_error), null))

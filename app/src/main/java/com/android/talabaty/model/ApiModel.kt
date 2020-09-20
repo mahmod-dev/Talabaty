@@ -496,6 +496,7 @@ data class ProductDetails(
     val code: Int,
     val message: String,
     val products: ArrayList<Product>,
+    val random_products: ArrayList<Product>,
     val status: Boolean
 )
 

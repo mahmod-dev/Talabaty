@@ -20,7 +20,7 @@ class CouponAdapter(
 
     RecyclerView.Adapter<CouponAdapter.MyViewHolder>() {
     val TAG = "CouponAdapter"
-    var onItemClick: ((Int,Int) -> Unit)? = null
+    var onItemClick: ((Int, Int) -> Unit)? = null
 
     init {
         MyPreferences.context = activity
@@ -48,15 +48,17 @@ class CouponAdapter(
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvName: TextView = itemView.tvName
+        var tvValid: TextView = itemView.tvValid
+        var tvDiscount: TextView = itemView.tvDiscount
         var imgDelete: ImageView = itemView.imgDelete
 
 
         fun bind(coupon: Coupon) {
             tvName.text = coupon.name
-
-
+            tvDiscount.text = "${coupon.discount}%"
+            tvValid.text = " ${activity.getString(R.string.valid_upto)}  ${coupon.end}"
             imgDelete.setOnClickListener {
-                onItemClick?.invoke(adapterPosition ,data[adapterPosition].id)
+                onItemClick?.invoke(adapterPosition, data[adapterPosition].id)
             }
 
         }

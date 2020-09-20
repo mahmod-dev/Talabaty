@@ -81,7 +81,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/cairo_reqular"
                                 android:gravity="center"
-                                android:text="خدمات رقمية"
+                                android:text="@string/digital_services"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="@dimen/_9ssp" />
                         </LinearLayout>
@@ -116,7 +116,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/cairo_reqular"
                                 android:gravity="center"
-                                android:text="اطلب سيارة"
+                                android:text="@string/request_car"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="@dimen/_9ssp" />
                         </LinearLayout>
@@ -152,7 +152,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/cairo_reqular"
                                 android:gravity="center"
-                                android:text="اطلب خدمة"
+                                android:text="@string/request_service"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="@dimen/_9ssp" />
                         </LinearLayout>
@@ -188,7 +188,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/cairo_reqular"
                                 android:gravity="center"
-                                android:text="توصيل مجاني"
+                                android:text="@string/free_delivery"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="@dimen/_9ssp" />
                         </LinearLayout>
@@ -204,6 +204,7 @@
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:focusable="true"
+                    android:layoutDirection="locale"
                     android:orientation="horizontal">
 
                     <TextView
@@ -330,7 +331,7 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:fontFamily="@font/cairo_bold"
                         android:gravity="center_vertical"
-                        android:text="أماكن قريبة منك"
+                        android:text="@string/near_places"
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_12ssp" />
 

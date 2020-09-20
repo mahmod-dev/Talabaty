@@ -4,7 +4,7 @@
     android:id="@+id/bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
+
     app:behavior_hideable="false"
     app:behavior_peekHeight="@dimen/_50sdp"
     app:layout_behavior="@string/bottom_sheet_behavior">

@@ -258,6 +258,23 @@
                         android:text="@string/stores_describe"
 
                         android:textColor="@color/colorGrey3" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/cairo_bold"
+                        android:text="@string/maybe_like_you"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvLiked"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        tools:listitem="@layout/item_like"
+                        android:orientation="horizontal"
+                        android:nestedScrollingEnabled="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
             </LinearLayout>
 

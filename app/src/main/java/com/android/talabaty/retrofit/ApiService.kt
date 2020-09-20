@@ -1,6 +1,8 @@
 package com.android.talabaty.retrofit
 
 import com.android.talabaty.model.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 interface ApiService {
@@ -119,8 +121,23 @@ interface ApiService {
     @POST("signUp")
     suspend fun signUp(@Body user: SignUpPost): SignUp
 
+    @Multipart
     @POST("requestDigitalService")
-    suspend fun requestDigitalService(@Body user: DigitalServiceBody): DigitalService
+    suspend fun requestDigitalService(
+        @Part("digital_id") digital_id: RequestBody,
+        @Part("name") name: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("mobile") mobile: RequestBody,
+        @Part("priority") priority: RequestBody,
+        @Part("details") details: RequestBody,
+        @Part("date_from") date_from: RequestBody,
+        @Part("date_to") date_to: RequestBody,
+        @Part order_images: MultipartBody.Part?,
+        @Part order_files: MultipartBody.Part?
+    ): DigitalService
+
+//    @POST("requestDigitalService")
+//    suspend fun requestDigitalService(@Body user: DigitalServiceBody): DigitalService
 
 
     @FormUrlEncoded
@@ -138,8 +155,19 @@ interface ApiService {
     @POST("forgotPassword")
     suspend fun forgotPassword(@Field("email") email: String): GeneralResponse
 
+    @Multipart
     @POST("editProfile")
-    suspend fun editProfile(@Body user: UserPost): EditProfile
+    suspend fun editProfile(
+        @Part("name") name: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("mobile") mobile: RequestBody,
+        @Part("latitude") latitude: RequestBody,
+        @Part("longitude") longitude: RequestBody,
+        @Part("password") password: RequestBody,
+        @Part("device_type") device_type: RequestBody,
+        @Part("fcm_token") fcm_token: RequestBody,
+        @Part image_profile: MultipartBody.Part
+    ): EditProfile
 
     //   @FormUrlEncoded
     //    @POST("changeUserImage")
@@ -165,8 +193,8 @@ interface ApiService {
     suspend fun addProductToCart(
         @Field("product_id") productId: Int,
         @Field("quantity") quantity: Int,
-        @Field("color_id")color_id : Int ,
-        @Field("size_id")size_id : Int
+        @Field("color_id") color_id: Int,
+        @Field("size_id") size_id: Int
 
     ): AddProductToCart
 
@@ -207,9 +235,9 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("chargeWallet")
-    suspend fun chargeWallet(   @Field("amount") amount: Int): ChargeWallet
+    suspend fun chargeWallet(@Field("amount") amount: Int): ChargeWallet
 
     @FormUrlEncoded
     @POST("addNewCoupon")
-    suspend fun addNewCoupon(   @Field("coupon") coupon: String): AddNewCoupon
+    suspend fun addNewCoupon(@Field("coupon") coupon: String): AddNewCoupon
 }

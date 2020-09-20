@@ -1,16 +1,12 @@
 package com.android.talabaty.retrofit
 
-import android.content.Context
 import com.android.talabaty.util.MyPreferences
-import com.android.talabaty.util.MyPreferences.context
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 object RetrofitBuilder {
@@ -21,21 +17,26 @@ object RetrofitBuilder {
         try {
 
 
-            val httpClient = OkHttpClient.Builder()
+            val builder = OkHttpClient.Builder()
+                .callTimeout(2, TimeUnit.MINUTES)
+                .connectTimeout(2, TimeUnit.MINUTES)
+                .readTimeout(2, TimeUnit.MINUTES)
+                .writeTimeout(2, TimeUnit.MINUTES)
 
-            httpClient.addInterceptor { chain ->
+            builder.addInterceptor { chain ->
                 val request: Request =
                     chain.request().newBuilder()
                         .addHeader("Authorization", token())
                         .addHeader("Accept-Language", Locale.getDefault().language)
                         .addHeader("Accept", "application/json")
+
                         .build()
                 chain.proceed(request)
             }
 
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .client(httpClient.build())
+                .client(builder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         } catch (ex: Exception) {

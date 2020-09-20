@@ -3,6 +3,7 @@ package com.android.talabaty.util
 import android.app.Activity
 import android.content.Context
 import android.database.Cursor
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.net.Uri
 import android.provider.OpenableColumns
@@ -17,13 +18,15 @@ import androidx.core.content.res.ResourcesCompat
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.android.talabaty.R
-import com.android.talabaty.model.Cart
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import de.hdodenhof.circleimageview.CircleImageView
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.IOException
+import java.io.InputStream
 import java.net.InetAddress
 import java.net.URISyntaxException
 import java.util.*
@@ -127,7 +130,7 @@ object Helper {
     }
 
 
-    fun selectImageDialog(activity: Activity) {
+    fun selectImageDialog(activity: Activity,isCrop: Boolean = false) {
         val options =
             arrayOf<CharSequence>(
                 activity.resources.getString(R.string.take_photo),
@@ -145,20 +148,38 @@ object Helper {
         title.setTextColor(Color.WHITE)
 
         builder.setCustomTitle(title)
-        builder.setItems(options) { dialog, item ->
-            if (options[item] == activity.resources.getString(R.string.take_photo)) {
-                ImagePicker.with(activity)
-                    .cameraOnly()
-                    .crop()
-                    .start()
-            } else if (options[item] == activity.getString(R.string.choose_gallery)) {
+        if (isCrop){
+            builder.setItems(options) { dialog, item ->
+                if (options[item] == activity.resources.getString(R.string.take_photo)) {
+                    ImagePicker.with(activity)
+                        .cameraOnly()
+                        .cropSquare()
+                        .start()
+                } else if (options[item] == activity.getString(R.string.choose_gallery)) {
 
-                ImagePicker.with(activity)
-                    .galleryOnly()
-                    .crop()
-                    .start()
+                    ImagePicker.with(activity)
+                        .galleryOnly()
+                        .cropSquare()
+                        .start()
+                }
+            }
+        }else{
+            builder.setItems(options) { dialog, item ->
+                if (options[item] == activity.resources.getString(R.string.take_photo)) {
+                    ImagePicker.with(activity)
+                        .cameraOnly()
+                        .crop()
+                        .start()
+                } else if (options[item] == activity.getString(R.string.choose_gallery)) {
+
+                    ImagePicker.with(activity)
+                        .galleryOnly()
+                        .crop()
+                        .start()
+                }
             }
         }
+
 
         builder.setNegativeButton(activity.resources.getString(R.string.cancel)) { dialog, which ->
             dialog.dismiss()
@@ -243,19 +264,42 @@ object Helper {
 
     fun encodeFile(myFile: File): String? {
         val bytes = ByteArray(myFile.length().toInt())
-        return Base64.encodeToString(bytes, 0)
+        return Base64.encodeToString(bytes, Base64.NO_WRAP)
     }
 
-    fun ImageView.setUrlImage(context: Context,imgUrl :String?) {
+    fun encodeImage(bitmap: Bitmap): String? {
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 90, baos)
+        val b: ByteArray = baos.toByteArray()
+
+        return Base64.encodeToString(b, Base64.NO_WRAP)
+    }
+
+    @Throws(IOException::class)
+    fun getBytes(`is`: InputStream): ByteArray? {
+        val byteBuff = ByteArrayOutputStream()
+        val buffSize = 1024
+        val buff = ByteArray(buffSize)
+        var len = 0
+        while (`is`.read(buff).also { len = it } != -1) {
+            byteBuff.write(buff, 0, len)
+        }
+        return byteBuff.toByteArray()
+    }
+
+
+    fun ImageView.setUrlImage(context: Context, imgUrl: String?) {
         Glide.with(context).load(imgUrl)
+            .centerCrop()
+            .fitCenter()
+            .thumbnail(0.3f)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .placeholder(R.drawable.ic_icon_loading)
             .error(R.drawable.white)
             .into(this)
-
     }
 
-   public fun CircleImageView.setUrlImage(context: Context,imgUrl :String?) {
+    public fun CircleImageView.setUrlImage(context: Context, imgUrl: String?) {
         Glide.with(context).load(imgUrl)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .placeholder(R.drawable.ic_icon_loading)

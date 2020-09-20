@@ -10,6 +10,7 @@ import com.android.talabaty.retrofit.ApiHelper
 import com.android.talabaty.dbUtil.Resource
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import java.io.IOException
 
 class AllMainViewModel(private val apiHelper: ApiHelper?, var context: Context) :
@@ -25,15 +26,16 @@ class AllMainViewModel(private val apiHelper: ApiHelper?, var context: Context) 
 
             homePageCategories.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.getHomePageCategories()
+                withTimeout(20_000) {
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    homePageCategories.postValue(Resource.success(usersFromApi))
-                else {
-                    homePageCategories.postValue(Resource.error(usersFromApi.message, null))
+                    val usersFromApi = apiHelper?.getHomePageCategories()
 
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        homePageCategories.postValue(Resource.success(usersFromApi))
+                    else {
+                        homePageCategories.postValue(Resource.error(usersFromApi.message, null))
+                    }
                 }
-
 
             } catch (e: TimeoutCancellationException) {
                 homePageCategories.postValue(
@@ -75,15 +77,17 @@ class AllMainViewModel(private val apiHelper: ApiHelper?, var context: Context) 
 
             adds.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.getAds()
+                withTimeout(20_000) {
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    adds.postValue(Resource.success(usersFromApi))
-                else {
-                    adds.postValue(Resource.error(usersFromApi.message, null))
+                    val usersFromApi = apiHelper?.getAds()
 
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        adds.postValue(Resource.success(usersFromApi))
+                    else {
+                        adds.postValue(Resource.error(usersFromApi.message, null))
+
+                    }
                 }
-
 
             } catch (e: TimeoutCancellationException) {
                 adds.postValue(Resource.error(context.getString(R.string.timeout_error), null))
@@ -111,15 +115,15 @@ class AllMainViewModel(private val apiHelper: ApiHelper?, var context: Context) 
 
             offers.postValue(Resource.loading(null))
             try {
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getOffers()
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        offers.postValue(Resource.success(usersFromApi))
+                    else {
+                        offers.postValue(Resource.error(usersFromApi.message, null))
 
-                val usersFromApi = apiHelper?.getOffers()
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    offers.postValue(Resource.success(usersFromApi))
-                else {
-                    offers.postValue(Resource.error(usersFromApi.message, null))
-
+                    }
                 }
-
             } catch (e: TimeoutCancellationException) {
                 offers.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {

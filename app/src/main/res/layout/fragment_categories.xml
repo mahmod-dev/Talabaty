@@ -28,7 +28,7 @@
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/cairo_bold"
-                    android:text="الفئات الأخيرة"
+                    android:text="@string/latest_categories"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_13ssp" />
 
@@ -52,7 +52,7 @@
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_15sdp"
                     android:fontFamily="@font/cairo_bold"
-                    android:text="كل الفئات"
+                    android:text="@string/all_categories"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_13ssp" />
 

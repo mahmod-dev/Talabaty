@@ -9,6 +9,7 @@ import com.android.talabaty.retrofit.ApiHelper
 import com.android.talabaty.dbUtil.Resource
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import java.io.IOException
 import java.net.ConnectException
 
@@ -27,15 +28,16 @@ class CartViewModel(private val apiHelper: ApiHelper?, var context: Context) : V
 
             myCart.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.getMyCart()
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getMyCart()
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    myCart.postValue(Resource.success(usersFromApi))
-                else {
-                    myCart.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        myCart.postValue(Resource.success(usersFromApi))
+                    else {
+                        myCart.postValue(Resource.error(usersFromApi.message, null))
 
+                    }
                 }
-
 
             } catch (e: TimeoutCancellationException) {
                 myCart.postValue(Resource.error(context.getString(R.string.timeout_error), null))
@@ -65,16 +67,17 @@ class CartViewModel(private val apiHelper: ApiHelper?, var context: Context) : V
 
             myFav.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.getMyFavProducts()
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getMyFavProducts()
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    myFav.postValue(Resource.success(usersFromApi))
-                else {
-                    myFav.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        myFav.postValue(Resource.success(usersFromApi))
+                    else {
+                        myFav.postValue(Resource.error(usersFromApi.message, null))
+
+                    }
 
                 }
-
-
             } catch (e: TimeoutCancellationException) {
                 myFav.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
@@ -99,16 +102,18 @@ class CartViewModel(private val apiHelper: ApiHelper?, var context: Context) : V
 
             addCart.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.addProductToCart(productId, quantity,color_id,size_id)
+                withTimeout(20_000) {
+                    val usersFromApi =
+                        apiHelper?.addProductToCart(productId, quantity, color_id, size_id)
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    addCart.postValue(Resource.success(usersFromApi))
-                else {
-                    addCart.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        addCart.postValue(Resource.success(usersFromApi))
+                    else {
+                        addCart.postValue(Resource.error(usersFromApi.message, null))
+
+                    }
 
                 }
-
-
             } catch (e: TimeoutCancellationException) {
                 addCart.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
@@ -137,15 +142,15 @@ class CartViewModel(private val apiHelper: ApiHelper?, var context: Context) : V
 
             deleteCart.postValue(Resource.loading(null))
             try {
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getDeleteFromCart(productId)
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        deleteCart.postValue(Resource.success(usersFromApi))
+                    else {
+                        deleteCart.postValue(Resource.error(usersFromApi.message, null))
 
-                val usersFromApi = apiHelper?.getDeleteFromCart(productId)
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    deleteCart.postValue(Resource.success(usersFromApi))
-                else {
-                    deleteCart.postValue(Resource.error(usersFromApi.message, null))
-
+                    }
                 }
-
             } catch (e: TimeoutCancellationException) {
                 deleteCart.postValue(
                     Resource.error(
@@ -179,15 +184,15 @@ class CartViewModel(private val apiHelper: ApiHelper?, var context: Context) : V
 
             deleteFromFav.postValue(Resource.loading(null))
             try {
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getDeleteProductFromFav(productId)
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        deleteFromFav.postValue(Resource.success(usersFromApi))
+                    else {
+                        deleteFromFav.postValue(Resource.error(usersFromApi.message, null))
 
-                val usersFromApi = apiHelper?.getDeleteProductFromFav(productId)
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    deleteFromFav.postValue(Resource.success(usersFromApi))
-                else {
-                    deleteFromFav.postValue(Resource.error(usersFromApi.message, null))
-
+                    }
                 }
-
             } catch (e: TimeoutCancellationException) {
                 deleteFromFav.postValue(
                     Resource.error(
@@ -221,15 +226,15 @@ class CartViewModel(private val apiHelper: ApiHelper?, var context: Context) : V
 
             addToFav.postValue(Resource.loading(null))
             try {
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getAddProductToFav(productId)
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        addToFav.postValue(Resource.success(usersFromApi))
+                    else {
+                        addToFav.postValue(Resource.error(usersFromApi.message, null))
 
-                val usersFromApi = apiHelper?.getAddProductToFav(productId)
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    addToFav.postValue(Resource.success(usersFromApi))
-                else {
-                    addToFav.postValue(Resource.error(usersFromApi.message, null))
-
+                    }
                 }
-
             } catch (e: TimeoutCancellationException) {
                 addToFav.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
@@ -259,15 +264,15 @@ class CartViewModel(private val apiHelper: ApiHelper?, var context: Context) : V
 
             changeQuantity.postValue(Resource.loading(null))
             try {
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.changeQuantity(productId, type)
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        changeQuantity.postValue(Resource.success(usersFromApi))
+                    else {
+                        changeQuantity.postValue(Resource.error(usersFromApi.message, null))
 
-                val usersFromApi = apiHelper?.changeQuantity(productId, type)
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    changeQuantity.postValue(Resource.success(usersFromApi))
-                else {
-                    changeQuantity.postValue(Resource.error(usersFromApi.message, null))
-
+                    }
                 }
-
             } catch (e: TimeoutCancellationException) {
                 changeQuantity.postValue(
                     Resource.error(

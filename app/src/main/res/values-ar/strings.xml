@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Tatbeqakum</string>
+
     <string name="tatbeqakum_ar">تطبيقكم</string>
     <string name="tatbeqakum_en">tatbeqakum</string>
     <string name="sign_in">تسجيل الدخول</string>
@@ -54,7 +54,7 @@
 
     <string name="profile">حسابي</string>
     <string name="main">الرئيسية</string>
-    <string name="orders">طلباتي</string>
+    <string name="orders">ألطلبات</string>
     <string name="chatting">دردشة</string>
     <string name="product_describe">وصف المنتج</string>
     <string name="add_the_discount_coupon">اضف كوبون خصم</string>
@@ -90,17 +90,14 @@
     <string name="order_progress">إنجاز الطلب</string>
     <string name="from">من</string>
     <string name="to">إلى</string>
-    <string name="chatting_now">محادثة فورية</string>
-    <string name="customer_service">خدمة العملاء</string>
-    <string name="how_help_you">كيف يمكننا مساعدتك؟</string>
-    <string name="help">مساعدة</string>
+
     <string name="category">التصنيفات</string>
     <string name="email_valid">أدخل إيميل صحيح</string>
     <string name="opened">مفتوح</string>
     <string name="closed">مغلق</string>
     <string name="reial">ريال</string>
     <string name="empty">فارغ!</string>
-    <string name="something_went_error">Something Went Wrong</string>
+    <string name="something_went_error">حدث خطأ ما</string>
     <string name="please_wait">الرجاء الانتظار</string>
     <string name="delete">حذف</string>
     <string name="confirm">تأكيد</string>
@@ -125,7 +122,7 @@
     <string name="middle">متوسط</string>
     <string name="low">منخفض</string>
     <string name="select_date">اختر التاريخ</string>
-    <string name="invalid_date">Invalid date!</string>
+    <string name="invalid_date">تاريخ غير صالح!</string>
     <string name="select_start_date_before">اختر تاريخ البداية أولا!</string>
 
     <string name="choose_pic">اختار صورة</string>
@@ -150,11 +147,11 @@
     <string name="choose_color">اختر لون معين!</string>
     <string name="not_found_coupons">لا يوجد كوبونات مضافة</string>
     <string name="enter_coupon">أدخل الكوبون</string>
-    <string name="verfy">تحقق</string>
+    <string name="verify">تحقق</string>
     <string name="err_coupon">الكوبون الذي قمت بادخاله خاطئ</string>
     <string name="add_coupon">إضافة كوبون</string>
     <string name="add_coupon_success">تم إضافة كوبون بنجاح</string>
-    <string name="coupons">" الكوبونات"</string>
+    <string name="coupons">الكوبونات</string>
     <string name="delete_question">هل أنت متأكد من الحذف؟</string>
     <string name="delete_question_cart">هل تريد حذف هذا العصنر من السلة؟ </string>
     <string name="delete_question_copoun">هل تريد حذف هذا الكوبون؟ </string>
@@ -166,6 +163,65 @@
     <string name="edit_profile">تعديل الصفخة الشخصية</string>
     <string name="password_new">كلمة المرور الحالية</string>
     <string name="edit_account">تعديل الحساب</string>
+
+    <string name="name">الإسم</string>
+    <string name="maybe_like_you">قد يعجبك أيضا</string>
+    <string name="valid_upto">صالح لغاية</string>
+    <string name="add_image">إضافة صورة</string>
+    <string name="add_files">إضافة ملف</string>
+    <string name="color">اللون</string>
+    <string name="size">الحجم</string>
+    <string name="quantity">الكمية</string>
+    <string name="add_to_cart">إضافة إلى السلة</string>
+    <string name="saller_info">بيانات البائع</string>
+    <string name="chatting_now">محادثة فورية</string>
+    <string name="customer_service">خدمة العملاء</string>
+    <string name="how_help_you">كيف يمكنني مساعدتك؟</string>
+    <string name="help_current_order">أحتاج مساعدة في طلبي الحالي</string>
+    <string name="help_how_order">كيف أطلب من تطبيقكم؟</string>
+    <string name="show_way">عرض الطريقة</string>
+    <string name="help_order_received">أحتاج مساعدة في طلب تم إستلامه</string>
+    <string name="question_trader">لدي إستفسار كصاحب متجر</string>
+    <string name="how_work_with_our_app">كيف أعمل مع تطبيقكم؟</string>
+    <string name="have_suggestion">لدي اقتراح</string>
+    <string name="common_question">أسئلة شائعة أخرى</string>
+    <string name="help">مساعدة</string>
+    <string name="add_new_payment_way">إصافة طريقة دفع جديدة</string>
+    <string name="stc_pay">Stc Pay</string>
+    <string name="contact_num">رقم التواصل</string>
+    <string name="extra_service">خدمات إضافية</string>
+    <string name="promation">دعاية وإعلان</string>
+    <string name="our_works">معرض أعمالنا</string>
+    <string name="near_places">أماكن قريبة منك</string>
+    <string name="request_service">اطلب خدمة</string>
+    <string name="request_car">اطلب سيارة</string>
+    <string name="hello">مرحبا بك</string>
+    <string name="account">الحساب</string>
+    <string name="wallet">المحفظة</string>
+    <string name="cards">البطاقات</string>
+    <string name="orders_notifications">إشعارات الطلبات</string>
+    <string name="store_notifications">إشعارات المتاجر الجديدة</string>
+    <string name="offer_notifications">إشعارات العروض الجديدة</string>
+    <string name="favorite_places">الأماكن المفضلة</string>
+    <string name="request_price_offer">طلب عرض سعر</string>
+    <string name="add_order">إضافة طلب</string>
+    <string name="connect_bot">تواصل مع البوت</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="join_to_tatbeq">انضم إلى تطبيقكم</string>
+    <string name="latest_categories">الفئات الأخيرة</string>
+    <string name="all_categories">كل الفئات</string>
+    <string name="delivered">تم التوصيل</string>
+    <string name="order_num">رقم الطلب</string>
+    <string name="meals_num">عدد الوجبات</string>
+    <string name="delete_order">حذف الطلب</string>
+    <string name="re_order">إعادة طلب</string>
+    <string name="address">العنوان</string>
+    <string name="rest_name">اسم المطعم</string>
+    <string name="notice">ملاحظات</string>
+    <string name="meal_name">اسم الوجبة</string>
+    <string name="price_rial">0.0 ريال</string>
+    <string name="time_delivery">وقت التوصيل</string>
+    <string name="delivery_period">مدة التوصيل</string>
 
 
 </resources>

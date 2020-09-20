@@ -10,6 +10,7 @@ import com.android.talabaty.retrofit.ApiHelper
 import com.android.talabaty.dbUtil.Resource
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import java.io.IOException
 
 class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
@@ -30,17 +31,18 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
 
             orders.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.getMyOrders()
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getMyOrders()
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    orders.postValue(Resource.success(usersFromApi))
-                else {
-                    orders.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        orders.postValue(Resource.success(usersFromApi))
+                    else {
+                        orders.postValue(Resource.error(usersFromApi.message, null))
 
+                    }
                 }
 
-
-            }catch (e: TimeoutCancellationException) {
+            } catch (e: TimeoutCancellationException) {
                 orders.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
                 if (e is IOException) {
@@ -58,16 +60,17 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
 
             settings.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.getSettings()
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getSettings()
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    settings.postValue(Resource.success(usersFromApi))
-                else {
-                    settings.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        settings.postValue(Resource.success(usersFromApi))
+                    else {
+                        settings.postValue(Resource.error(usersFromApi.message, null))
+
+                    }
 
                 }
-
-
             } catch (e: TimeoutCancellationException) {
                 settings.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
@@ -87,15 +90,16 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
 
             requestCar.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.requestCar(car)
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.requestCar(car)
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    requestCar.postValue(Resource.success(usersFromApi))
-                else {
-                    requestCar.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        requestCar.postValue(Resource.success(usersFromApi))
+                    else {
+                        requestCar.postValue(Resource.error(usersFromApi.message, null))
 
+                    }
                 }
-
 
             } catch (e: TimeoutCancellationException) {
                 requestCar.postValue(Resource.error(context.getString(R.string.timeout_error), null))
@@ -116,15 +120,15 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
 
             cars.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.getCars()
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getCars()
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    cars.postValue(Resource.success(usersFromApi))
-                else {
-                    cars.postValue(Resource.error(usersFromApi.message, null))
-
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        cars.postValue(Resource.success(usersFromApi))
+                    else {
+                        cars.postValue(Resource.error(usersFromApi.message, null))
+                    }
                 }
-
 
             }catch (e: TimeoutCancellationException) {
                 cars.postValue(Resource.error(context.getString(R.string.timeout_error), null))
@@ -145,16 +149,15 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
 
             newOrder.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.createNewOrder(order)
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.createNewOrder(order)
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    newOrder.postValue(Resource.success(usersFromApi))
-                else {
-                    newOrder.postValue(Resource.error(usersFromApi.message, null))
-
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        newOrder.postValue(Resource.success(usersFromApi))
+                    else {
+                        newOrder.postValue(Resource.error(usersFromApi.message, null))
+                    }
                 }
-
-
             }catch (e: TimeoutCancellationException) {
                 newOrder.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
@@ -173,15 +176,15 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
 
             otherServices.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.requestOtherService(order)
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.requestOtherService(order)
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    otherServices.postValue(Resource.success(usersFromApi))
-                else {
-                    otherServices.postValue(Resource.error(usersFromApi.message, null))
-
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        otherServices.postValue(Resource.success(usersFromApi))
+                    else {
+                        otherServices.postValue(Resource.error(usersFromApi.message, null))
+                    }
                 }
-
 
             }catch (e: TimeoutCancellationException) {
                 otherServices.postValue(Resource.error(context.getString(R.string.timeout_error), null))
@@ -201,15 +204,15 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
 
             services.postValue(Resource.loading(null))
             try {
+                withTimeout(20_000) {
                 val usersFromApi = apiHelper?.requestService(order)
 
                 if (usersFromApi!!.status && usersFromApi.code == 200)
                     services.postValue(Resource.success(usersFromApi))
                 else {
                     services.postValue(Resource.error(usersFromApi.message, null))
-
                 }
-
+            }
 
             }catch (e: TimeoutCancellationException) {
                 services.postValue(Resource.error(context.getString(R.string.timeout_error), null))
@@ -230,16 +233,15 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
 
             storesFreeDelivery.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.getStoresFreeDelivery()
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getStoresFreeDelivery()
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    storesFreeDelivery.postValue(Resource.success(usersFromApi))
-                else {
-                    storesFreeDelivery.postValue(Resource.error(usersFromApi.message, null))
-
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        storesFreeDelivery.postValue(Resource.success(usersFromApi))
+                    else {
+                        storesFreeDelivery.postValue(Resource.error(usersFromApi.message, null))
+                    }
                 }
-
-
             } catch (e: TimeoutCancellationException) {
                 storesFreeDelivery.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {

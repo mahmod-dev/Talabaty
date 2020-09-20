@@ -9,6 +9,7 @@ import com.android.talabaty.retrofit.ApiHelper
 import com.android.talabaty.dbUtil.Resource
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import java.io.IOException
 
 class CardPaymentViewModel(private val apiHelper: ApiHelper?, var context: Context) :
@@ -26,15 +27,16 @@ class CardPaymentViewModel(private val apiHelper: ApiHelper?, var context: Conte
 
             addCard.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.addPaymentCard(card)
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.addPaymentCard(card)
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    addCard.postValue(Resource.success(usersFromApi))
-                else {
-                    addCard.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        addCard.postValue(Resource.success(usersFromApi))
+                    else {
+                        addCard.postValue(Resource.error(usersFromApi.message, null))
 
+                    }
                 }
-
 
             } catch (e: TimeoutCancellationException) {
                 addCard.postValue(Resource.error(context.getString(R.string.timeout_error), null))
@@ -54,15 +56,16 @@ class CardPaymentViewModel(private val apiHelper: ApiHelper?, var context: Conte
 
             editCard.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.editPaymentCard(card)
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.editPaymentCard(card)
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    editCard.postValue(Resource.success(usersFromApi))
-                else {
-                    editCard.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        editCard.postValue(Resource.success(usersFromApi))
+                    else {
+                        editCard.postValue(Resource.error(usersFromApi.message, null))
 
+                    }
                 }
-
 
             } catch (e: TimeoutCancellationException) {
                 editCard.postValue(Resource.error(context.getString(R.string.timeout_error), null))
@@ -82,13 +85,15 @@ class CardPaymentViewModel(private val apiHelper: ApiHelper?, var context: Conte
 
             deleteCard.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.deletePaymentCard(cardId)
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.deletePaymentCard(cardId)
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    deleteCard.postValue(Resource.success(usersFromApi))
-                else {
-                    deleteCard.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        deleteCard.postValue(Resource.success(usersFromApi))
+                    else {
+                        deleteCard.postValue(Resource.error(usersFromApi.message, null))
 
+                    }
                 }
 
             } catch (e: TimeoutCancellationException) {
@@ -110,13 +115,15 @@ class CardPaymentViewModel(private val apiHelper: ApiHelper?, var context: Conte
 
             paymentMethod.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.getPaymentMethods()
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getPaymentMethods()
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    paymentMethod.postValue(Resource.success(usersFromApi))
-                else {
-                    paymentMethod.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        paymentMethod.postValue(Resource.success(usersFromApi))
+                    else {
+                        paymentMethod.postValue(Resource.error(usersFromApi.message, null))
 
+                    }
                 }
 
 
@@ -138,16 +145,17 @@ class CardPaymentViewModel(private val apiHelper: ApiHelper?, var context: Conte
 
             myCards.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.getMyPaymentCards()
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getMyPaymentCards()
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    myCards.postValue(Resource.success(usersFromApi))
-                else {
-                    myCards.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        myCards.postValue(Resource.success(usersFromApi))
+                    else {
+                        myCards.postValue(Resource.error(usersFromApi.message, null))
+
+                    }
 
                 }
-
-
             } catch (e: TimeoutCancellationException) {
                 myCards.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {

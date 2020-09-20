@@ -12,6 +12,7 @@ import com.android.talabaty.retrofit.ApiHelper
 import com.android.talabaty.dbUtil.Resource
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import java.io.IOException
 
 class LoginViewModel(private val apiHelper: ApiHelper,var context: Context) : ViewModel() {
@@ -25,16 +26,16 @@ class LoginViewModel(private val apiHelper: ApiHelper,var context: Context) : Vi
         viewModelScope.launch {
             login.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper.login(user)
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper.login(user)
 
-                if (usersFromApi.status && usersFromApi.code == 200)
-                    login.postValue(Resource.success(usersFromApi))
-                else{
-                    login.postValue(Resource.error("Something Went Wrong", null))
+                    if (usersFromApi.status && usersFromApi.code == 200)
+                        login.postValue(Resource.success(usersFromApi))
+                    else {
+                        login.postValue(Resource.error("Something Went Wrong", null))
+                    }
+
                 }
-
-
-
             } catch (e: TimeoutCancellationException) {
                 login.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
@@ -52,16 +53,17 @@ class LoginViewModel(private val apiHelper: ApiHelper,var context: Context) : Vi
         viewModelScope.launch {
             logout.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper.getLogout()
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper.getLogout()
 
-                if (usersFromApi.status && usersFromApi.code == 200)
-                    logout.postValue(Resource.success(usersFromApi))
-                else {
-                    logout.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi.status && usersFromApi.code == 200)
+                        logout.postValue(Resource.success(usersFromApi))
+                    else {
+                        logout.postValue(Resource.error(usersFromApi.message, null))
+
+                    }
 
                 }
-
-
             }catch (e: TimeoutCancellationException) {
                 logout.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
@@ -79,13 +81,15 @@ class LoginViewModel(private val apiHelper: ApiHelper,var context: Context) : Vi
         viewModelScope.launch {
             forgotPassword.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper.forgotPassword(email)
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper.forgotPassword(email)
 
-                if (usersFromApi.code == 200 && usersFromApi.status)
-                    forgotPassword.postValue(Resource.success(usersFromApi))
-                else {
-                    forgotPassword.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi.code == 200 && usersFromApi.status)
+                        forgotPassword.postValue(Resource.success(usersFromApi))
+                    else {
+                        forgotPassword.postValue(Resource.error(usersFromApi.message, null))
 
+                    }
                 }
             }catch (e: TimeoutCancellationException) {
                 forgotPassword.postValue(Resource.error(context.getString(R.string.timeout_error), null))

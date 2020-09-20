@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layoutDirection="rtl">
+    >
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cairo_reqular"
-                        android:text="هامبرجر"
+                        android:text="@string/meal_name"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_8ssp" />
 
@@ -59,7 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cairo_reqular"
-                        android:text="بدون بصل, تحميص خفيف"
+                        android:text="@string/notice"
                         android:textColor="@color/colorGrey"
                         android:textSize="@dimen/_6ssp" />
 
@@ -75,7 +75,7 @@
                             android:layout_marginBottom="@dimen/_5sdp"
                             android:layout_toEndOf="@+id/imgSteps"
                             android:fontFamily="@font/cairo_reqular"
-                            android:text="مطعم البيك"
+                            android:text="@string/rest_name"
                             android:textColor="@color/colorBlack"
                             android:textSize="@dimen/_8ssp" />
 
@@ -86,7 +86,7 @@
                             android:layout_below="@+id/tvResNameOrder"
                             android:layout_toEndOf="@+id/imgSteps"
                             android:fontFamily="@font/cairo_reqular"
-                            android:text="الشوقية ، مكة"
+                            android:text="@string/address"
                             android:textColor="@color/colorBlack"
                             android:textSize="@dimen/_8ssp" />
 
@@ -134,7 +134,7 @@
                         android:drawablePadding="@dimen/_8sdp"
                         android:fontFamily="@font/cairo_reqular"
                         android:padding="@dimen/_3sdp"
-                        android:text="تم التوصيل"
+                        android:text="@string/delivered"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_8ssp"
                         app:drawableStartCompat="@drawable/ic_true" />
@@ -151,7 +151,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:fontFamily="@font/cairo_reqular"
-                            android:text="رقم الطلب"
+                            android:text="@string/order_num"
 
                             android:textColor="@color/colorBlack"
                             android:textSize="@dimen/_8ssp" />
@@ -177,7 +177,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:fontFamily="@font/cairo_reqular"
-                            android:text="عدد الوجبات"
+                            android:text="@string/meals_num"
                             android:textColor="@color/colorBlack"
                             android:textSize="@dimen/_8ssp" />
 
@@ -225,7 +225,8 @@
                     android:fontFamily="@font/cairo_reqular"
                     android:paddingHorizontal="@dimen/_20sdp"
                     android:paddingVertical="@dimen/_2sdp"
-                    android:text="17.94 ريال"
+                    android:text="@string/price_rial"
+                    android:foreground="?attr/selectableItemBackground"
                     android:layout_alignParentStart="true"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/_8sdp" />
@@ -238,6 +239,7 @@
                     android:layout_margin="@dimen/_5sdp"
                     android:elevation="@dimen/_7sdp"
                     android:layout_alignParentEnd="true"
+                    android:foreground="?attr/selectableItemBackground"
                     app:cardBackgroundColor="@color/colorWhite"
                     app:cardCornerRadius="@dimen/_4sdp">
 
@@ -250,7 +252,7 @@
                         android:paddingHorizontal="@dimen/_10sdp"
                         android:paddingVertical="@dimen/_2sdp"
 
-                        android:text="حذف الطلب"
+                        android:text="@string/delete_order"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_8sdp"
                         app:drawableStartCompat="@drawable/ic_delete" />
@@ -265,6 +267,7 @@
                     android:layout_margin="@dimen/_5sdp"
                     android:elevation="@dimen/_7sdp"
                     android:layout_toStartOf="@+id/cardDeleteOrder"
+                    android:foreground="?attr/selectableItemBackground"
 
                     app:cardBackgroundColor="@color/colorWhite"
                     app:cardCornerRadius="@dimen/_4sdp">
@@ -279,7 +282,7 @@
                         android:fontFamily="@font/cairo_reqular"
                         android:paddingHorizontal="@dimen/_10sdp"
                         android:paddingVertical="@dimen/_2sdp"
-                        android:text="إعادة طلب"
+                        android:text="@string/re_order"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_8sdp"
                         app:drawableStartCompat="@drawable/ic_repeat"

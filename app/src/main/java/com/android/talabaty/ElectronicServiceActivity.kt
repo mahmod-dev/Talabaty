@@ -31,6 +31,9 @@ import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_electronic_service.*
 import kotlinx.android.synthetic.main.title_toolbar.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -46,6 +49,10 @@ class ElectronicServiceActivity : AppCompatActivity() {
     private var strEndDate: String? = null
     private var strImg: String? = null
     private var strFile: String? = null
+    private var imgFile: File? = null
+    private var file: File? = null
+    private var imgPart: MultipartBody.Part? = null
+    private var filePart: MultipartBody.Part? = null
     private lateinit var viewModel: DigitalServiceViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -116,8 +123,26 @@ class ElectronicServiceActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            if (file!=null){
+                 filePart = MultipartBody.Part.createFormData(
+                    "order_files[0]",
+                    file!!.name,
+                    RequestBody.create(MediaType.parse("*/*"), file!!)
+                )
+            }
 
-            val digital = DigitalServiceBody(
+
+            if (imgFile!=null){
+                 imgPart = MultipartBody.Part.createFormData(
+                    "order_images[0]",
+                     imgFile!!.name,
+                    RequestBody.create(MediaType.parse("image/*"), imgFile!!)
+                )
+            }
+
+
+
+            viewModel.digitalService(
                 type!!,
                 name,
                 email,
@@ -126,10 +151,9 @@ class ElectronicServiceActivity : AppCompatActivity() {
                 details,
                 strStartDate!!,
                 strEndDate!!,
-                strImg,
-                strFile
+                imgPart,
+                filePart
             )
-            viewModel.digitalService(digital)
 
 
         }
@@ -321,10 +345,10 @@ class ElectronicServiceActivity : AppCompatActivity() {
             val fileUri = data?.data
             imgAdd.setImageURI(fileUri)
 
-            val file: File = ImagePicker.getFile(data)!!
+            imgFile = ImagePicker.getFile(data)!!
             val filePath: String = ImagePicker.getFilePath(data)!!
-            tvImgName.text = file.name
-            strImg = Helper.encodeFile(file)
+            tvImgName.text = file?.name
+            //strImg = Helper.encodeFile(file)
         } else if (resultCode == ImagePicker.RESULT_ERROR) {
             Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
         }
@@ -338,8 +362,8 @@ class ElectronicServiceActivity : AppCompatActivity() {
               val name: String = Helper.getFileName(this, uri!!)!!
             val path: String = FilePath.getPath(this, uri!!)!!
             Log.e(TAG, "onActivityResult path: $path")
-            val file = File(path)
-            strFile = Helper.encodeFile(file)
+             file = File(path)
+           // strFile = Helper.encodeFile(file)
             tvFileName.text =name
 
         }
@@ -385,6 +409,7 @@ class ElectronicServiceActivity : AppCompatActivity() {
                         progressBar.visibility = View.GONE
                         it.data?.let { users ->
                             Toast.makeText(this, users.message, Toast.LENGTH_SHORT).show()
+                            finish()
 
                         }
                     }

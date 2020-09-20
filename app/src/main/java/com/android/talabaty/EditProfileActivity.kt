@@ -2,10 +2,11 @@ package com.android.talabaty
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.android.talabaty.dbUtil.Status
@@ -20,16 +21,18 @@ import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.ProfileViewModel
 import com.github.dhaval2404.imagepicker.ImagePicker
 import kotlinx.android.synthetic.main.activity_edit_profile.*
-import kotlinx.android.synthetic.main.activity_edit_profile.etEmail
-import kotlinx.android.synthetic.main.activity_edit_profile.etMobile
-import kotlinx.android.synthetic.main.activity_edit_profile.etUsername
 import kotlinx.android.synthetic.main.title_toolbar.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import java.io.File
+
 
 class EditProfileActivity : AppCompatActivity() {
     val TAG = "EditProfileActivity"
     private lateinit var viewModel: ProfileViewModel
     private var strImg: String? = null
+    private var file: File? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +47,7 @@ class EditProfileActivity : AppCompatActivity() {
         val emailP = MyPreferences.getStr("userEmail")
         val mobileP = MyPreferences.getStr("userMobile")
         val imageP = MyPreferences.getStr("userImage")
-        val lat =  MyPreferences.getLong("lat")
+        val lat = MyPreferences.getLong("lat")
         val lng = MyPreferences.getLong("lng")
 
         etEmail.setText(emailP)
@@ -63,15 +66,41 @@ class EditProfileActivity : AppCompatActivity() {
             if (validationInput(username, email, mobile, password)) {
                 return@setOnClickListener
             } else {
-                val user = UserPost(username,email,mobile,password,"1wdasdasdasd",deviceType,strImg,lat,lng)
+                val fcm = "1wdasdasdasd"
+                val user = UserPost(
+                    username,
+                    email,
+                    mobile,
+                    password,
+                    fcm,
+                    deviceType,
+                    strImg,
+                    lat,
+                    lng
+                )
+                val filePart = MultipartBody.Part.createFormData(
+                    "image_profile",
+                    file!!.name,
+                    RequestBody.create(MediaType.parse("image/*"), file!!)
+                )
 
-                viewModel.editProfile(user)
+                viewModel.editProfile(
+                    username,
+                    email,
+                    mobile,
+                    lat,
+                    lng,
+                    password,
+                    deviceType,
+                    "1wdasdasdasd",
+                    filePart
+                )
 
             }
         }
 
         img.setOnClickListener {
-            Helper.selectImageDialog(this)
+            Helper.selectImageDialog(this, true)
         }
     }
 
@@ -103,6 +132,7 @@ class EditProfileActivity : AppCompatActivity() {
 
                         it.data?.let { users ->
                             Toast.makeText(this, users.message, Toast.LENGTH_SHORT).show()
+                            finish()
 
                         }
                     }
@@ -169,17 +199,19 @@ class EditProfileActivity : AppCompatActivity() {
             val fileUri = data?.data
             img.setImageURI(fileUri)
 
-            val file: File = ImagePicker.getFile(data)!!
+            file = ImagePicker.getFile(data)!!
             val filePath: String = ImagePicker.getFilePath(data)!!
-            strImg = Helper.encodeFile(file)
+            //   strImg = Helper.encodeFile(file)
+            val bitmap = BitmapFactory.decodeFile(filePath)
+
+            //    strImg = Helper.encodeImage(bitmap)
+
         } else if (resultCode == ImagePicker.RESULT_ERROR) {
             Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
-        }
-        else {
+        } else {
             Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show()
         }
     }
-
 
 
 }

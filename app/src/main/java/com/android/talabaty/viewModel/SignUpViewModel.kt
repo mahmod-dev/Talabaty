@@ -12,6 +12,7 @@ import com.android.talabaty.retrofit.ApiHelper
 import com.android.talabaty.dbUtil.Resource
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import java.io.IOException
 
 class SignUpViewModel(private val apiHelper: ApiHelper,var context: Context) : ViewModel() {
@@ -25,16 +26,16 @@ class SignUpViewModel(private val apiHelper: ApiHelper,var context: Context) : V
         viewModelScope.launch {
             signUp.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper.signUp(signUpPost)
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper.signUp(signUpPost)
 
-                if (usersFromApi.code == 200 && usersFromApi.status) {
-                    signUp.postValue(Resource.success(usersFromApi))
+                    if (usersFromApi.code == 200 && usersFromApi.status) {
+                        signUp.postValue(Resource.success(usersFromApi))
 
-                }else{
-                    signUp.postValue(Resource.error(usersFromApi.message, null))
-
+                    } else {
+                        signUp.postValue(Resource.error(usersFromApi.message, null))
+                    }
                 }
-
             } catch (e: TimeoutCancellationException) {
                 signUp.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
@@ -55,13 +56,14 @@ class SignUpViewModel(private val apiHelper: ApiHelper,var context: Context) : V
         viewModelScope.launch {
             sendCode.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper.checkCode(code, mobile)
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper.checkCode(code, mobile)
 
-                if (usersFromApi.code == 200 && usersFromApi.status)
-                    sendCode.postValue(Resource.success(usersFromApi))
-                else{
-                    sendCode.postValue(Resource.error(usersFromApi.message, null))
-
+                    if (usersFromApi.code == 200 && usersFromApi.status)
+                        sendCode.postValue(Resource.success(usersFromApi))
+                    else {
+                        sendCode.postValue(Resource.error(usersFromApi.message, null))
+                    }
                 }
 
             } catch (e: TimeoutCancellationException) {
@@ -82,13 +84,14 @@ class SignUpViewModel(private val apiHelper: ApiHelper,var context: Context) : V
         viewModelScope.launch {
             reSendCode.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper.requestNewCode( mobile)
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper.requestNewCode(mobile)
 
-                if (usersFromApi.code == 200 && usersFromApi.status)
-                    reSendCode.postValue(Resource.success(usersFromApi))
-                else{
-                    reSendCode.postValue(Resource.error(usersFromApi.message, null))
-
+                    if (usersFromApi.code == 200 && usersFromApi.status)
+                        reSendCode.postValue(Resource.success(usersFromApi))
+                    else {
+                        reSendCode.postValue(Resource.error(usersFromApi.message, null))
+                    }
                 }
 
             } catch (e: TimeoutCancellationException) {

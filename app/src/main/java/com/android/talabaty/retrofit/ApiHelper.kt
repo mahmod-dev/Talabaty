@@ -1,6 +1,8 @@
 package com.android.talabaty.retrofit
 
 import com.android.talabaty.model.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 
@@ -54,7 +56,18 @@ interface ApiHelper {
 
     suspend fun forgotPassword(email: String): GeneralResponse
 
-    suspend fun editProfile(user: UserPost): EditProfile
+    //  suspend fun editProfile(user: UserPost): EditProfile
+    suspend fun editProfile(
+        name: RequestBody,
+        email: RequestBody,
+        mobile: RequestBody,
+        latitude: RequestBody,
+        longitude: RequestBody,
+        password: RequestBody,
+        device_type: RequestBody,
+        fcm_token: RequestBody,
+        image_profile: MultipartBody.Part
+    ): EditProfile
 
     suspend fun changePassword(
         oldPassword: String,
@@ -64,7 +77,12 @@ interface ApiHelper {
 
     suspend fun sendContactUsMsg(title: String, message: String): ContactUsMsg
 
-    suspend fun addProductToCart(productId: Int, quantity: Int,color_id : Int , size_id:Int): AddProductToCart
+    suspend fun addProductToCart(
+        productId: Int,
+        quantity: Int,
+        color_id: Int,
+        size_id: Int
+    ): AddProductToCart
 
     suspend fun changeQuantity(productId: Int, type: String): ChangeQuantity
 
@@ -88,7 +106,18 @@ interface ApiHelper {
 
     suspend fun getUserDetails(): GetUserDetails
 
-    suspend fun requestDigitalService(user: DigitalServiceBody): DigitalService
+    suspend fun requestDigitalService(
+        digital_id: RequestBody,
+        name: RequestBody,
+        email: RequestBody,
+        mobile: RequestBody,
+        priority: RequestBody,
+        details: RequestBody,
+        date_from: RequestBody,
+        date_to: RequestBody,
+        order_images: MultipartBody.Part?,
+        order_files: MultipartBody.Part?
+    ): DigitalService
 
     suspend fun getDigitals(): getDigitals
 
@@ -113,15 +142,15 @@ interface ApiHelper {
         longitude: Long
     ): GetNearbyStores
 
-    suspend fun viewTatbeqakumProducts( activityId: Int): GetViewTatbeqakumProducts
+    suspend fun viewTatbeqakumProducts(activityId: Int): GetViewTatbeqakumProducts
 
     suspend fun getMyCoupons(): GetMyCoupons
 
-    suspend fun chargeWallet(  amount: Int): ChargeWallet
+    suspend fun chargeWallet(amount: Int): ChargeWallet
 
-    suspend fun addNewCoupon(  coupon: String): AddNewCoupon
+    suspend fun addNewCoupon(coupon: String): AddNewCoupon
 
-    suspend fun deleteCoupon( coupon_id: Int): GeneralResponse
+    suspend fun deleteCoupon(coupon_id: Int): GeneralResponse
 
 
 }

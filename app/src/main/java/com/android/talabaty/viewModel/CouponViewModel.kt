@@ -9,6 +9,7 @@ import com.android.talabaty.retrofit.ApiHelper
 import com.android.talabaty.dbUtil.Resource
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import java.io.IOException
 
 class CouponViewModel(private val apiHelper: ApiHelper?, var context: Context) :
@@ -25,15 +26,16 @@ class CouponViewModel(private val apiHelper: ApiHelper?, var context: Context) :
 
             getCoupon.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.getMyCoupons()
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getMyCoupons()
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    getCoupon.postValue(Resource.success(usersFromApi))
-                else {
-                    getCoupon.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        getCoupon.postValue(Resource.success(usersFromApi))
+                    else {
+                        getCoupon.postValue(Resource.error(usersFromApi.message, null))
+                    }
+
                 }
-
-
             } catch (e: TimeoutCancellationException) {
                 getCoupon.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
@@ -52,13 +54,15 @@ class CouponViewModel(private val apiHelper: ApiHelper?, var context: Context) :
 
             addCoupon.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.addNewCoupon(coupon)
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.addNewCoupon(coupon)
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    addCoupon.postValue(Resource.success(usersFromApi))
-                else {
-                    addCoupon.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        addCoupon.postValue(Resource.success(usersFromApi))
+                    else {
+                        addCoupon.postValue(Resource.error(usersFromApi.message, null))
 
+                    }
                 }
             } catch (e: Exception) {
                 addCoupon.postValue(Resource.error(context.getString(R.string.something_went_error), null))
@@ -72,15 +76,15 @@ class CouponViewModel(private val apiHelper: ApiHelper?, var context: Context) :
 
             deleteCoupon.postValue(Resource.loading(null))
             try {
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.deleteCoupon(couponId)
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        deleteCoupon.postValue(Resource.success(usersFromApi))
+                    else {
+                        deleteCoupon.postValue(Resource.error(usersFromApi.message, null))
 
-                val usersFromApi = apiHelper?.deleteCoupon(couponId)
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    deleteCoupon.postValue(Resource.success(usersFromApi))
-                else {
-                    deleteCoupon.postValue(Resource.error(usersFromApi.message, null))
-
+                    }
                 }
-
             } catch (e: TimeoutCancellationException) {
                 deleteCoupon.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
@@ -100,14 +104,14 @@ class CouponViewModel(private val apiHelper: ApiHelper?, var context: Context) :
 
             chargeWallet.postValue(Resource.loading(null))
             try {
-
-                val usersFromApi = apiHelper?.chargeWallet(amount)
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    chargeWallet.postValue(Resource.success(usersFromApi))
-                else {
-                    chargeWallet.postValue(Resource.error(usersFromApi.message, null))
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.chargeWallet(amount)
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        chargeWallet.postValue(Resource.success(usersFromApi))
+                    else {
+                        chargeWallet.postValue(Resource.error(usersFromApi.message, null))
+                    }
                 }
-
             } catch (e: TimeoutCancellationException) {
                 chargeWallet.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {

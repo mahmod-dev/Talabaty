@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/_5sdp"
-    android:paddingVertical="@dimen/_5sdp"
+    android:background="@color/colorWhite"
     android:orientation="horizontal">
 
 
@@ -14,13 +14,29 @@
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:fontFamily="@font/cairo_bold"
+        android:includeFontPadding="false"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="#"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_12ssp" />
+
+    <TextView
+        android:id="@+id/tvValid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/_20sdp"
         android:fontFamily="@font/cairo_reqular"
-        android:text="#02985552415"
-        android:textColor="@color/colorBlack"
+        android:layout_below="@+id/tvName"
+        android:text="@string/valid_upto"
+        android:includeFontPadding="false"
+        android:textColor="@color/colorGrey2"
         android:textSize="@dimen/_12ssp" />
+
+
 
     <ImageView
         android:id="@+id/imgDelete"
@@ -36,11 +52,26 @@
         android:src="@drawable/ic_delete"
         app:tint="@color/colorPrimary" />
 
+    <TextView
+        android:id="@+id/tvDiscount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/cairo_reqular"
+        android:text="%"
+        android:padding="@dimen/_2sdp"
+        android:includeFontPadding="false"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_toStartOf="@+id/imgDelete"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_20ssp" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/imgDelete"
-        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_below="@+id/tvValid"
         android:background="@color/colorGrey2" />
 
 

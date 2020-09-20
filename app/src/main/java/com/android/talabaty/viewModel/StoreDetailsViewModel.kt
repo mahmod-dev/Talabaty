@@ -9,6 +9,7 @@ import com.android.talabaty.retrofit.ApiHelper
 import com.android.talabaty.dbUtil.Resource
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import java.io.IOException
 
 class StoreDetailsViewModel(private val apiHelper: ApiHelper?, var context: Context) :
@@ -25,17 +26,15 @@ class StoreDetailsViewModel(private val apiHelper: ApiHelper?, var context: Cont
 
             categories.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.getCategories(storeId)
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getCategories(storeId)
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    categories.postValue(Resource.success(usersFromApi))
-                else{
-                    categories.postValue(Resource.error(usersFromApi.message, null))
-
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        categories.postValue(Resource.success(usersFromApi))
+                    else {
+                        categories.postValue(Resource.error(usersFromApi.message, null))
+                    }
                 }
-
-
-
             } catch (e: TimeoutCancellationException) {
                 categories.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
@@ -54,17 +53,17 @@ class StoreDetailsViewModel(private val apiHelper: ApiHelper?, var context: Cont
 
             viewStoresProduct.postValue(Resource.loading(null))
             try {
+                withTimeout(20_000) {
                 //  async {
                 val usersFromApi = apiHelper?.getViewStoreProducts(storeId, categoryId)
                 if (usersFromApi!!.status && usersFromApi.code == 200)
                     viewStoresProduct.postValue(Resource.success(usersFromApi))
-                else{
+                else {
                     viewStoresProduct.postValue(Resource.error(usersFromApi.message, null))
-
                 }
 
                 // }.await()
-
+            }
             }catch (e: TimeoutCancellationException) {
                 viewStoresProduct.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
@@ -83,14 +82,15 @@ class StoreDetailsViewModel(private val apiHelper: ApiHelper?, var context: Cont
 
             productDetails.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper?.getProductDetails(productId)
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    productDetails.postValue(Resource.success(usersFromApi))
-                else{
-                    productDetails.postValue(Resource.error(usersFromApi.message, null))
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getProductDetails(productId)
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        productDetails.postValue(Resource.success(usersFromApi))
+                    else {
+                        productDetails.postValue(Resource.error(usersFromApi.message, null))
+                    }
 
                 }
-
             }catch (e: TimeoutCancellationException) {
                 productDetails.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {

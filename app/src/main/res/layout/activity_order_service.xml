@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    android:layoutDirection="rtl"
+
     android:orientation="vertical"
     tools:context=".SettingsActivity">
 
@@ -133,7 +133,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:fontFamily="@font/cairo_reqular"
-                        android:text="وقت التوصيل"
+                        android:text="@string/time_delivery"
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_13ssp" />
 
@@ -153,7 +153,7 @@
                             android:layout_gravity="center_horizontal"
                             android:drawablePadding="@dimen/_10sdp"
                             android:fontFamily="@font/cairo_reqular"
-                            android:hint="مدة التوصيل"
+                            android:hint="@string/delivery_period"
                             android:clickable="true"
                             android:focusable="true"
                             android:background="?attr/selectableItemBackground"
@@ -382,7 +382,7 @@
                     android:focusable="true"
                     android:fontFamily="@font/cairo_bold"
                     android:foreground="?attr/selectableItemBackground"
-                    android:text="أرسل الطلب"
+                    android:text="@string/send_order"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/_13ssp" />

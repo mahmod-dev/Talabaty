@@ -2,22 +2,27 @@ package com.android.talabaty
 
 import android.content.Intent
 import android.graphics.Paint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.viewpager.widget.ViewPager
+import com.android.talabaty.adapter.LikeProductsAdapter
 import com.android.talabaty.adapter.ProductDetailsAdapter
 import com.android.talabaty.adapter.SliderProductAdapter
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
-import com.android.talabaty.model.*
+import com.android.talabaty.model.Color
+import com.android.talabaty.model.OtherImage
+import com.android.talabaty.model.Product
+import com.android.talabaty.model.Size
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomMaterialDialog.dismiss
@@ -29,6 +34,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.activity_product_details.*
 import kotlinx.android.synthetic.main.toolbar.*
+
 
 class ProductDetailsActivity : AppCompatActivity() {
     val TAG = "ProductDetailsActivity"
@@ -120,6 +126,8 @@ class ProductDetailsActivity : AppCompatActivity() {
 
                                 }
                             }
+
+                            initRecycleViewLiked(users.random_products)
 
                             tvDescription.text = users.products[0].description
                             tvStoreBio.text = users.products[0].store.bio
@@ -387,7 +395,7 @@ class ProductDetailsActivity : AppCompatActivity() {
 
                     }
                     Status.ERROR -> {
-                        Log.e(TAG, "setupObserverAddToCart: ${it.message} " )
+                        Log.e(TAG, "setupObserverAddToCart: ${it.message} ")
 
                         getMaterialDialogInstance(it.message!!)
                     }
@@ -407,7 +415,22 @@ class ProductDetailsActivity : AppCompatActivity() {
         dismiss()
     }
 
+    private fun initRecycleViewLiked(data: ArrayList<Product>) {
+        val adapter = LikeProductsAdapter(this, data)
+        val layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+     //   layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
 
+        rvLiked.layoutManager = layoutManager
+        rvLiked.setHasFixedSize(true)
+        rvLiked.itemAnimator = DefaultItemAnimator()
+        rvLiked.adapter = adapter
+
+        adapter.onItemClick = { product ->
+
+
+
+        }
+    }
 
 
 }

@@ -1,6 +1,8 @@
 package com.android.talabaty.retrofit
 
 import com.android.talabaty.model.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
     override suspend fun getSettings(): MainSettings {
@@ -95,9 +97,34 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
         return apiService.forgotPassword(email)
     }
 
-    override suspend fun editProfile(user: UserPost): EditProfile {
-        return apiService.editProfile(user)
+//    override suspend fun editProfile(user: UserPost): EditProfile {
+//        return apiService.editProfile(user)
+//    }
+
+    override suspend fun editProfile(
+        name: RequestBody,
+        email: RequestBody,
+        mobile: RequestBody,
+        latitude: RequestBody,
+        longitude: RequestBody,
+        password: RequestBody,
+        device_type: RequestBody,
+        fcm_token: RequestBody,
+        image_profile: MultipartBody.Part
+    ): EditProfile {
+        return apiService.editProfile(
+            name,
+            email,
+            mobile,
+            latitude,
+            longitude,
+            password,
+            device_type,
+            fcm_token,
+            image_profile
+        )
     }
+
 
     override suspend fun changePassword(
         oldPassword: String,
@@ -117,7 +144,7 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
         color_id: Int,
         size_id: Int
     ): AddProductToCart {
-        return apiService.addProductToCart(productId, quantity,color_id,size_id)
+        return apiService.addProductToCart(productId, quantity, color_id, size_id)
     }
 
     override suspend fun changeQuantity(productId: Int, type: String): ChangeQuantity {
@@ -165,8 +192,31 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
         return apiService.getUserDetails()
     }
 
-    override suspend fun requestDigitalService(user: DigitalServiceBody): DigitalService {
-        return apiService.requestDigitalService(user)
+
+    override suspend fun requestDigitalService(
+        digital_id: RequestBody,
+        name: RequestBody,
+        email: RequestBody,
+        mobile: RequestBody,
+        priority: RequestBody,
+        details: RequestBody,
+        date_from: RequestBody,
+        date_to: RequestBody,
+        order_images: MultipartBody.Part?,
+        order_files: MultipartBody.Part?
+    ): DigitalService {
+        return apiService.requestDigitalService(
+            digital_id,
+            name,
+            email,
+            mobile,
+            priority,
+            details,
+            date_from,
+            date_to,
+            order_images,
+            order_files
+        )
     }
 
     override suspend fun getDigitals(): getDigitals {
