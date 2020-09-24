@@ -31,7 +31,7 @@ import kotlinx.android.synthetic.main.toolbar_location.*
 class CarServiceActivity : AppCompatActivity() {
     val TAG = "CarServiceActivity"
     private lateinit var viewModel: OrdersViewModel
-    var car : ArrayList<SpinnerObj>? = null
+    var car: ArrayList<SpinnerObj>? = null
     var type = 0
     var lng = 0L
     var lat = 0L
@@ -45,8 +45,8 @@ class CarServiceActivity : AppCompatActivity() {
         setContentView(R.layout.activity_car_service)
         MyPreferences.context = this
         MyPreferences.setInt("type", 0)
-         car = ArrayList()
-        car?.add(SpinnerObj(0,getString(R.string.car_type)))
+        car = ArrayList()
+        car?.add(SpinnerObj(0, getString(R.string.car_type)))
         handleToolbar()
         initViewModel()
         initSpinnerAdapter(car!!)
@@ -74,30 +74,40 @@ class CarServiceActivity : AppCompatActivity() {
         tvPrice.text = "${MyPreferences.getLong("carCost")} SR"
         btnConfirm.setOnClickListener {
 
-            val details =  etDetails.text.toString()
+            val details = etDetails.text.toString()
 
-            if (latSrc==0L || lngSrc==0L){
+            if (latSrc == 0L || lngSrc == 0L) {
                 tvSrc.error = getString(R.string.enter_place)
                 return@setOnClickListener
             }
 
-            if (latDist==0L ||lngDist==0L ){
+            if (latDist == 0L || lngDist == 0L) {
                 tvDist.error = getString(R.string.enter_place)
                 return@setOnClickListener
             }
 
-            if (details.isEmpty()){
+            if (details.isEmpty()) {
                 etDetails.error = getString(R.string.empty)
                 return@setOnClickListener
             }
 
-            if (spCars.selectedItem.toString().equals(getString(R.string.select_type))){
+            if (spCars.selectedItem.toString().equals(getString(R.string.select_type))) {
                 Toast.makeText(this, getString(R.string.select_car_type), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-        val obj =     spCars.selectedItem as SpinnerObj
-            Log.e(TAG, "onCreate: ${obj.name},  ${obj.id}" )
-            viewModel.requestCar(RequestCarPost(obj.id,details,latSrc,lngSrc,latDist,lngDist,MyPreferences.getLong("carCost").toDouble()))
+            val obj = spCars.selectedItem as SpinnerObj
+            Log.e(TAG, "onCreate: ${obj.name},  ${obj.id}")
+            viewModel.requestCar(
+                RequestCarPost(
+                    obj.id,
+                    details,
+                    latSrc,
+                    lngSrc,
+                    latDist,
+                    lngDist,
+                    MyPreferences.getLong("carCost").toDouble()
+                )
+            )
         }
 
 
@@ -116,11 +126,11 @@ class CarServiceActivity : AppCompatActivity() {
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
-                     //   progressBar.visibility = View.GONE
+                        //   progressBar.visibility = View.GONE
                         it.data?.let { users ->
                             for (i in users.cars.indices) {
 
-                                car?.add(SpinnerObj(users.cars[i].id,users.cars[i].name))
+                                car?.add(SpinnerObj(users.cars[i].id, users.cars[i].name))
                             }
                             initSpinnerAdapter(car!!)
 
@@ -132,7 +142,7 @@ class CarServiceActivity : AppCompatActivity() {
 
                     }
                     Status.ERROR -> {
-                       // progressBar.visibility = View.GONE
+                        // progressBar.visibility = View.GONE
                         getMaterialDialogInstance(it.message!!)
                         Log.e(TAG, "setupObserver: " + it.message)
 
@@ -174,7 +184,7 @@ class CarServiceActivity : AppCompatActivity() {
 
     private fun initSpinnerAdapter(list: ArrayList<SpinnerObj>) {
 
-        val adapter = ArrayAdapter(this,R.layout.simple_spinner_item, list)
+        val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, list)
         adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
 
         spCars.adapter = adapter

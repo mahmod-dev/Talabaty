@@ -54,7 +54,7 @@
 
     <string name="profile">حسابي</string>
     <string name="main">الرئيسية</string>
-    <string name="orders">ألطلبات</string>
+    <string name="orders">الطلبات</string>
     <string name="chatting">دردشة</string>
     <string name="product_describe">وصف المنتج</string>
     <string name="add_the_discount_coupon">اضف كوبون خصم</string>
@@ -222,6 +222,16 @@
     <string name="price_rial">0.0 ريال</string>
     <string name="time_delivery">وقت التوصيل</string>
     <string name="delivery_period">مدة التوصيل</string>
+    <string name="search_all_service">البحث في جميع الخدمات</string>
+    <string name="not_found_result">لايوجد هناك نتائج مطابقة</string>
+    <string name="enter_address_details">أدخل تفاصيل العنوان</string>
+    <string name="add_address">إضافة عنوان </string>
+    <string name="select_address_on_map">الرجاء قم بتحديد العنوان على الخريطة!</string>
+    <string name="address_book">دفتر العناوين</string>
+    <string name="edit_address">تعديل العنوان</string>
+    <string name="not_found_address">لا يوجد عناوين مضافة</string>
+    <string name="add_address_new">إضافة عنوان جديد</string>
+
 
 
 </resources>

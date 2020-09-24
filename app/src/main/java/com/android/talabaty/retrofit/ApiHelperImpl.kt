@@ -278,4 +278,33 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
     override suspend fun deleteCoupon(coupon_id: Int): GeneralResponse {
         return apiService.deleteCoupon(coupon_id)
     }
+
+    override suspend fun searchProducts(text: String): SearchProduct {
+        return apiService.searchProducts(text)
+    }
+
+    override suspend fun addNewAddress(
+        latitude: Double,
+        longitude: Double,
+        address: String
+    ): AddNewAddress {
+        return apiService.addNewAddress(latitude, longitude, address)
+    }
+
+    override suspend fun editMyAddress(
+        address_id: Int,
+        latitude: Double,
+        longitude: Double,
+        address: String
+    ): GeneralResponse {
+        return apiService.editMyAddress(address_id, latitude, longitude, address)
+    }
+
+    override suspend fun deleteMyAddress(address_id: Int): GeneralResponse {
+        return apiService.deleteMyAddress(address_id)
+    }
+
+    override suspend fun getMyAddresses(): GetAllBookAddress {
+        return apiService.getMyAddresses()
+    }
 }

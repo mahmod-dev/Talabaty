@@ -62,6 +62,10 @@ class ViewModelFactory(private val apiHelper: ApiHelper, val application: Applic
             return CouponViewModel(apiHelper,application) as T
         }
 
+        if (modelClass.isAssignableFrom(AddressBookViewModel::class.java)) {
+            return AddressBookViewModel(apiHelper,application) as T
+        }
+
         throw IllegalArgumentException("Unknown class name")
     }
 

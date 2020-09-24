@@ -42,11 +42,13 @@ class ProfileFragment : Fragment() {
     var tvShowCard: TextView? = null
     var imgProfile: ImageView? = null
     var tvAddCoupon: TextView? = null
+    var tvAddBook: TextView? = null
     var tvEditProfile: TextView? = null
     var swStores: SwitchMaterial? = null
     var swOrders: SwitchMaterial? = null
     var swOffers: SwitchMaterial? = null
     var rvCoupons: RelativeLayout? = null
+    var rlAddress: RelativeLayout? = null
     var rlWallet: RelativeLayout? = null
     var swipeRefresh: SwipeRefreshLayout? = null
     override fun onCreateView(
@@ -71,6 +73,8 @@ class ProfileFragment : Fragment() {
         swipeRefresh = root.findViewById(R.id.swipeRefresh)
         rvCoupons = root.findViewById(R.id.rvCoupons)
         rlWallet = root.findViewById(R.id.rlWallet)
+        rlAddress = root.findViewById(R.id.rlAddress)
+        tvAddBook = root.findViewById(R.id.tvAddBook)
 
         MyPreferences.context = context
         initViewModel()
@@ -80,12 +84,23 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(activity,ChargeActivity::class.java))
 
         }
+
+        rlAddress?.setOnClickListener {
+            startActivity(Intent(activity,AllAddressBookActivity::class.java))
+
+        }
         tvAddCoupon?.setOnClickListener {
             startActivity(Intent(activity,AddCouponActivity::class.java))
 
         }
         rvCoupons?.setOnClickListener {
             startActivity(Intent(activity,AllCouponsActivity::class.java))
+        }
+
+        tvAddBook?.setOnClickListener {
+            val intent = Intent(activity,AddAddressBookActivity::class.java)
+            intent.putExtra("type",0)
+            startActivity(intent)
         }
 
         tvEditProfile?.setOnClickListener {

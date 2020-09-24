@@ -15,8 +15,7 @@
         android:layout_marginHorizontal="@dimen/_10sdp"
         android:layout_marginVertical="@dimen/_3sdp"
 
-        app:cardCornerRadius="@dimen/_5sdp"
->
+        app:cardCornerRadius="@dimen/_5sdp">
 
         <EditText
             android:id="@+id/searchHome"
@@ -25,12 +24,13 @@
             android:background="@color/colorWhite"
             android:drawableEnd="@drawable/ic_search"
             android:drawablePadding="@dimen/_5sdp"
-            android:padding="@dimen/_3sdp"
+            android:focusable="false"
             android:fontFamily="@font/cairo_reqular"
-            android:hint="@string/search_in_offer_service"
+            android:hint="@string/search_all_service"
             android:imeOptions="actionSearch"
             android:importantForAutofill="no"
             android:inputType="text"
+            android:padding="@dimen/_3sdp"
             android:textColorHint="@color/colorGrey"
             android:textSize="@dimen/_10ssp" />
 

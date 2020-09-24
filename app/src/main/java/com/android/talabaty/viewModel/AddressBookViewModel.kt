@@ -13,33 +13,33 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
 import java.io.IOException
 
-class AllMainViewModel(private val apiHelper: ApiHelper?, var context: Context) :
+class AddressBookViewModel(private val apiHelper: ApiHelper?, var context: Context) :
     ViewModel() {
-    private val TAG = "AllMainViewModel"
-    private val homePageCategories = MutableLiveData<Resource<HomePageCategories>>()
-    private val adds = MutableLiveData<Resource<Ads>>()
-    private val offers = MutableLiveData<Resource<GetOffers>>()
-    private val searchProducts = MutableLiveData<Resource<SearchProduct>>()
+    private val TAG = "AddressBookViewModel"
+    private val allAddress = MutableLiveData<Resource<GetAllBookAddress>>()
+    private val addAddress = MutableLiveData<Resource<AddNewAddress>>()
+    private val editAddress = MutableLiveData<Resource<GeneralResponse>>()
+    private val deleteAddress = MutableLiveData<Resource<GeneralResponse>>()
 
 
-    fun homePageCategories() {
-            viewModelScope.launch {
+    fun allAddress() {
+        viewModelScope.launch {
 
-            homePageCategories.postValue(Resource.loading(null))
+            allAddress.postValue(Resource.loading(null))
             try {
                 withTimeout(20_000) {
 
-                    val usersFromApi = apiHelper?.getHomePageCategories()
+                    val usersFromApi = apiHelper?.getMyAddresses()
 
                     if (usersFromApi!!.status && usersFromApi.code == 200)
-                        homePageCategories.postValue(Resource.success(usersFromApi))
+                        allAddress.postValue(Resource.success(usersFromApi))
                     else {
-                        homePageCategories.postValue(Resource.error(usersFromApi.message, null))
+                        allAddress.postValue(Resource.error(usersFromApi.message, null))
                     }
                 }
 
             } catch (e: TimeoutCancellationException) {
-                homePageCategories.postValue(
+                allAddress.postValue(
                     Resource.error(
                         context.getString(R.string.timeout_error),
                         null
@@ -47,179 +47,203 @@ class AllMainViewModel(private val apiHelper: ApiHelper?, var context: Context) 
                 )
             } catch (e: Exception) {
                 if (e is IOException) {
-                    homePageCategories.postValue(
+                    allAddress.postValue(
                         Resource.error(
                             context.getString(R.string.network_error),
                             null
                         )
                     )
                 } else if (e is TimeoutCancellationException) {
-                    homePageCategories.postValue(
+                    allAddress.postValue(
                         Resource.error(
                             context.getString(R.string.timeout_error),
                             null
                         )
                     )
                 } else {
-                    homePageCategories.postValue(
+                    allAddress.postValue(
                         Resource.error(
                             context.getString(R.string.something_went_error),
                             null
                         )
                     )
                 }
-                Log.e(TAG, "homePageCategories: ${e.localizedMessage}")
+                Log.e(TAG, "allAddress: ${e.localizedMessage}")
             }
         }
     }
 
-    fun allAdds() {
+    fun addAddress(lat: Double, lng: Double, address: String) {
         viewModelScope.launch {
 
-            adds.postValue(Resource.loading(null))
+            addAddress.postValue(Resource.loading(null))
             try {
                 withTimeout(20_000) {
 
-                    val usersFromApi = apiHelper?.getAds()
+                    val usersFromApi = apiHelper?.addNewAddress(lat, lng, address)
 
                     if (usersFromApi!!.status && usersFromApi.code == 200)
-                        adds.postValue(Resource.success(usersFromApi))
+                        addAddress.postValue(Resource.success(usersFromApi))
                     else {
-                        adds.postValue(Resource.error(usersFromApi.message, null))
-
+                        addAddress.postValue(Resource.error(usersFromApi.message, null))
                     }
                 }
 
             } catch (e: TimeoutCancellationException) {
-                adds.postValue(Resource.error(context.getString(R.string.timeout_error), null))
-            } catch (e: Exception) {
-                if (e is IOException) {
-                    adds.postValue(Resource.error(context.getString(R.string.network_error), null))
-                } else if (e is TimeoutCancellationException) {
-                    adds.postValue(Resource.error(context.getString(R.string.timeout_error), null))
-
-                } else {
-                    adds.postValue(
-                        Resource.error(
-                            context.getString(R.string.something_went_error),
-                            null
-                        )
+                addAddress.postValue(
+                    Resource.error(
+                        context.getString(R.string.timeout_error),
+                        null
                     )
-                }
-                Log.e(TAG, "allAdds: ${e.message}")
-            }
-        }
-    }
-
-    fun allOffers() {
-        viewModelScope.launch {
-
-            offers.postValue(Resource.loading(null))
-            try {
-                withTimeout(20_000) {
-                    val usersFromApi = apiHelper?.getOffers()
-                    if (usersFromApi!!.status && usersFromApi.code == 200)
-                        offers.postValue(Resource.success(usersFromApi))
-                    else {
-                        offers.postValue(Resource.error(usersFromApi.message, null))
-
-                    }
-                }
-            } catch (e: TimeoutCancellationException) {
-                offers.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+                )
             } catch (e: Exception) {
                 if (e is IOException) {
-                    offers.postValue(
+                    addAddress.postValue(
                         Resource.error(
                             context.getString(R.string.network_error),
                             null
                         )
                     )
-
                 } else if (e is TimeoutCancellationException) {
-                    offers.postValue(
+                    addAddress.postValue(
                         Resource.error(
                             context.getString(R.string.timeout_error),
                             null
                         )
                     )
-
                 } else {
-                    offers.postValue(
+                    addAddress.postValue(
                         Resource.error(
                             context.getString(R.string.something_went_error),
                             null
                         )
                     )
                 }
-                Log.e(TAG, "allOffers: ${e.message}")
+                Log.e(TAG, "addAddress: ${e.localizedMessage}")
             }
         }
     }
 
-    fun searchProducts(text:String) {
+
+    fun editAddress(addressId: Int, lat: Double, lng: Double, address: String) {
         viewModelScope.launch {
 
-            searchProducts.postValue(Resource.loading(null))
+            editAddress.postValue(Resource.loading(null))
             try {
                 withTimeout(20_000) {
-                    val usersFromApi = apiHelper?.searchProducts(text)
-                    if (usersFromApi!!.status && usersFromApi.code == 200)
-                        searchProducts.postValue(Resource.success(usersFromApi))
-                    else {
-                        searchProducts.postValue(Resource.error(usersFromApi.message, null))
 
+                    val usersFromApi = apiHelper?.editMyAddress(addressId, lat, lng, address)
+
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        editAddress.postValue(Resource.success(usersFromApi))
+                    else {
+                        editAddress.postValue(Resource.error(usersFromApi.message, null))
                     }
                 }
+
             } catch (e: TimeoutCancellationException) {
-                searchProducts.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+                editAddress.postValue(
+                    Resource.error(
+                        context.getString(R.string.timeout_error),
+                        null
+                    )
+                )
             } catch (e: Exception) {
                 if (e is IOException) {
-                    searchProducts.postValue(
+                    editAddress.postValue(
                         Resource.error(
                             context.getString(R.string.network_error),
                             null
                         )
                     )
-
                 } else if (e is TimeoutCancellationException) {
-                    searchProducts.postValue(
+                    editAddress.postValue(
                         Resource.error(
                             context.getString(R.string.timeout_error),
                             null
                         )
                     )
-
                 } else {
-                    searchProducts.postValue(
+                    editAddress.postValue(
                         Resource.error(
                             context.getString(R.string.something_went_error),
                             null
                         )
                     )
                 }
-                Log.e(TAG, "searchProducts: ${e.message}")
+                Log.e(TAG, "editAddress: ${e.localizedMessage}")
             }
         }
     }
 
 
+    fun deleteAddress(addressId: Int) {
+        viewModelScope.launch {
 
-    fun getHomePageCategories(): LiveData<Resource<HomePageCategories>> {
-        return homePageCategories
+            deleteAddress.postValue(Resource.loading(null))
+            try {
+                withTimeout(20_000) {
+
+                    val usersFromApi = apiHelper?.deleteMyAddress(addressId)
+
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        deleteAddress.postValue(Resource.success(usersFromApi))
+                    else {
+                        deleteAddress.postValue(Resource.error(usersFromApi.message, null))
+                    }
+                }
+
+            } catch (e: TimeoutCancellationException) {
+                deleteAddress.postValue(
+                    Resource.error(
+                        context.getString(R.string.timeout_error),
+                        null
+                    )
+                )
+            } catch (e: Exception) {
+                if (e is IOException) {
+                    deleteAddress.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
+                } else if (e is TimeoutCancellationException) {
+                    deleteAddress.postValue(
+                        Resource.error(
+                            context.getString(R.string.timeout_error),
+                            null
+                        )
+                    )
+                } else {
+                    deleteAddress.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
+                }
+                Log.e(TAG, "deleteAddress: ${e.localizedMessage}")
+            }
+        }
     }
 
-    fun getAdds(): LiveData<Resource<Ads>> {
-        return adds
+
+    fun getAllAddress(): LiveData<Resource<GetAllBookAddress>> {
+        return allAddress
     }
 
-       fun getAllOffers(): LiveData<Resource<GetOffers>> {
-        return offers
+    fun getAddAddress(): LiveData<Resource<AddNewAddress>> {
+        return addAddress
+    }
+
+    fun getEditAddress(): LiveData<Resource<GeneralResponse>> {
+        return editAddress
     }
 
 
-    fun getSearchProducts(): LiveData<Resource<SearchProduct>> {
-        return searchProducts
+    fun getDeleteAddress(): LiveData<Resource<GeneralResponse>> {
+        return deleteAddress
     }
 
 }

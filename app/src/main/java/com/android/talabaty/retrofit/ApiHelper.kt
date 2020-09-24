@@ -152,5 +152,23 @@ interface ApiHelper {
 
     suspend fun deleteCoupon(coupon_id: Int): GeneralResponse
 
+    suspend fun searchProducts(text: String): SearchProduct
+
+    suspend fun addNewAddress(
+        latitude: Double,
+        longitude: Double,
+        address: String
+    ): AddNewAddress
+
+    suspend fun editMyAddress(
+        address_id: Int,
+        latitude: Double,
+        longitude: Double,
+        address: String
+    ): GeneralResponse
+
+    suspend fun deleteMyAddress(address_id: Int): GeneralResponse
+
+    suspend fun getMyAddresses(): GetAllBookAddress
 
 }

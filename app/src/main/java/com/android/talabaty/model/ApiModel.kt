@@ -940,3 +940,32 @@ data class Wallet(
     val user_id: Int,
     val wallet_amount: Int
 )
+
+data class SearchProduct(
+    val code: Int,
+    val message: String,
+    val products: ArrayList<Product>,
+    val status: Boolean
+)
+
+data class AddNewAddress(
+    val address: Address,
+    val code: Int,
+    val message: String,
+    val status: Boolean
+)
+
+data class Address(
+    val address: String,
+    val created_at: String,
+    val id: Int,
+    val latitude: String,
+    val longitude: String,
+    val user_id: Int
+)
+data class GetAllBookAddress(
+    val addresses: ArrayList<Address>,
+    val code: Int,
+    val message: String,
+    val status: Boolean
+)

@@ -6,13 +6,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
-import com.android.talabaty.CartActivity
 import com.android.talabaty.R
+import com.android.talabaty.SearchActivity
 import com.android.talabaty.adapter.MainPagerAdapter
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
@@ -37,13 +37,18 @@ class MainFragment : Fragment() {
         viewModel.stores()
         viewpager = root.findViewById<View>(R.id.viewPagerMain) as ViewPager
         tabs = root.findViewById<View>(R.id.tabs) as TabLayout
+        val searchHome = root.findViewById<View>(R.id.searchHome) as EditText
 
+        searchHome.setOnClickListener {
+            val intent = Intent(activity,SearchActivity::class.java)
+            startActivity(intent)
+        }
 
         viewpager?.addOnPageChangeListener(TabLayoutOnPageChangeListener(tabs))
 
         tabs?.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                if (tab?.position!!>0){
+                if (tab?.position!! > 0) {
                     viewModel.storesById(tab.position)
 
                 }
@@ -72,7 +77,7 @@ class MainFragment : Fragment() {
     private fun initViewModel() {
 
         viewModel = ViewModelProviders.of(
-            activity!! ,
+            activity!!,
             ViewModelFactory(ApiHelperImpl(RetrofitBuilder.apiService), activity!!.application)
         ).get(StoresViewModel::class.java)
     }
@@ -111,6 +116,7 @@ class MainFragment : Fragment() {
             }
         )
     }
+
 
 
 }

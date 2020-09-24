@@ -115,6 +115,15 @@ interface ApiService {
     @GET("deleteCoupon")
     suspend fun deleteCoupon(@Query("coupon_id") coupon_id: Int): GeneralResponse
 
+    @GET("searchProducts")
+    suspend fun searchProducts(@Query("text") text: String): SearchProduct
+
+    @GET("getMyAddresses")
+    suspend fun getMyAddresses(): GetAllBookAddress
+
+    @GET("deleteMyAddress")
+    suspend fun deleteMyAddress(@Query("address_id") address_id: Int): GeneralResponse
+
     /////////////////////////////////////////////
 
 
@@ -240,4 +249,21 @@ interface ApiService {
     @FormUrlEncoded
     @POST("addNewCoupon")
     suspend fun addNewCoupon(@Field("coupon") coupon: String): AddNewCoupon
+
+    @FormUrlEncoded
+    @POST("addNewAddress")
+    suspend fun addNewAddress(
+        @Field("latitude") latitude: Double,
+        @Field("longitude") longitude: Double,
+        @Field("address") address: String
+    ): AddNewAddress
+
+    @FormUrlEncoded
+    @POST("editMyAddress")
+    suspend fun editMyAddress(
+        @Field("address_id") address_id: Int,
+        @Field("latitude") latitude: Double,
+        @Field("longitude") longitude: Double,
+        @Field("address") address: String
+    ): GeneralResponse
 }

@@ -20,7 +20,7 @@
         app:cardCornerRadius="@dimen/_10sdp">
 
         <EditText
-            android:id="@+id/searchHome"
+            android:id="@+id/searchHomeNewest"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorWhite"

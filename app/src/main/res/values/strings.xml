@@ -81,7 +81,6 @@ Please check messages</string>
     <string name="wedding_date">Date of marriage</string>
 
 
-
     <string name="display">طريقة العرض</string>
     <string name="suggestions">الشكاوي والإستفسارات</string>
     <string name="questions">أسئلة وأجوبة</string>
@@ -97,7 +96,6 @@ Please check messages</string>
     <string name="customer_num">عدد المباشرين</string>
     <string name="coffeer_num">عدد القهوجي</string>
     <string name="zamzam_num">عدد سقايا زمزم</string>
-
 
 
     <string name="delivery_num">Contact number</string>
@@ -235,6 +233,15 @@ Please check messages</string>
     <string name="price_rial">0.0 R.S</string>
     <string name="time_delivery">Delivery time</string>
     <string name="delivery_period">Delivery period</string>
+    <string name="search_all_service">Search all services</string>
+    <string name="not_found_result">There are no matching results</string>
+    <string name="enter_address_details">Enter the address details</string>
+    <string name="add_address">Add address </string>
+    <string name="select_address_on_map">Please mark the address on the map!</string>
+    <string name="address_book">Address Book</string>
+    <string name="edit_address">Edit address</string>
+    <string name="not_found_address">There are no added addresses</string>
+    <string name="add_address_new">Add a new address</string>
 
 
 </resources>

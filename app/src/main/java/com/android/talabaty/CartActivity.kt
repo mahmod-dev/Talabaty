@@ -43,6 +43,10 @@ class CartActivity : AppCompatActivity() {
             finish()
         }
 
+        tvBookAddress.setOnClickListener {
+            startActivity(Intent(applicationContext, AllAddressBookActivity::class.java))
+        }
+
         setupObserverGetCart()
         setupObserverRemoveFromCart()
         swipeToRefresh()

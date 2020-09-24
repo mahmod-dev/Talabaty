@@ -269,6 +269,7 @@ class AllFragment : Fragment() {
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
+                        data.clear()
                         it.data?.let { users ->
                             val rnds = (users.offers.indices).random()
 
@@ -278,11 +279,12 @@ class AllFragment : Fragment() {
                         }
                     }
                     Status.LOADING -> {
-                        data.clear()
-                        initRecycleView(rv, data)
+//                        data.clear()
+//                        initRecycleView(rv, data)
 
                     }
                     Status.ERROR -> {
+
                         activity!!.getMaterialDialogInstance(it.message!!)
                     }
                 }
@@ -354,7 +356,6 @@ class AllFragment : Fragment() {
                         tvNotFound?.visibility = View.GONE
                         activity!!.getMaterialDialogInstance(it.message!!)
                         Log.e(TAG, "setupObserver: " + it.message)
-
                     }
                 }
 
