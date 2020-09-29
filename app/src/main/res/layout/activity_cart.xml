@@ -88,7 +88,7 @@
                     android:id="@+id/rvCartDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:itemCount="3"
+                    tools:itemCount="1"
                     tools:listitem="@layout/item_cart" />
 
                 <View
@@ -126,7 +126,7 @@
                         android:drawablePadding="@dimen/_5sdp"
                         android:fontFamily="@font/cairo_reqular"
                         android:foreground="?attr/selectableItemBackground"
-                        android:padding="@dimen/_3sdp"
+                        android:padding="@dimen/_5sdp"
                         android:text="@string/address_book"
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_8ssp"
@@ -135,19 +135,21 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/tvAddressDelivery"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_20sdp"
-                    android:fontFamily="@font/cairo_bold"
-                    android:text="عنوان التوصيل"
-                    android:textColor="@color/colorGrey2"
-                    android:textSize="@dimen/_11ssp" />
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/cairo_reqular"
+                    android:hint="@string/choose_from_address_book"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_10ssp" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
                     android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:background="@color/colorGrey" />
 
 
@@ -158,27 +160,42 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:drawablePadding="@dimen/_5sdp"
                     android:fontFamily="@font/cairo_bold"
-                    android:text="@string/predict_period"
+                    android:text="@string/delivery_type"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_12ssp"
                     app:drawableStartCompat="@drawable/ic_vertical_indecator" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:drawablePadding="@dimen/_6sdp"
-                    android:fontFamily="@font/cairo_bold"
-                    android:text="‏30 - 40 دقيقة"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_11ssp"
-                    app:drawableStartCompat="@drawable/ic_icon_watch" />
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rbDelivery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:text="@string/deliver"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <RadioButton
+                        android:id="@+id/rbPickup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:text="@string/receive"
+                        android:textSize="@dimen/_10ssp" />
+                </RadioGroup>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
                     android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:background="@color/colorGrey" />
 
 
@@ -198,42 +215,32 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingHorizontal="@dimen/_20sdp">
+                            android:orientation="horizontal">
 
 
-                            <TextView
-                                android:id="@+id/tvDiscountRate"
+                            <EditText
+                                android:id="@+id/etAddCoupon"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_20sdp"
-                                android:layout_marginEnd="@dimen/_20sdp"
-                                android:layout_toStartOf="@id/tvDiscountPrice"
-                                android:background="@color/colorWhite"
-                                android:padding="@dimen/_2sdp"
-                                android:text="خصم 40%"
-                                android:textColor="@color/colorPrimary"
-
-                                android:textSize="@dimen/_11ssp" />
-
-                            <TextView
-                                android:id="@+id/tvDiscountPrice"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toStartOf="@id/tvOriginalPrice"
-                                android:text="$21.0"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:layout_toStartOf="@id/tvVerifyCoupon"
+                                android:background="@drawable/shape_border_tevtview"
+                                android:fontFamily="@font/cairo_reqular"
+                                android:hint="@string/enter_coupon"
+                                android:paddingHorizontal="@dimen/_12sdp"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="@dimen/_11ssp" />
 
                             <TextView
-                                android:id="@+id/tvOriginalPrice"
+                                android:id="@+id/tvVerifyCoupon"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_alignParentEnd="true"
-                                android:layout_marginStart="@dimen/_10sdp"
-
-                                android:gravity="end"
-                                android:text="$48.0"
+                                android:fontFamily="@font/cairo_bold"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:gravity="center"
+                                android:paddingHorizontal="@dimen/_10sdp"
+                                android:text="@string/verify"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="@dimen/_11ssp" />
 
@@ -272,68 +279,107 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_5sdp">
 
+
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cardApplePay"
+                        android:id="@+id/cash"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
                         android:layout_weight="1"
-                        android:elevation="@dimen/_2sdp">
+                        android:foreground="?attr/selectableItemBackground"
+                        android:elevation="@dimen/_2sdp"
+                        android:paddingHorizontal="@dimen/_10sdp">
 
-                        <ImageView
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:layout_gravity="center"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/img_pay" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_icon_cash" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/cairo_reqular"
+                                android:includeFontPadding="false"
+                                android:text="@string/cash" />
+                        </LinearLayout>
+
+
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cardMadaPay"
+                        android:id="@+id/card"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
                         android:layout_weight="1"
+                        android:foreground="?attr/selectableItemBackground"
                         android:elevation="@dimen/_2sdp">
 
-                        <ImageView
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:layout_gravity="center"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/img_mada" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_card" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/cairo_reqular"
+                                android:includeFontPadding="false"
+                                android:text="@string/card" />
+                        </LinearLayout>
+
+
                     </androidx.cardview.widget.CardView>
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardStcPay"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_5sdp"
-                        android:layout_weight="1"
-                        android:elevation="@dimen/_2sdp">
-
-                        <ImageView
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:layout_gravity="center"
-                            android:scaleType="center"
-                            android:src="@drawable/img_pay_stc" />
-                    </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cardCashPay"
+                        android:id="@+id/wallet"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
                         android:layout_weight="1"
+                        android:foreground="?attr/selectableItemBackground"
                         android:elevation="@dimen/_2sdp">
 
-                        <ImageView
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:layout_gravity="center"
-                            android:scaleType="center"
-                            android:src="@drawable/ic_icon_cash" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_icon_portfolio"
+                                app:tint="@color/colorBlack" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/cairo_reqular"
+                                android:includeFontPadding="false"
+                                android:text="@string/wallet" />
+                        </LinearLayout>
+
+
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
 
@@ -370,8 +416,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cairo_reqular"
-                        android:text="$42.91"
-
+                        android:text="0.0"
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_12ssp" />
 
@@ -402,7 +447,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cairo_reqular"
-                        android:text="$42.91"
+                        android:text="0.0"
 
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_12ssp" />
@@ -436,7 +481,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cairo_reqular"
-                        android:text="$42.91"
+                        android:text="0.0"
 
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_12ssp" />
@@ -469,8 +514,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cairo_reqular"
-                        android:text="$42.91"
-
+                        android:text="0.0"
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_12ssp" />
 
@@ -501,7 +545,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cairo_bold"
-                        android:text="$42.91"
+                        android:text="0.0"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_12ssp" />
 

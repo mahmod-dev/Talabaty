@@ -22,14 +22,15 @@ class CartViewModel(private val apiHelper: ApiHelper?, var context: Context) : V
     private val deleteFromFav = MutableLiveData<Resource<GeneralResponse>>()
     private val myCart = MutableLiveData<Resource<MyCart>>()
     private val myFav = MutableLiveData<Resource<FavProducts>>()
+    private val checkout = MutableLiveData<Resource<Checkout>>()
 
-    fun getCart() {
+    fun getCart(coupon: String? = null, userAddressId: Int = 0, deliveryMethod:Int = 0,paymentMethod:String? = null) {
         viewModelScope.launch {
 
             myCart.postValue(Resource.loading(null))
             try {
                 withTimeout(20_000) {
-                    val usersFromApi = apiHelper?.getMyCart()
+                    val usersFromApi = apiHelper?.getMyCart(coupon,paymentMethod, deliveryMethod, userAddressId)
 
                     if (usersFromApi!!.status && usersFromApi.code == 200)
                         myCart.postValue(Resource.success(usersFromApi))
@@ -301,6 +302,46 @@ class CartViewModel(private val apiHelper: ApiHelper?, var context: Context) : V
         }
     }
 
+    fun checkout(coupon: String? = null, userAddressId: Int = 0, deliveryMethod:Int ,paymentMethod:String?) {
+        viewModelScope.launch {
+
+            checkout.postValue(Resource.loading(null))
+            try {
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.checkout(coupon,paymentMethod, deliveryMethod, userAddressId)
+
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        checkout.postValue(Resource.success(usersFromApi))
+                    else {
+                        checkout.postValue(Resource.error(usersFromApi.message, null))
+
+                    }
+                }
+
+            } catch (e: TimeoutCancellationException) {
+                checkout.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+            } catch (e: Exception) {
+                if (e is IOException) {
+                    checkout.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
+                } else {
+                    checkout.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
+                }
+                Log.e(TAG, "checkout: ${e.message}")
+            }
+        }
+    }
+
+
 
     fun getAddToCart(): LiveData<Resource<AddProductToCart>> {
         return addCart
@@ -329,4 +370,9 @@ class CartViewModel(private val apiHelper: ApiHelper?, var context: Context) : V
     fun getAllFavorite(): LiveData<Resource<FavProducts>> {
         return myFav
     }
+
+    fun getCheckout(): LiveData<Resource<Checkout>> {
+        return checkout
+    }
+
 }

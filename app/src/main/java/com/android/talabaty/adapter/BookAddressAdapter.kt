@@ -18,7 +18,7 @@ class BookAddressAdapter(
     var data: ArrayList<Address>
 ) :
     RecyclerView.Adapter<BookAddressAdapter.MyViewHolder>() {
-    val TAG = "EditPaymentMethodAdapter"
+    val TAG = "BookAddressAdapter"
     var onItemEditClick: ((Int, Address) -> Unit)? = null
     var onItemDeleteClick: ((Int, Int) -> Unit)? = null
     var onItemClick: ((Int, Address) -> Unit)? = null

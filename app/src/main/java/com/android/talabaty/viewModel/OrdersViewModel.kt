@@ -13,10 +13,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
 import java.io.IOException
 
-class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
+class OrdersViewModel(private val apiHelper: ApiHelper?, var context: Context) :
     ViewModel() {
     private val TAG = "OrdersViewModel"
-    private val orders = MutableLiveData<Resource<MyOrders>>()
+    private val clientOrders = MutableLiveData<Resource<GetClientOrders>>()
+    private val clientOrderDetails = MutableLiveData<Resource<GetClientOrderDetails>>()
     private val storesFreeDelivery = MutableLiveData<Resource<StoresFreeDelivery>>()
     private val newOrder = MutableLiveData<Resource<CreateNewOrder>>()
     private val otherServices = MutableLiveData<Resource<RequestOtherService>>()
@@ -26,31 +27,89 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
     private val settings = MutableLiveData<Resource<MainSettings>>()
 
 
-     fun myOrders() {
+    fun clientOrders() {
         viewModelScope.launch {
 
-            orders.postValue(Resource.loading(null))
+            clientOrders.postValue(Resource.loading(null))
             try {
                 withTimeout(20_000) {
-                    val usersFromApi = apiHelper?.getMyOrders()
+                    val usersFromApi = apiHelper?.getClientOrders()
 
                     if (usersFromApi!!.status && usersFromApi.code == 200)
-                        orders.postValue(Resource.success(usersFromApi))
+                        clientOrders.postValue(Resource.success(usersFromApi))
                     else {
-                        orders.postValue(Resource.error(usersFromApi.message, null))
+                        clientOrders.postValue(Resource.error(usersFromApi.message, null))
 
                     }
                 }
 
             } catch (e: TimeoutCancellationException) {
-                orders.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+                clientOrders.postValue(
+                    Resource.error(
+                        context.getString(R.string.timeout_error),
+                        null
+                    )
+                )
             } catch (e: Exception) {
                 if (e is IOException) {
-                    orders.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    clientOrders.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
                 } else {
-                    orders.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    clientOrders.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
-                Log.e(TAG, "myOrders: ${e.message}")
+                Log.e(TAG, "clientOrders: ${e.message}")
+            }
+        }
+    }
+
+    fun clientOrderDetails(orderId: Int) {
+        viewModelScope.launch {
+
+            clientOrderDetails.postValue(Resource.loading(null))
+            try {
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.getClientOrderDetails(orderId)
+
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        clientOrderDetails.postValue(Resource.success(usersFromApi))
+                    else {
+                        clientOrderDetails.postValue(Resource.error(usersFromApi.message, null))
+                    }
+                }
+
+            } catch (e: TimeoutCancellationException) {
+                clientOrderDetails.postValue(
+                    Resource.error(
+                        context.getString(R.string.timeout_error),
+                        null
+                    )
+                )
+            } catch (e: Exception) {
+                if (e is IOException) {
+                    clientOrderDetails.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
+                } else {
+                    clientOrderDetails.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
+                }
+                Log.e(TAG, "clientOrderDetails: ${e.message}")
             }
         }
     }
@@ -75,17 +134,26 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
                 settings.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
                 if (e is IOException) {
-                    settings.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    settings.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
                 } else {
-                    settings.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    settings.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "settings: ${e.message}")
             }
         }
     }
 
-
-    fun requestCar(car:RequestCarPost) {
+    fun requestCar(car: RequestCarPost) {
         viewModelScope.launch {
 
             requestCar.postValue(Resource.loading(null))
@@ -102,18 +170,32 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
                 }
 
             } catch (e: TimeoutCancellationException) {
-                requestCar.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+                requestCar.postValue(
+                    Resource.error(
+                        context.getString(R.string.timeout_error),
+                        null
+                    )
+                )
             } catch (e: Exception) {
                 if (e is IOException) {
-                    requestCar.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    requestCar.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
                 } else {
-                    requestCar.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    requestCar.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "requestCar: ${e.message}")
             }
         }
     }
-
 
     fun getCars() {
         viewModelScope.launch {
@@ -130,19 +212,23 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
                     }
                 }
 
-            }catch (e: TimeoutCancellationException) {
+            } catch (e: TimeoutCancellationException) {
                 cars.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
                 if (e is IOException) {
                     cars.postValue(Resource.error(context.getString(R.string.network_error), null))
                 } else {
-                    cars.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    cars.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "getCars: ${e.message}")
             }
         }
     }
-
 
     fun createNewOrder(order: NewOrderPost) {
         viewModelScope.launch {
@@ -158,13 +244,23 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
                         newOrder.postValue(Resource.error(usersFromApi.message, null))
                     }
                 }
-            }catch (e: TimeoutCancellationException) {
+            } catch (e: TimeoutCancellationException) {
                 newOrder.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
                 if (e is IOException) {
-                    newOrder.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    newOrder.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
                 } else {
-                    newOrder.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    newOrder.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "createNewOrder: ${e.message}")
             }
@@ -186,13 +282,28 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
                     }
                 }
 
-            }catch (e: TimeoutCancellationException) {
-                otherServices.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+            } catch (e: TimeoutCancellationException) {
+                otherServices.postValue(
+                    Resource.error(
+                        context.getString(R.string.timeout_error),
+                        null
+                    )
+                )
             } catch (e: Exception) {
                 if (e is IOException) {
-                    otherServices.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    otherServices.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
                 } else {
-                    otherServices.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    otherServices.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "requestOtherService: ${e.message}")
             }
@@ -205,22 +316,32 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
             services.postValue(Resource.loading(null))
             try {
                 withTimeout(20_000) {
-                val usersFromApi = apiHelper?.requestService(order)
+                    val usersFromApi = apiHelper?.requestService(order)
 
-                if (usersFromApi!!.status && usersFromApi.code == 200)
-                    services.postValue(Resource.success(usersFromApi))
-                else {
-                    services.postValue(Resource.error(usersFromApi.message, null))
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        services.postValue(Resource.success(usersFromApi))
+                    else {
+                        services.postValue(Resource.error(usersFromApi.message, null))
+                    }
                 }
-            }
 
-            }catch (e: TimeoutCancellationException) {
+            } catch (e: TimeoutCancellationException) {
                 services.postValue(Resource.error(context.getString(R.string.timeout_error), null))
             } catch (e: Exception) {
                 if (e is IOException) {
-                    services.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    services.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
                 } else {
-                    services.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    services.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "requestService: ${e.message}")
             }
@@ -243,12 +364,27 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
                     }
                 }
             } catch (e: TimeoutCancellationException) {
-                storesFreeDelivery.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+                storesFreeDelivery.postValue(
+                    Resource.error(
+                        context.getString(R.string.timeout_error),
+                        null
+                    )
+                )
             } catch (e: Exception) {
                 if (e is IOException) {
-                    storesFreeDelivery.postValue(Resource.error(context.getString(R.string.network_error), null))
+                    storesFreeDelivery.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
                 } else {
-                    storesFreeDelivery.postValue(Resource.error(context.getString(R.string.something_went_error), null))
+                    storesFreeDelivery.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
                 }
                 Log.e(TAG, "storesFreeDelivery: ${e.message}")
             }
@@ -256,8 +392,12 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
     }
 
 
-    fun getMyOrders(): LiveData<Resource<MyOrders>> {
-        return orders
+    fun getClientOrders(): LiveData<Resource<GetClientOrders>> {
+        return clientOrders
+    }
+
+    fun getClientOrdersDetails(): LiveData<Resource<GetClientOrderDetails>> {
+        return clientOrderDetails
     }
 
 
@@ -284,6 +424,7 @@ class OrdersViewModel(private val apiHelper: ApiHelper?,var context: Context) :
     fun getAllOtherService(): LiveData<Resource<RequestOtherService>> {
         return otherServices
     }
+
     fun getService(): LiveData<Resource<RequestOtherService>> {
         return services
     }

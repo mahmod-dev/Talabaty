@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    >
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -42,7 +43,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_9sdp"
                     android:layout_weight="1"
                     android:orientation="vertical">
@@ -57,42 +58,51 @@
                         android:textSize="@dimen/_8ssp" />
 
                     <TextView
-                        android:id="@+id/tvPlaceAddress"
+                        android:id="@+id/tvNotice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cairo_reqular"
-                        android:text="@string/address"
-                        android:layout_marginTop="@dimen/_3sdp"
-                        android:maxLines="1"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_8ssp" />
+                        android:text="@string/notice"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="@dimen/_6ssp" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_3sdp"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="@dimen/_10sdp">
 
                         <TextView
+                            android:id="@+id/tvResNameOrder"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_toEndOf="@+id/imgSteps"
                             android:fontFamily="@font/cairo_reqular"
-                            android:text="@string/meals_num"
+                            android:text="@string/rest_name"
                             android:textColor="@color/colorBlack"
                             android:textSize="@dimen/_8ssp" />
 
                         <TextView
-                            android:id="@+id/tvMealNum"
+                            android:id="@+id/tvPlaceAddress"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvResNameOrder"
+                            android:layout_toEndOf="@+id/imgSteps"
                             android:fontFamily="@font/cairo_reqular"
-                            android:text="x1"
-                            android:textColor="@color/colorPrimary"
+                            android:text="@string/address"
+                            android:textColor="@color/colorBlack"
                             android:textSize="@dimen/_8ssp" />
 
+                        <ImageView
+                            android:id="@+id/imgSteps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/tvResNameOrder"
+                            android:layout_alignBottom="@+id/tvPlaceAddress"
 
-                    </LinearLayout>
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:src="@drawable/ic_vertical_steps" />
+                    </RelativeLayout>
 
 
                 </LinearLayout>
@@ -114,7 +124,7 @@
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:fontFamily="@font/cairo_reqular"
                         android:text="20/6/2/2020"
-                        android:textColor="@color/colorGrey2"
+                        android:textColor="@color/colorGrey"
                         android:textSize="@dimen/_8ssp" />
 
 
@@ -127,7 +137,6 @@
                         android:background="@drawable/shape_light_green"
                         android:drawablePadding="@dimen/_8sdp"
                         android:fontFamily="@font/cairo_reqular"
-                        android:gravity="center"
                         android:padding="@dimen/_3sdp"
                         android:text="@string/delivered"
                         android:textColor="@color/colorPrimary"
@@ -162,6 +171,32 @@
                     </LinearLayout>
 
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:text="@string/meals_num"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_8ssp" />
+
+                        <TextView
+                            android:id="@+id/tvMealNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo_reqular"
+                            android:text="x1"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_8ssp" />
+
+
+                    </LinearLayout>
                 </LinearLayout>
 
 
@@ -171,7 +206,6 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:layout_margin="@dimen/_3sdp"
                 android:background="@color/colorGrey" />
 
             <LinearLayout
@@ -184,6 +218,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="horizontal">
 
 
@@ -191,14 +226,14 @@
                     android:id="@+id/tvPriceOrder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_margin="@dimen/_3sdp"
+                    android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/shape_waiting_box"
                     android:fontFamily="@font/cairo_reqular"
-                    android:foreground="?attr/selectableItemBackground"
                     android:paddingHorizontal="@dimen/_20sdp"
                     android:paddingVertical="@dimen/_2sdp"
                     android:text="@string/price_rial"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:layout_alignParentStart="true"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/_8sdp" />
 
@@ -207,11 +242,10 @@
                     android:id="@+id/cardDeleteOrder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_margin="@dimen/_3sdp"
+                    android:layout_margin="@dimen/_5sdp"
                     android:elevation="@dimen/_7sdp"
+                    android:layout_alignParentEnd="true"
                     android:foreground="?attr/selectableItemBackground"
-                    android:visibility="visible"
                     app:cardBackgroundColor="@color/colorWhite"
                     app:cardCornerRadius="@dimen/_4sdp">
 
@@ -224,12 +258,48 @@
                         android:paddingHorizontal="@dimen/_10sdp"
                         android:paddingVertical="@dimen/_2sdp"
 
-                        android:text="@string/cancel_order"
-                        android:textColor="@color/colorRed3"
+                        android:text="@string/delete_order"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_8sdp"
-                        app:drawableStartCompat="@drawable/ic_cancel" />
+                        app:drawableStartCompat="@drawable/ic_delete" />
 
                 </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardRetry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:elevation="@dimen/_7sdp"
+                    android:layout_toStartOf="@+id/cardDeleteOrder"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardCornerRadius="@dimen/_4sdp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:background="@drawable/shape_waiting_box"
+                        android:backgroundTint="@color/colorWhite"
+                        android:drawablePadding="@dimen/_6sdp"
+                        android:fontFamily="@font/cairo_reqular"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_2sdp"
+                        android:text="@string/re_order"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_8sdp"
+                        app:drawableStartCompat="@drawable/ic_repeat"
+                        app:drawableTint="@color/colorPrimary" />
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
 
             </RelativeLayout>

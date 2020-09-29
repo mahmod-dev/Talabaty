@@ -268,6 +268,7 @@ data class DigitalService(
     val order: Order,
     val status: Boolean
 )
+
 data class getDigitals(
     val code: Int,
     val digitals: List<Digital>,
@@ -285,9 +286,9 @@ data class DigitalServiceBody(
     var date_from: String,
     var date_to: String,
     @SerializedName("order_images[0]")
-    var order_images: String? =null,
+    var order_images: String? = null,
     @SerializedName("order_files[0]")
-    var order_files: String? =null
+    var order_files: String? = null
 
 
 )
@@ -297,8 +298,7 @@ data class SpinnerObj(
     val name: String
 
 
-
-){
+) {
     override fun toString(): String {
         return name
     }
@@ -344,6 +344,7 @@ data class EditPaymentCardPost(
     val validation_number: String,
     val name_cardholder: String
 )
+
 data class GetPaymentMethod(
     val code: Int,
     val message: String,
@@ -431,6 +432,7 @@ data class Digital(
     val status: String,
     val type: String
 )
+
 data class GetOffers(
     val code: Int,
     val message: String,
@@ -492,6 +494,7 @@ data class Store(
     val wallet_amount: Int,
     val distance: Double
 )
+
 data class ProductDetails(
     val code: Int,
     val message: String,
@@ -506,34 +509,6 @@ data class StoreProducts(
     val message: String,
     val products: ArrayList<Product>,
     val status: Boolean
-)
-
-data class MyOrders(
-    val code: Int,
-    val message: String,
-    val myOrders: List<MyOrder>,
-    val status: Boolean
-)
-
-data class MyOrder(
-    val car: Any,
-    val car_id: Int,
-    val category: Category,
-    val category_id: Int,
-    val cost: Int,
-    val created_at: String,
-    val details: String,
-    val from_latitude: String,
-    val from_longitude: String,
-    val id: Int,
-    val offers: List<Offer>,
-    val ordered_date: String,
-    val provider: Any,
-    val status: Int,
-    val to_latitude: String,
-    val to_longitude: String,
-    val user: User,
-    val user_id: Int
 )
 
 data class HomePageCategories(
@@ -560,6 +535,14 @@ data class MyCart(
     val cart: ArrayList<Cart>,
     val code: Int,
     val message: String,
+    val user_addresse: String,
+    val final_total: Double,
+    val coupon_amount: Double,
+    val coupon_percent: Int,
+    val vat_precent: Int,
+    val delivery_cost: Int,
+    val sub_total: Int,
+    val vat_amount: Double,
     val status: Boolean
 )
 
@@ -592,7 +575,7 @@ data class Cart(
     val store_id: Int,
     val user_id: Int,
     val store: Store? = null,
-    val product: Product?  = null
+    val product: Product? = null
 )
 
 data class StoreDetails(
@@ -713,7 +696,6 @@ data class Car(
 )
 
 
-
 data class AboutUs(
     val created_at: String,
     val description: String,
@@ -824,6 +806,7 @@ data class Size(
     val status: String,
     var isSelected: Boolean
 )
+
 data class AddPaymentCard(
     val code: Int,
     val message: String,
@@ -963,9 +946,130 @@ data class Address(
     val longitude: String,
     val user_id: Int
 )
+
 data class GetAllBookAddress(
     val addresses: ArrayList<Address>,
     val code: Int,
     val message: String,
     val status: Boolean
+)
+
+data class Checkout(
+    val code: Int,
+    val message: String,
+    val order: Order,
+    val status: Boolean
+)
+
+data class GetClientOrders(
+    val client_orders: ArrayList<ClientOrder>,
+    val code: Int,
+    val message: String,
+    val status: Boolean
+)
+
+data class ClientOrder(
+    val car: Any,
+    val car_id: Int,
+    val category: Any,
+    val category_id: Any,
+    val coupon: Coupon,
+    val coupon_amount: Double,
+    val coupon_id: Int,
+    val coupon_percent: Int,
+    val created_at: String,
+    val date_from: Any,
+    val date_to: Any,
+    val delivery_cost: Int,
+    val details: Any,
+    val digital_id: Any,
+    val driver: Any,
+    val driver_id: Any,
+    val email: String,
+    val final_total: Double,
+    val from_latitude: String,
+    val from_longitude: String,
+    val id: Int,
+    val meals_count: Int,
+    val mobile: Any,
+    val name: String,
+    val order_products: List<OrderProduct>,
+    val ordered_date: String,
+    val payment_method: String,
+    val priority: String,
+    val status: Int,
+    val store: Store,
+    val store_id: Int,
+    val sub_total: Int,
+    val to_latitude: String,
+    val to_longitude: String,
+    val type: String,
+    val user: User,
+    val user_address: Address,
+    val user_address_id: Int,
+    val user_id: Int,
+    val vat_amount: Double,
+    val vat_percent: Int
+)
+
+data class OrderProduct(
+    val created_at: String,
+    val id: Int,
+    val order_id: Int,
+    val price: Int,
+    val product: Product,
+    val product_id: Int,
+    val quantity: Int
+)
+
+
+data class GetClientOrderDetails(
+    val code: Int,
+    val message: String,
+    val order_details: OrderDetails,
+    val status: Boolean
+)
+
+data class OrderDetails(
+    val car: Any,
+    val car_id: Int,
+    val category: Any,
+    val category_id: Any,
+    val coupon: Coupon,
+    val coupon_amount: Double,
+    val coupon_id: Int,
+    val coupon_percent: Int,
+    val created_at: String,
+    val date_from: Any,
+    val date_to: Any,
+    val delivery_cost: Int,
+    val details: Any,
+    val digital_id: Any,
+    val driver: Any,
+    val driver_id: Any,
+    val email: Any,
+    val final_total: Double,
+    val from_latitude: Any,
+    val from_longitude: Any,
+    val id: Int,
+    val meals_count: Int,
+    val mobile: Any,
+    val name: Any,
+    val order_products: List<OrderProduct>,
+    val ordered_date: Any,
+    val payment_method: String,
+    val priority: Any,
+    val status: Int,
+    val store: Store,
+    val store_id: Int,
+    val sub_total: Int,
+    val to_latitude: Any,
+    val to_longitude: String,
+    val type: String,
+    val user: User,
+    val user_address: Address,
+    val user_address_id: Int,
+    val user_id: Int,
+    val vat_amount: Double,
+    val vat_percent: Int
 )

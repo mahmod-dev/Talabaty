@@ -75,7 +75,7 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
             MyPreferences.setInt("count",data[position].quantity.toInt())
 
             tvCartName.text = product.name
-            tvCartPrice.text = (product.price*MyPreferences.getInt("count")).toString()
+            tvCartPrice.text = "${(product.price * MyPreferences.getInt("count"))} ${activity.getString(R.string.rs)}"
 
             tvCartDetails.text = product.description
             if (tvCartDetails.text.length > 50) {
@@ -99,7 +99,7 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
             imgAdd.setOnClickListener {
                   MyPreferences.setInt("count",MyPreferences.getInt("count")+1)
 
-                tvCartPrice.text = (product.price*MyPreferences.getInt("count")).toString()
+                tvCartPrice.text = "${(product.price * MyPreferences.getInt("count"))} ${activity.getString(R.string.rs)}"
                 viewModel.changeQuantity(product.id, "increase")
                 tvQuantity.text = MyPreferences.getInt("count").toString()
 
@@ -115,13 +115,14 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                     ).show()
                     MyPreferences.setInt("count",1)
                     tvQuantity.text = MyPreferences.getInt("count").toString()
-                    tvCartPrice.text = product.price.toString()
+                    tvCartPrice.text = "${product.price} ${activity.getString(R.string.rs)}"
 
                 }else{
                     MyPreferences.setInt("count",MyPreferences.getInt("count")-1)
 
                     tvQuantity.text = MyPreferences.getInt("count").toString()
-                    tvCartPrice.text = (product.price*MyPreferences.getInt("count")).toString()
+                    tvCartPrice.text =
+                        "${(product.price * MyPreferences.getInt("count"))} ${activity.getString(R.string.rs)}"
 
 
                     viewModel.changeQuantity(product.id, "decrease")

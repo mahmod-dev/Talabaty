@@ -15,6 +15,7 @@ import com.android.talabaty.model.Address
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
+import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.AddressBookViewModel
 import kotlinx.android.synthetic.main.activity_all_address_book.*
 import kotlinx.android.synthetic.main.activity_all_address_book.swipeRefresh
@@ -27,6 +28,7 @@ class AllAddressBookActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_address_book)
+        MyPreferences.context = this
         initViewModel()
         handleToolbar()
         viewModel.allAddress()
@@ -122,8 +124,17 @@ class AllAddressBookActivity : AppCompatActivity() {
             intent.putExtra("id", obj.id)
             intent.putExtra("address", obj.address)
             intent.putExtra("type",1)
-
             startActivity(intent)
+        }
+
+        adapter!!.onItemClick = { id, obj ->
+            if (MyPreferences.getBool("isCart")){
+                MyPreferences.setBool("isCart",false)
+                MyPreferences.setBool("isBook",true)
+                MyPreferences.setStr("myAddress",obj.address)
+                MyPreferences.setInt("addressId",obj.id)
+                finish()
+            }
 
         }
 

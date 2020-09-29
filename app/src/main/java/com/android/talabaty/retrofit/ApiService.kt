@@ -80,10 +80,21 @@ interface ApiService {
     suspend fun getMyFavProducts(): FavProducts
 
     @GET("myCart")
-    suspend fun getMyCart(): MyCart
+    suspend fun getMyCart(
+        @Query("coupon") coupon: String?,
+        @Query("payment_method") payment_method: String?,
+        @Query("delivery_method") delivery_method: Int,
+        @Query("user_address_id") user_address_id: Int
+    ): MyCart
 
-    @GET("myOrders")
-    suspend fun getMyOrders(): MyOrders
+    @GET("checkout")
+    suspend fun checkout(
+        @Query("coupon") coupon: String?,
+        @Query("payment_method") payment_method: String?,
+        @Query("delivery_method") delivery_method: Int,
+        @Query("user_address_id") user_address_id: Int
+    ): Checkout
+
 
     @GET("storesFreeDelivery")
     suspend fun getStoresFreeDelivery(): StoresFreeDelivery
@@ -123,6 +134,13 @@ interface ApiService {
 
     @GET("deleteMyAddress")
     suspend fun deleteMyAddress(@Query("address_id") address_id: Int): GeneralResponse
+
+    @GET("getClientOrders")
+    suspend fun getClientOrders(): GetClientOrders
+
+
+    @GET("getClientOrderDetails")
+    suspend fun getClientOrderDetails(@Query("order_id") order_id: Int): GetClientOrderDetails
 
     /////////////////////////////////////////////
 

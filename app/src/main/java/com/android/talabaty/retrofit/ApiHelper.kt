@@ -3,7 +3,6 @@ package com.android.talabaty.retrofit
 import com.android.talabaty.model.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import retrofit2.http.*
 
 
 interface ApiHelper {
@@ -34,7 +33,19 @@ interface ApiHelper {
 
     suspend fun getActivities(): Activities
 
-    suspend fun getMyCart(): MyCart
+    suspend fun getMyCart(
+        coupon: String?,
+        payment_method: String?,
+        delivery_method: Int,
+        user_address_id: Int
+    ): MyCart
+
+    suspend fun checkout(
+        coupon: String?,
+        payment_method: String?,
+        delivery_method: Int,
+        user_address_id: Int
+    ): Checkout
 
     suspend fun getViewStoreDetails(storeId: Int): StoreDetails
 
@@ -90,7 +101,6 @@ interface ApiHelper {
 
     suspend fun getHomePageCategories(): HomePageCategories
 
-    suspend fun getMyOrders(): MyOrders
 
     suspend fun getStoresFreeDelivery(): StoresFreeDelivery
 
@@ -170,5 +180,10 @@ interface ApiHelper {
     suspend fun deleteMyAddress(address_id: Int): GeneralResponse
 
     suspend fun getMyAddresses(): GetAllBookAddress
+
+    suspend fun getClientOrders(): GetClientOrders
+
+    suspend fun getClientOrderDetails( order_id: Int): GetClientOrderDetails
+
 
 }

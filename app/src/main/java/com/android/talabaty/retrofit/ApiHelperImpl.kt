@@ -57,8 +57,13 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
         return apiService.getActivities()
     }
 
-    override suspend fun getMyCart(): MyCart {
-        return apiService.getMyCart()
+    override suspend fun getMyCart(
+        coupon: String?,
+        payment_method: String?,
+        delivery_method: Int,
+        user_address_id: Int
+    ): MyCart {
+        return apiService.getMyCart(coupon, payment_method, delivery_method, user_address_id)
     }
 
     override suspend fun getViewStoreDetails(storeId: Int): StoreDetails {
@@ -159,9 +164,6 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
         return apiService.getHomePageCategories()
     }
 
-    override suspend fun getMyOrders(): MyOrders {
-        return apiService.getMyOrders()
-    }
 
     override suspend fun getStoresFreeDelivery(): StoresFreeDelivery {
         return apiService.getStoresFreeDelivery()
@@ -306,5 +308,22 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
 
     override suspend fun getMyAddresses(): GetAllBookAddress {
         return apiService.getMyAddresses()
+    }
+
+    override suspend fun checkout(
+        coupon: String?,
+        payment_method: String?,
+        delivery_method: Int,
+        user_address_id: Int
+    ): Checkout {
+        return apiService.checkout(coupon, payment_method, delivery_method, user_address_id)
+    }
+
+    override suspend fun getClientOrders(): GetClientOrders {
+        return apiService.getClientOrders()
+    }
+
+    override suspend fun getClientOrderDetails(order_id: Int): GetClientOrderDetails {
+        return apiService.getClientOrderDetails(order_id)
     }
 }
