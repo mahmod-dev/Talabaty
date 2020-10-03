@@ -181,8 +181,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_30sdp"
-                android:background="@drawable/shape_light_green"
-                android:backgroundTint="@color/colorPrimary"
+                android:background="@drawable/shape_waiting_box"
+
                 android:fontFamily="@font/cairo_bold"
                 android:text="@string/edit_account"
                 android:textAllCaps="false"

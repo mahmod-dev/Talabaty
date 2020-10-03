@@ -58,7 +58,7 @@ class ProductsAdapter(
 
         fun bind(product: Product) {
             tvName.text = product.name
-            tvPrice.text = "${product.price} ${activity.getString(R.string.rs)} "
+            tvPrice.text = "${productPrice(product)} ${activity.getString(R.string.rs)} "
 
 
             if (product.image.isNotEmpty()) {
@@ -73,6 +73,11 @@ class ProductsAdapter(
 
         }
 
+    }
+
+    private fun productPrice(product: Product): Int {
+
+        return (product.offer_price?.toInt()) ?: product.price
     }
 
 

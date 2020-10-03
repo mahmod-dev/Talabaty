@@ -7,32 +7,32 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.android.talabaty.adapter.NewestOffersAdapter
-import com.android.talabaty.adapter.RecycleStoresAdapter
 import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.model.Offer
-import com.android.talabaty.model.Store
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.AllMainViewModel
-import com.android.talabaty.viewModel.StoresViewModel
 import kotlinx.android.synthetic.main.activity_newest_offers_services.*
+import kotlinx.android.synthetic.main.activity_newest_offers_services.swipeRefresh
+import kotlinx.android.synthetic.main.activity_newest_offers_services.tvNotFound
 import kotlinx.android.synthetic.main.toolbar_location.*
 
 class NewestOffersServicesActivity : AppCompatActivity() {
     val TAG = "NewestOffersActivity"
     private lateinit var viewModel: AllMainViewModel
     private lateinit var data: ArrayList<Offer>
+    private var text: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +44,8 @@ class NewestOffersServicesActivity : AppCompatActivity() {
         viewModel.allOffers()
         setupObserver()
         swipeToRefresh()
+        handleSearchProduct()
+        setupObserverSearch()
     }
 
     private fun setupObserver() {
@@ -141,6 +143,57 @@ class NewestOffersServicesActivity : AppCompatActivity() {
         }
         return super.dispatchTouchEvent(event)
     }
+
+    private fun handleSearchProduct() {
+        searchHomeNewest.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                text = searchHomeNewest.text.toString()
+                if (text.isNullOrEmpty()) {
+                    text = ""
+                }
+                viewModel.searchOffers(text!!)
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun setupObserverSearch() {
+
+        viewModel.getSearchOffers().observe(this,
+            Observer {
+                when (it.status) {
+                    Status.SUCCESS -> {
+                        swipeRefresh.isRefreshing = false
+
+                        it.data?.let { users ->
+                            if (users.offers.isEmpty()) {
+                                tvNotFound.visibility = View.VISIBLE
+                            } else {
+                                data = users.offers
+                                initRecycleView()
+                            }
+                        }
+                    }
+                    Status.LOADING -> {
+                        data?.clear()
+                        swipeRefresh.isRefreshing = true
+                        tvNotFound.visibility = View.GONE
+                        initRecycleView()
+                    }
+                    Status.ERROR -> {
+                        swipeRefresh.isRefreshing = false
+                        tvNotFound.visibility = View.GONE
+                        getMaterialDialogInstance(it.message!!)
+                    }
+                }
+
+            }
+        )
+    }
+
+
 
 
 }

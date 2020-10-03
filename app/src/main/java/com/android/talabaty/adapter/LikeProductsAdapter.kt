@@ -60,7 +60,7 @@ class LikeProductsAdapter(
 
         fun bind(product: Product) {
             tvName.text = product.name
-            tvPrice.text = "${product.price} $"
+            tvPrice.text = "${productPrice(product)} $"
 
 
             if (product.image.isNotEmpty()) {
@@ -84,5 +84,9 @@ class LikeProductsAdapter(
 
 
 
+    private fun productPrice(product: Product): Int {
+
+        return product.offer_price?.toInt() ?: product.price
+    }
 
 }

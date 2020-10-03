@@ -12,9 +12,11 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.RadioButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,6 +51,7 @@ class CartActivity : AppCompatActivity() {
 
         initViewModel()
         viewModel.getCart()
+        setupObserverChangeQuantity()
         btnCompleteOrder?.setOnClickListener {
             address = tvAddressDelivery.text.toString()
 
@@ -103,7 +106,7 @@ class CartActivity : AppCompatActivity() {
                 deliveryMethod = 1
             }
 
-            Log.e(TAG, "deliveryMethod: $deliveryMethod " )
+            Log.e(TAG, "deliveryMethod: $deliveryMethod ")
             viewModel.getCart(coupon = coupon, deliveryMethod = deliveryMethod)
 
         }
@@ -129,6 +132,7 @@ class CartActivity : AppCompatActivity() {
                 viewModel.deleteFromCart(cart.product!!.id)
                 carts.removeAt(position)
                 adapter?.notifyDataSetChanged()
+
             }
         }
     }
@@ -151,23 +155,21 @@ class CartActivity : AppCompatActivity() {
                     Status.SUCCESS -> {
                         swipeRefresh?.isRefreshing = false
                         it.data?.let { users ->
+                            tvDiscountCart.text =
+                                " ${users.coupon_amount} ${getString(R.string.rs)}"
+                            tvTotalAmount.text =
+                                "${users.final_total} ${getString(R.string.rs)}"
+                            tvDeliveryFee.text =
+                                " ${users.delivery_cost} ${getString(R.string.rs)}"
+                            tvPurchases.text = "${users.sub_total} ${getString(R.string.rs)}"
+                            tvAddedTax.text = "${users.vat_amount} ${getString(R.string.rs)}"
+
                             if (users.cart.isEmpty()) {
                                 tvNotFound.visibility = View.VISIBLE
                             } else {
                                 initRecycleView(users.cart)
-
-                                tvDiscountCart.text =
-                                    " ${users.coupon_amount} ${getString(R.string.rs)}"
-                                tvTotalAmount.text =
-                                    " ${users.final_total} ${getString(R.string.rs)}"
-                                tvDeliveryFee.text =
-                                    " ${users.delivery_cost} ${getString(R.string.rs)}"
-                                tvPurchases.text = " ${users.sub_total} ${getString(R.string.rs)}"
-                                tvAddedTax.text = "${users.vat_amount} ${getString(R.string.rs)}"
-
                             }
                         }
-
 
 
                     }
@@ -197,12 +199,15 @@ class CartActivity : AppCompatActivity() {
                     Status.SUCCESS -> {
                         swipeRefresh?.isRefreshing = false
                         it.data?.let { users ->
-                            startActivity(
+
+                            val intent =
                                 Intent(
                                     applicationContext,
-                                    PaymentMethodActivity::class.java
+                                    WaitingActivity::class.java
                                 )
-                            )
+                            intent.putExtra("orderId", users.order.id)
+                            startActivity(intent)
+
                         }
 
                     }
@@ -229,6 +234,7 @@ class CartActivity : AppCompatActivity() {
         swipeRefresh?.setOnRefreshListener {
 
             viewModel.getCart(coupon = coupon, deliveryMethod = deliveryMethod)
+
         }
 
     }
@@ -244,8 +250,6 @@ class CartActivity : AppCompatActivity() {
                         it.data?.let { users ->
                             Toast.makeText(this, users.message, Toast.LENGTH_SHORT).show()
                             viewModel.getCart()
-
-
                         }
                     }
                     Status.LOADING -> {
@@ -314,6 +318,37 @@ class CartActivity : AppCompatActivity() {
         }
         return super.dispatchTouchEvent(event)
     }
+
+    private fun setupObserverChangeQuantity() {
+
+        viewModel.getChangeQuantity().observe(this,
+            Observer {
+                when (it.status) {
+                    Status.SUCCESS -> {
+                        it.data?.let { users ->
+                            // Toast.makeText(activity, users.message, Toast.LENGTH_SHORT).show()
+
+                            viewModel.getCart()
+
+                        }
+                    }
+                    Status.LOADING -> {
+
+                    }
+                    Status.ERROR -> {
+                        getMaterialDialogInstance(it.message!!)
+//                        MyPreferences.setInt("countQ", 1)
+//                        tvQuantity.text = MyPreferences.getInt("countQ").toString()
+//                        tvPrice.text = price.toString()
+//                        Log.e(TAG, "setupObserver: " + it.message)
+
+                    }
+                }
+
+            }
+        )
+    }
+
 
 
 }

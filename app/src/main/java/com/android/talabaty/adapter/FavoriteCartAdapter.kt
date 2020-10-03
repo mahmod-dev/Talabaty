@@ -71,7 +71,7 @@ class FavoriteCartAdapter(var activity: Activity, var data: ArrayList<Product>) 
 
             }
 
-            tvCartPrice.text = "${product.price} ${itemView.context.resources.getString(R.string.reial)}"
+            tvCartPrice.text = "${productPrice(product)} ${itemView.context.resources.getString(R.string.reial)}"
 
 
             if (product.image.isNotEmpty()) {
@@ -125,6 +125,10 @@ class FavoriteCartAdapter(var activity: Activity, var data: ArrayList<Product>) 
 
             }
         )
+    }
+    private fun productPrice(product: Product): Int {
+
+        return product.offer_price?.toInt() ?: product.price
     }
 
 

@@ -3,6 +3,7 @@ package com.android.talabaty.retrofit
 import com.android.talabaty.model.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.http.Query
 
 
 interface ApiHelper {
@@ -183,7 +184,13 @@ interface ApiHelper {
 
     suspend fun getClientOrders(): GetClientOrders
 
-    suspend fun getClientOrderDetails( order_id: Int): GetClientOrderDetails
+    suspend fun getClientOrderDetails(order_id: Int): GetClientOrderDetails
+
+    suspend fun clientCancelOrder(
+        order_id: Int, notes: String
+    ): GeneralResponse
+
+    suspend fun searchOffers(text: String): SearchOffer
 
 
 }

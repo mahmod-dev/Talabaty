@@ -242,22 +242,25 @@ Please check messages</string>
     <string name="edit_address">Edit address</string>
     <string name="not_found_address">There are no added addresses</string>
     <string name="add_address_new">Add a new address</string>
-    <string name="choose_from_address_book">اختر من دفتر العناوين</string>
-    <string name="delivery_type">نوع التوصيل</string>
-    <string name="deliver">توصيل</string>
-    <string name="receive">استلام</string>
+    <string name="choose_from_address_book">Choose from address book</string>
+    <string name="delivery_type">Delivery type</string>
+    <string name="deliver">Send</string>
+    <string name="receive">Receive</string>
     <string name="card">card</string>
     <string name="cash">cash</string>
     <string name="choose_payment_method">Choose payment method!</string>
-    <string name="cancel_order">إلغاء الطلب</string>
-    <string name="send_ur_order">أرسلنا طلبك</string>
-    <string name="prepare_ur_order">" تجهيز الطلب"</string>
-    <string name="deliver_ur_order">توصيل الطلب</string>
-    <string name="go_ur_order">تم الانطلاق</string>
-    <string name="deliverd_ur_order">تم الوصيل</string>
-    <string name="receive_ur_order">" تم الإستلام"</string>
-    <string name="cancel_ur_order">طلب ملغى</string>
-    <string name="refuse_ur_order">"طلب مرفوض "</string>
+    <string name="cancel_order">Cancel Order</string>
+    <string name="send_ur_order">We sent your request</string>
+    <string name="prepare_ur_order">Order processing </string>
+    <string name="deliver_ur_order">Delivery of the order</string>
+    <string name="go_ur_order">Was launched</string>
+    <string name="deliverd_ur_order">Delivered</string>
+    <string name="receive_ur_order">Received</string>
+    <string name="cancel_ur_order">Canceled order</string>
+    <string name="refuse_ur_order">Rejected order</string>
+    <string name="cancel_order_question">Do you really want to cancel the order?</string>
+    <string name="back">Back</string>
+    <string name="order">The order</string>
 
 
 </resources>

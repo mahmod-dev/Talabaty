@@ -142,6 +142,14 @@ interface ApiService {
     @GET("getClientOrderDetails")
     suspend fun getClientOrderDetails(@Query("order_id") order_id: Int): GetClientOrderDetails
 
+    @GET("clientCancelOrder")
+    suspend fun clientCancelOrder(
+        @Query("order_id") order_id: Int,
+        @Query("notes") notes: String
+    ): GeneralResponse
+
+    @GET("searchOffers")
+    suspend fun searchOffers(@Query("text") text: String): SearchOffer
     /////////////////////////////////////////////
 
 

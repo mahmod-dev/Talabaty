@@ -436,7 +436,7 @@ data class Digital(
 data class GetOffers(
     val code: Int,
     val message: String,
-    val offers: List<Offer>,
+    val offers: ArrayList<Offer>,
     val status: Boolean
 )
 
@@ -862,7 +862,7 @@ data class TatbeqakumProduct(
     val in_cart: Int,
     val is_favorite: Int,
     val name: String,
-    val offer_price: Any,
+    val offer_price: String?,
     val other_images: List<OtherImage>,
     val price: Int,
     val purchase_counts: Int,
@@ -930,6 +930,14 @@ data class SearchProduct(
     val products: ArrayList<Product>,
     val status: Boolean
 )
+
+data class SearchOffer(
+    val code: Int,
+    val message: String,
+    val offers: ArrayList<Offer>,
+    val status: Boolean
+)
+
 
 data class AddNewAddress(
     val address: Address,
@@ -1055,7 +1063,7 @@ data class OrderDetails(
     val meals_count: Int,
     val mobile: Any,
     val name: Any,
-    val order_products: List<OrderProduct>,
+    val order_products: ArrayList<OrderProduct>,
     val ordered_date: Any,
     val payment_method: String,
     val priority: Any,
@@ -1073,3 +1081,4 @@ data class OrderDetails(
     val vat_amount: Double,
     val vat_percent: Int
 )
+

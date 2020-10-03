@@ -70,7 +70,7 @@ class MainActivity : BaseActivity() {
                     }
                     Status.ERROR -> {
 
-                        getMaterialDialogInstance(it.message!!)
+                       /// getMaterialDialogInstance(it.message!!)
                         Log.e(TAG, "setupObserver: " + it.message)
 
                     }

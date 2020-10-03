@@ -141,7 +141,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <de.hdodenhof.circleimageview.CircleImageView
+                        <ImageView
                             android:id="@+id/img1"
                             android:layout_width="65dp"
                             android:layout_height="65dp"
@@ -274,14 +274,14 @@
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rvOrders"
-                                android:orientation="vertical"
-                                tools:listitem="@layout/item_order_wait"
-                                tools:itemCount="3"
-                                android:nestedScrollingEnabled="false"
-                                android:layout_marginVertical="@dimen/_10sdp"
-
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="@dimen/_10sdp"
+                                android:nestedScrollingEnabled="false"
+                                android:orientation="vertical"
+
+                                tools:itemCount="3"
+                                tools:listitem="@layout/item_order_wait" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -471,14 +471,14 @@
                         android:layout_marginHorizontal="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:background="@drawable/shape_text_vie"
+                        android:clickable="true"
                         android:drawablePadding="@dimen/_5sdp"
+                        android:focusable="true"
                         android:fontFamily="@font/cairo_reqular"
+                        android:foreground="?attr/selectableItemBackground"
                         android:paddingHorizontal="@dimen/_15sdp"
                         android:paddingVertical="@dimen/_5sdp"
                         android:text="#6598743"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:foreground="?attr/selectableItemBackground"
                         android:textColor="@color/colorPrimary"
                         app:drawableStartCompat="@drawable/ic_waiting_share" />
 
@@ -494,18 +494,18 @@
                     android:orientation="horizontal">
 
                     <Button
-                        style="?android:attr/buttonBarButtonStyle"
                         android:id="@+id/btnTrackWaiting"
+                        style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_marginHorizontal="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:background="@drawable/ripple_square_btn"
+                        android:clickable="true"
                         android:drawablePadding="@dimen/_5sdp"
+                        android:focusable="true"
                         android:fontFamily="@font/cairo_reqular"
                         android:gravity="center"
-                        android:clickable="true"
-                        android:focusable="true"
                         android:paddingHorizontal="@dimen/_15sdp"
                         android:paddingVertical="@dimen/_5sdp"
                         android:text="تتبع المندوب"
@@ -520,10 +520,10 @@
                         android:layout_marginHorizontal="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:background="@drawable/shape_text_vie"
-                        android:drawablePadding="@dimen/_5sdp"
-                        android:fontFamily="@font/cairo_reqular"
                         android:clickable="true"
+                        android:drawablePadding="@dimen/_5sdp"
                         android:focusable="true"
+                        android:fontFamily="@font/cairo_reqular"
                         android:gravity="center"
                         android:paddingHorizontal="@dimen/_15sdp"
                         android:paddingVertical="@dimen/_5sdp"

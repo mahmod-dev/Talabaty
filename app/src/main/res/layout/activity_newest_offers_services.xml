@@ -29,6 +29,7 @@
             android:hint="@string/search_in_offer_service"
             android:importantForAutofill="no"
             android:inputType="text"
+            android:imeOptions="actionSearch"
             android:textSize="@dimen/_12ssp"
             android:textColorHint="@color/colorGrey" />
 

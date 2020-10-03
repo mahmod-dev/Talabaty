@@ -326,4 +326,12 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
     override suspend fun getClientOrderDetails(order_id: Int): GetClientOrderDetails {
         return apiService.getClientOrderDetails(order_id)
     }
+
+    override suspend fun clientCancelOrder(order_id: Int, notes: String): GeneralResponse {
+        return apiService.clientCancelOrder(order_id,notes)
+    }
+
+    override suspend fun searchOffers(text: String): SearchOffer {
+        return apiService.searchOffers(text)
+    }
 }

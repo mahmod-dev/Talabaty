@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.talabaty.R
+import com.android.talabaty.model.Product
 import com.android.talabaty.model.TatbeqakumProduct
 import com.android.talabaty.util.Helper.setUrlImage
 import com.android.talabaty.util.MyPreferences
@@ -58,7 +59,7 @@ class TatbeqakumProductsAdapter(
 
         fun bind(product: TatbeqakumProduct) {
             tvName.text = product.name
-            tvPrice.text = "${product.price} ${activity.getString(R.string.rs)} "
+            tvPrice.text = "${productPrice(product)} ${activity.getString(R.string.rs)} "
 
 
             if (product.image.isNotEmpty()) {
@@ -75,5 +76,8 @@ class TatbeqakumProductsAdapter(
 
     }
 
+    private fun productPrice(product: TatbeqakumProduct): Int {
 
+        return product.offer_price?.toInt() ?: product.price
+    }
 }

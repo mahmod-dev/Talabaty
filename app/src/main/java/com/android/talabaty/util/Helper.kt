@@ -130,7 +130,7 @@ object Helper {
     }
 
 
-    fun selectImageDialog(activity: Activity,isCrop: Boolean = false) {
+    fun selectImageDialog(activity: Activity, isCrop: Boolean = false) {
         val options =
             arrayOf<CharSequence>(
                 activity.resources.getString(R.string.take_photo),
@@ -148,7 +148,7 @@ object Helper {
         title.setTextColor(Color.WHITE)
 
         builder.setCustomTitle(title)
-        if (isCrop){
+        if (isCrop) {
             builder.setItems(options) { dialog, item ->
                 if (options[item] == activity.resources.getString(R.string.take_photo)) {
                     ImagePicker.with(activity)
@@ -163,7 +163,7 @@ object Helper {
                         .start()
                 }
             }
-        }else{
+        } else {
             builder.setItems(options) { dialog, item ->
                 if (options[item] == activity.resources.getString(R.string.take_photo)) {
                     ImagePicker.with(activity)
@@ -189,7 +189,12 @@ object Helper {
     }
 
 
-    fun dialogConfirm(activity: Activity, message: String) {
+    fun dialogConfirm(
+        activity: Activity,
+        message: String,
+        btnYes: String = activity.getString(R.string.delete),
+        btnNo: String= activity.getString(R.string.cancel)
+    ) {
 
         val builder = MaterialDialog(activity)
 
@@ -197,7 +202,8 @@ object Helper {
 
         // set initial preferences
         builder.findViewById<TextView>(R.id.tvDelete).text = message
-
+        builder.findViewById<Button>(R.id.btnYes).text = btnYes
+        builder.findViewById<Button>(R.id.btnNo).text = btnNo
         builder.findViewById<Button>(R.id.btnYes).setOnClickListener {
             onItemClick?.invoke()
             builder.dismiss()

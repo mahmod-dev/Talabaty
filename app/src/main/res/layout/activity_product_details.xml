@@ -272,6 +272,7 @@
                         android:layout_marginTop="@dimen/_5sdp"
                         tools:listitem="@layout/item_like"
                         android:orientation="horizontal"
+                        tools:itemCount="1"
                         android:nestedScrollingEnabled="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>

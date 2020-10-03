@@ -149,6 +149,7 @@ class ProductDetailsActivity : AppCompatActivity() {
                                     "${users.products[0].price} ${getString(R.string.rs)}"
                                 tvPriceOriginal.visibility = View.GONE
                             } else {
+                                tvPriceOriginal.visibility = View.VISIBLE
                                 tvPriceOffer.text =
                                     "${users.products[0].offer_price} ${getString(R.string.rs)}"
                                 tvPriceOriginal.text =

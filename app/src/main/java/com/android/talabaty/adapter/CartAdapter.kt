@@ -1,5 +1,6 @@
 package com.android.talabaty.adapter
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.util.Log
 import android.view.LayoutInflater
@@ -30,9 +31,11 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
 
     RecyclerView.Adapter<CartAdapter.MyViewHolder>() {
     val TAG = "CartAdapter"
-    var onItemClick: ((Cart,Int )-> Unit)? = null
+    var onItemClick: ((Cart, Int) -> Unit)? = null
+    var onChangeClick: ((Cart, Int) -> Unit)? = null
 
     private lateinit var viewModel: CartViewModel
+
     init {
         MyPreferences.context = activity
         initViewModel()
@@ -48,7 +51,11 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
 
     override fun onBindViewHolder(myViewHolder: MyViewHolder, i: Int) {
         myViewHolder.bind(data[i].product!!, i)
-        setupObserverChangeQuantity(myViewHolder.tvQuantity,myViewHolder.tvCartPrice,data[i].product?.price)
+        setupObserverChangeQuantity(
+            myViewHolder.tvQuantity,
+            myViewHolder.tvCartPrice,
+            data[i].product?.price
+        )
         setupObserverAddToFav()
         setupObserverDeleteFav()
 
@@ -69,13 +76,15 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
         var imgAdd: ImageView = itemView.imgAdd
         var rlDelete: RelativeLayout = itemView.rlDelete
 
+        @SuppressLint("SetTextI18n")
         fun bind(product: Product, position: Int) {
 
             tvQuantity.text = data[position].quantity
-            MyPreferences.setInt("count",data[position].quantity.toInt())
+            MyPreferences.setInt("count", data[position].quantity.toInt())
 
             tvCartName.text = product.name
-            tvCartPrice.text = "${(product.price * MyPreferences.getInt("count"))} ${activity.getString(R.string.rs)}"
+            tvCartPrice.text =
+                "${((productPrice(product) * MyPreferences.getInt("count")))} ${activity.getString(R.string.rs)}"
 
             tvCartDetails.text = product.description
             if (tvCartDetails.text.length > 50) {
@@ -83,7 +92,7 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                 tvCartDetails.text = " $txt..."
             }
 
-            "${product.price} ${itemView.context.resources.getString(R.string.reial)}"
+            "${productPrice(product)} ${itemView.context.resources.getString(R.string.reial)}"
 
 
             if (product.image.isNotEmpty()) {
@@ -93,13 +102,18 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
 
 
             rlDelete.setOnClickListener {
-                onItemClick?.invoke(data[adapterPosition],position)
+                onItemClick?.invoke(data[adapterPosition], position)
             }
 
             imgAdd.setOnClickListener {
-                  MyPreferences.setInt("count",MyPreferences.getInt("count")+1)
+                MyPreferences.setInt("count", MyPreferences.getInt("count") + 1)
 
-                tvCartPrice.text = "${(product.price * MyPreferences.getInt("count"))} ${activity.getString(R.string.rs)}"
+                tvCartPrice.text =
+                    "${(productPrice(product) * MyPreferences.getInt("count"))} ${
+                        activity.getString(
+                            R.string.rs
+                        )
+                    }"
                 viewModel.changeQuantity(product.id, "increase")
                 tvQuantity.text = MyPreferences.getInt("count").toString()
 
@@ -113,16 +127,20 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                         activity.getString(R.string.minimum_order),
                         Toast.LENGTH_SHORT
                     ).show()
-                    MyPreferences.setInt("count",1)
+                    MyPreferences.setInt("count", 1)
                     tvQuantity.text = MyPreferences.getInt("count").toString()
-                    tvCartPrice.text = "${product.price} ${activity.getString(R.string.rs)}"
+                    tvCartPrice.text = "${productPrice(product)} ${activity.getString(R.string.rs)}"
 
-                }else{
-                    MyPreferences.setInt("count",MyPreferences.getInt("count")-1)
+                } else {
+                    MyPreferences.setInt("count", MyPreferences.getInt("count") - 1)
 
                     tvQuantity.text = MyPreferences.getInt("count").toString()
                     tvCartPrice.text =
-                        "${(product.price * MyPreferences.getInt("count"))} ${activity.getString(R.string.rs)}"
+                        "${(productPrice(product) * MyPreferences.getInt("count"))} ${
+                            activity.getString(
+                                R.string.rs
+                            )
+                        }"
 
 
                     viewModel.changeQuantity(product.id, "decrease")
@@ -162,14 +180,15 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
         ).get(CartViewModel::class.java)
     }
 
-    private fun setupObserverChangeQuantity(tvQuantity:TextView,tvPrice:TextView,price:Int?) {
+    private fun setupObserverChangeQuantity(tvQuantity: TextView, tvPrice: TextView, price: Int?) {
 
         viewModel.getChangeQuantity().observe(activity as FragmentActivity,
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
                         it.data?.let { users ->
-                           // Toast.makeText(activity, users.message, Toast.LENGTH_SHORT).show()
+                            // Toast.makeText(activity, users.message, Toast.LENGTH_SHORT).show()
+
                         }
                     }
                     Status.LOADING -> {
@@ -188,7 +207,6 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
             }
         )
     }
-
 
 
     private fun setupObserverAddToFav() {
@@ -237,7 +255,7 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
                     }
                     Status.ERROR -> {
                         // progressBar.visibility = View.GONE
-                       // Helper.showFilterDialog(activity, it.message!!).show()
+                        // Helper.showFilterDialog(activity, it.message!!).show()
                         activity.getMaterialDialogInstance(it.message!!)
 
                         Log.e(TAG, "setupObserver: " + it.message)
@@ -247,6 +265,11 @@ class CartAdapter(var activity: Activity, var data: ArrayList<Cart>) :
 
             }
         )
+    }
+
+    private fun productPrice(product: Product): Int {
+
+        return (product.offer_price?.toInt()) ?: product.price
     }
 
 }

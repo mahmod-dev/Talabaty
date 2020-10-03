@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -43,6 +44,7 @@ class OrdersFragment : Fragment() {
         initViewModel()
         viewModel.clientOrders()
         setupObserver()
+        setupObserverCancelOrder()
         swipeToRefresh()
         return view
     }
@@ -62,20 +64,20 @@ class OrdersFragment : Fragment() {
                     Status.SUCCESS -> {
                         swipeRefresh?.isRefreshing = false
 
-                       // progressBar?.visibility = View.GONE
+                        // progressBar?.visibility = View.GONE
                         it.data?.let { users ->
                             initRecycleView(users.client_orders)
                         }
                     }
                     Status.LOADING -> {
                         swipeRefresh?.isRefreshing = true
-                      //  progressBar?.visibility = View.VISIBLE
+                        //  progressBar?.visibility = View.VISIBLE
 
                     }
                     Status.ERROR -> {
                         swipeRefresh?.isRefreshing = false
 
-                       // progressBar?.visibility = View.GONE
+                        // progressBar?.visibility = View.GONE
                         activity?.getMaterialDialogInstance(it.message!!)
 
                     }
@@ -85,11 +87,34 @@ class OrdersFragment : Fragment() {
         )
     }
 
+    private fun setupObserverCancelOrder() {
+        viewModel.getCancelOrder().observe(this,
+            Observer {
+                when (it.status) {
+                    Status.SUCCESS -> {
+
+                        progressBar?.visibility = View.GONE
+                        it.data?.let { users ->
+                            Toast.makeText(activity, users.message, Toast.LENGTH_SHORT).show()
+                            viewModel.clientOrders()
+                        }
+                    }
+                    Status.LOADING -> {
+                        progressBar?.visibility = View.VISIBLE
+                    }
+                    Status.ERROR -> {
+                        progressBar?.visibility = View.GONE
+                        activity?.getMaterialDialogInstance(it.message!!)
+                    }
+                }
+            }
+        )
+    }
+
     private fun swipeToRefresh() {
         swipeRefresh?.setOnRefreshListener {
             viewModel.clientOrders()
         }
-
     }
 
     private fun initRecycleView(orders: ArrayList<ClientOrder>) {
@@ -99,8 +124,16 @@ class OrdersFragment : Fragment() {
         rvOrders?.adapter = adapter
         rvOrders?.setHasFixedSize(true)
 
-        adapter!!.onItemClick = { cart, position ->
-
+        adapter!!.onItemClick = { order, position ->
+            Helper.dialogConfirm(
+                activity!!,
+                getString(R.string.cancel_order_question),
+                getString(R.string.confirm),
+                getString(R.string.back)
+            )
+            Helper.onItemClick = {
+                viewModel.cancelOrder(order.id)
+            }
         }
     }
 

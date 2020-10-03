@@ -240,13 +240,16 @@
     <string name="choose_payment_method">اختر طريقة الدفع!</string>
     <string name="cancel_order">إلغاء الطلب</string>
     <string name="send_ur_order">أرسلنا طلبك</string>
-    <string name="prepare_ur_order">" تجهيز الطلب"</string>
+    <string name="prepare_ur_order">تجهيز الطلب</string>
     <string name="deliver_ur_order">توصيل الطلب</string>
     <string name="go_ur_order">تم الانطلاق</string>
     <string name="deliverd_ur_order">تم الوصيل</string>
-    <string name="receive_ur_order">" تم الإستلام"</string>
+    <string name="receive_ur_order">تم الإستلام</string>
     <string name="cancel_ur_order">طلب ملغى</string>
-    <string name="refuse_ur_order">"طلب مرفوض "</string>
+    <string name="refuse_ur_order">طلب مرفوض</string>
+    <string name="cancel_order_question">هل تريد فعلا إلغاء الطلبية؟</string>
+    <string name="back">رجوع</string>
+    <string name="order">الطلب</string>
 
 
 </resources>

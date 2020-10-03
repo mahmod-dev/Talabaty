@@ -18,6 +18,7 @@ class OrdersViewModel(private val apiHelper: ApiHelper?, var context: Context) :
     private val TAG = "OrdersViewModel"
     private val clientOrders = MutableLiveData<Resource<GetClientOrders>>()
     private val clientOrderDetails = MutableLiveData<Resource<GetClientOrderDetails>>()
+    private val cancelOrder = MutableLiveData<Resource<GeneralResponse>>()
     private val storesFreeDelivery = MutableLiveData<Resource<StoresFreeDelivery>>()
     private val newOrder = MutableLiveData<Resource<CreateNewOrder>>()
     private val otherServices = MutableLiveData<Resource<RequestOtherService>>()
@@ -110,6 +111,50 @@ class OrdersViewModel(private val apiHelper: ApiHelper?, var context: Context) :
                     )
                 }
                 Log.e(TAG, "clientOrderDetails: ${e.message}")
+            }
+        }
+    }
+
+    fun cancelOrder(orderId: Int, notice: String = "") {
+        viewModelScope.launch {
+
+            cancelOrder.postValue(Resource.loading(null))
+            try {
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.clientCancelOrder(orderId, notice)
+
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        cancelOrder.postValue(Resource.success(usersFromApi))
+                    else {
+                        cancelOrder.postValue(Resource.error(usersFromApi.message, null))
+
+                    }
+                }
+
+            } catch (e: TimeoutCancellationException) {
+                cancelOrder.postValue(
+                    Resource.error(
+                        context.getString(R.string.timeout_error),
+                        null
+                    )
+                )
+            } catch (e: Exception) {
+                if (e is IOException) {
+                    cancelOrder.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
+                } else {
+                    cancelOrder.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
+                }
+                Log.e(TAG, "cancelOrder: ${e.message}")
             }
         }
     }
@@ -429,4 +474,7 @@ class OrdersViewModel(private val apiHelper: ApiHelper?, var context: Context) :
         return services
     }
 
+    fun getCancelOrder(): LiveData<Resource<GeneralResponse>> {
+        return cancelOrder
+    }
 }

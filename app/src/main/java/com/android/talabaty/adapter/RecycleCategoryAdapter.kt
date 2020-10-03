@@ -93,7 +93,7 @@ class RecycleCategoryAdapter(var activity: Activity, var data: ArrayList<Product
 
             }
             tvPriceProduct.text =
-                "${product.price} ${itemView.context.resources.getString(R.string.reial)}"
+                "${productPrice(product)} ${itemView.context.resources.getString(R.string.reial)}"
 
 
 
@@ -187,5 +187,8 @@ class RecycleCategoryAdapter(var activity: Activity, var data: ArrayList<Product
         )
     }
 
+    private fun productPrice(product: Product): Int {
 
+        return (product.offer_price?.toInt()) ?: product.price
+    }
 }

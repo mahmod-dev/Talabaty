@@ -20,6 +20,7 @@ class AllMainViewModel(private val apiHelper: ApiHelper?, var context: Context) 
     private val adds = MutableLiveData<Resource<Ads>>()
     private val offers = MutableLiveData<Resource<GetOffers>>()
     private val searchProducts = MutableLiveData<Resource<SearchProduct>>()
+    private val searchOffers = MutableLiveData<Resource<SearchOffer>>()
 
 
     fun homePageCategories() {
@@ -203,6 +204,52 @@ class AllMainViewModel(private val apiHelper: ApiHelper?, var context: Context) 
         }
     }
 
+    fun searchOffers(text:String) {
+        viewModelScope.launch {
+
+            searchOffers.postValue(Resource.loading(null))
+            try {
+                withTimeout(20_000) {
+                    val usersFromApi = apiHelper?.searchOffers(text)
+                    if (usersFromApi!!.status && usersFromApi.code == 200)
+                        searchOffers.postValue(Resource.success(usersFromApi))
+                    else {
+                        searchOffers.postValue(Resource.error(usersFromApi.message, null))
+
+                    }
+                }
+            } catch (e: TimeoutCancellationException) {
+                searchOffers.postValue(Resource.error(context.getString(R.string.timeout_error), null))
+            } catch (e: Exception) {
+                if (e is IOException) {
+                    searchOffers.postValue(
+                        Resource.error(
+                            context.getString(R.string.network_error),
+                            null
+                        )
+                    )
+
+                } else if (e is TimeoutCancellationException) {
+                    searchOffers.postValue(
+                        Resource.error(
+                            context.getString(R.string.timeout_error),
+                            null
+                        )
+                    )
+
+                } else {
+                    searchOffers.postValue(
+                        Resource.error(
+                            context.getString(R.string.something_went_error),
+                            null
+                        )
+                    )
+                }
+                Log.e(TAG, "searchOffers: ${e.message}")
+            }
+        }
+    }
+
 
 
     fun getHomePageCategories(): LiveData<Resource<HomePageCategories>> {
@@ -220,6 +267,10 @@ class AllMainViewModel(private val apiHelper: ApiHelper?, var context: Context) 
 
     fun getSearchProducts(): LiveData<Resource<SearchProduct>> {
         return searchProducts
+    }
+
+    fun getSearchOffers(): LiveData<Resource<SearchOffer>> {
+        return searchOffers
     }
 
 }
