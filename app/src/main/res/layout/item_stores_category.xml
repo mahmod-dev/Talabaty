@@ -8,8 +8,6 @@
     android:orientation="vertical">
 
 
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvStore"
         android:layout_width="match_parent"

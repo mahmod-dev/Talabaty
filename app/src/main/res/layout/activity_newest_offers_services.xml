@@ -9,7 +9,7 @@
     tools:context=".NewestOffersServicesActivity">
 
 
-    <include layout="@layout/toolbar_location"/>
+    <include layout="@layout/toolbar_location" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -62,6 +62,7 @@
         android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvNewestOffers"
             android:layout_width="match_parent"

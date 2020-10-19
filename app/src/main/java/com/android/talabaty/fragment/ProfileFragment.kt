@@ -50,6 +50,7 @@ class ProfileFragment : Fragment() {
     var rvCoupons: RelativeLayout? = null
     var rlAddress: RelativeLayout? = null
     var rlWallet: RelativeLayout? = null
+    var rlSettings: RelativeLayout? = null
     var swipeRefresh: SwipeRefreshLayout? = null
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -75,10 +76,16 @@ class ProfileFragment : Fragment() {
         rlWallet = root.findViewById(R.id.rlWallet)
         rlAddress = root.findViewById(R.id.rlAddress)
         tvAddBook = root.findViewById(R.id.tvAddBook)
+        rlSettings = root.findViewById(R.id.rlSettings)
 
         MyPreferences.context = context
         initViewModel()
         viewModel.profile()
+
+        rlSettings?.setOnClickListener {
+            startActivity(Intent(activity,SettingsActivity::class.java))
+
+        }
 
         rlWallet?.setOnClickListener {
             startActivity(Intent(activity,ChargeActivity::class.java))

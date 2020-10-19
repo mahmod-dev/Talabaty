@@ -34,6 +34,17 @@ object MyPreferences {
         editor.apply()
     }
 
+    fun String.prefSave(key: String?) {
+        val sharedPref = context!!.getSharedPreferences(
+            PREFS_NAME,
+            Context.MODE_PRIVATE
+        )
+        val editor = sharedPref.edit()
+        editor.putString(key, this)
+        editor.apply()
+    }
+
+
     fun getStr(key: String?): String? {
         val prefs = context!!.getSharedPreferences(
             PREFS_NAME,
@@ -85,4 +96,6 @@ object MyPreferences {
         )
         return prefs.getLong(key, 0)
     }
+
+
 }

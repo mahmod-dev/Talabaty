@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context=".MyCardActivity">
 
-    <include layout="@layout/title_toolbar"/>
+    <include layout="@layout/title_toolbar" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
@@ -18,7 +18,7 @@
             android:id="@+id/rvCards"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_edit_payment_method"/>
+            tools:listitem="@layout/item_edit_payment_method" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

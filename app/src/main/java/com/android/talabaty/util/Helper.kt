@@ -5,10 +5,13 @@ import android.content.Context
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.location.Address
+import android.location.Geocoder
 import android.net.Uri
 import android.provider.OpenableColumns
 import android.text.format.DateFormat
 import android.util.Base64
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -193,7 +196,7 @@ object Helper {
         activity: Activity,
         message: String,
         btnYes: String = activity.getString(R.string.delete),
-        btnNo: String= activity.getString(R.string.cancel)
+        btnNo: String = activity.getString(R.string.cancel)
     ) {
 
         val builder = MaterialDialog(activity)
@@ -313,5 +316,25 @@ object Helper {
             .into(this)
 
     }
+
+    public fun getCityName(context: Context, lat: Double, lng: Double): String {
+        val geoCoder = Geocoder(context, Locale.getDefault())
+        var addresses: List<Address>? = null
+
+        var cityName = ""
+        try {
+            addresses = geoCoder.getFromLocation(
+                lat,
+                lng,
+                1
+            )
+            cityName = addresses[0].countryName
+            Log.e("cityName", cityName)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return cityName
+    }
+
 
 }

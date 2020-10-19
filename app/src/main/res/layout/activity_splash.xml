@@ -11,6 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_gravity="center"
             android:layout_width="wrap_content"
@@ -21,8 +22,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_splash_icon">
-            </ImageView>
+                android:src="@drawable/ic_splash_icon"></ImageView>
 
             <TextView
                 android:layout_marginTop="10dp"
@@ -32,8 +32,7 @@
                 android:fontFamily="@font/cairo_bold"
                 android:textColor="@color/colorWhite"
                 android:textSize="25sp"
-                android:text="@string/tatbeqakum_ar">
-            </TextView>
+                android:text="@string/tatbeqakum_ar"></TextView>
 
             <TextView
 
@@ -43,8 +42,7 @@
                 android:fontFamily="@font/cairo_bold"
                 android:textColor="@color/colorWhite"
                 android:textSize="25sp"
-                android:text="@string/tatbeqakum_en">
-            </TextView>
+                android:text="@string/tatbeqakum_en"></TextView>
         </LinearLayout>
 
         <ProgressBar
@@ -53,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/_50sdp"/>
+            android:layout_marginBottom="@dimen/_50sdp" />
 
     </RelativeLayout>
 

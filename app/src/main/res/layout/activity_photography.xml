@@ -20,7 +20,7 @@
             android:orientation="vertical">
 
 
-            <include layout="@layout/toolbar"/>
+            <include layout="@layout/toolbar" />
 
             <LinearLayout
                 android:orientation="vertical"
@@ -35,8 +35,7 @@
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/cairo_reqular"
                     android:textColorHint="@color/colorBlack"
-                    android:hint="@string/ur_name">
-                </EditText>
+                    android:hint="@string/ur_name"></EditText>
 
                 <EditText
                     android:textSize="@dimen/_10ssp"
@@ -46,8 +45,7 @@
                     android:fontFamily="@font/cairo_reqular"
                     android:textColorHint="@color/colorBlack"
 
-                    android:hint="@string/city">
-                </EditText>
+                    android:hint="@string/city"></EditText>
 
                 <EditText
                     android:textSize="@dimen/_10ssp"
@@ -57,8 +55,7 @@
                     android:fontFamily="@font/cairo_reqular"
                     android:textColorHint="@color/colorBlack"
 
-                    android:hint="@string/room">
-                </EditText>
+                    android:hint="@string/room"></EditText>
 
                 <EditText
                     android:textSize="@dimen/_10ssp"
@@ -68,8 +65,7 @@
                     android:fontFamily="@font/cairo_reqular"
                     android:textColorHint="@color/colorBlack"
 
-                    android:hint="@string/male_female">
-                </EditText>
+                    android:hint="@string/male_female"></EditText>
 
                 <EditText
                     android:textSize="@dimen/_10ssp"
@@ -81,8 +77,7 @@
                     android:textColorHint="@color/colorBlack"
 
                     android:paddingEnd="@dimen/_10sdp"
-                    android:drawableEnd="@drawable/ic_triangle_arrow">
-                </EditText>
+                    android:drawableEnd="@drawable/ic_triangle_arrow"></EditText>
 
                 <EditText
                     android:textSize="@dimen/_10ssp"
@@ -92,8 +87,7 @@
                     android:fontFamily="@font/cairo_reqular"
                     android:textColorHint="@color/colorBlack"
 
-                    android:hint="@string/come_time">
-                </EditText>
+                    android:hint="@string/come_time"></EditText>
 
                 <EditText
                     android:textSize="@dimen/_10ssp"
@@ -103,8 +97,7 @@
                     android:fontFamily="@font/cairo_reqular"
                     android:textColorHint="@color/colorBlack"
 
-                    android:hint="@string/contact_num">
-                </EditText>
+                    android:hint="@string/contact_num"></EditText>
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
@@ -124,8 +117,7 @@
                     android:backgroundTint="@android:color/transparent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:lines="3">
-                </EditText>
+                    android:lines="3"></EditText>
             </androidx.cardview.widget.CardView>
 
 
@@ -142,8 +134,7 @@
                 android:fontFamily="@font/cairo_bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_50sdp">
-            </Button>
+                android:layout_marginHorizontal="@dimen/_50sdp"></Button>
 
         </LinearLayout>
     </ScrollView>

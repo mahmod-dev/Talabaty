@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".AllCouponsActivity">
+
     <include layout="@layout/title_toolbar" />
 
     <TextView
@@ -15,7 +16,7 @@
         android:visibility="gone"
         android:fontFamily="@font/cairo_reqular"
         android:layout_marginTop="@dimen/_20sdp"
-        android:text="@string/not_found_coupons"/>
+        android:text="@string/not_found_coupons" />
 
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -29,9 +30,8 @@
             android:layout_height="wrap_content"
             android:visibility="visible"
             tools:listitem="@layout/item_coupon"
-            android:layout_marginTop="@dimen/_10sdp"/>
+            android:layout_marginTop="@dimen/_10sdp" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 
 
 </LinearLayout>

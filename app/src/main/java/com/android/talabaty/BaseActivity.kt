@@ -1,6 +1,8 @@
 package com.android.talabaty
 
+import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -11,9 +13,12 @@ import com.android.talabaty.fragment.*
 import com.android.talabaty.model.BottomNavigationHandler
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
+import com.android.talabaty.util.Helper
+import com.android.talabaty.util.LocationHelper
 import com.android.talabaty.util.MyPreferences
+import com.android.talabaty.util.MyPreferences.prefSave
 import com.android.talabaty.viewModel.ProfileViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.mahmoud.todoapp.util.LocationManager
 import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.toolbar_location_cart.*
 
@@ -22,13 +27,16 @@ open class BaseActivity : AppCompatActivity() {
     open val TAG = "BaseActivity"
     private lateinit var viewModel: ProfileViewModel
     var a = 1
-
+    private lateinit var locationHelper: LocationHelper
+    private var lng: Double? = 0.0
+    private var lat: Double? = 0.0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
         // window.statusBarColor = ContextCompat.getColor(this, R.color.colorWhite)
         MyPreferences.context = applicationContext
-        initViewModel()
+        initGpsLocation()
+       // initViewModel()
         //  handleBottomNav()
         supportFragmentManager.beginTransaction().replace(
             R.id.fragmentContainer,
@@ -37,9 +45,19 @@ open class BaseActivity : AppCompatActivity() {
         handleItem(0)
 
         handleNavigation()
-        viewModel.userDetails()
 
-        setupObserver()
+        Helper.getCityName(
+            this,
+            lat!!.toDouble(),
+            lng!!.toDouble()
+        ).prefSave("city")
+
+        tvHomeLocation.text = MyPreferences.getStr("city")
+
+
+//        viewModel.userDetails()
+//
+//        setupObserver()
     }
 
 /*
@@ -137,8 +155,7 @@ open class BaseActivity : AppCompatActivity() {
                     Status.SUCCESS -> {
                         it.data?.let { users ->
                             if (users.city.isNotEmpty()) {
-                                tvHomeLocation.text = users.city
-                                MyPreferences.setStr("city", users.city)
+
                             } else
                                 tvHomeLocation.text = getString(R.string.unknown)
 
@@ -161,7 +178,7 @@ open class BaseActivity : AppCompatActivity() {
         var selectedFragment: Fragment?
 
         linHome.setOnClickListener {
-            if (a!=1){
+            if (a != 1) {
                 handleItem(0)
                 selectedFragment = MainFragment()
                 supportFragmentManager.beginTransaction().replace(
@@ -174,7 +191,7 @@ open class BaseActivity : AppCompatActivity() {
 
         linOrders.setOnClickListener {
 
-            if (a!=2){
+            if (a != 2) {
                 handleItem(1)
                 selectedFragment = OrdersFragment()
                 supportFragmentManager.beginTransaction().replace(
@@ -187,7 +204,7 @@ open class BaseActivity : AppCompatActivity() {
 
         linCat.setOnClickListener {
 
-            if (a!=3){
+            if (a != 3) {
                 handleItem(2)
                 selectedFragment = CategoriesFragment()
                 supportFragmentManager.beginTransaction().replace(
@@ -200,7 +217,7 @@ open class BaseActivity : AppCompatActivity() {
 
         linChat.setOnClickListener {
 
-            if (a!=4){
+            if (a != 4) {
                 handleItem(3)
                 selectedFragment = ChatFragment()
                 supportFragmentManager.beginTransaction().replace(
@@ -213,7 +230,7 @@ open class BaseActivity : AppCompatActivity() {
 
         linProfile.setOnClickListener {
 
-            if (a!=5){
+            if (a != 5) {
                 handleItem(4)
                 selectedFragment = ProfileFragment()
                 supportFragmentManager.beginTransaction().replace(
@@ -314,5 +331,50 @@ open class BaseActivity : AppCompatActivity() {
 
 
     }
+
+    private fun initGpsLocation() {
+        locationHelper = LocationHelper(this, object : LocationManager {
+
+            override fun onLocationChanged(location: Location?) {
+
+                lat = location?.latitude
+                lng = location?.longitude
+                Log.e(TAG, "onLocationChanged latitude: ${location?.latitude}")
+                Log.e(TAG, "onLocationChanged longitude: ${location?.longitude}")
+
+
+            }
+
+            override fun getLastKnownLocation(location: Location?) {
+
+                Log.e(TAG, "getLastKnownLocation latitude: ${location?.latitude}")
+                Log.e(TAG, "getLastKnownLocation longitude: ${location?.longitude}")
+                lat = location?.latitude
+                lng = location?.longitude
+
+
+            }
+
+        })
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        locationHelper.stopLocationUpdates()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (locationHelper.checkLocationPermissions()) {
+            if (locationHelper.checkMapServices()) {
+                locationHelper.startLocationUpdates()
+
+            }
+        }
+    }
+
 
 }

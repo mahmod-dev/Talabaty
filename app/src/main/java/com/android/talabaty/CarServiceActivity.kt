@@ -32,6 +32,7 @@ class CarServiceActivity : AppCompatActivity() {
     val TAG = "CarServiceActivity"
     private lateinit var viewModel: OrdersViewModel
     var car: ArrayList<SpinnerObj>? = null
+    var address: String? = null
     var type = 0
     var lng = 0L
     var lat = 0L
@@ -197,16 +198,19 @@ class CarServiceActivity : AppCompatActivity() {
         lng = MyPreferences.getLong("long")
         lat = MyPreferences.getLong("lat")
         type = MyPreferences.getInt("type")
+        address = MyPreferences.getStr("addressName")
         Log.e(TAG, "onStart: ")
 
         if (type == 1) {
-            tvSrc.text = "$lat, $lng"
+            //tvSrc.text = "$lat, $lng"
+            tvSrc.text = address
             latSrc = lat
             lngSrc = lng
         }
 
         if (type == 2) {
-            tvDist.text = "$lat, $lng"
+           // tvDist.text = "$lat, $lng"
+            tvDist.text = address
             latDist = lat
             lngDist = lng
         }

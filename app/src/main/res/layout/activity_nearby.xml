@@ -7,7 +7,8 @@
     android:orientation="vertical"
     tools:context=".NearbyActivity">
 
-    <include layout="@layout/title_toolbar"/>
+    <include layout="@layout/title_toolbar" />
+
     <TextView
         android:id="@+id/tvNotFound"
         android:layout_width="wrap_content"
@@ -16,7 +17,7 @@
         android:visibility="gone"
         android:text="@string/not_found_nearby"
         android:layout_marginTop="@dimen/_20sdp"
-        android:fontFamily="@font/cairo_reqular"/>
+        android:fontFamily="@font/cairo_reqular" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
@@ -28,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_10sdp"
-            tools:listitem="@layout/item_home_near"/>
+            tools:listitem="@layout/item_home_near" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

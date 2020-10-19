@@ -33,6 +33,7 @@ class OrderServiceActivity : AppCompatActivity() {
     private var date: Date? = null
     private var time: Date? = null
     private var dateTime: String? = null
+    var address: String? = null
     var type = 0
     var lng = 0L
     var lat = 0L
@@ -127,15 +128,16 @@ class OrderServiceActivity : AppCompatActivity() {
         lng = MyPreferences.getLong("long")
         lat = MyPreferences.getLong("lat")
         type = MyPreferences.getInt("type")
+        address = MyPreferences.getStr("addressName")
 
         if (type == 1) {
-            tvPlaceOrderSrc.text = "$lat, $lng"
+            tvPlaceOrderSrc.text = address
             latSrc = lat
             lngSrc = lng
         }
 
         if (type == 2) {
-            tvPlaceOrderDist.text = "$lat, $lng"
+            tvPlaceOrderDist.text = address
             latDist = lat
             lngDist = lng
         }

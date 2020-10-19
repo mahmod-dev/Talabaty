@@ -11,8 +11,9 @@
         android:layout_height="match_parent" />
 
 
-    <include layout="@layout/toolbar_location"
-        android:id="@+id/above_toolbar"/>
+    <include
+        layout="@layout/toolbar_location"
+        android:id="@+id/above_toolbar" />
 
     <androidx.appcompat.widget.SearchView
         android:layout_below="@+id/above_toolbar"
@@ -26,8 +27,7 @@
         android:theme="@style/MySearch"
         app:iconifiedByDefault="false"
         app:queryHint="البحث عن متجر أو مطعم"
-        app:searchIcon="@drawable/ic_icon_search">
-    </androidx.appcompat.widget.SearchView>
+        app:searchIcon="@drawable/ic_icon_search"></androidx.appcompat.widget.SearchView>
 
     <Button
         android:layout_alignParentBottom="true"
@@ -42,8 +42,7 @@
         android:fontFamily="@font/cairo_bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_50sdp">
-    </Button>
+        android:layout_marginHorizontal="@dimen/_50sdp"></Button>
 
 </RelativeLayout>
 

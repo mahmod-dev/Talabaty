@@ -8,6 +8,7 @@
         <item name="android:statusBarColor">@color/colorWhite</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
+
     <style name="MySearch" parent="Theme.AppCompat.Light">
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorSecondary">#AFAFAF</item>

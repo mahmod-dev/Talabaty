@@ -42,7 +42,6 @@
             android:text="لقد تم طلبك بنجاح" />
 
 
-
         <Button
             android:id="@+id/btn_electronic"
             android:layout_width="match_parent"

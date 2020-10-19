@@ -32,6 +32,7 @@ class OtherServiceActivity : AppCompatActivity() {
     private var date: Date? = null
     private var time: Date? = null
     private var dateTime: String? = null
+    var address: String? = null
     var type = 0
     var lng = 0L
     var lat = 0L
@@ -46,7 +47,7 @@ class OtherServiceActivity : AppCompatActivity() {
         calendarDate = Calendar.getInstance()
         calendarTime = Calendar.getInstance()
         initViewModel()
-        val other_service_id = intent.extras?.getInt("other_service_id")
+        val otherServiceId = intent.extras?.getInt("other_service_id")
         val otherCost = MyPreferences.getLong("other_service_cost")
         handleToolbar()
         linPayment1.setOnClickListener {
@@ -107,7 +108,7 @@ class OtherServiceActivity : AppCompatActivity() {
 
             viewModel.requestOtherService(
                 RequestOtherServicePost(
-                    other_service_id!!,
+                    otherServiceId!!,
                     details,
                     dateTime!!,
                     latSrc,
@@ -129,16 +130,17 @@ class OtherServiceActivity : AppCompatActivity() {
         lng = MyPreferences.getLong("long")
         lat = MyPreferences.getLong("lat")
         type = MyPreferences.getInt("type")
+        address = MyPreferences.getStr("addressName")
         Log.e(TAG, "onStart: ")
 
         if (type == 1) {
-            tvPlaceOrderSrc.text = "$lat, $lng"
+            tvPlaceOrderSrc.text = address
             latSrc = lat
             lngSrc = lng
         }
 
         if (type == 2) {
-            tvPlaceOrderDist.text = "$lat, $lng"
+            tvPlaceOrderDist.text = address
             latDist = lat
             lngDist = lng
         }
@@ -148,29 +150,30 @@ class OtherServiceActivity : AppCompatActivity() {
     }
 
 
-
     private fun setTime() {
         val currentHour = calendarTime!!.get(Calendar.HOUR_OF_DAY)
         val currentMinute = calendarTime!!.get(Calendar.MINUTE)
         val timePickerDialog = TimePickerDialog(
             this,
-            TimePickerDialog.OnTimeSetListener { timePicker, hourOfDay, minutes ->
+            { timePicker, hourOfDay, minutes ->
 
                 calendarTime!![Calendar.HOUR_OF_DAY] = hourOfDay
                 calendarTime!![Calendar.MINUTE] = minutes
                 calendarTime!![Calendar.SECOND] = 0
                 time = calendarTime!!.time
-                dateTime =   "${Helper.getFormatDate(date = date!!)} \n ${Helper.getFormatTime(time = time!!)}"
+                dateTime =
+                    "${Helper.getFormatDate(date = date!!)} \n ${Helper.getFormatTime(time = time!!)}"
 
 
-                if (isToday()){
+                if (isToday()) {
                     if (time!!.time >= System.currentTimeMillis()) {
                         tvTimePeriod.text = dateTime
-                    }else{
+                    } else {
                         tvTimePeriod.error = getString(R.string.invalid_time)
-                        Toast.makeText(this, getString(R.string.invalid_time), Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, getString(R.string.invalid_time), Toast.LENGTH_LONG)
+                            .show()
                     }
-                }else{
+                } else {
                     tvTimePeriod.text = dateTime
                 }
             }, currentHour, currentMinute, false
@@ -218,7 +221,7 @@ class OtherServiceActivity : AppCompatActivity() {
         return (systemMonth == currentMonth)
     }
 
-    private fun  handleToolbar (){
+    private fun handleToolbar() {
         imgArrowBack.setOnClickListener {
             finish()
         }

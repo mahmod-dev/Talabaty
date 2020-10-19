@@ -86,21 +86,21 @@
 
     </LinearLayout>
 
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-    android:id="@+id/swipeRefresh"
-    android:layout_below="@+id/linHeader"
-    android:layout_width="match_parent"
-    android:soundEffectsEnabled="false"
-    android:defaultFocusHighlightEnabled="false"
-    android:layout_height="match_parent">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvChat"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_below="@+id/linHeader"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_receiver"
-        android:layout_marginTop="@dimen/_5sdp" />
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        android:soundEffectsEnabled="false"
+        android:defaultFocusHighlightEnabled="false"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_receiver"
+            android:layout_marginTop="@dimen/_5sdp" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
     <LinearLayout

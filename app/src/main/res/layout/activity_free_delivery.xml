@@ -19,7 +19,7 @@
         android:fontFamily="@font/cairo_reqular"
         android:layout_margin="@dimen/_40sdp"
         android:visibility="gone"
-        android:text="@string/not_fount_free_delivery"/>
+        android:text="@string/not_fount_free_delivery" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:layout_marginTop="@dimen/_30sdp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFreeDelivery"

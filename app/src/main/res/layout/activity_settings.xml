@@ -18,205 +18,184 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/toolbar"/>
+            <include layout="@layout/toolbar" />
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_20sdp"
-                android:textColor="@color/colorPrimary"
                 android:fontFamily="@font/cairo_bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="@string/settings"
-                android:textSize="@dimen/_16ssp">
-            </TextView>
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_13ssp" />
 
             <TextView
-                android:foreground="?attr/selectableItemBackground"
-                android:drawablePadding="@dimen/_20sdp"
-                android:drawableStart="@drawable/ic_icon_about_app"
-                android:drawableEnd="@drawable/ic_icon_settings_arrow"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/cairo_bold"
+                android:id="@+id/tvAbout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:clickable="true"
+                android:drawablePadding="@dimen/_20sdp"
+                android:focusable="true"
+                android:fontFamily="@font/cairo_reqular"
+                android:foreground="?attr/selectableItemBackground"
+                android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/about_app"
-                android:textSize="@dimen/_16ssp">
-            </TextView>
+                android:textColor="@color/colorPrimary"
+                app:drawableEndCompat="@drawable/ic_icon_settings_arrow"
+                app:drawableStartCompat="@drawable/ic_icon_about_app" />
 
             <View
-                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorGrey">
-            </View>
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:background="@color/colorGrey" />
 
             <TextView
-                android:foreground="?attr/selectableItemBackground"
-                android:drawablePadding="@dimen/_20sdp"
-                android:drawableStart="@drawable/ic_icon_policy"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/cairo_bold"
+                android:id="@+id/tvPrivacyPolicy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:clickable="true"
+                android:drawablePadding="@dimen/_20sdp"
+                android:focusable="true"
+                android:fontFamily="@font/cairo_reqular"
+                android:foreground="?attr/selectableItemBackground"
+                android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/usage_policy"
-                android:textSize="@dimen/_16ssp">
-            </TextView>
+                android:textColor="@color/colorPrimary"
+                app:drawableStartCompat="@drawable/ic_icon_policy" />
 
             <View
-                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorGrey">
-            </View>
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:background="@color/colorGrey" />
+
 
             <TextView
-                android:foreground="?attr/selectableItemBackground"
-                android:drawablePadding="@dimen/_20sdp"
-                android:drawableStart="@drawable/ic_icon_display"
-                android:drawableEnd="@drawable/ic_icon_settings_arrow"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/cairo_bold"
+                android:id="@+id/tvSuggestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/display"
-                android:textSize="@dimen/_16ssp">
-            </TextView>
-
-            <View
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorGrey">
-            </View>
-
-            <TextView
-                android:id="@+id/tv_suggestion"
-                android:foreground="?attr/selectableItemBackground"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:clickable="true"
                 android:drawablePadding="@dimen/_20sdp"
-                android:drawableStart="@drawable/ic_icon_suggestion"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/cairo_bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:fontFamily="@font/cairo_reqular"
+                android:foreground="?attr/selectableItemBackground"
+                android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/suggestions"
-                android:textSize="@dimen/_16ssp">
-            </TextView>
+                android:textColor="@color/colorPrimary"
+                app:drawableStartCompat="@drawable/ic_icon_suggestion" />
 
             <View
-                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorGrey">
-            </View>
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:background="@color/colorGrey" />
 
             <TextView
-                android:id="@+id/tv_question"
-                android:foreground="?attr/selectableItemBackground"
-                android:drawablePadding="@dimen/_20sdp"
-                android:drawableStart="@drawable/ic_icon_questions"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/cairo_bold"
+                android:id="@+id/tvQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:clickable="true"
+                android:drawablePadding="@dimen/_20sdp"
+                android:focusable="true"
+                android:fontFamily="@font/cairo_reqular"
+                android:foreground="?attr/selectableItemBackground"
+                android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/questions"
-                android:textSize="@dimen/_16ssp">
-            </TextView>
+                android:textColor="@color/colorPrimary"
+                app:drawableStartCompat="@drawable/ic_icon_questions" />
 
             <View
-                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorGrey">
-            </View>
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:background="@color/colorGrey" />
 
             <TextView
-                android:foreground="?attr/selectableItemBackground"
-                android:drawablePadding="@dimen/_20sdp"
-                android:drawableEnd="@drawable/ic_icon_settings_arrow"
-                android:drawableStart="@drawable/ic_icon_language"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/cairo_bold"
+                android:id="@+id/tvLanguage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:clickable="true"
+                android:drawablePadding="@dimen/_20sdp"
+                android:focusable="true"
+                android:fontFamily="@font/cairo_reqular"
+                android:foreground="?attr/selectableItemBackground"
+                android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/language"
-                android:textSize="@dimen/_16ssp">
-            </TextView>
+                android:textColor="@color/colorPrimary"
+                app:drawableEndCompat="@drawable/ic_icon_settings_arrow"
+                app:drawableStartCompat="@drawable/ic_icon_language" />
 
             <View
-                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorGrey">
-            </View>
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:background="@color/colorGrey" />
 
             <TextView
-                android:foreground="?attr/selectableItemBackground"
-                android:drawablePadding="@dimen/_20sdp"
-                android:drawableStart="@drawable/ic_icon_share"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/cairo_bold"
+                android:id="@+id/tvShareApp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:clickable="true"
+                android:drawablePadding="@dimen/_20sdp"
+                android:focusable="true"
+                android:fontFamily="@font/cairo_reqular"
+                android:foreground="?attr/selectableItemBackground"
+                android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/share"
-                android:textSize="@dimen/_16ssp">
-            </TextView>
+                android:textColor="@color/colorPrimary"
+                app:drawableStartCompat="@drawable/ic_icon_share" />
 
             <View
-                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorGrey">
-            </View>
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:background="@color/colorGrey" />
 
             <TextView
-                android:id="@+id/tv_contact"
-                android:foreground="?attr/selectableItemBackground"
-                android:drawablePadding="@dimen/_20sdp"
-                android:drawableStart="@drawable/ic_icon_contact_us"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/cairo_bold"
+                android:id="@+id/tvContactUs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:clickable="true"
+                android:drawablePadding="@dimen/_20sdp"
+                android:focusable="true"
+                android:fontFamily="@font/cairo_reqular"
+                android:foreground="?attr/selectableItemBackground"
+                android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/contact_us"
-                android:textSize="@dimen/_16ssp">
-            </TextView>
+                android:textColor="@color/colorPrimary"
+                app:drawableStartCompat="@drawable/ic_icon_contact_us" />
 
             <View
-                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorGrey">
-            </View>
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:background="@color/colorGrey" />
 
             <ImageView
-                android:layout_marginTop="@dimen/_80sdp"
-                android:layout_gravity="center_horizontal|bottom"
                 android:layout_width="@dimen/_50sdp"
                 android:layout_height="@dimen/_50sdp"
-                android:src="@drawable/logo_main">
-            </ImageView>
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginTop="@dimen/_80sdp"
+                android:src="@drawable/logo_main" />
 
             <TextView
-                android:fontFamily="@font/cairo_reqular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:textColor="@color/colorGrey"
-                android:text="رقم الإصدار 1.01">
-            </TextView>
+                android:fontFamily="@font/cairo_reqular"
+                android:text="رقم الإصدار 1.01"
+                android:textColor="@color/colorGrey" />
 
         </LinearLayout>
     </ScrollView>
-
-
 
 
 </LinearLayout>

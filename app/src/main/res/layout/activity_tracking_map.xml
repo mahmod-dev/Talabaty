@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/map_view"
@@ -15,16 +14,14 @@
         android:layout_margin="@dimen/_10sdp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_further_arrow">
-    </ImageView>
+        android:src="@drawable/ic_further_arrow"></ImageView>
 
 
     <ImageView
         android:layout_marginTop="@dimen/_80sdp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_tracking_person">
-    </ImageView>
+        android:src="@drawable/ic_tracking_person"></ImageView>
 
 
     <LinearLayout
@@ -44,17 +41,13 @@
             android:padding="@dimen/_10sdp"
             android:text="محمد أحسن حمد"
             android:textSize="@dimen/_9ssp"
-            android:textColor="@color/colorBlack">
-        </TextView>
+            android:textColor="@color/colorBlack"></TextView>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_tracking_car">
-        </ImageView>
+            android:src="@drawable/ic_tracking_car"></ImageView>
     </LinearLayout>
-
-
 
 
     <LinearLayout
@@ -78,8 +71,7 @@
                 android:textColor="@color/colorBlack"
                 android:text="طلب وجبه شاورما ايطالي"
                 android:textSize="@dimen/_12ssp"
-                android:textStyle="bold">
-            </TextView>
+                android:textStyle="bold"></TextView>
 
             <TextView
                 android:layout_marginTop="@dimen/_5sdp"
@@ -88,14 +80,13 @@
                 android:textColor="@color/colorBlack"
                 android:text="يتم التوصيل من قبل هنقرستيشن"
                 android:textSize="@dimen/_10ssp"
-                android:textStyle="normal">
-            </TextView>
+                android:textStyle="normal"></TextView>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <LinearLayout
             android:gravity="end"
@@ -109,8 +100,7 @@
                 android:textColor="@color/colorBlack"
                 android:text="20"
                 android:textSize="@dimen/_12ssp"
-                android:textStyle="bold">
-            </TextView>
+                android:textStyle="bold"></TextView>
 
             <TextView
 
@@ -119,8 +109,7 @@
                 android:textColor="@color/colorBlack"
                 android:text="دقيقة"
                 android:textSize="@dimen/_10ssp"
-                android:textStyle="normal">
-            </TextView>
+                android:textStyle="normal"></TextView>
         </LinearLayout>
 
     </LinearLayout>

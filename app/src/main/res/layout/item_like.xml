@@ -13,14 +13,14 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
-        android:src="@drawable/ic_man"/>
+        android:src="@drawable/ic_man" />
 
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/product_describe"
-        android:fontFamily="@font/cairo_reqular"/>
+        android:fontFamily="@font/cairo_reqular" />
 
     <TextView
         android:id="@+id/tvPrice"
@@ -30,5 +30,5 @@
         android:fontFamily="@font/cairo_bold"
         android:textSize="@dimen/_12ssp"
         android:layout_marginStart="@dimen/_5sdp"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="@color/colorPrimary" />
 </LinearLayout>

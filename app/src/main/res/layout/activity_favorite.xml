@@ -6,7 +6,7 @@
     tools:context=".FavoriteActivity"
     android:orientation="vertical">
 
-    <include layout="@layout/title_toolbar"/>
+    <include layout="@layout/title_toolbar" />
 
     <TextView
         android:id="@+id/tvFavEmpty"
@@ -16,7 +16,7 @@
         android:visibility="gone"
         android:fontFamily="@font/cairo_reqular"
         android:layout_marginTop="@dimen/_20sdp"
-        android:text="@string/empty_fav"/>
+        android:text="@string/empty_fav" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
@@ -29,11 +29,8 @@
             android:layout_height="wrap_content"
             android:visibility="visible"
             tools:listitem="@layout/item_cart_favorite"
-            android:layout_marginTop="@dimen/_10sdp"/>
+            android:layout_marginTop="@dimen/_10sdp" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
-
 
 
 </LinearLayout>

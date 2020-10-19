@@ -61,16 +61,15 @@ class OrdersAdapter(
 
 
         fun bind(order: ClientOrder) {
-            tvMealName.text = order.store.name
-            tvPlaceAddress.text = order.store.address
+            tvMealName.text = order.store?.name ?: ""
+            tvPlaceAddress.text = order.store?.address ?: ""
             tvMealNum.text = order.meals_count.toString()
-            tvDate.text = order.created_at
+            tvDate.text = order.created_at.toString()
 
             tvPriceOrder.text = "${order.final_total} ${activity.getString(R.string.rs)}"
             tvOrderNum.text = "#${order.id}"
-            if (order.store.image_profile.isNotEmpty()) {
-                img.setUrlImage(activity, order.store.image_profile)
-
+            if (!order.store?.image_profile.isNullOrEmpty()) {
+                img.setUrlImage(activity, order.store?.image_profile)
             }
 
             cardDeleteOrder.setOnClickListener {
@@ -158,7 +157,7 @@ class OrdersAdapter(
     }
 
     private fun TextView.setDrawableStart(drawable: Int = 0, color: Int, textColor: Int) {
-        this.backgroundTintList = ContextCompat.getColorStateList(activity,color)
+        this.backgroundTintList = ContextCompat.getColorStateList(activity, color)
 
         this.setTextColor(ContextCompat.getColor(activity, textColor))
         this.setCompoundDrawablesWithIntrinsicBounds(0, 0, drawable, 0)

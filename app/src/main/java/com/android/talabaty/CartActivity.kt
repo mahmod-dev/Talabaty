@@ -31,6 +31,8 @@ import com.android.talabaty.util.Helper
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.CartViewModel
 import kotlinx.android.synthetic.main.activity_cart.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class CartActivity : AppCompatActivity() {
@@ -348,7 +350,6 @@ class CartActivity : AppCompatActivity() {
             }
         )
     }
-
 
 
 }

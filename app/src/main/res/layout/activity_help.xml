@@ -51,11 +51,13 @@
                         android:text="@string/chatting_now"
                         android:textColor="@color/colorPrimary"
                         app:drawableStartCompat="@drawable/ic_selected_message" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginVertical="@dimen/_5sdp"
                         android:background="@color/colorGrey2" />
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -67,8 +69,8 @@
                             android:src="@drawable/ic_face"
                             android:layout_centerVertical="true"
                             android:layout_marginVertical="@dimen/_10sdp"
-                            android:layout_marginHorizontal="@dimen/_20sdp"/>
-                        
+                            android:layout_marginHorizontal="@dimen/_20sdp" />
+
                         <TextView
                             android:id="@+id/tvTitleHelp"
                             android:layout_width="wrap_content"
@@ -76,7 +78,7 @@
                             android:textColor="@color/colorBlack"
                             android:fontFamily="@font/cairo_bold"
                             android:text="@string/customer_service"
-                            android:layout_toEndOf="@+id/imgFace"/>
+                            android:layout_toEndOf="@+id/imgFace" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -86,7 +88,7 @@
                             android:text="@string/how_help_you"
                             android:textSize="@dimen/_8ssp"
                             android:layout_below="@+id/tvTitleHelp"
-                            android:layout_toEndOf="@+id/imgFace"/>
+                            android:layout_toEndOf="@+id/imgFace" />
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -120,6 +122,7 @@
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -137,6 +140,7 @@
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -154,6 +158,7 @@
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -171,6 +176,7 @@
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -188,6 +194,7 @@
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -205,6 +212,7 @@
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -222,6 +230,7 @@
                         android:textColor="@color/colorBlack"
                         android:layout_gravity="center"
                         app:drawableEndCompat="@drawable/ic_icon_arrow_left" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"

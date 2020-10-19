@@ -22,41 +22,136 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="q">
-        <activity android:name=".AllAddressBookActivity">
-
-        </activity>
-        <activity android:name=".AddAddressBookActivity" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".EditProfileActivity" />
-        <activity android:name=".ChargeActivity" />
-        <activity android:name=".AllCouponsActivity" />
-        <activity android:name=".AddCouponActivity" />
-        <activity android:name=".TatbeqActivity" />
-        <activity android:name=".NearbyActivity" />
-        <activity android:name=".MyCardActivity" />
-        <activity android:name=".OrderServiceActivity" />
-        <activity android:name=".OtherServiceActivity" />
-        <activity android:name=".FavoriteActivity" />
-        <activity android:name=".BaseActivity" />
-        <activity android:name=".DeliveryServicesActivity" />
-        <activity android:name=".FreeDeliveryActivity" />
-        <activity android:name=".NewestOffersServicesActivity" />
-        <activity android:name=".ChatActivity" />
-        <activity android:name=".CartActivity" />
-        <activity android:name=".auth.SignInActivity" />
-        <activity android:name=".auth.VerificationActivity" />
-        <activity android:name=".auth.ResetPasswordActivity" />
-        <activity android:name=".auth.SignUpActivity" />
-        <activity android:name=".StoreDetailsActivity" />
-        <activity android:name=".WelcomeActivity" />
-        <activity android:name=".ElectronicServiceActivity" />
-        <activity android:name=".MapActivity" />
-        <activity android:name=".AddCreditCardActivity" />
-        <activity android:name=".WaitingActivity" />
-        <activity android:name=".TrackingMapActivity" />
-        <activity android:name=".PaymentMethodActivity" />
+        <activity android:name=".Map2Activity"></activity>
+        <activity android:name=".AllAddressBookActivity"></activity>
+        <activity
+            android:name=".AddAddressBookActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SearchActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChargeActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AllCouponsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddCouponActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TatbeqActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NearbyActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyCardActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OrderServiceActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OtherServiceActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FavoriteActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BaseActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DeliveryServicesActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FreeDeliveryActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NewestOffersServicesActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChatActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CartActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".auth.SignInActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".auth.VerificationActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".auth.ResetPasswordActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".auth.SignUpActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StoreDetailsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WelcomeActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ElectronicServiceActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MapActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddCreditCardActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WaitingActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TrackingMapActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PaymentMethodActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SettingsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SplashActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,11 +159,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HelpDetailsActivity" />
-        <activity android:name=".CarServiceActivity" />
-        <activity android:name=".RemoteServiceActivity" />
-        <activity android:name=".ProductDetailsActivity" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".HelpDetailsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CarServiceActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RemoteServiceActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProductDetailsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
 
         <uses-library
             android:name="org.apache.http.legacy"

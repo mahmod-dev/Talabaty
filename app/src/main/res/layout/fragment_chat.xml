@@ -11,27 +11,32 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/item_chat"
-            android:id="@+id/item1"/>
+        <include
+            layout="@layout/item_chat"
+            android:id="@+id/item1" />
 
-        <include layout="@layout/item_chat"
-            android:id="@+id/item2"/>
+        <include
+            layout="@layout/item_chat"
+            android:id="@+id/item2" />
 
-        <include layout="@layout/item_chat"
-            android:id="@+id/item3"/>
+        <include
+            layout="@layout/item_chat"
+            android:id="@+id/item3" />
 
-        <include layout="@layout/item_chat"
-            android:id="@+id/item4"/>
+        <include
+            layout="@layout/item_chat"
+            android:id="@+id/item4" />
 
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvChatList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 

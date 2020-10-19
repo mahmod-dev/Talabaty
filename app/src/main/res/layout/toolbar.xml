@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/title"
-                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
@@ -43,6 +43,7 @@
                 android:focusable="true"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp"
+                android:rotation="180"
 
                 android:src="@drawable/ic_icon_arrow_left"
                 app:tint="@color/colorPrimary" />
@@ -52,12 +53,12 @@
                 android:id="@+id/imgCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
-                android:layout_marginEnd="@dimen/_5sdp"
                 android:focusable="true"
                 android:padding="@dimen/_5sdp"
 
@@ -66,10 +67,11 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/imgCart"
                 android:layout_centerVertical="true"
                 android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_marginVertical="@dimen/_2sdp"                app:cardBackgroundColor="@color/gray_light"
+                android:layout_marginVertical="@dimen/_2sdp"
+                android:layout_toStartOf="@+id/imgCart"
+                app:cardBackgroundColor="@color/gray_light"
                 app:cardCornerRadius="@dimen/_50sdp">
 
                 <ImageView
@@ -80,7 +82,6 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
                     android:focusable="true"
-
                     android:src="@drawable/ic_favo" />
             </androidx.cardview.widget.CardView>
 

@@ -3,6 +3,8 @@ package com.android.talabaty
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.android.talabaty.util.LocationHelper
 import com.android.talabaty.util.MyPreferences
+import com.android.talabaty.util.MyPreferences.prefSave
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener
@@ -18,14 +21,16 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.mahmoud.todoapp.util.LocationManager
 import kotlinx.android.synthetic.main.activity_map.*
+import java.util.*
 
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     val TAG = "MapActivity"
     private lateinit var locationHelper: LocationHelper
     private lateinit var mMap: GoogleMap
-    private var long: Double? = 0.0
+    private var lng: Double? = 0.0
     private var lat: Double? = 0.0
+    private var address: String? = null
     var num = 0
     var type = 0
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,16 +40,17 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         MyPreferences.context = this
-         type = intent.extras?.getInt("type")!!
+        type = intent.extras?.getInt("type")!!
 
         initGpsLocation()
 
         btnMapLocation.setOnClickListener {
             MyPreferences.setLong("lat", lat!!.toLong())
-            MyPreferences.setLong("long", long!!.toLong())
+            MyPreferences.setLong("long", lng!!.toLong())
             MyPreferences.setInt("type", type)
-            finish()
-           // Toast.makeText(this,"${getString(R.string.choosen_location)} \n lat: $lat, lng: $long",Toast.LENGTH_SHORT).show()
+           // getAddress(lat!!,lng!!).prefSave("addressName")
+             finish()
+            // Toast.makeText(this,"${getString(R.string.choosen_location)} \n lat: $lat, lng: $long",Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -67,18 +73,21 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.setOnMarkerDragListener(object : OnMarkerDragListener {
             override fun onMarkerDragStart(markerDragStart: Marker) {
                 // TODO Auto-generated method stub
-                Log.e(TAG, "onMarkerDragStart: " )
+                Log.e(TAG, "onMarkerDragStart: ")
             }
 
             override fun onMarkerDragEnd(markerDragEnd: Marker) {
-                Log.e(TAG, "onMarkerDragEnd: " )
+                Log.e(TAG, "onMarkerDragEnd: ")
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(markerDragEnd.position))
                 lat = markerDragEnd.position.latitude
-                long = markerDragEnd.position.longitude
+                lng = markerDragEnd.position.longitude
+                getAddress(lat!!,lng!!).prefSave("addressName")
+
             }
 
             override fun onMarkerDrag(markerDrag: Marker) {
-                Log.e(TAG, "onMarkerDrag: " )
+                Log.e(TAG, "onMarkerDrag: ")
+
             }
         })
     }
@@ -116,7 +125,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             override fun onLocationChanged(location: Location?) {
 
                 lat = location?.latitude
-                long = location?.longitude
+                lng = location?.longitude
                 Log.e(TAG, "onLocationChanged latitude: ${location?.latitude}")
                 Log.e(TAG, "onLocationChanged longitude: ${location?.longitude}")
 
@@ -133,13 +142,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 Log.e(TAG, "getLastKnownLocation latitude: ${location?.latitude}")
                 Log.e(TAG, "getLastKnownLocation longitude: ${location?.longitude}")
                 lat = location?.latitude
-                long = location?.longitude
+                lng = location?.longitude
                 if (location != null) {
                     addMarker(location.latitude, location.longitude)
-
                 }
-
-
             }
 
         })
@@ -159,11 +165,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)
         ).draggable(true)
         this.lat = lat
-        this.long = long
-      val marker  =  mMap.addMarker(options)
+        this.lng = long
+        val marker = mMap.addMarker(options)
         marker.title = "lat: ${lat.toFloat()}, lng: ${long.toFloat()}"
         marker.isDraggable = true
-     //   mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+        //   mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
 
@@ -171,14 +177,31 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onBackPressed() {
 
-        if (lat != null && long != null) {
-            Log.e(TAG, "onBackPressed: $lat , $long" )
+        if (lat != null && lng != null) {
+            Log.e(TAG, "onBackPressed: $lat , $lng")
             MyPreferences.setLong("lat", lat!!.toLong())
-            MyPreferences.setLong("long", long!!.toLong())
+            MyPreferences.setLong("long", lng!!.toLong())
             MyPreferences.setInt("type", type)
+         //   getAddress(lat!!,lng!!).prefSave("addressName")
+
         }
 
         super.onBackPressed()
+    }
+
+    private fun getAddress(lat: Double, lng: Double): String {
+        val geoCoder = Geocoder(applicationContext, Locale.getDefault())
+        var addresses: List<Address>? = null
+
+        var address = ""
+        try {
+            addresses = geoCoder.getFromLocation(lat, lng, 1)
+            address = addresses[0].getAddressLine(0)
+            Log.e("addresses", address)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return address
     }
 
 

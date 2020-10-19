@@ -42,40 +42,39 @@
         </androidx.cardview.widget.CardView>
 
 
-
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <include layout="@layout/item_restaurant_under" />
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabsStoreDetails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabMode="scrollable"
-                app:tabSelectedTextColor="@color/colorPrimary"
-                app:tabTextAppearance="@style/tab_text"
-                app:tabTextColor="@color/colorGrey2">
-
-
-            </com.google.android.material.tabs.TabLayout>
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPagerStoreDetails"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="visible">
+                android:orientation="vertical">
 
-            </androidx.viewpager2.widget.ViewPager2>
+                <include layout="@layout/item_restaurant_under" />
 
-        </LinearLayout>
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabsStoreDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabMode="scrollable"
+                    app:tabSelectedTextColor="@color/colorPrimary"
+                    app:tabTextAppearance="@style/tab_text"
+                    app:tabTextColor="@color/colorGrey2">
+
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerStoreDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible">
+
+                </androidx.viewpager2.widget.ViewPager2>
+
+            </LinearLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>

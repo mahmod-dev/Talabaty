@@ -17,6 +17,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,13 +59,14 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_gravity="center_horizontal"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
                             android:drawablePadding="@dimen/_10sdp"
+                            android:focusable="true"
                             android:fontFamily="@font/cairo_reqular"
                             android:hint="@string/select_receive_place"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:background="?attr/selectableItemBackground"
                             android:padding="@dimen/_10sdp"
+                            android:maxLines="1"
                             app:drawableStartCompat="@drawable/ic_icon_place" />
 
                     </androidx.cardview.widget.CardView>
@@ -104,13 +106,13 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_gravity="center_horizontal"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
                             android:drawablePadding="@dimen/_10sdp"
+                            android:focusable="true"
                             android:fontFamily="@font/cairo_reqular"
                             android:hint="@string/select_delivary_place"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:background="?attr/selectableItemBackground"
-
+                            android:maxLines="1"
                             android:padding="@dimen/_10sdp"
                             app:drawableStartCompat="@drawable/ic_icon_place" />
 
@@ -151,13 +153,13 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_gravity="center_horizontal"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
                             android:drawablePadding="@dimen/_10sdp"
+                            android:focusable="true"
                             android:fontFamily="@font/cairo_reqular"
                             android:hint="@string/delivery_period"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:background="?attr/selectableItemBackground"
-
+                            android:maxLines="2"
                             android:padding="@dimen/_10sdp"
                             app:drawableStartCompat="@drawable/ic_icon_watch" />
 
@@ -191,8 +193,8 @@
                         android:gravity="top"
                         android:hint="@string/write_ur_notice"
                         android:lines="8"
-                        android:textSize="@dimen/_12sdp"
-                        android:padding="@dimen/_10sdp" />
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_12sdp" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="@dimen/_40sdp"
@@ -333,13 +335,13 @@
                     android:id="@+id/linPayment1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:padding="@dimen/_5sdp"
-                    android:background="?attr/selectableItemBackground"
                     android:layout_marginHorizontal="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:orientation="horizontal">
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_5sdp">
 
                     <ImageView
                         android:layout_width="@dimen/_30sdp"
@@ -393,9 +395,9 @@
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:visibility="gone"
-                android:layout_height="wrap_content"/>
+                android:visibility="gone" />
         </RelativeLayout>
     </ScrollView>
 

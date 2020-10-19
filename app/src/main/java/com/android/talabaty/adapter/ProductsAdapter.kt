@@ -67,7 +67,7 @@ class ProductsAdapter(
 
 
             card.setOnClickListener {
-                onItemClick?.invoke(data?.get(adapterPosition))
+                onItemClick?.invoke(data[adapterPosition])
             }
 
 
