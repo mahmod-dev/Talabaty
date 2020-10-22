@@ -82,11 +82,11 @@ Please check messages</string>
 
 
     <string name="display">طريقة العرض</string>
-    <string name="suggestions">الشكاوي والإستفسارات</string>
-    <string name="questions">أسئلة وأجوبة</string>
-    <string name="language">لغة التطبيق</string>
-    <string name="share">شارك التطبيق</string>
-    <string name="contact_us">اتصل بنا</string>
+    <string name="suggestions">Complaints and inquiries</string>
+    <string name="questions">questions and answers</string>
+    <string name="language">Application language</string>
+    <string name="share">Share the app</string>
+    <string name="contact_us">call us</string>
     <string name="help_current_order">أحتاج مساعدة في طلبي الحالي</string>
     <string name="help_how_order">كيف أطلب من تطبيقكم؟</string>
     <string name="show_way">show Way</string>
@@ -261,6 +261,20 @@ Please check messages</string>
     <string name="cancel_order_question">Do you really want to cancel the order?</string>
     <string name="back">Back</string>
     <string name="order">The order</string>
+
+    <string name="about_tateqakum">عن تطبيقكم
+تطبيقكم نقدم العديد من الخدمات في مجال تكنولوجيا المعلومات والتسويق الرقمي ، ثم يربط المناديب بالعملاء
+بما في ذلك تصميم المواقع الإلكترونية وتطويرها ، وتصميم تطبيقات الهواتف الذكية وتطويرها ، وتصميم الرسومات للعلامات التجارية ، والهوية ، والتعبئة والطباعة و التصوير ،
+وبما في ذلك...
+تطبيقكم يربط المناديب بالعملاء، يمكن للعميل من خلاله الطلب من اي متجر او مطعم ، ليقوم مندوب تطبيقكم بالتوصيل إليه باسرع وقت وافضل خدمة. يميزنا في تطبيقكم التنافس بالاسعار، حيث ان اسعار التوصيل لدينا هي الافضل. لا نقوم حاليا في تطبيقكم باستقطاع نسبة عمولة على المناديب، حيث ان كامل قيمة التوصيل تذهب لمناديب تطبيقكم . يعمل تطبيق تطبيقكم حاليا في المملكة العربية السعودية . وفرنا في تطبيق تطبيقكم خاصية متابعة المندوب، والمحادثة الفورية معه. كما يوجد لدينا فريق مخصص لدعم العملاء على مدى الـ 24 ساعة. تطبيق تطبيقكم .. اختيارك الافضل للتوصيل.</string>
+
+    <string name="install_app">سارع في تحميل تطبيقكم الآن!!</string>
+    <string name="send">Send</string>
+    <string name="been_sent">has been sent</string>
+    <string name="arabic">عربي</string>
+    <string name="english">english</string>
+    <string name="news">new</string>
+    <string name="version_num">Version number 1.01</string>
 
 
 </resources>

@@ -2,6 +2,7 @@ package com.android.talabaty.util
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -20,6 +21,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
+import com.android.talabaty.BuildConfig
 import com.android.talabaty.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -334,6 +336,38 @@ object Helper {
             e.printStackTrace()
         }
         return cityName
+    }
+
+    fun callUs(activity: Activity, number: String) {
+        val numberUri = Uri.parse("tel:$number")
+        val callIntent = Intent(Intent.ACTION_DIAL, numberUri)
+        activity.startActivity(callIntent)
+    }
+
+    fun readTextFromAssets(activity: Activity): String {
+
+        return activity.assets.open("policy.txt").bufferedReader().use {
+            it.readText()
+        }
+    }
+
+    fun shareAPK(activity: Activity) {
+        try {
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.type = "text/plain"
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, activity.getString(R.string.tatbeqakum_en))
+            var shareMessage = activity.getString(R.string.install_app)
+            shareMessage =
+                """
+              ${shareMessage}https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}
+              
+              
+              """.trimIndent()
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
+            activity.startActivity(Intent.createChooser(shareIntent, "choose one"))
+        } catch (e: Exception) {
+            //e.toString();
+        }
     }
 
 

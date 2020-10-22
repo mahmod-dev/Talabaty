@@ -13,6 +13,7 @@
         android:required="true" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -22,8 +23,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="q">
-        <activity android:name=".Map2Activity"></activity>
-        <activity android:name=".AllAddressBookActivity"></activity>
+        <activity android:name=".LanguageActivity"></activity>
+        <activity android:name=".SuggestionsActivity" />
+        <activity android:name=".SettingDetailsActivity" />
+        <activity android:name=".Map2Activity" />
+        <activity android:name=".AllAddressBookActivity" />
         <activity
             android:name=".AddAddressBookActivity"
             android:configChanges="orientation"

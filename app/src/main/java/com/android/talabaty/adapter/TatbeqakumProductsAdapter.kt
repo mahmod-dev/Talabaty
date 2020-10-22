@@ -33,7 +33,7 @@ class TatbeqakumProductsAdapter(
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): MyViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_productive_family, viewGroup, false)
+            .inflate(R.layout.item_productive_tatbeqakum, viewGroup, false)
         return MyViewHolder(view)
 
     }

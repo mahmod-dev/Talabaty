@@ -68,10 +68,9 @@
                         android:backgroundTint="@color/colorGrey"
                         android:fontFamily="@font/cairo_reqular"
                         android:gravity="start"
-                        android:hint="hzdawoud"
                         android:inputType="text"
                         android:textAlignment="viewStart"
-                        android:textColor="@color/colorGrey2"
+                        android:textColor="@color/colorGrey3"
                         android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
@@ -99,11 +98,9 @@
                         android:backgroundTint="@color/colorGrey"
                         android:fontFamily="@font/cairo_reqular"
                         android:gravity="start"
-                        android:hint="hzdawoud@gmail.com"
-
                         android:inputType="textEmailAddress"
                         android:textAlignment="viewStart"
-                        android:textColor="@color/colorGrey2"
+                        android:textColor="@color/colorGrey3"
                         android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
@@ -138,7 +135,7 @@
                             android:gravity="start"
                             android:inputType="textPassword"
                             android:textAlignment="viewStart"
-                            android:textColor="@color/colorGrey2"
+                            android:textColor="@color/colorGrey3"
                             android:textSize="@dimen/_12ssp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -170,7 +167,7 @@
                         android:hint="+9728564772"
                         android:inputType="number"
                         android:textAlignment="viewStart"
-                        android:textColor="@color/colorGrey2"
+                        android:textColor="@color/colorGrey3"
                         android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
@@ -222,7 +219,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_40sdp"
-                    android:baselineAligned="false">
+                    android:baselineAligned="false"
+                    android:visibility="gone">
+
 
                     <FrameLayout
                         android:layout_width="0dp"
@@ -239,7 +238,6 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_icon_google" />
                     </FrameLayout>
-
 
                     <FrameLayout
                         android:layout_width="0dp"
