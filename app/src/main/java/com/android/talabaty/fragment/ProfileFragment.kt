@@ -121,7 +121,12 @@ class ProfileFragment : Fragment() {
                     Handler().postDelayed({
 
                         MyPreferences.setInt("isLogin", 0)
-                        startActivity(Intent(activity, SignInActivity::class.java))
+                        Intent(activity, SignInActivity::class.java).apply {
+                            addFlags(
+                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            )
+                            startActivity(this)
+                        }
                         activity?.finish()
 
         }, 3000)

@@ -76,7 +76,7 @@ class ProfileViewModel(private val apiHelper: ApiHelper, var context: Context) :
         password: String,
         device_type: String,
         fcm_token: String,
-        image_profile: MultipartBody.Part
+        image_profile: MultipartBody.Part?
     ) {
         val usernameRequest = RequestBody.create(MediaType.parse("text/plain"), name)
         val emailRequest = RequestBody.create(MediaType.parse("text/plain"), email)

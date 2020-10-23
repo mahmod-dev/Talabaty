@@ -33,7 +33,7 @@ class EditProfileActivity : AppCompatActivity() {
     private lateinit var viewModel: ProfileViewModel
     private var strImg: String? = null
     private var file: File? = null
-
+    var filePart: MultipartBody.Part? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,11 +78,14 @@ class EditProfileActivity : AppCompatActivity() {
                     lat,
                     lng
                 )
-                val filePart = MultipartBody.Part.createFormData(
-                    "image_profile",
-                    file!!.name,
-                    RequestBody.create(MediaType.parse("image/*"), file!!)
-                )
+                if (file!=null){
+                     filePart = MultipartBody.Part.createFormData(
+                        "image_profile",
+                        file!!.name,
+                        RequestBody.create(MediaType.parse("image/*"), file!!)
+                    )
+                }
+
 
                 viewModel.editProfile(
                     username,

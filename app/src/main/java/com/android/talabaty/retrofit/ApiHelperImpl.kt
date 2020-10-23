@@ -115,7 +115,7 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
         password: RequestBody,
         device_type: RequestBody,
         fcm_token: RequestBody,
-        image_profile: MultipartBody.Part
+        image_profile: MultipartBody.Part?
     ): EditProfile {
         return apiService.editProfile(
             name,

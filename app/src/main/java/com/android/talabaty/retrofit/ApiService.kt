@@ -201,7 +201,7 @@ interface ApiService {
         @Part("password") password: RequestBody,
         @Part("device_type") device_type: RequestBody,
         @Part("fcm_token") fcm_token: RequestBody,
-        @Part image_profile: MultipartBody.Part
+        @Part image_profile: MultipartBody.Part?
     ): EditProfile
 
     //   @FormUrlEncoded

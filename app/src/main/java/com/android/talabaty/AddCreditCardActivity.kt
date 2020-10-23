@@ -1,10 +1,14 @@
 package com.android.talabaty
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
+import android.view.MotionEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +29,6 @@ import kotlinx.android.synthetic.main.activity_add_credit_card.etName
 import kotlinx.android.synthetic.main.activity_add_credit_card.progressBar
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.reflect.typeOf
 
 
 class AddCreditCardActivity : AppCompatActivity() {
@@ -53,7 +56,7 @@ class AddCreditCardActivity : AppCompatActivity() {
             cardId = intent.extras!!.getInt("cardId")
             etCardNum.setText(card_number)
             etName.setText(name_cardholder)
-            etDate.setText(expired_date)
+            tvDate.text = expired_date
             etValidateNum.setText(validation_number)
         }
 
@@ -61,7 +64,7 @@ class AddCreditCardActivity : AppCompatActivity() {
 
             val cardNum = etCardNum.text.toString()
             val fullName = etName.text.toString()
-            val date = etDate.text.toString()
+            val date = tvDate.text.toString()
             val validationNum = etValidateNum.text.toString()
 
             if (cardNum.isEmpty()) {
@@ -73,7 +76,7 @@ class AddCreditCardActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             if (date.isEmpty()) {
-                etDate.error = getString(R.string.empty)
+                tvDate.error = getString(R.string.empty)
                 return@setOnClickListener
             }
             if (validationNum.isEmpty()) {
@@ -103,7 +106,7 @@ class AddCreditCardActivity : AppCompatActivity() {
 
         }
 
-        etDate.setOnClickListener {
+        tvDate.setOnClickListener {
             setDateStart()
         }
         setupObserver()
@@ -135,7 +138,7 @@ class AddCreditCardActivity : AppCompatActivity() {
                             progressBar.visibility = View.GONE
                             Toast.makeText(this, users.message, Toast.LENGTH_SHORT).show()
 
-                            startActivity(Intent(applicationContext, WaitingActivity::class.java))
+                          //  startActivity(Intent(applicationContext, WaitingActivity::class.java))
                             finish()
 
                         }
@@ -191,7 +194,7 @@ class AddCreditCardActivity : AppCompatActivity() {
                 calendarDate!!.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
                 startDate = calendarDate!!.time
-                updateDateText(calendarDate!!, etDate)
+                updateDateText(calendarDate!!, tvDate)
                 strStartDate = Helper.getFormatDate(format = "MM/yy", date = startDate!!)
 
             }, year, month, day
@@ -213,6 +216,23 @@ class AddCreditCardActivity : AppCompatActivity() {
 
         textView.text = sdf.format(c.time)
 
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        if (event.action == MotionEvent.ACTION_DOWN) {
+            val v: View? = currentFocus
+            if (v is EditText) {
+                val outRect = Rect()
+                v.getGlobalVisibleRect(outRect)
+                if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
+                    v.clearFocus()
+                    val imm: InputMethodManager =
+                        getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0)
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event)
     }
 
 

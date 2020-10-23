@@ -78,7 +78,7 @@ interface ApiHelper {
         password: RequestBody,
         device_type: RequestBody,
         fcm_token: RequestBody,
-        image_profile: MultipartBody.Part
+        image_profile: MultipartBody.Part?
     ): EditProfile
 
     suspend fun changePassword(

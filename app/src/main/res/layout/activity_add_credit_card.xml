@@ -73,6 +73,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/cairo_reqular"
                 android:gravity="end"
+                android:inputType="number"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/colorBlack" />
 
@@ -114,7 +115,7 @@
                         android:textSize="@dimen/_13ssp" />
 
                     <TextView
-                        android:id="@+id/etDate"
+                        android:id="@+id/tvDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/colorGrey"

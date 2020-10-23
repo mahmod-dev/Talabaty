@@ -1,22 +1,31 @@
 package com.android.talabaty.auth
 
+import android.content.Context
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
+import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.IntentCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.android.talabaty.MainActivity
 import com.android.talabaty.R
+import com.android.talabaty.dbUtil.Status
 import com.android.talabaty.dbUtil.ViewModelFactory
 import com.android.talabaty.retrofit.ApiHelperImpl
 import com.android.talabaty.retrofit.RetrofitBuilder
 import com.android.talabaty.util.CustomAlertDialog.getDialogInstance
+import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import com.android.talabaty.util.MyPreferences
 import com.android.talabaty.viewModel.SignUpViewModel
-import com.android.talabaty.dbUtil.Status
-import com.android.talabaty.util.CustomMaterialDialog.getMaterialDialogInstance
 import kotlinx.android.synthetic.main.activity_verification.*
+
 
 class VerificationActivity : AppCompatActivity() {
     val TAG = "VerificationActivity"
@@ -39,9 +48,7 @@ class VerificationActivity : AppCompatActivity() {
             }
 
 
-
-
-         val code =    tvCode.text.toString().toInt()
+            val code = tvCode.text.toString().toInt()
             viewModel.sendCode(code, mobile)
         }
 
@@ -69,8 +76,14 @@ class VerificationActivity : AppCompatActivity() {
                     Status.SUCCESS -> {
 
                         it.data?.let { users ->
-                            startActivity(Intent(applicationContext, MainActivity::class.java))
+                            Intent(applicationContext, MainActivity::class.java).apply {
+                                addFlags(
+                                    Intent.FLAG_ACTIVITY_NEW_TASK or FLAG_ACTIVITY_CLEAR_TASK
+                                )
+                                startActivity(this)
+                            }
 
+                            finish()
                         }
                     }
                     Status.LOADING -> {
@@ -116,6 +129,23 @@ class VerificationActivity : AppCompatActivity() {
 
             }
         )
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        if (event.action == MotionEvent.ACTION_DOWN) {
+            val v: View? = currentFocus
+            if (v is EditText) {
+                val outRect = Rect()
+                v.getGlobalVisibleRect(outRect)
+                if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
+                    v.clearFocus()
+                    val imm: InputMethodManager =
+                        getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0)
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event)
     }
 
 

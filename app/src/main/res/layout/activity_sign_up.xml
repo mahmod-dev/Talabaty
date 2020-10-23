@@ -164,7 +164,6 @@
                         android:backgroundTint="@color/colorGrey"
                         android:fontFamily="@font/cairo_reqular"
                         android:gravity="start"
-                        android:hint="+9728564772"
                         android:inputType="number"
                         android:textAlignment="viewStart"
                         android:textColor="@color/colorGrey3"
